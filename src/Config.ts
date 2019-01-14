@@ -1,6 +1,5 @@
 
-import * as ini from 'ini'
-// import * as squid from '@oceanprotocol/squid'
+import * as ini from "ini"
 
 interface IConfig {
     keeper_url?: string
@@ -17,7 +16,6 @@ interface IConfig {
     agent_store_auth?: string
     gas_limit?: number
 }
-
 
 export default class Config {
 
@@ -38,29 +36,33 @@ agent_store_auth =
 gas_limit = 300000
 `
 
-    private values: IConfig = {}
+    public values: IConfig = {}
 
     public constructor(setupValues?: any) {
         const allDefaults = ini.decode(Config.CONFIG_DEFAULT)
-        const oceanDefaults:IConfig = allDefaults.ocean
+        const oceanDefaults: IConfig = allDefaults.ocean
         let objectValues = setupValues ? setupValues : {}
-        if (typeof setupValues == "string") {
+        if (typeof setupValues === "string") {
             objectValues = ini.decode(setupValues)
         }
         // copy over only used config items as values
         for ( const name in oceanDefaults ) {
-            this.values[name] = oceanDefaults[name]
-            if (name in objectValues) {
-                this.values[name] = objectValues[name]
+            if (name) {
+                this.values[name] = oceanDefaults[name]
+                if (name in objectValues) {
+                    this.values[name] = objectValues[name]
+                }
             }
         }
     }
     public asText(): string {
         const result: string[] = []
         for ( const name in this.values) {
-            result.push(name + "=" + this.values[name])
+            if ( name ) {
+                result.push(name + "=" + this.values[name])
+            }
         }
-        return result.join('\n')
+        return result.join("\n")
     }
 
     public asSquid(): any {

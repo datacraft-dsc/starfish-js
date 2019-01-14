@@ -1,12 +1,7 @@
-
-
-import Config from './Config'
-import * as squid from '@oceanprotocol/squid'
+import * as squid from "@oceanprotocol/squid"
+import Config from "./Config"
 
 export default class Ocean {
-
-    private static instance
-    private oceanSquid: squid.Ocean
 
     public static async getInstance(config: Config): Promise<Ocean> {
         if (!Ocean.instance) {
@@ -16,12 +11,16 @@ export default class Ocean {
         return Ocean.instance
     }
 
+    private static instance
+    private oceanSquid: squid.Ocean
+
     private constructor() {
     }
 
     public async init(config: Config) {
         this.oceanSquid = await squid.Ocean.getInstance(config.asSquid())
     }
+
     public getSquid() {
         return this.oceanSquid
     }
