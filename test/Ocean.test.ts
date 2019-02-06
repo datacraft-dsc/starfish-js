@@ -1,6 +1,6 @@
 import * as assert from "assert"
 import Config from "../src/Config"
-import Ocean from "../src/ocean"
+import Ocean from "../src/Ocean"
 
 describe("Ocean", () => {
 

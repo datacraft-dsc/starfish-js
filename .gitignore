@@ -5,3 +5,4 @@ coverage/
 doc/
 test/**/*.js
 src/**/*.js
+artifacts
