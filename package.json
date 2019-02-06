@@ -42,18 +42,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oceanprotocol/ocean-js.git"
+    "url": "git+https://github.com/DEX-Company/ocean-js.git"
   },
   "keywords": [],
-  "author": "Ocean Protocol <devops@oceanprotocol.com>",
+  "author": "Dex <devops@dex.sg>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/oceanprotocol/ocean-js/issues"
+    "url": "https://github.com/DEX-Company/ocean-js/issues"
   },
-  "homepage": "https://github.com/oceanprotocol/ocean-js#readme",
+  "homepage": "https://github.com/DEX-Company/ocean-js#README",
   "dependencies": {
-    "@oceanprotocol/squid": "^0.2.7",
-    "@oceanprotocol/secret-store-client": "~0.0.14",
+    "@oceanprotocol/squid": "0.2.8",
     "ini": "^1.3.5"
   },
   "devDependencies": {
