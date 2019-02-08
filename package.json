@@ -1,15 +1,15 @@
 {
-  "name": "@oceanprotocol/ocean",
+  "name": "@dex/starfish-js",
   "version": "0.0.1",
   "description": "JavaScript client library for Ocean Eco System",
-  "main": "./dist/node/ocean.js",
-  "browser": "./dist/browser/ocean.cjs2.min.js",
+  "main": "./dist/node/starfish.js",
+  "browser": "./dist/browser/starfish.cjs2.min.js",
   "scripts": {
     "test": "mocha",
     "test:watch": "mocha -w --watch-extensions js,ts,json",
     "clean": "rm -rf ./dist/ ./doc/ ./coverage ./.nyc_output",
     "lint": "tslint -c tslint.json 'src/**/*.ts' 'test/**/*.ts'",
-    "start": "npm link @oceanprotocol/squid && npm run build:watch",
+    "start": "npm link @dex/starfish-js && npm run build:watch",
     "build": "npm run clean && npm run build:tsc && npm run build:dist",
     "build:tsc": "tsc",
     "build:dist": "cross-env NODE_ENV=production webpack",
@@ -42,15 +42,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DEX-Company/ocean-js.git"
+    "url": "git+https://github.com/DEX-Company/starfish-js.git"
   },
   "keywords": [],
   "author": "Dex <devops@dex.sg>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/DEX-Company/ocean-js/issues"
+    "url": "https://github.com/DEX-Company/starfish-js/issues"
   },
-  "homepage": "https://github.com/DEX-Company/ocean-js#README",
+  "homepage": "https://github.com/DEX-Company/starfish-js#README",
   "dependencies": {
     "@oceanprotocol/squid": "0.2.8",
     "ini": "^1.3.5"
