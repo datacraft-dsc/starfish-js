@@ -39,9 +39,10 @@ if [ ! -z "$DEPLOY_SERVER" ]; then
     DEPLOY_BUILD_URL="http://${DEPLOY_SERVER}/docs_build"
 
     echo "Deploying doc file to $DEPLOY_SERVER"
-    openssl aes-256-cbc -K $encrypted_86d65e2fd543_key -iv $encrypted_86d65e2fd543_iv \
-    -in docs/keys/dex-docs-deploy.enc \
-    -out /tmp/dex-docs-deploy -d
+    openssl aes-256-cbc -K $encrypted_589a33e3e25d_key \
+            -iv $encrypted_589a33e3e25d_iv \
+            -in scripts/dex-docs-deploy.enc \
+            -out /tmp/dex-docs-deploy -d
 
     chmod 0600 /tmp/dex-docs-deploy
 
