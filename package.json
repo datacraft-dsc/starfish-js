@@ -7,6 +7,7 @@
   "scripts": {
     "test": "mocha",
     "test:watch": "mocha -w --watch-extensions js,ts,json",
+    "test:cover": "nyc --report-dir coverage/unit mocha",
     "clean": "rm -rf ./dist/ ./doc/ ./coverage ./.nyc_output",
     "lint": "tslint -c tslint.json 'src/**/*.ts' 'test/**/*.ts'",
     "start": "npm link @dex/starfish-js && npm run build:watch",
