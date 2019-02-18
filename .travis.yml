@@ -28,7 +28,7 @@ before_script:
 script:
   - ./scripts/wait_for_migration_and_extract_keeper_artifacts.sh
   - export ETH_PORT=18545; npm run test:cover
-  - npm run report-coverage
+  # - npm run report-coverage
   - npm run build
   - npm run doc
   # - ./src/examples/fire_lazers.sh
