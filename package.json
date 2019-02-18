@@ -62,7 +62,7 @@
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
     "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
+    "nyc": "^13.3.0",
     "rollup": "^1.0.2",
     "source-map-support": "^0.5.9",
     "truffle-hdwallet-provider": "^1.0.2",
