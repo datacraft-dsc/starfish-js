@@ -9,6 +9,9 @@ cache:
   directories:
     - node_modules
 
+addons:
+  ssh_known_hosts: shrimp.octet.services
+
 matrix:
   fast_finish: true
 
