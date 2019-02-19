@@ -9,6 +9,9 @@ cache:
   directories:
     - node_modules
 
+addons:
+  ssh_known_hosts: shrimp.octet.services
+
 matrix:
   fast_finish: true
 
@@ -18,18 +21,19 @@ before_install:
 
 before_script:
   - greenkeeper-lockfile-update
-  - ganache-cli --port 18545 > ganache-cli.log &
-  - git clone https://github.com/oceanprotocol/barge
+  # - ganache-cli --port 18545 > ganache-cli.log &
+  - git clone https://github.com/DEX-Company/barge.git
   - cd barge
-  - KEEPER_VERSION=v0.5.3 bash -x start_ocean.sh --latest --no-brizo --no-pleuston --local-nile-node 2>&1 > start_ocean.log &
+  - git checkout tags/dex-2019-02-18
+  - bash -x start_ocean.sh --no-brizo --no-pleuston --local-spree-node 2>&1 > start_ocean.log &
   - cd ..
 
 script:
+  - ./scripts/wait_for_migration_and_extract_keeper_artifacts.sh
   - export ETH_PORT=18545; npm run test:cover
-  - npm run report-coverage
+  # - npm run report-coverage
   - npm run build
   - npm run doc
-  # - ./scripts/wait_for_migration_and_extract_keeper_artifacts.sh
   # - ./src/examples/fire_lazers.sh
 
 after_script:
@@ -45,3 +49,10 @@ deploy:
     skip_cleanup: true
     on:
       tags: true
+  - provider: script
+    skip_cleanup: true
+    script: bash scripts/deployDocs.sh shrimp.octet.services docs_deploy dev
+    on:
+      tags: false
+      repo: DEX-Company/starfish-js
+      all_branches: true
