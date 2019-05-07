@@ -6,7 +6,7 @@ Floating on the surface of the Ocean. starfish-js (Ocean JavaScript) provides us
 
 [![Travis (.com)](https://img.shields.io/travis/com/DEX-Company/starfish-js.svg)](https://travis-ci.com/DEX-Company/starfish-js)
 [![GitHub contributors](https://img.shields.io/github/contributors/DEX-Company/starfish-js.svg)](https://github.com/DEX-Company/starfish-js/graphs/contributors)
-[![Squid Version](https://img.shields.io/badge/squid--js-v0.2.8-blue.svg)](https://github.com/oceanprotocol/squid-py/releases/tag/v0.3.2)
+[![Squid Version](https://img.shields.io/badge/squid--js-v0.3.2-blue.svg)](https://github.com/oceanprotocol/squid-py/releases/tag/v0.3.2)
 [![Barge Version](https://img.shields.io/badge/barge-dex--2019--02--18-blue.svg)](https://github.com/DEX-Company/barge/releases/tag/dex-2019-01-30)
 
 ---
