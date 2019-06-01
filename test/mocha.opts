@@ -3,4 +3,4 @@
 --full-trace
 --bail
 --timeout 5000
-test/**/*.test.ts
+./test/**/*.test.ts
