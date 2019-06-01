@@ -53,7 +53,7 @@
   },
   "homepage": "https://github.com/DEX-Company/starfish-js#README",
   "dependencies": {
-    "@oceanprotocol/squid": "^v0.5.14`",
+    "@oceanprotocol/squid": "^v0.5.14`"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
