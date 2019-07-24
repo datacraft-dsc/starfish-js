@@ -1,7 +1,7 @@
 
 # starfish-js
 
-Floating on the surface of the Ocean. starfish-js (Ocean JavaScript) provides user access and tools to the Ocean Protocol Network, via the javas script library squid-js.
+Floating on the surface of the Ocean. starfish-js (JavaScript) provides user access and tools to the Ocean Protocol Network, via the javas script library squid-js.
 
 [![Travis (.com)](https://img.shields.io/travis/com/DEX-Company/starfish-js.svg)](https://travis-ci.com/DEX-Company/starfish-js)
 [![GitHub contributors](https://img.shields.io/github/contributors/DEX-Company/starfish-js.svg)](https://github.com/DEX-Company/starfish-js/graphs/contributors)
