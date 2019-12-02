@@ -25,3 +25,4 @@ class Resolver {
         this.connector.stop();
     }
 }
+export default Resolver;
