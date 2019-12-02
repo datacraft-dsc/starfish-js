@@ -1,5 +1,5 @@
 const MetaMaskConnector = require('node-metamask');
-const Web3 = require('Web3');
+const Web3 = require('web3');
 
 class Resolver {
     private connector;
