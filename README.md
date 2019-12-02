@@ -37,7 +37,6 @@ Currently only provide basic account balance information
 
     ```
     npm install
-    yarn add node-metamask
     ```
 
 1. Create the local testing environment using [barge](https://github.com/DEX-Company/barge).
