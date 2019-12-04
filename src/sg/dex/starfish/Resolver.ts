@@ -1,28 +1,30 @@
-const MetaMaskConnector = require('node-metamask');
+import Provider from "./Providers/MetamaskProvider";
 const Web3 = require('web3');
 
 class Resolver {
-    private connector;
     private web3;
+    private provider;
 
-    constructor() {
-        this.connector = new MetaMaskConnector({
-            port: 3333, // this is the default port
-            onConnect() { console.log('MetaMask client connected') }, // Function to run when MetaMask is connected (optional)
-          });
-
+    constructor(provider: Provider) {
+        this.provider = provider;
     }
 
-    start() {
-        this.connector.start().then(() => {
-            // Now go to http://localhost:3333 in your MetaMask enabled web browser.
-            this.web3 = new Web3(this.connector.getProvider());
-            // Use web3 as you would normally do. Sign transactions in the browser.
-            });
+    initialize() {
+        this.web3 = new Web3(this.provider.getProvider());
     }
 
     stop() {
-        this.connector.stop();
+        this.provider.stop();
+        delete this.provider;
+    }
+
+    register(did: string, ddo: string) {
+        this.web3;
+    }
+
+    resolve(did: string)
+    {
+
     }
 }
 export default Resolver;
