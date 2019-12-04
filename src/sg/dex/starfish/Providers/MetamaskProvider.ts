@@ -3,15 +3,16 @@ import Provider from "./MetamaskProvider";
 
 class MetamaskProvider implements Provider {
     private connector;
-    async getProvider()
+    getProvider()
     {
-        await this.connector.start();
-        // Now go to http://localhost:3333 in your MetaMask enabled web browser.
-        return this.connector.getProvider();
+        return this.connector.start().then(() => {
+            // Now go to http://localhost:3333 in your MetaMask enabled web browser.
+            return this.connector.getProvider();
+        });
     }
 
-    async stop() {
-        await this.connector.stop();
+    stop() {
+        this.connector.stop();
     }
 
     constructor() {

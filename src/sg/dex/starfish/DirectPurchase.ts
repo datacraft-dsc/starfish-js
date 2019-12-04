@@ -15,8 +15,8 @@ class DirectPurchase {
       delete this.provider;
     }
 
-    initialize() {
-      this.web3 = new Web3(this.provider.getProvider());
+    async initialize() {
+      this.web3 = new Web3(await this.provider.getProvider());
       const abi = [
         {
           "anonymous": false,

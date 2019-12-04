@@ -6,7 +6,6 @@ describe("DirectPurchase", () => {
         let mematamskProvider = new MetamaskProvider();
         let directPurchase = new DirectPurchase(mematamskProvider);
         directPurchase.initialize();
-        directPurchase.sendTokenAndLog();
         directPurchase.stop();
     })
 })
