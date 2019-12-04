@@ -1,7 +1,7 @@
 
 # starfish-js
 
-Floating on the surface of the Ocean. starfish-js (JavaScript) provides user access and tools to the Ocean Protocol Network, via the javas script library squid-js.
+Toolkit for Decentralised Data Ecosystem development in Javascript
 
 [![Travis (.com)](https://img.shields.io/travis/com/DEX-Company/starfish-js.svg)](https://travis-ci.com/DEX-Company/starfish-js)
 [![GitHub contributors](https://img.shields.io/github/contributors/DEX-Company/starfish-js.svg)](https://github.com/DEX-Company/starfish-js/graphs/contributors)
@@ -12,6 +12,7 @@ Floating on the surface of the Ocean. starfish-js (JavaScript) provides user acc
 
 ## Table of Contents
 
+  - [Overview](#overview)
   - [Features](#features)
   - [Prerequisites](#prerequisites)
   - [Quickstart](#quickstart)
@@ -22,6 +23,12 @@ Floating on the surface of the Ocean. starfish-js (JavaScript) provides user acc
   - [License](#license)
 
 ---
+## Overview
+Starfish-js is an open source developer toolkit for the data economy. It allows developers, data scientists and enterprises to create, interact, integrate and manage decentralised data supply lines through standardised and simple-to-use APIs.
+
+Based on an underlying data ecosystem standard, Starfish provides high-level APIs for common tasks within the data economy, for example, registering/publishing an asset, for subsequent use in a digital supply line. In this case, an asset can be any data set, model or data service. The high-level API also allows developers to invoke operation on an asset, e.g. computing a predictive model or anonymising sensitive personal information, among other capabilities. 
+
+Starfish works with blockchain networks and common web services through agents, allowing unprecedented flexibility in asset discovery and data supply line management. 
 
 ## Features
 
