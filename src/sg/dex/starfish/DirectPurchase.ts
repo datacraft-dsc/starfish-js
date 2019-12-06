@@ -1,5 +1,5 @@
 const Web3 = require('web3');
-import Provider from "./Providers/MetamaskProvider";
+import Provider from "./Providers/ProviderInterface";
 
 class DirectPurchase {
     private web3;

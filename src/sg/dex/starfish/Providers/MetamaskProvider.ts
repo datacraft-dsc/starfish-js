@@ -1,5 +1,5 @@
 const MetaMaskConnector = require('node-metamask');
-import Provider from "./MetamaskProvider"; 
+import Provider from "./ProviderInterface"; 
 
 class MetamaskProvider implements Provider {
     private connector;
