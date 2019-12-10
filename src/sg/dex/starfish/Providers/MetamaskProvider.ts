@@ -12,7 +12,7 @@ class MetamaskProvider implements Provider {
     }
 
     stop() {
-        this.connector.stop();
+        return this.connector.stop();
     }
 
     constructor() {

@@ -8,15 +8,7 @@ class DirectPurchase {
 
     constructor(provider: Provider) {
       this.provider = provider;
-    }
-
-    stop() {
-      this.provider.stop();
-      delete this.provider;
-    }
-
-    async initialize() {
-      this.web3 = new Web3(await this.provider.getProvider());
+      this.web3 = new Web3(this.provider.getProvider());
       const abi = [
         {
           "anonymous": false,
@@ -110,5 +102,9 @@ class DirectPurchase {
             // successful
         });
     }
+
+  shutdown() {
+    return this.provider.stop();
+  }
 }
 export default DirectPurchase;
