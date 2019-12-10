@@ -5,7 +5,7 @@
   "main": "./dist/node/starfish.js",
   "browser": "./dist/browser/starfish.cjs2.min.js",
   "scripts": {
-    "test": "mocha",
+    "test": "mocha --timeout 15000",
     "test:watch": "mocha -w --watch-extensions js,ts,json",
     "test:cover": "nyc --report-dir coverage/unit mocha",
     "clean": "rm -rf ./dist/ ./doc/ ./coverage ./.nyc_output",
