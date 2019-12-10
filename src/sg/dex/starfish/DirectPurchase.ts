@@ -86,22 +86,22 @@ class DirectPurchase {
       this.directPurchase = new this.web3.eth.Contract(abi, contract_address);
     }
 
-    sendTokenAndLog() {
-        this.directPurchase.sendTokenAndLog('0x413c9ba0a05b8a600899b41b0c62dd661e689354', 10, 0, 0, { from: '0x1936111c43e86Ca38866fe015F58bbEC63c64EC5' })
-        .then(async  (txHash) => {
-            console.log('Transaction sent');
-            console.dir(txHash);
-            let txReceipt
-            while (!txReceipt) {
-            try {
-                txReceipt = await this.web3.eth.getTransactionReceipt(txHash)
-            } catch (err) {
-                // failure
-            }
-            }
-            // successful
-        });
-    }
+    async sendTokenAndLog() {
+      await this.web3.currentProvider;
+      let txHash;
+      try {
+        txHash = await this.directPurchase.methods.sendTokenAndLog('0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0', 10, Web3.utils.fromAscii("1234"), Web3.utils.fromAscii("1234")).send({ from: '0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1' });
+      } catch (err) {
+        return null;
+      }
+      let txReceipt;
+      try {
+        txReceipt = await this.web3.eth.getTransactionReceipt(txHash);
+      } catch (err) {
+        return null;
+      }
+      return txReceipt;
+  }
 
   shutdown() {
     return this.provider.stop();
