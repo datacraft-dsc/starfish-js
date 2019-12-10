@@ -7,24 +7,21 @@ class Resolver {
 
     constructor(provider: Provider) {
         this.provider = provider;
-    }
-
-    initialize() {
         this.web3 = new Web3(this.provider.getProvider());
     }
 
-    stop() {
-        this.provider.stop();
-        delete this.provider;
+    async shutdown() {
+        await this.web3.currentProvider;
+        return this.provider.stop();
     }
 
-    register(did: string, ddo: string) {
-        this.web3;
+    async register(did: string, ddo: string) {
+        await this.web3.currentProvider;
     }
 
-    resolve(did: string)
+    async resolve(did: string)
     {
-
+        await this.web3.currentProvider;
     }
 }
 export default Resolver;
