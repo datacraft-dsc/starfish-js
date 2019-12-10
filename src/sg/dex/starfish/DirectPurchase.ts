@@ -87,11 +87,11 @@ class DirectPurchase {
       this.directPurchase = new this.web3.eth.Contract(abi, config.values['direct_purchase_contract']);
     }
 
-    async sendTokenAndLog() {
+    async sendTokenAndLog(accountFrom: string, accountTo: string, amount: number, reference1: string, reference2: string) {
       await this.web3.currentProvider;
       let txHash;
       try {
-        txHash = await this.directPurchase.methods.sendTokenAndLog('0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0', 10, Web3.utils.fromAscii("1234"), Web3.utils.fromAscii("1234")).send({ from: '0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1' });
+        txHash = await this.directPurchase.methods.sendTokenAndLog(accountTo, amount, Web3.utils.fromAscii(reference1), Web3.utils.fromAscii(reference2)).send({ from: accountFrom });
       } catch (err) {
         return null;
       }
