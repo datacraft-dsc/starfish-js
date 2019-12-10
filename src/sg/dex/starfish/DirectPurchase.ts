@@ -103,7 +103,8 @@ class DirectPurchase {
       return txReceipt;
   }
 
-  shutdown() {
+  async shutdown() {
+    await this.web3.currentProvider;
     return this.provider.stop();
   }
 }
