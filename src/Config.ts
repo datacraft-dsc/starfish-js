@@ -34,6 +34,9 @@ download_path = consume_downloads
 agent_store_did =
 agent_store_auth =
 gas_limit = 300000
+test_account1 = 0xFFcf8FDEE72ac11b5c542428B35EEF5769C409f0
+test_account2 = 0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1
+direct_purchase_contract = 0x77D4EB6594CFB2c5F8374C09141f0f7a0397F41b
 `
 
     public values: IConfig = {}

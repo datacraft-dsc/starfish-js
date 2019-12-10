@@ -1,5 +1,6 @@
 const Web3 = require('web3');
 import Provider from "./Providers/ProviderInterface";
+import Config from "../../../Config"
 
 class DirectPurchase {
     private web3;
@@ -82,8 +83,8 @@ class DirectPurchase {
           "stateMutability": "nonpayable",
           "type": "function"
         }]
-      const contract_address = '0x77D4EB6594CFB2c5F8374C09141f0f7a0397F41b';
-      this.directPurchase = new this.web3.eth.Contract(abi, contract_address);
+      const config = new Config();
+      this.directPurchase = new this.web3.eth.Contract(abi, config.values['direct_purchase_contract']);
     }
 
     async sendTokenAndLog() {
