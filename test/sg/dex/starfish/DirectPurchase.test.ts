@@ -3,7 +3,7 @@ import MetamaskProvider from "../../../../src/sg/dex/starfish/Providers/Metamask
 import Config from "../../../../src/Config"
 
 describe("DirectPurchase", () => {
-    it("init Metamask provider", async ()  => {
+    xit("init Metamask provider", async ()  => {
         let mematamskProvider = new MetamaskProvider();
         let directPurchase = new DirectPurchase(mematamskProvider);
         const config = new Config();
