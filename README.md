@@ -73,6 +73,20 @@ Currently only provide basic account balance information
     ```
     npm run test
     ```
+
+1. Building for the browser with debugging support
+
+    ```
+    gulp dev
+    google-chrome --remote-debugging-port=9222
+    # Run dubugging in VS Code with "Attach Chrome" configuration (.vscode/launch.json)
+    ```
+
+1. Building final minified version for the browser
+
+    ```
+    gulp final
+    ```
 ## Documentation
 
 
