@@ -79,6 +79,9 @@ Currently only provide basic account balance information
     ```
     gulp dev
     google-chrome --remote-debugging-port=9222
+    # this is needed since metamask is not injected into web3 if url is file:// protocol
+    npm install http-server -g
+    http-server # this will expose current working directory as http://localhost:8080/
     # Run dubugging in VS Code with "Attach Chrome" configuration (.vscode/launch.json)
     ```
 
