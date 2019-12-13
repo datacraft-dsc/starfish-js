@@ -53,7 +53,7 @@ gulp.task('final', gulp.series(gulp.parallel('copy-html'), function () {
 
 // Rerun the dev task when a file changes
 gulp.task('watch', function() {
-    gulp.watch('src/*.ts', gulp.parallel('dev'));
+    gulp.watch('src/**/*.ts', gulp.parallel('dev'));
 });
 
 gulp.task('build', gulp.parallel('dev', 'final'));
