@@ -12,12 +12,17 @@ class MetamaskProviderWeb implements Provider {
     }
 
     constructor() {
-        if (typeof window.web3 !== 'undefined') {
+        if (typeof window["ethereum"] !== 'undefined') {
             // Use Mist/MetaMask's provider
-            this.provider = window.web3.currentProvider;
+            this.provider = window["ethereum"];
 
         } else {
             console.warn('Please use a dapp browser like mist or MetaMask plugin for chrome');
+            return;
+        }
+
+        if (window["ethereum"].isMetaMask !== true) {
+            console.warn('Current provider is not MetaMask');
         }
     }
 }
