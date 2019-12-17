@@ -8,6 +8,27 @@ class MetamaskProviderWeb implements Provider {
         return this.provider;
     }
 
+    async checkIfProviderEnabled(web3: any) {
+        const accounts = await web3.eth.getAccounts();
+
+        if (accounts.length === 0) {
+            try {
+                const accounts = await web3.currentProvider.enable();
+                web3.eth.defaultAccount = accounts[0];
+                return true;
+            } catch (error) {
+                if (error.code === 4001) {
+                    console.warn('You need to connect MetaMask to use this dapp');
+                } else {
+                    console.error(error);
+                }
+            }
+            console.warn('MetaMask is locked');
+            return false;
+        }
+        return true;
+    }
+
     stop() {
     }
 
