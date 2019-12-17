@@ -11,6 +11,10 @@ class DirectProvider implements Provider {
     stop() {
     }
 
+    async checkIfProviderEnabled(web3: any) {
+        return true;
+    }
+
     constructor(endpoint: string) {
         this.provider = Web3.providers.HttpProvider(endpoint);
     }

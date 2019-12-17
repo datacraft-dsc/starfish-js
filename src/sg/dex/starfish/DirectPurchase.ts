@@ -88,7 +88,10 @@ class DirectPurchase {
     }
 
     async sendTokenAndLog(accountFrom: string, accountTo: string, amount: number, reference1: string, reference2: string) {
-      await this.web3.currentProvider;
+      const enabled = await this.provider.checkIfProviderEnabled(this.web3);
+      if(!enabled)
+        return;
+
       let txHash;
       try {
         txHash = await this.directPurchase.methods.sendTokenAndLog(accountTo, amount, Web3.utils.fromAscii(reference1), Web3.utils.fromAscii(reference2)).send({ from: accountFrom });
@@ -105,7 +108,7 @@ class DirectPurchase {
   }
 
   async shutdown() {
-    await this.web3.currentProvider;
+    await this.provider.checkIfProviderEnabled(this.web3);
     return this.provider.stop();
   }
 }

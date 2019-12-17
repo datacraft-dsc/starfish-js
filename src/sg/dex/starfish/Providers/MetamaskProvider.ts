@@ -11,6 +11,11 @@ class MetamaskProvider implements Provider {
         });
     }
 
+    async checkIfProviderEnabled(web3: any) {
+        await web3.currentProvider;
+        return true;
+    }
+
     stop() {
         return this.connector.stop();
     }
