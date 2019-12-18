@@ -2,6 +2,8 @@ import DirectPurchase from "../../../../src/sg/dex/starfish/DirectPurchase";
 import MetamaskProvider from "../../../../src/sg/dex/starfish/Providers/MetamaskProvider";
 import DirectProvider from "../../../../src/sg/dex/starfish/Providers/DirectProvider";
 import Config from "../../../../src/Config"
+import Ocean from "../../../../src/Ocean"
+import * as assert from "assert"
 
 describe("DirectPurchase", () => {
     xit("init Metamask provider", async ()  => {
@@ -22,6 +24,11 @@ describe("DirectPurchase", () => {
         const config = new Config();
         let directProvider = new DirectProvider(config.values['keeper_url']);
         let directPurchase = new DirectPurchase(directProvider);
+        const ocean = await Ocean.getInstance(config);
+        const squidInstance = await ocean.getSquid();
+        const [account] = await squidInstance.accounts.list();
+        let result = await squidInstance.accounts.requestTokens(account, 10);
+        assert(result);
         await directPurchase.sendTokenAndLog(
             config.values['test_account2'],
             config.values['test_account1'],
