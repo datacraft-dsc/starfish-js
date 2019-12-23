@@ -1,7 +1,12 @@
 const Web3 = require('web3');
 import Provider from "./Providers/ProviderInterface";
 import Config from "../../../Config"
-
+let contract_artifacts;
+try {
+  contract_artifacts = require('../../../../artifacts/DirectPurchase.spree.json');
+} catch (e) {
+  contract_artifacts = null;
+}
 class DirectPurchase {
     private web3;
     private directPurchase;
@@ -84,7 +89,8 @@ class DirectPurchase {
           "type": "function"
         }]
       const config = new Config();
-      this.directPurchase = new this.web3.eth.Contract(abi, config.values['direct_purchase_contract']);
+      const direct_purchase_address = contract_artifacts ? contract_artifacts.address: config.values['direct_purchase_contract'];
+      this.directPurchase = new this.web3.eth.Contract(abi, direct_purchase_address);
     }
 
     async sendTokenAndLog(accountFrom: string, accountTo: string, amount: number, reference1: string, reference2: string) {
