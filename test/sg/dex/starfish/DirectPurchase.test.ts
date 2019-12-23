@@ -7,6 +7,7 @@ import * as assert from "assert"
 
 describe("DirectPurchase", () => {
     const tokenNumber = 10;
+    const reference = "1234";
     xit("init Metamask provider", async ()  => {
         let mematamskProvider = new MetamaskProvider();
         let directPurchase = new DirectPurchase(mematamskProvider);
@@ -14,9 +15,9 @@ describe("DirectPurchase", () => {
         await directPurchase.sendTokenAndLog(
             config.values['test_account2'], 
             config.values['test_account1'],
-            10,
-            "1234",
-            "1234"
+            tokenNumber,
+            reference,
+            reference
             );
         await directPurchase.shutdown();
     })
@@ -40,8 +41,8 @@ describe("DirectPurchase", () => {
             sender.getId(),
             receiver.getId(),
             tokenNumber,
-            "1234",
-            "1234"
+            reference,
+            reference
             );
         assert(txReceipt.status);
 
