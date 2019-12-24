@@ -29,6 +29,8 @@ class Resolver {
 
     async register(did: string, ddo: string) {
         await this.web3.currentProvider;
+        const contract = await this.contract;
+        return contract.registerAttribute(did, did, [], ddo, this.accountFrom);
     }
 
     async resolve(did: string)
