@@ -10,10 +10,10 @@ class Resolver {
     private contract;
     private accountFrom;
 
-    constructor(provider: Provider, accountFrom: string) {
+    constructor(provider: Provider, accountFrom?: string) {
         this.provider = provider;
         this.web3 = new Web3(this.provider.getProvider());
-        this.accountFrom = accountFrom;
+        this.accountFrom = accountFrom ? accountFrom: this.web3.eth.defaultAccount;
         const config = new Config();
         this.contract = Ocean.getInstance(config).then (async (ocean)=> {
             const squidInstance = await ocean.getSquid();
