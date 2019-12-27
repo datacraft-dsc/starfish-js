@@ -36,6 +36,18 @@ class Resolver {
     async resolve(did: string)
     {
         await this.web3.currentProvider;
+        const contract = await this.contract;
+        let blockNumber = await contract.getBlockNumberUpdated(did);
+        let _filter = {_did: ['0x' + did]};
+
+        let events = await contract.contract.getPastEvents('DIDAttributeRegistered',
+        {
+            filter: _filter,
+            fromBlock: blockNumber,
+            toBlock: blockNumber
+        });
+
+        return events.length === 1 ? events[0].returnValues._value : null;
     }
 }
 export default Resolver;

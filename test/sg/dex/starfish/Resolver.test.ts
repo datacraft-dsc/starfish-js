@@ -23,6 +23,8 @@ describe("Resolver", () => {
         const reference = squid.DID.generate().getId();
         const receipt = await resolver.register(did.getId(),reference);
         assert(receipt.status);
+        const referenceResolved: string = await resolver.resolve(did.getId());
+        assert(referenceResolved === reference);
         await resolver.shutdown();
     })
 })
