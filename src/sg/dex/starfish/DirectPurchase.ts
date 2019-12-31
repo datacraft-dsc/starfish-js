@@ -1,6 +1,7 @@
 const Web3 = require('web3');
 import Provider from "./Providers/ProviderInterface";
 import Config from "../../../Config"
+import Ocean from "../../../../src/Ocean"
 let contract_artifacts;
 try {
   contract_artifacts = require('../../../../artifacts/DirectPurchase.spree.json');
@@ -11,6 +12,7 @@ class DirectPurchase {
     private web3;
     private directPurchase;
     private provider;
+    private token;
 
     constructor(provider: Provider) {
       this.provider = provider;
@@ -91,25 +93,31 @@ class DirectPurchase {
       const config = new Config();
       const direct_purchase_address = contract_artifacts ? contract_artifacts.address: config.values['direct_purchase_contract'];
       this.directPurchase = new this.web3.eth.Contract(abi, direct_purchase_address);
+      this.token = Ocean.getInstance(config).then (async (ocean)=> {
+        const squidInstance = await ocean.getSquid();
+        return squidInstance.keeper.token;
+      });
     }
 
     async sendTokenAndLog(accountFrom: string, accountTo: string, amount: number, reference1: string, reference2: string) {
       const enabled = await this.provider.checkIfProviderEnabled(this.web3);
       if(!enabled)
         return;
-
-      let txHash;
-      try {
-        txHash = await this.directPurchase.methods.sendTokenAndLog(accountTo, amount, Web3.utils.fromAscii(reference1), Web3.utils.fromAscii(reference2)).send({ from: accountFrom });
-      } catch (err) {
-        return null;
-      }
+      const token = await this.token;
       let txReceipt;
       try {
-        txReceipt = await this.web3.eth.getTransactionReceipt(txHash);
+        txReceipt = await token.approve(this.directPurchase._address, amount, accountFrom);
       } catch (err) {
         return null;
       }
+      if(txReceipt.status !== true)
+        return null;
+      try {
+        txReceipt = await this.directPurchase.methods.sendTokenAndLog(accountTo, amount, Web3.utils.fromAscii(reference1), Web3.utils.fromAscii(reference2)).send({ from: accountFrom });
+      } catch (err) {
+        return null;
+      }
+
       return txReceipt;
   }
 

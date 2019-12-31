@@ -6,7 +6,7 @@ import Ocean from "../../../../src/Ocean"
 import * as assert from "assert"
 
 describe("DirectPurchase", () => {
-    const tokenNumber = 10;
+    const tokenNumber = 100000;
     const reference = "1234";
     xit("init Metamask provider", async ()  => {
         let mematamskProvider = new MetamaskProvider();
@@ -32,10 +32,11 @@ describe("DirectPurchase", () => {
         const receiver = accounts[1];
         const sender = accounts[0];
 
-        let result = await squidInstance.accounts.requestTokens(sender, tokenNumber);
+        // 1 is minimal to request according to the Ocean interface which is equal to 10^18.
+        let result = await squidInstance.accounts.requestTokens(sender, 1);
         assert(result);
-        let balanceSenderBefore = await sender.getOceanBalance();
-        let balanceReceiverBefore = await receiver.getOceanBalance();
+        let balanceSenderBefore = await squidInstance.keeper.token.balanceOf(sender.getId());
+        let balanceReceiverBefore = await squidInstance.keeper.token.balanceOf(receiver.getId());
 
         let txReceipt = await directPurchase.sendTokenAndLog(
             sender.getId(),
@@ -46,8 +47,8 @@ describe("DirectPurchase", () => {
             );
         assert(txReceipt.status);
 
-        let balanceSenderAfter = await sender.getOceanBalance();
-        let balanceReceiverAfter = await receiver.getOceanBalance();
+        let balanceSenderAfter = await squidInstance.keeper.token.balanceOf(sender.getId());
+        let balanceReceiverAfter = await squidInstance.keeper.token.balanceOf(receiver.getId());
         assert(balanceSenderAfter + tokenNumber === balanceSenderBefore);
         assert(balanceReceiverBefore + tokenNumber === balanceReceiverAfter);
 
