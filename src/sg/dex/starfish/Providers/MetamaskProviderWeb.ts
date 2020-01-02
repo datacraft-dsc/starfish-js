@@ -26,6 +26,7 @@ class MetamaskProviderWeb implements Provider {
             console.warn('MetaMask is locked');
             return false;
         }
+        web3.eth.defaultAccount = accounts[0];
         return true;
     }
 
