@@ -133,9 +133,12 @@ class DirectPurchase {
     }
   }
 
-  subscribe(publisher, purchaser, reference, element) {
+  async subscribe(publisher, reference, element) {
+    const enabled = await this.provider.checkIfProviderEnabled(this.web3);
+    if(!enabled)
+      return;
     this.unsubscribe();
-    const _filter = {_from: [purchaser], _to: [publisher], _reference2: [reference]};
+    const _filter = {_from: [this.web3.eth.defaultAccount], _to: [publisher], _reference2: [reference]};
     this.subscription = this.directPurchase.events.TokenSent({
       fromBlock: 0,
       toBlock: "latest",
