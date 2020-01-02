@@ -13,6 +13,7 @@ class DirectPurchase {
     private directPurchase;
     private provider;
     private token;
+    private subscription;
 
     constructor(provider: Provider) {
       this.provider = provider;
@@ -125,5 +126,32 @@ class DirectPurchase {
     await this.provider.checkIfProviderEnabled(this.web3);
     return this.provider.stop();
   }
+
+  unsubscribe() {
+    if (this.subscription) {
+        this.subscription.unsubscribe();
+    }
+  }
+
+  subscribe(publisher, purchaser, reference, element) {
+    this.unsubscribe();
+    const _filter = {_from: [purchaser], _to: [publisher], _reference2: [reference]};
+    this.subscription = this.directPurchase.events.TokenSent({
+      fromBlock: 0,
+      toBlock: "latest",
+      filter: _filter,
+      }, function(error, event){
+        console.log(event);
+      })
+      .on('data', function(event){
+        element.innerHTML = element.innerHTML + JSON.stringify(event);
+      })
+      .on('changed', function(event){
+        console.log(event);
+      })
+      .on('error', function(event){
+        console.log(event);
+      });
+    }
 }
 export default DirectPurchase;
