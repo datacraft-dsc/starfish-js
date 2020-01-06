@@ -13,11 +13,11 @@ describe("DirectPurchase", () => {
         let directPurchase = new DirectPurchase(mematamskProvider);
         const config = new Config();
         await directPurchase.sendTokenAndLog(
-            config.values['test_account2'], 
             config.values['test_account1'],
             tokenNumber,
             reference,
-            reference
+            reference,
+            config.values['test_account2']
             );
         await directPurchase.shutdown();
     })
@@ -39,11 +39,11 @@ describe("DirectPurchase", () => {
         let balanceReceiverBefore = await squidInstance.keeper.token.balanceOf(receiver.getId());
 
         let txReceipt = await directPurchase.sendTokenAndLog(
-            sender.getId(),
             receiver.getId(),
             tokenNumber,
             reference,
-            reference
+            reference,
+            sender.getId()
             );
         assert(txReceipt.status);
 

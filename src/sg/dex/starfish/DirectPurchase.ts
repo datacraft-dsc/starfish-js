@@ -99,11 +99,11 @@ class DirectPurchase {
         return squidInstance.keeper.token;
       });
     }
-
-    async sendTokenAndLog(accountFrom: string, accountTo: string, amount: number, reference1: string, reference2: string) {
+    async sendTokenAndLog(accountTo: string, amount: number, reference1: string, reference2: string, _accountFrom?: string) {
       const enabled = await this.provider.checkIfProviderEnabled(this.web3);
       if(!enabled)
         return;
+      const accountFrom = accountFrom ? accountFrom: this.web3.eth.defaultAccount;
       const token = await this.token;
       let txReceipt;
       try {
