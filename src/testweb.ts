@@ -15,7 +15,16 @@ async function start(e:Event) {
       let mematamskProviderWeb = new MetamaskProviderWeb();
       directPurchase = new DirectPurchase(mematamskProviderWeb);
     }
-    directPurchase.subscribe(publisher, reference, document.getElementById("events"));
+
+    await directPurchase.subscribe(publisher, reference, document.getElementById("events"));
+    const tokenNumber = 100000;
+    let txReceipt = await directPurchase.sendTokenAndLog(
+      publisher,
+      tokenNumber,
+      reference,
+      reference
+    );
+    alert(txReceipt.status);
 }
 
 function getPublisher(){
