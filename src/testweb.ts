@@ -3,9 +3,6 @@ import MetamaskProviderWeb from "./sg/dex/starfish/Providers/MetamaskProviderWeb
 let directPurchase;
 
 async function start(e:Event) {
-    let mematamskProviderWeb = new MetamaskProviderWeb();
-    directPurchase = new DirectPurchase(mematamskProviderWeb);
-
     const publisher = getPublisher();
     if(!publisher)
       return;
@@ -14,6 +11,10 @@ async function start(e:Event) {
     if(!reference)
       return;
 
+    if(!directPurchase) {
+      let mematamskProviderWeb = new MetamaskProviderWeb();
+      directPurchase = new DirectPurchase(mematamskProviderWeb);
+    }
     directPurchase.subscribe(publisher, reference, document.getElementById("events"));
 }
 
