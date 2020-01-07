@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "attach",
             "name": "Attach Chrome",
-            "url": "http://localhost:8080/dist/testweb.html",
+            "url": "http://localhost:8081/dist/testweb.html",
             "port": 9222,
             "webRoot": "${workspaceFolder}"
         },
