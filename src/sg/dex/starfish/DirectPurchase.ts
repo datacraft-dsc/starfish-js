@@ -103,7 +103,7 @@ class DirectPurchase {
       const enabled = await this.provider.checkIfProviderEnabled(this.web3);
       if(!enabled)
         return;
-      const accountFrom = accountFrom ? accountFrom: this.web3.eth.defaultAccount;
+      const accountFrom = _accountFrom ? _accountFrom: this.web3.eth.defaultAccount;
       const token = await this.token;
       let txReceipt;
       try {
@@ -127,7 +127,7 @@ class DirectPurchase {
     return this.provider.stop();
   }
 
-  unsubscribe() {
+  async unsubscribe() {
     if (this.subscription) {
         this.subscription.unsubscribe();
     }
@@ -137,7 +137,7 @@ class DirectPurchase {
     const enabled = await this.provider.checkIfProviderEnabled(this.web3);
     if(!enabled)
       return;
-    this.unsubscribe();
+    await this.unsubscribe();
     const _filter = {_from: [this.web3.eth.defaultAccount], _to: [publisher], _reference2: [reference]};
     this.subscription = this.directPurchase.events.TokenSent({
       fromBlock: 0,
