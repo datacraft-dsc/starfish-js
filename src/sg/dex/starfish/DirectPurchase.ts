@@ -1,12 +1,16 @@
 const Web3 = require('web3');
 import Provider from "./Providers/ProviderInterface";
-import Config from "../../../Config"
-import Ocean from "../../../../src/Ocean"
-let contract_artifacts;
+let direct_purchase_artifacts;
 try {
-  contract_artifacts = require('../../../../artifacts/DirectPurchase.spree.json');
+  direct_purchase_artifacts = require('../../../../artifacts/DirectPurchase.spree.json');
 } catch (e) {
-  contract_artifacts = null;
+  direct_purchase_artifacts = null;
+}
+let token_artifacts;
+try {
+  token_artifacts = require('../../../../artifacts/OceanToken.spree.json');
+} catch (e) {
+  token_artifacts = null;
 }
 class DirectPurchase {
     private web3;
@@ -91,23 +95,17 @@ class DirectPurchase {
           "stateMutability": "nonpayable",
           "type": "function"
         }]
-      const config = new Config();
-      const direct_purchase_address = contract_artifacts ? contract_artifacts.address: config.values['direct_purchase_contract'];
-      this.directPurchase = new this.web3.eth.Contract(abi, direct_purchase_address);
-      this.token = Ocean.getInstance(config).then (async (ocean)=> {
-        const squidInstance = await ocean.getSquid();
-        return squidInstance.keeper.token;
-      });
+      this.directPurchase = new this.web3.eth.Contract(abi, direct_purchase_artifacts.address);
+      this.token = new this.web3.eth.Contract(token_artifacts.abi, token_artifacts.address);
     }
     async sendTokenAndLog(accountTo: string, amount: number, reference1: string, reference2: string, _accountFrom?: string) {
       const enabled = await this.provider.checkIfProviderEnabled(this.web3);
       if(!enabled)
         return;
       const accountFrom = _accountFrom ? _accountFrom: this.web3.eth.defaultAccount;
-      const token = await this.token;
       let txReceipt;
       try {
-        txReceipt = await token.approve(this.directPurchase._address, amount, accountFrom);
+        txReceipt = await this.token.methods.approve(this.directPurchase._address, amount).send({ from: accountFrom });
       } catch (err) {
         return null;
       }
