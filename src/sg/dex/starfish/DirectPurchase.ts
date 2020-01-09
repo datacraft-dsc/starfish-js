@@ -12,6 +12,9 @@ try {
 } catch (e) {
   token_artifacts = null;
 }
+/**
+ * DirectPurchase implementation 
+ */
 class DirectPurchase {
     private web3;
     private directPurchase;
@@ -19,12 +22,28 @@ class DirectPurchase {
     private token;
     private subscription;
 
+    /**
+     * Constructs the DirectPurchase
+     * @param provider: ProviderInterface
+     * It supports 3 different Web3 providers.
+     */
     constructor(provider: Provider) {
       this.provider = provider;
       this.web3 = new Web3(this.provider.getProvider());
       this.directPurchase = new this.web3.eth.Contract(direct_purchase_artifacts.abi, direct_purchase_artifacts.address);
       this.token = new this.web3.eth.Contract(token_artifacts.abi, token_artifacts.address);
     }
+    
+    /**
+     * Sends tokens and log this transaction in blockchain.
+     *
+     * @param accountTo         The publisher address who is paid for asset
+     * @param amount     The amount of tokens being transferred
+     * @param reference1 32 byte identifier (agent id)
+     * @param reference2 Unique 32 byte identifier of asset
+     * @param _accountFrom Sender/purchaser account. Optional parameter. default is taken from web3 provider's default.
+     * @return TransactionReceipt Ethereum transaction receipt or null in case of error
+     */
     async sendTokenAndLog(accountTo: string, amount: number, reference1: string, reference2: string, _accountFrom?: string) {
       const enabled = await this.provider.checkIfProviderEnabled(this.web3);
       if(!enabled)
@@ -47,17 +66,33 @@ class DirectPurchase {
       return txReceipt;
   }
 
+  /**
+   * Some providers require manual shutting down.
+   * Must be called each time upon completion working with DirectPurchase implementation.
+   */
   async shutdown() {
     await this.provider.checkIfProviderEnabled(this.web3);
     return this.provider.stop();
   }
 
+  /**
+   * Unsubscribe from events which was set up by subscribe method.
+   */
   async unsubscribe() {
     if (this.subscription) {
         this.subscription.unsubscribe();
     }
   }
 
+  /**
+   * Subscribe to events from blockchain.
+   * It uses blockchain event filter.
+   * It listens infinitelly until unsubscribe called.
+   *
+   * @param publisher  The publisher address who is paid for asset
+   * @param reference 32 byte identifier (agent id)
+   * @param element DOM HTML element for output
+   */
   async subscribe(publisher, reference, element) {
     const enabled = await this.provider.checkIfProviderEnabled(this.web3);
     if(!enabled)
