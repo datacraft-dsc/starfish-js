@@ -63,7 +63,8 @@ class DirectPurchase {
     if(!enabled)
       return;
     await this.unsubscribe();
-    const _filter = {_from: [this.web3.eth.defaultAccount], _to: [publisher], _reference2: ['0x' + reference]};
+    element.innerHTML = "";
+    const _filter = {_from: [this.web3.eth.defaultAccount], _to: [publisher], _reference2: [Web3.utils.fromAscii(reference)]};
     this.subscription = this.directPurchase.events.TokenSent({
       fromBlock: 0,
       toBlock: "latest",
