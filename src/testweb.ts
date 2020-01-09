@@ -24,7 +24,7 @@ async function start(e:Event) {
       reference,
       reference
     );
-    alert(txReceipt.status);
+    alert(txReceipt.transactionHash);
 }
 
 function getPublisher(){
