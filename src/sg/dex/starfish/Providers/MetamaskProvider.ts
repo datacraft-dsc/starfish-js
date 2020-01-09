@@ -1,6 +1,13 @@
 const MetaMaskConnector = require('node-metamask');
 import Provider from "./ProviderInterface"; 
 
+/**
+ * This provider connects to opened websocket of Metamask.
+ * To accept incoming connection it requires user action to go to URL http://localhost:3333 in browser.
+ * Thats why MetamaskProvider excluded from autotesting.
+ * Technically Metamask extension in browser can open port not only for localhost but for external network.
+ * This is not recommended due potential security breach.
+ */
 class MetamaskProvider implements Provider {
     private connector;
     getProvider()
@@ -16,10 +23,18 @@ class MetamaskProvider implements Provider {
         return true;
     }
 
+    /**
+     * This provider requires manual shutting down.
+     * Because internally it opens infinite cycle.
+     * Otherwise it will hang.
+     */
     stop() {
         return this.connector.stop();
     }
 
+    /**
+     * Constructs the MetamaskProvider
+     */
     constructor() {
         this.connector = new MetaMaskConnector({
             port: 3333, // this is the default port
