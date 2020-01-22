@@ -22,6 +22,7 @@ export default class Config {
     private static CONFIG_DEFAULT: string = `
 [ocean]
 keeper_url = http://localhost:8545
+ws_url = ws://localhost:8546
 contract_path = artifacts
 secret_store_url = http://localhost:8010
 parity_url = http://localhost:9545
