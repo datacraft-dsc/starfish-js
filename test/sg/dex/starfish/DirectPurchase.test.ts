@@ -1,6 +1,7 @@
 import DirectPurchase from "../../../../src/sg/dex/starfish/DirectPurchase";
 import MetamaskProvider from "../../../../src/sg/dex/starfish/Providers/MetamaskProvider";
 import DirectProvider from "../../../../src/sg/dex/starfish/Providers/DirectProvider";
+import WebSocketProvider from "../../../../src/sg/dex/starfish/Providers/WebSocketProvider";
 import Config from "../../../../src/Config"
 import Ocean from "../../../../src/Ocean"
 import * as assert from "assert"
@@ -51,6 +52,32 @@ describe("DirectPurchase", () => {
         let balanceReceiverAfter = await squidInstance.keeper.token.balanceOf(receiver.getId());
         assert(balanceSenderAfter + tokenNumber === balanceSenderBefore);
         assert(balanceReceiverBefore + tokenNumber === balanceReceiverAfter);
+
+        await directPurchase.shutdown();
+    })
+
+    it("Test DirectPurchase with WebSocket provider", async ()  => {
+        const config = new Config();
+        let webSocketProvider = new WebSocketProvider(config.values['ws_url']);
+        let directPurchase = new DirectPurchase(webSocketProvider);
+        const ocean = await Ocean.getInstance(config);
+        const squidInstance = await ocean.getSquid();
+        const accounts = await squidInstance.accounts.list();
+        const receiver = accounts[1];
+        const sender = accounts[0];
+
+        // 1 is minimal to request according to the Ocean interface which is equal to 10^18.
+        let result = await squidInstance.accounts.requestTokens(sender, 1);
+        assert(result);
+
+        let txReceipt = await directPurchase.sendTokenAndLog(
+            receiver.getId(),
+            tokenNumber,
+            reference,
+            reference,
+            sender.getId()
+            );
+        assert(txReceipt.status);
 
         await directPurchase.shutdown();
     })
