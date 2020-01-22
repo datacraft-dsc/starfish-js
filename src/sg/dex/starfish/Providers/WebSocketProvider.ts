@@ -13,6 +13,7 @@ class WebSocketProvider implements Provider {
     }
 
     stop() {
+        this.provider.connection.close();
     }
 
     async checkIfProviderEnabled(web3: any) {
