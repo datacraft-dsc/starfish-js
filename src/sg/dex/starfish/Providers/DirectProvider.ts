@@ -16,6 +16,8 @@ class DirectProvider implements Provider {
     }
 
     async checkIfProviderEnabled(web3: any) {
+        const accounts = await web3.eth.getAccounts();
+        web3.eth.defaultAccount = accounts[0];
         return true;
     }
 
