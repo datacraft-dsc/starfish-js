@@ -70,6 +70,9 @@ describe("DirectPurchase", () => {
         let result = await squidInstance.accounts.requestTokens(sender, 1);
         assert(result);
 
+        let object = { innerHTML: '' };
+        await directPurchase.subscribe(receiver.getId(), reference, object);
+
         let txReceipt = await directPurchase.sendTokenAndLog(
             receiver.getId(),
             tokenNumber,
@@ -78,7 +81,8 @@ describe("DirectPurchase", () => {
             sender.getId()
             );
         assert(txReceipt.status);
-
+        assert(object.innerHTML !== '');
+        await directPurchase.unsubscribe();
         await directPurchase.shutdown();
     })
 })
