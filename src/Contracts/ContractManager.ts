@@ -18,7 +18,6 @@ export default class ContractManager {
             artifactFilename = '{name}.{this.networkName}.json'
         }
     }
-
     public getWeb3(): Web3 {
         return this.web3
     }

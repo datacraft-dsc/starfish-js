@@ -40,7 +40,6 @@ export default class Starfish {
             [8996, 'spree'],                  // Ocean Protocol local test net
             [0xcea11, 'pacific']              // Ocean Protocol Public mainnet        
         ])
-        
     }
 
     public async init(urlProvider: string | ProviderInterface, artifactsPath?: string) {
