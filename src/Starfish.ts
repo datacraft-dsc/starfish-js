@@ -2,6 +2,8 @@ import Web3 from 'web3'
 import ProviderInterface from './Providers/ProviderInterface'
 import DirectProvider from './Providers/DirectProvider'
 
+
+
 export default class Starfish {
 
     public static async getInstance(urlProvider: string | ProviderInterface, artifactsPath?: string): Promise<Starfish> {
@@ -17,8 +19,26 @@ export default class Starfish {
     private artifactsPath: string
     private web3: Web3
     private networkId: number
+    private networkName: string
+    protected networkNames: Map<number, string>
+    
 
     private constructor() {
+        this.networkNames = new Map([
+            [0, 'development'],
+            [1, 'main'],
+            [2, 'morden'],
+            [3, 'ropsten'],
+            [4, 'rinkeby'],
+            [42, 'kovan'],
+            [77, 'POA_Sokol'],
+            [99, 'POA_Core'],
+            [100, 'xDai'],
+            [8995, 'nile'],                   // Ocean Protocol Public test net
+            [8996, 'spree'],                  // Ocean Protocol local test net
+            [0xcea11, 'pacific']              // Ocean Protocol Public mainnet        
+        ])
+        
     }
 
     public async init(urlProvider: string | ProviderInterface, artifactsPath?: string) {
@@ -45,19 +65,23 @@ export default class Starfish {
 
     public async connect() {
         this.web3 = new Web3(this.provider)
-        this.networkId = await this.web3.eth.net.getId()        
+        this.networkId = await this.web3.eth.net.getId()
+        this.networkName = this.networkNames.get(this.networkId)
     }
 
     public getProvider(): ProviderInterface {
         return this.provider
     }
-    public getArtifactsPath() {
+    public getArtifactsPath(): string {
         return this.artifactsPath
     }
-    public getWeb3() {
+    public getWeb3(): Web3 {
         return this.web3
     }
     public getNetworkId(): number {
         return this.networkId
+    }
+    public getNetworkName(): string {
+        return this.networkName
     }
 }
