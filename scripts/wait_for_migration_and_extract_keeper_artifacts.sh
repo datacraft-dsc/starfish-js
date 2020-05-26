@@ -4,7 +4,6 @@ RETRY_COUNT=0
 CONTRACTS_READY=1
 
 CONTRACT_FOLDER="artifacts"
-MODULE_CONTRACT_FOLDER="./node_modules/@oceanprotocol/keeper-contracts/artifacts"
 
 # make sure that we copy over the latest contrats, so remove any old folder
 if [ -d ${CONTRACT_FOLDER} ]; then
@@ -35,4 +34,3 @@ fi
 # docker cp ${KEEPER_CONTRACTS_DOCKER_ID}:/keeper-contracts/artifacts/. ./${CONTRACT_FOLDER}/
 echo "copied over the following contracts:"
 ls -1 ${CONTRACT_FOLDER}
-cp ${CONTRACT_FOLDER}/*.json ${MODULE_CONTRACT_FOLDER}/
