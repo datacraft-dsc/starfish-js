@@ -1,7 +1,7 @@
 import fs from 'fs-extra'
+import path from 'path'
 import Web3 from 'web3'
-import IContract from './IContract'
-
+import AContract from './AContract'
 
 export default class ContractManager {
 
@@ -14,13 +14,23 @@ export default class ContractManager {
         this.networkName = networkName
         this.artifactsPath = artifactsPath
     }
-    public load(name: string, artifactFilename?: string, hasArtifact?: boolean): IContract | null {
+    public async load(name: string, artifactFilename?: string, hasArtifact?: boolean): Promise<AContract> {
+        var contractInstance = null
         if ( !artifactFilename ) {
-            artifactFilename = '{name}.{this.networkName}.json'
+            artifactFilename = `${name}.${this.networkName}.json`
         }
-        let pathFilename = this.findArtifactFile([this.artifactsPath, './'], artifactFilename)
-        console.log(pathFilename)
-        return null
+        let pathFilename = this.findArtifactFile([this.artifactsPath, __dirname], artifactFilename)
+        if (pathFilename) {
+            
+            // import relative to this module
+            const contractData = await import(path.join('../../', pathFilename))
+            let contractName = `./${name}Contract`
+            let contractClass = await import(contractName)
+            let constructorName = Object.keys(contractClass)[0]
+            contractInstance = new contractClass[constructorName]()
+            contractInstance.load(this.web3, contractData.abi, contractData.address)
+        }
+        return contractInstance
     }
     public getWeb3(): Web3 {
         return this.web3
@@ -32,10 +42,10 @@ export default class ContractManager {
         return this.artifactsPath
     }
     public findArtifactFile(pathList: Array<string>, filename: string): string | null {
-        let path = ''
-        for (path in pathList) {
-            let pathFilename = path + '/' + filename
+        for (let testPath of pathList) {
+            let pathFilename = path.join(testPath, filename)
             if (fs.pathExists(pathFilename)) {
+                console.log('found file', pathFilename)
                 return pathFilename
             }
         }

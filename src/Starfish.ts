@@ -1,7 +1,7 @@
 import Web3 from 'web3'
 import ProviderInterface from './Providers/ProviderInterface'
 import DirectProvider from './Providers/DirectProvider'
-import IContract from './Contracts/IContract'
+import AContract from './Contracts/AContract'
 import ContractManager from './Contracts/ContractManager'
 
 
@@ -70,11 +70,11 @@ export default class Starfish {
         this.networkName = this.networkNames.get(this.networkId)
     }
 
-    public getContract(name: string): IContract | null {
+    public async getContract(name: string): Promise<AContract> {
         if ( ! this.contractManager ) {
             this.contractManager = new ContractManager(this.web3, this.networkName, this.artifactsPath)
         }
-        return this.contractManager.load(name)
+        return await this.contractManager.load(name)
     }
     
     public getProvider(): ProviderInterface {
