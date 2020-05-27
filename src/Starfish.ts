@@ -1,7 +1,7 @@
 import Web3 from 'web3'
 import ProviderInterface from './Providers/ProviderInterface'
 import DirectProvider from './Providers/DirectProvider'
-import ContractInterface from './Contracts/ContractInterface'
+import IContract from './Contracts/IContract'
 import ContractManager from './Contracts/ContractManager'
 
 
@@ -70,7 +70,7 @@ export default class Starfish {
         this.networkName = this.networkNames.get(this.networkId)
     }
 
-    public getContract(name: string): ContractInterface {
+    public getContract(name: string): IContract | null {
         if ( ! this.contractManager ) {
             this.contractManager = new ContractManager(this.web3, this.networkName, this.artifactsPath)
         }

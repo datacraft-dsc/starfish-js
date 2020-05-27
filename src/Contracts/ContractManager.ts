@@ -1,5 +1,6 @@
+import fs from 'fs-extra'
 import Web3 from 'web3'
-import ContractInterface from './ContractInterface'
+import IContract from './IContract'
 
 
 export default class ContractManager {
@@ -13,11 +14,13 @@ export default class ContractManager {
         this.networkName = networkName
         this.artifactsPath = artifactsPath
     }
-    public load(name: string, artifactFilename?: string, hasArtifact?: boolean): ContractInterface {
+    public load(name: string, artifactFilename?: string, hasArtifact?: boolean): IContract | null {
         if ( !artifactFilename ) {
             artifactFilename = '{name}.{this.networkName}.json'
         }
-	return null
+        let pathFilename = this.findArtifactFile([this.artifactsPath, './'], artifactFilename)
+        console.log(pathFilename)
+        return null
     }
     public getWeb3(): Web3 {
         return this.web3
@@ -27,5 +30,15 @@ export default class ContractManager {
     }
     public getArtifactsPath(): string {
         return this.artifactsPath
+    }
+    public findArtifactFile(pathList: Array<string>, filename: string): string | null {
+        let path = ''
+        for (path in pathList) {
+            let pathFilename = path + '/' + filename
+            if (fs.pathExists(pathFilename)) {
+                return pathFilename
+            }
+        }
+        return null
     }
 }
