@@ -1,14 +1,20 @@
 import assert from 'assert'
 
 import Starfish from '../src/Starfish'
+import Account from '../src/Account'
 import DirectProvider from '../src/Providers/DirectProvider'
+import { loadSetup } from './Setup'
 
-let testAddress = '0x00bd138abd70e2f00903268f3db08f2d25677c9e'
+var network
+
+
+let setup = loadSetup()
+const accountConfig = setup.accounts['account1']
 
 describe("Starfish", () => {
     describe("basic object create", () => {
         it("should create a basic Starfish object using a url string", async () => {
-            let network = await Starfish.getInstance('http://localhost:8545');
+            let network = await Starfish.getInstance(setup.network.url);
             assert(network, 'network');
             assert(network.getProvider(), 'provider')
             assert(network.getWeb3(), 'web3')
@@ -17,7 +23,7 @@ describe("Starfish", () => {
             assert(network.getNetworkName(), 'networkName')
         })
         it("should create a basic Starfish object using a Provider object", async () => {
-            let provider = new DirectProvider('http://localhost:8545')
+            let provider = new DirectProvider(setup.network.url)
             let network = await Starfish.getInstance(provider);
             assert(network, 'network');
             assert(network.getProvider(), 'provider')
@@ -28,17 +34,36 @@ describe("Starfish", () => {
         })
     })
     describe("account operations", () => {
-        it("should get ether balance", async () => {
-            let network = await Starfish.getInstance('http://localhost:8545');
-            let balance = await network.getEtherBalance(testAddress)
+        before( async () => {
+            network = await Starfish.getInstance(setup.network.url);
+        })
+        it("should get ether balance using an account address string", async () => {
+            let balance = await network.getEtherBalance(setup.accounts['account1'].address)
+            assert(balance)
+        })
+        it("should get ether balance using an account object", async () => {
+            let account = new Account(accountConfig.address, accountConfig.password, accountConfig.keyfile)
+            let balance = await network.getEtherBalance(account)
             assert(balance)
         })
 
         it("should get a token balance", async () => {
-            let network = await Starfish.getInstance('http://localhost:8545');
-            let balance = await network.getTokenBalance(testAddress)
+            let balance = await network.getTokenBalance(accountConfig.address)
             assert(balance)
         })
+/*
+        it("should request some test tokens", async () => {
+            const requestAmount = 10
+            let network = await Starfish.getInstance('http://localhost:8545');
+            let startBalance = await network.getTokenBalance(testAddress)
+            assert(startBalance)
+            let result = await network.requestTestTokens(testAddress, requestAmount)
+            let endBalance = await network.getTokenBalance(testAddress)
+            assert(endBalance)
+            console.log(startBalance, result, endBalance)
+
+        })
+*/
     })
 
 })

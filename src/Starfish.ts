@@ -1,10 +1,12 @@
 import Web3 from 'web3'
 import ProviderInterface from './Providers/ProviderInterface'
 import DirectProvider from './Providers/DirectProvider'
+import Account from './Account'
 import AContract from './Contracts/AContract'
 import ContractManager from './Contracts/ContractManager'
 import NetworkContract from './Contracts/NetworkContract'
 import OceanTokenContract from './Contracts/OceanTokenContract'
+import DispenserContract from './Contracts/DispenserContract'
 
 export default class Starfish {
 
@@ -92,10 +94,16 @@ export default class Starfish {
     }
 
     public async getTokenBalance(accountAddress: Account | string): Promise<string> {
-        let contract = await this.getContract('OceanToken')
-        return await (<OceanTokenContract>contract).getBalance(accountAddress)
+        let contract = <OceanTokenContract> await this.getContract('OceanToken')
+        return await contract.getBalance(accountAddress)
     }
 
+    public async requestTestTokens(account: Account, amount: number): Promise<boolean> {
+        let contract = <DispenserContract> await this.getContract('Dispenser')
+        let txHash = await contract.requestTokens(account, amount)
+        let receipt = await contract.waitForReceipt(txHash)
+        return receipt.status === 1
+    }
 
     public getProvider(): ProviderInterface {
         return this.provider

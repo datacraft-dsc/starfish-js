@@ -27,13 +27,18 @@ export default abstract class AContract {
         }
     }
 
-    getAccountAddress(accountAddress: string | Account): string {
+    getAccountAddress(accountAddress: Account | string): string {
         let address = <string>accountAddress
         if (typeof accountAddress  === 'object' && accountAddress.constructor.name === 'Account') {
             address = (<Account>accountAddress).getAddress()
         }
         return address
     }
+
+    async waitForReceipt(txHash: any): Promise<any> {
+        return await this.web3.eth.getTransactionReceipt(txHash)
+    }
+
     toEther(amountWei: string): string {
         return this.web3.utils.fromWei(amountWei, 'ether')
     }
