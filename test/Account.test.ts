@@ -7,6 +7,7 @@ import Web3 from 'web3'
 
 let web3 = new Web3()
 let password = web3.utils.randomHex(16)
+let testAccount = Account.createNew(password)
 
 
 describe('Account Class', () => {
@@ -58,10 +59,16 @@ describe('Account Class', () => {
     
     describe('common properties', () => {
         it('should return a checksum address', async () => {
-            let account = Account.createNew(password)
-            assert(account)
-            assert(account.getChecksumAddress())
+            assert(testAccount.getChecksumAddress())
         })
+        it('should match address when the address is all lower case', async () => {
+            let address = testAccount.getAddress().toLowerCase()
+            assert(testAccount.isAddressEqual(address))
+        })
+        it('should be a valid password', async () => {
+            assert(testAccount.isPassword())
+        })
+
     })
 
 })
