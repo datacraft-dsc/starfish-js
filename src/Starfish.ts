@@ -3,7 +3,8 @@ import ProviderInterface from './Providers/ProviderInterface'
 import DirectProvider from './Providers/DirectProvider'
 import AContract from './Contracts/AContract'
 import ContractManager from './Contracts/ContractManager'
-
+import NetworkContract from './Contracts/NetworkContract'
+import OceanTokenContract from './Contracts/OceanTokenContract'
 
 export default class Starfish {
 
@@ -23,7 +24,7 @@ export default class Starfish {
     private networkName: string
     protected networkNames: Map<number, string>
     protected contractManager: ContractManager
-    
+
 
     private constructor() {
         this.networkNames = new Map([
@@ -38,7 +39,7 @@ export default class Starfish {
             [100, 'xDai'],
             [8995, 'nile'],                   // Ocean Protocol Public test net
             [8996, 'spree'],                  // Ocean Protocol local test net
-            [0xcea11, 'pacific']              // Ocean Protocol Public mainnet        
+            [0xcea11, 'pacific']              // Ocean Protocol Public mainnet
         ])
     }
 
@@ -55,13 +56,13 @@ export default class Starfish {
                 this.provider = urlProvider.getProvider();
             }
         }
-        
+
         if (artifactsPath === undefined) {
             artifactsPath = 'artifacts'
         }
         this.artifactsPath = artifactsPath
         await this.connect()
-        
+
     }
 
     public async connect() {
@@ -76,7 +77,26 @@ export default class Starfish {
         }
         return await this.contractManager.load(name)
     }
-    
+
+    /*
+     *
+     *      Account base operations
+     *
+     *
+     */
+
+    public async getEtherBalance(accountAddress: Account | string): Promise<string> {
+        let contract = new NetworkContract()
+        contract.load(this.web3)
+        return await contract.getBalance(accountAddress)
+    }
+
+    public async getTokenBalance(accountAddress: Account | string): Promise<string> {
+        let contract = await this.getContract('OceanToken')
+        return await (<OceanTokenContract>contract).getBalance(accountAddress)
+    }
+
+
     public getProvider(): ProviderInterface {
         return this.provider
     }

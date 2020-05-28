@@ -8,11 +8,11 @@ import Account from '../Account'
 export default abstract class AContract {
 
     private name: string
-    private web3: Web3
     private abi: AbiItem[]
     private address: string
+    protected web3: Web3
     protected contract: Web3Contract
-    
+
 
     constructor(name: string) {
         this.name = name

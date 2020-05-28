@@ -8,7 +8,7 @@ export default class ContractManager {
     private web3: Web3
     private networkName: string
     private artifactsPath: string
-    
+
     public constructor(web3: Web3, networkName: string, artifactsPath: string) {
         this.web3 = web3
         this.networkName = networkName
@@ -21,9 +21,9 @@ export default class ContractManager {
         }
         let pathFilename = this.findArtifactFile([this.artifactsPath, __dirname], artifactFilename)
         if (pathFilename) {
-            
+
             // import relative to this module
-            const contractData = await import(path.join('../../', pathFilename))
+            let contractData = JSON.parse(await fs.readFile(pathFilename))
             let contractName = `./${name}Contract`
             let contractClass = await import(contractName)
             let constructorName = Object.keys(contractClass)[0]
