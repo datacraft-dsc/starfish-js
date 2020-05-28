@@ -45,7 +45,6 @@ export default class ContractManager {
         for (let testPath of pathList) {
             let pathFilename = path.join(testPath, filename)
             if (fs.pathExists(pathFilename)) {
-                console.log('found file', pathFilename)
                 return pathFilename
             }
         }
