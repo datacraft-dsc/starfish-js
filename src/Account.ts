@@ -20,7 +20,7 @@ export default class Account {
 
     public static createNew(password: string, entropy?: string): Account {
         let web3 = new Web3()
-        let result = web3.eth.accounts.create(entropy)        
+        let result = web3.eth.accounts.create(entropy)
         let address = result.address
         let keyData = web3.eth.accounts.encrypt(result.privateKey, password)
         return new Account(address, password, null, keyData)
@@ -40,11 +40,11 @@ export default class Account {
         let data = await Account.loadKeyFileFromFile(filename)
         if (data) {
             let keyData = await web3.eth.accounts.decrypt(data, password)
-            return new Account(keyData.address, password, filename, keyData)
+            return new Account(keyData.address, password, filename, data)
         }
         return null
     }
-    
+
     constructor(address?: string, password?: string, keyFilename?: string, keyData?: any) {
         this.address = address
         this.password = password
@@ -52,10 +52,16 @@ export default class Account {
         this.keyData = keyData
     }
 
-    
+
     async saveToFile(filename: string): Promise<any> {
         let data = JSON.stringify(this.keyData)
         return await fs.writeFile(filename, data)
+    }
+
+    async signTransaction(web3: Web3, transaction: object): Promise<object> {
+        // decode the keyData to find out the private key
+        let data = await web3.eth.accounts.decrypt(this.keyData, this.password)
+        return await web3.eth.accounts.signTransaction(transaction, data.privateKey)
     }
 
     exportKey(): string {
@@ -63,8 +69,8 @@ export default class Account {
     }
 
     importKey(privateKey: string, password: string) {
-        let web3 = new Web3()        
-        this.keyData = web3.eth.accounts.encrypt(privateKey, password)        
+        let web3 = new Web3()
+        this.keyData = web3.eth.accounts.encrypt(privateKey, password)
     }
     isAddressEqual(address: string) {
         return toChecksumAddress(address) === this.getChecksumAddress()
