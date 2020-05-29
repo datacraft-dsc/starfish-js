@@ -15,7 +15,7 @@ function loadConfig(filename): any {
     return doc
 }
 
-export function loadSetup(): any {
+export function loadTestSetup(): any {
     let data = loadConfig(CONFIG_FILENAME)
     return data
 }

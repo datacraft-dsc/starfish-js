@@ -3,12 +3,12 @@ import assert from 'assert'
 import Starfish from '../src/Starfish'
 import Account from '../src/Account'
 import DirectProvider from '../src/Providers/DirectProvider'
-import { loadSetup } from './Setup'
+import { loadTestSetup } from './TestSetup'
 
 var network
 
 
-let setup = loadSetup()
+let setup = loadTestSetup()
 const accountConfig = setup.accounts['account1']
 
 describe("Starfish", () => {

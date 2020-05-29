@@ -8,7 +8,7 @@
 import fs from 'fs-extra'
 import Web3 from 'web3'
 
-import { toChecksumAddress } from 'web3-utils'
+import {toChecksumAddress} from 'web3-utils'
 import {EncryptedKeystoreV3Json} from 'web3-core'
 
 export default class Account {
