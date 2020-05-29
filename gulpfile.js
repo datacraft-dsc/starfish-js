@@ -8,7 +8,7 @@ var gutil = require('gulp-util');
 var uglify = require('gulp-uglify-es').default;
 
 var paths = {
-    pages: ['src/*.html']
+    pages: ['test/*.html']
 };
 
 gulp.task('copy-html', function () {
@@ -20,7 +20,7 @@ gulp.task('dev', gulp.series(gulp.parallel('copy-html'), function () {
     return browserify({
         basedir: '.',
         debug: true,
-        entries: ['src/testweb.ts'],
+        entries: ['test/testweb.ts'],
         cache: {},
         packageCache: {}
     })
@@ -38,7 +38,7 @@ gulp.task('final', gulp.series(gulp.parallel('copy-html'), function () {
     return browserify({
         basedir: '.',
         debug: false,
-        entries: ['src/testweb.ts'],
+        entries: ['test/testweb.ts'],
         cache: {},
         packageCache: {}
     })

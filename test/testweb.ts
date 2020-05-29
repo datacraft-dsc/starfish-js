@@ -1,5 +1,5 @@
-import DirectPurchase from "./sg/dex/starfish/DirectPurchase";
-import MetamaskProviderWeb from "./sg/dex/starfish/Providers/MetamaskProviderWeb";
+import DirectPurchase from "../src/DirectPurchase";
+import MetamaskProviderWeb from "../src/Providers/MetamaskProviderWeb";
 let directPurchase;
 
 async function start(e:Event) {
