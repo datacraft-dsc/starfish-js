@@ -9,7 +9,7 @@ import IProvider from './IProvider'
  * WebSocket provider is the only provider which does suport listening/subscribtion for events.
  */
 export default class WebSocketProvider implements IProvider {
-    private provider: Web3Provider
+    private provider: WebsocketProvider
 
     /**
      * Constructs the WebSocketProvider
@@ -20,11 +20,11 @@ export default class WebSocketProvider implements IProvider {
     }
 
     public getProvider(): Web3Provider {
-        return this.provider
+        return <Web3Provider>this.provider
     }
 
     public stop(): void {
-        <WebsocketProvider>this.provider.connection.close()
+        this.provider.connection.close()
     }
 
     public async checkIfProviderEnabled(web3: Web3): Promise<boolean> {
