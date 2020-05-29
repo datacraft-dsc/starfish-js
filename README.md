@@ -97,11 +97,26 @@ None at the moment
 
 ## Code style
 
-eslint recomended rules. Using the `"extends": "eslint:recommended"` parameter.
+ESlint recomended rules. Using the `"extends": "eslint:recommended"` parameter.
+Using Prettier standard with ESlint.
+
+You need to run
+    ```
+    npm run lint
+    ```
+
+To make sure there are no formating and lint errors.
+
 
 ## Testing
 
 Automatic tests are setup github actions. Using the `npm` framework.
+
+To test run
+
+    ```
+    npm test
+    ```
 
 
 ## License
