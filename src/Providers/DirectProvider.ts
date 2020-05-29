@@ -18,6 +18,10 @@ export default class DirectProvider implements IProvider {
         this.provider = new Web3.providers.HttpProvider(endpoint)
     }
 
+    /**
+     * return the Web3 provider
+     * @return Web3Provider
+     */
     public getProvider(): Web3Provider {
         return this.provider
     }
