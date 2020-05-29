@@ -8,9 +8,9 @@ export default class OceanTokenContract extends AContract {
         super('OceanToken')
     }
 
-    async getBalance(accountAddress: Account | string): Promise<string> {
-        let address = this.getAccountAddress(accountAddress)
-        let amountWei = await this.contract.methods.balanceOf(address).call()
+    public async getBalance(accountAddress: Account | string): Promise<string> {
+        const address = this.getAccountAddress(accountAddress)
+        const amountWei = await this.contract.methods.balanceOf(address).call()
         return this.toEther(amountWei)
     }
 }

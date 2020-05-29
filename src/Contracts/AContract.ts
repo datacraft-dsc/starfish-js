@@ -13,12 +13,11 @@ export default abstract class AContract {
     protected web3: Web3
     protected contract: Web3Contract
 
-
     constructor(name: string) {
         this.name = name
     }
 
-    load(web3: Web3, abi?:AbiItem[], address?: string) {
+    public load(web3: Web3, abi?:AbiItem[], address?: string): void {
         this.web3= web3
         this.abi = abi
         this.address = address
@@ -27,7 +26,7 @@ export default abstract class AContract {
         }
     }
 
-    getAccountAddress(accountAddress: Account | string): string {
+    public getAccountAddress(accountAddress: Account | string): string {
         let address = <string>accountAddress
         if (typeof accountAddress  === 'object' && accountAddress.constructor.name === 'Account') {
             address = (<Account>accountAddress).getAddress()
@@ -35,26 +34,26 @@ export default abstract class AContract {
         return address
     }
 
-    async waitForReceipt(txHash: any): Promise<any> {
+    public async waitForReceipt(txHash: string): Promise<any> {
         return await this.web3.eth.getTransactionReceipt(txHash)
     }
 
-    toEther(amountWei: string): string {
+    public toEther(amountWei: string): string {
         return this.web3.utils.fromWei(amountWei, 'ether')
     }
-    getName(): string {
+    public getName(): string {
         return this.name
     }
-    getWeb3(): Web3 {
+    public getWeb3(): Web3 {
         return this.web3
     }
-    getAbi(): AbiItem[] {
+    public getAbi(): AbiItem[] {
         return this.abi
     }
-    getAddress(): string {
+    public getAddress(): string {
         return this.address
     }
-    getWeb3Contract(): Web3Contract {
+    public getWeb3Contract(): Web3Contract {
         return this.contract
     }
 }

@@ -15,18 +15,18 @@ export default class ContractManager {
         this.artifactsPath = artifactsPath
     }
     public async load(name: string, artifactFilename?: string, hasArtifact?: boolean): Promise<AContract> {
-        var contractInstance = null
+        let contractInstance = null
         if ( !artifactFilename ) {
             artifactFilename = `${name}.${this.networkName}.json`
         }
-        let pathFilename = this.findArtifactFile([this.artifactsPath, __dirname], artifactFilename)
+        const pathFilename = this.findArtifactFile([this.artifactsPath, __dirname], artifactFilename)
         if (pathFilename) {
 
             // import relative to this module
-            let contractData = JSON.parse(await fs.readFile(pathFilename))
-            let contractName = `./${name}Contract`
-            let contractClass = await import(contractName)
-            let constructorName = Object.keys(contractClass)[0]
+            const contractData = JSON.parse(await fs.readFile(pathFilename))
+            const contractName = `./${name}Contract`
+            const contractClass = await import(contractName)
+            const constructorName = Object.keys(contractClass)[0]
             contractInstance = new contractClass[constructorName]()
             contractInstance.load(this.web3, contractData.abi, contractData.address)
         }
@@ -42,8 +42,8 @@ export default class ContractManager {
         return this.artifactsPath
     }
     public findArtifactFile(pathList: Array<string>, filename: string): string | null {
-        for (let testPath of pathList) {
-            let pathFilename = path.join(testPath, filename)
+        for (const testPath of pathList) {
+            const pathFilename = path.join(testPath, filename)
             if (fs.pathExists(pathFilename)) {
                 return pathFilename
             }

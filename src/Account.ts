@@ -9,43 +9,43 @@ import fs from 'fs-extra'
 import Web3 from 'web3'
 
 import { toChecksumAddress } from 'web3-utils'
-
+import {EncryptedKeystoreV3Json} from 'web3-core'
 
 export default class Account {
 
     private address: string
     private password: string
     private keyFilename: string
-    private keyData: any
+    private keyData: EncryptedKeystoreV3Json
 
     public static createNew(password: string, entropy?: string): Account {
-        let web3 = new Web3()
-        let result = web3.eth.accounts.create(entropy)
-        let address = result.address
-        let keyData = web3.eth.accounts.encrypt(result.privateKey, password)
+        const web3 = new Web3()
+        const result = web3.eth.accounts.create(entropy)
+        const address = result.address
+        const keyData = web3.eth.accounts.encrypt(result.privateKey, password)
         return new Account(address, password, null, keyData)
     }
 
-    public static async loadKeyFileFromFile( filename: string) {
+    public static async loadKeyFileFromFile( filename: string): Promise<EncryptedKeystoreV3Json> {
         let data = null
         if (fs.pathExists(filename)) {
-            let rawData = await fs.readFile(filename)
+            const rawData = await fs.readFile(filename)
             data = JSON.parse(rawData)
         }
         return data
     }
 
     public static async createFromFile(password: string, filename: string): Promise<Account> {
-        let web3 = new Web3()
-        let data = await Account.loadKeyFileFromFile(filename)
+        const web3 = new Web3()
+        const data = await Account.loadKeyFileFromFile(filename)
         if (data) {
-            let keyData = await web3.eth.accounts.decrypt(data, password)
+            const keyData = await web3.eth.accounts.decrypt(data, password)
             return new Account(keyData.address, password, filename, data)
         }
         return null
     }
 
-    constructor(address?: string, password?: string, keyFilename?: string, keyData?: any) {
+    constructor(address?: string, password?: string, keyFilename?: string, keyData?: EncryptedKeystoreV3Json) {
         this.address = address
         this.password = password
         this.keyFilename = keyFilename
@@ -53,44 +53,44 @@ export default class Account {
     }
 
 
-    async saveToFile(filename: string): Promise<any> {
-        let data = JSON.stringify(this.keyData)
+    public async saveToFile(filename: string): Promise<any> {
+        const data = JSON.stringify(this.keyData)
         return await fs.writeFile(filename, data)
     }
 
-    async signTransaction(web3: Web3, transaction: object): Promise<object> {
+    public async signTransaction(web3: Web3, transaction: unknown): Promise<any> {
         // decode the keyData to find out the private key
-        let data = await web3.eth.accounts.decrypt(this.keyData, this.password)
+        const data = await web3.eth.accounts.decrypt(this.keyData, this.password)
         return await web3.eth.accounts.signTransaction(transaction, data.privateKey)
     }
 
-    exportKey(): string {
+    public exportKey(): string {
         return JSON.stringify(this.keyData)
     }
 
-    importKey(privateKey: string, password: string) {
-        let web3 = new Web3()
+    public importKey(privateKey: string, password: string): void {
+        const web3 = new Web3()
         this.keyData = web3.eth.accounts.encrypt(privateKey, password)
     }
-    isAddressEqual(address: string) {
+    public isAddressEqual(address: string): boolean {
         return toChecksumAddress(address) === this.getChecksumAddress()
     }
-    isPassword(): boolean {
+    public isPassword(): boolean {
         return this.password != null
     }
-    getAddress(): string {
+    public getAddress(): string {
         return this.address
     }
-    getChecksumAddress(): string {
+    public getChecksumAddress(): string {
         return toChecksumAddress(this.address)
     }
-    getPassword(): string {
+    public getPassword(): string {
         return this.password
     }
-    getKeyFilename(): string {
+    public getKeyFilename(): string {
         return this.keyFilename
     }
-    getKeyData(): Object {
+    public getKeyData(): EncryptedKeystoreV3Json {
         return this.keyData
     }
 }

@@ -9,9 +9,9 @@ export default class NetworkContract extends AContract {
         super('NetworkToken')
     }
 
-    async getBalance(accountAddress: Account | string): Promise<string> {
-        let address = this.getAccountAddress(accountAddress)
-        let amountWei = await this.web3.eth.getBalance(address)
+    public async getBalance(accountAddress: Account | string): Promise<string> {
+        const address = this.getAccountAddress(accountAddress)
+        const amountWei = await this.web3.eth.getBalance(address)
         return this.toEther(amountWei)
     }
 }

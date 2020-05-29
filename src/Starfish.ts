@@ -1,5 +1,5 @@
 import Web3 from 'web3'
-import ProviderInterface from './Providers/ProviderInterface'
+import IProvider from './Providers/IProvider'
 import DirectProvider from './Providers/DirectProvider'
 import Account from './Account'
 import AContract from './Contracts/AContract'
@@ -10,7 +10,7 @@ import DispenserContract from './Contracts/DispenserContract'
 
 export default class Starfish {
 
-    public static async getInstance(urlProvider: string | ProviderInterface, artifactsPath?: string): Promise<Starfish> {
+    public static async getInstance(urlProvider: string | IProvider, artifactsPath?: string): Promise<Starfish> {
         if (!Starfish.instance) {
             Starfish.instance = new Starfish()
             await Starfish.instance.init(urlProvider, artifactsPath)
@@ -19,7 +19,7 @@ export default class Starfish {
     }
 
     private static instance
-    private provider: any
+    private provider: IProvider
     private artifactsPath: string
     private web3: Web3
     private networkId: number
@@ -45,18 +45,13 @@ export default class Starfish {
         ])
     }
 
-    public async init(urlProvider: string | ProviderInterface, artifactsPath?: string) {
+    public async init(urlProvider: string | IProvider, artifactsPath?: string): Promise<void> {
 
-        if ( Web3.givenProvider) {
-            this.provider = Web3.givenProvider
+        if (typeof urlProvider === 'string') {
+            this.provider = new DirectProvider(urlProvider)
         }
         else {
-            if (typeof urlProvider === 'string') {
-                this.provider = new DirectProvider(urlProvider).getProvider()
-            }
-            else {
-                this.provider = urlProvider.getProvider();
-            }
+            this.provider = urlProvider;
         }
 
         if (artifactsPath === undefined) {
@@ -67,10 +62,11 @@ export default class Starfish {
 
     }
 
-    public async connect() {
-        this.web3 = new Web3(this.provider)
+    public async connect(): Promise<boolean> {
+        this.web3 = new Web3(Web3.givenProvider || this.provider.getProvider())
         this.networkId = await this.web3.eth.net.getId()
         this.networkName = this.networkNames.get(this.networkId)
+        return true
     }
 
     public async getContract(name: string): Promise<AContract> {
@@ -88,24 +84,24 @@ export default class Starfish {
      */
 
     public async getEtherBalance(accountAddress: Account | string): Promise<string> {
-        let contract = new NetworkContract()
+        const contract = new NetworkContract()
         contract.load(this.web3)
         return await contract.getBalance(accountAddress)
     }
 
     public async getTokenBalance(accountAddress: Account | string): Promise<string> {
-        let contract = <OceanTokenContract> await this.getContract('OceanToken')
+        const contract = <OceanTokenContract> await this.getContract('OceanToken')
         return await contract.getBalance(accountAddress)
     }
 
     public async requestTestTokens(account: Account, amount: number): Promise<boolean> {
-        let contract = <DispenserContract> await this.getContract('Dispenser')
-        let txHash = await contract.requestTokens(account, amount)
-        let receipt = await contract.waitForReceipt(txHash)
+        const contract = <DispenserContract> await this.getContract('Dispenser')
+        const txHash = await contract.requestTokens(account, amount)
+        const receipt = await contract.waitForReceipt(txHash)
         return receipt.status === 1
     }
 
-    public getProvider(): ProviderInterface {
+    public getProvider(): IProvider {
         return this.provider
     }
     public getArtifactsPath(): string {

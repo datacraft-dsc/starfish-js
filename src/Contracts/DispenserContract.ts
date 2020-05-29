@@ -9,7 +9,7 @@ export default class DispenserContract extends AContract {
         super('Dispense')
     }
 
-    async requestTokens(account: Account, amount: number): Promise<any> {
+    public async requestTokens(account: Account, amount: number): Promise<any> {
         return await this.contract.methods.requestTokens(amount).send({'from': account.getChecksumAddress()})
     }
 }
