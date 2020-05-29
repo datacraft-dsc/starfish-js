@@ -98,7 +98,7 @@ None at the moment
 ## Code style
 
 ESlint recomended rules. Using the `"extends": "eslint:recommended"` parameter.
-Using Prettier standard with ESlint.
+Also using Prettier standard with ESlint.
 
 You need to run
     ```
