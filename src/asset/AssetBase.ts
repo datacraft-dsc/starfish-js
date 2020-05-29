@@ -1,5 +1,3 @@
 // Asset Base Class
 
-export default class AssetBase {
-
-}
+export default class AssetBase {}

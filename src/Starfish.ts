@@ -9,7 +9,6 @@ import OceanTokenContract from './Contracts/OceanTokenContract'
 import DispenserContract from './Contracts/DispenserContract'
 
 export default class Starfish {
-
     public static async getInstance(urlProvider: string | IProvider, artifactsPath?: string): Promise<Starfish> {
         if (!Starfish.instance) {
             Starfish.instance = new Starfish()
@@ -27,7 +26,6 @@ export default class Starfish {
     protected networkNames: Map<number, string>
     protected contractManager: ContractManager
 
-
     private constructor() {
         this.networkNames = new Map([
             [0, 'development'],
@@ -39,27 +37,23 @@ export default class Starfish {
             [77, 'POA_Sokol'],
             [99, 'POA_Core'],
             [100, 'xDai'],
-            [8995, 'nile'],                   // Ocean Protocol Public test net
-            [8996, 'spree'],                  // Ocean Protocol local test net
-            [0xcea11, 'pacific']              // Ocean Protocol Public mainnet
+            [8995, 'nile'], // Ocean Protocol Public test net
+            [8996, 'spree'], // Ocean Protocol local test net
+            [0xcea11, 'pacific'], // Ocean Protocol Public mainnet
         ])
     }
 
     public async init(urlProvider: string | IProvider, artifactsPath?: string): Promise<void> {
-
         if (typeof urlProvider === 'string') {
             this.provider = new DirectProvider(urlProvider)
+        } else {
+            this.provider = urlProvider
         }
-        else {
-            this.provider = urlProvider;
-        }
-
         if (artifactsPath === undefined) {
             artifactsPath = 'artifacts'
         }
         this.artifactsPath = artifactsPath
         await this.connect()
-
     }
 
     public async connect(): Promise<boolean> {
@@ -70,7 +64,7 @@ export default class Starfish {
     }
 
     public async getContract(name: string): Promise<AContract> {
-        if ( ! this.contractManager ) {
+        if (!this.contractManager) {
             this.contractManager = new ContractManager(this.web3, this.networkName, this.artifactsPath)
         }
         return await this.contractManager.load(name)
@@ -90,12 +84,12 @@ export default class Starfish {
     }
 
     public async getTokenBalance(accountAddress: Account | string): Promise<string> {
-        const contract = <OceanTokenContract> await this.getContract('OceanToken')
+        const contract = <OceanTokenContract>await this.getContract('OceanToken')
         return await contract.getBalance(accountAddress)
     }
 
     public async requestTestTokens(account: Account, amount: number): Promise<boolean> {
-        const contract = <DispenserContract> await this.getContract('Dispenser')
+        const contract = <DispenserContract>await this.getContract('Dispenser')
         const txHash = await contract.requestTokens(account, amount)
         const receipt = await contract.waitForReceipt(txHash)
         return receipt.status === 1

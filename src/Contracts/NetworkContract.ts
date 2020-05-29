@@ -1,10 +1,7 @@
-
 import AContract from './AContract'
 import Account from '../Account'
 
-
 export default class NetworkContract extends AContract {
-
     constructor() {
         super('NetworkToken')
     }
@@ -15,4 +12,3 @@ export default class NetworkContract extends AContract {
         return this.toEther(amountWei)
     }
 }
-

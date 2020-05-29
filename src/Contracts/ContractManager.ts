@@ -4,7 +4,6 @@ import Web3 from 'web3'
 import AContract from './AContract'
 
 export default class ContractManager {
-
     private web3: Web3
     private networkName: string
     private artifactsPath: string
@@ -16,12 +15,11 @@ export default class ContractManager {
     }
     public async load(name: string, artifactFilename?: string, hasArtifact?: boolean): Promise<AContract> {
         let contractInstance = null
-        if ( !artifactFilename ) {
+        if (!artifactFilename) {
             artifactFilename = `${name}.${this.networkName}.json`
         }
         const pathFilename = this.findArtifactFile([this.artifactsPath, __dirname], artifactFilename)
         if (pathFilename) {
-
             // import relative to this module
             const contractData = JSON.parse(await fs.readFile(pathFilename))
             const contractName = `./${name}Contract`

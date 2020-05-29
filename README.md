@@ -5,8 +5,7 @@ Toolkit for Decentralised Data Ecosystem development in Javascript
 
 [![Travis (.com)](https://img.shields.io/travis/com/DEX-Company/starfish-js.svg)](https://travis-ci.com/DEX-Company/starfish-js)
 [![GitHub contributors](https://img.shields.io/github/contributors/DEX-Company/starfish-js.svg)](https://github.com/DEX-Company/starfish-js/graphs/contributors)
-[![Squid Version](https://img.shields.io/badge/squid--js-v0.5.14-blue.svg)](https://github.com/oceanprotocol/squid-py/releases/tag/v0.3.2)
-[![Barge Version](https://img.shields.io/badge/barge-dex--2019--05--24-blue.svg)](https://github.com/DEX-Company/barge/releases/tag/dex-2019-05-24)
+[![Barge Version](https://img.shields.io/badge/barge--develop--blue.svg)](https://github.com/DEX-Company/barge/develop)
 
 ---
 
@@ -26,9 +25,9 @@ Toolkit for Decentralised Data Ecosystem development in Javascript
 ## Overview
 Starfish-js is an open source developer toolkit for the data economy. It allows developers, data scientists and enterprises to create, interact, integrate and manage decentralised data supply lines through standardised and simple-to-use APIs.
 
-Based on an underlying data ecosystem standard, Starfish provides high-level APIs for common tasks within the data economy, for example, registering/publishing an asset, for subsequent use in a digital supply line. In this case, an asset can be any data set, model or data service. The high-level API also allows developers to invoke operation on an asset, e.g. computing a predictive model or anonymising sensitive personal information, among other capabilities. 
+Based on an underlying data ecosystem standard, Starfish provides high-level APIs for common tasks within the data economy, for example, registering/publishing an asset, for subsequent use in a digital supply line. In this case, an asset can be any data set, model or data service. The high-level API also allows developers to invoke operation on an asset, e.g. computing a predictive model or anonymising sensitive personal information, among other capabilities.
 
-Starfish works with blockchain networks and common web services through agents, allowing unprecedented flexibility in asset discovery and data supply line management. 
+Starfish works with blockchain networks and common web services through agents, allowing unprecedented flexibility in asset discovery and data supply line management.
 
 ## Features
 
@@ -74,6 +73,8 @@ Currently only provide basic account balance information
     npm run test
     ```
 
+## Currently not working until the rebuild is completed..
+
 1. Building for the browser with debugging support
 
     ```
@@ -92,18 +93,16 @@ Currently only provide basic account balance information
     ```
 ## Documentation
 
+None at the moment
 
 ## Code style
 
+eslint recomended rules. Using the `"extends": "eslint:recommended"` parameter.
 
 ## Testing
 
-Automatic tests are setup via Travis, executing `tox`.
-Our test use npm framework.
+Automatic tests are setup github actions. Using the `npm` framework.
 
-## New Version
-
-The `bumpversion.sh` script helps to bump the project version. You can execute the script using as first argument {major|minor|patch} to bump accordingly the version.
 
 ## License
 

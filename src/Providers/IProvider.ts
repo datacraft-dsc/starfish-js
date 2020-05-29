@@ -3,19 +3,19 @@
  */
 
 import Web3 from 'web3'
-import {provider as Web3Provider} from 'web3-core'
+import { provider as Web3Provider } from 'web3-core'
 
 export default interface IProvider {
     /**
      * Simply getter
      */
-    getProvider(): Web3Provider;
+    getProvider(): Web3Provider
 
     /**
      * Depends on the implementation.
      * Several providers might have special requirements to shut them down manually.
      */
-    stop(): void;
+    stop(): void
 
     /**
      * Pull/update/renew provider status.
@@ -25,5 +25,5 @@ export default interface IProvider {
      * @param web3
      * @return Promise with boolean result. True if provider is ready for work.
      */
-    checkIfProviderEnabled(web3: Web3): Promise<boolean>;
+    checkIfProviderEnabled(web3: Web3): Promise<boolean>
 }

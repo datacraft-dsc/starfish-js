@@ -8,11 +8,10 @@
 import fs from 'fs-extra'
 import Web3 from 'web3'
 
-import {toChecksumAddress} from 'web3-utils'
-import {EncryptedKeystoreV3Json} from 'web3-core'
+import { toChecksumAddress } from 'web3-utils'
+import { EncryptedKeystoreV3Json } from 'web3-core'
 
 export default class Account {
-
     private address: string
     private password: string
     private keyFilename: string
@@ -26,7 +25,7 @@ export default class Account {
         return new Account(address, password, null, keyData)
     }
 
-    public static async loadKeyFileFromFile( filename: string): Promise<EncryptedKeystoreV3Json> {
+    public static async loadKeyFileFromFile(filename: string): Promise<EncryptedKeystoreV3Json> {
         let data = null
         if (fs.pathExists(filename)) {
             const rawData = await fs.readFile(filename)
@@ -51,7 +50,6 @@ export default class Account {
         this.keyFilename = keyFilename
         this.keyData = keyData
     }
-
 
     public async saveToFile(filename: string): Promise<any> {
         const data = JSON.stringify(this.keyData)
