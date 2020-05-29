@@ -104,15 +104,19 @@ export default class Starfish {
     public getProvider(): IProvider {
         return this.provider
     }
+
     public getArtifactsPath(): string {
         return this.artifactsPath
     }
+
     public getWeb3(): Web3 {
         return this.web3
     }
+
     public getNetworkId(): number {
         return this.networkId
     }
+
     public getNetworkName(): string {
         return this.networkName
     }
