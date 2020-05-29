@@ -3,9 +3,9 @@
 
 Toolkit for Decentralised Data Ecosystem development in Javascript
 
-[![Travis (.com)](https://img.shields.io/travis/com/DEX-Company/starfish-js.svg)](https://travis-ci.com/DEX-Company/starfish-js)
+![](https://github.com/DEX-Company/starfish-js/workflows/testing/badge.svg)
 [![GitHub contributors](https://img.shields.io/github/contributors/DEX-Company/starfish-js.svg)](https://github.com/DEX-Company/starfish-js/graphs/contributors)
-[![Barge Version](https://img.shields.io/badge/barge--develop--blue.svg)](https://github.com/DEX-Company/barge/develop)
+[![Barge Version](https://img.shields.io/badge/barge-develop--blue.svg)](https://github.com/DEX-Company/barge/develop)
 
 ---
 
