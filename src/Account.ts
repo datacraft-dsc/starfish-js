@@ -60,7 +60,7 @@ export default class Account {
      */
     public static async loadFromFile(password: string, filename: string): Promise<Account> {
         const web3 = new Web3()
-        const data = await Account.loadKeyFileFromFile(filename)
+        const data = await Account.loadKeyDataFromFile(filename)
         if (data) {
             const keyData = await web3.eth.accounts.decrypt(data, password)
             return new Account(keyData.address, password, filename, data)
@@ -69,12 +69,12 @@ export default class Account {
     }
 
     /**
-     * Load an account json file that contains the information needed to sign and hash messages.
+     * Load an account json key data that contains the information needed to sign and hash messages.
      * @param filename Filename of the account file.
      * @returns Data that contains the account information. The user needs to pass the password
      * to use this data.
      */
-    public static async loadKeyFileFromFile(filename: string): Promise<EncryptedKeystoreV3Json> {
+    public static async loadKeyDataFromFile(filename: string): Promise<EncryptedKeystoreV3Json> {
         let data = null
         if (fs.pathExists(filename)) {
             const rawData = await fs.readFile(filename)
