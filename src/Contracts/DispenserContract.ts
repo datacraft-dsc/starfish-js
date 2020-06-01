@@ -1,7 +1,7 @@
-import AContract from './AContract'
+import ContractBase from './ContractBase'
 import Account from '../Account'
 
-export default class DispenserContract extends AContract {
+export default class DispenserContract extends ContractBase {
     constructor() {
         super('Dispense')
     }

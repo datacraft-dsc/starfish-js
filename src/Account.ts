@@ -15,10 +15,11 @@ import { EncryptedKeystoreV3Json, SignedTransaction } from 'web3-core'
  * Account class to hold a privatly owned account
  */
 export default class Account {
-    private address: string
-    private password: string
-    private keyFilename: string
-    private keyData: EncryptedKeystoreV3Json
+    readonly address: string
+    readonly checksumAddress: string
+    readonly password: string
+    readonly keyFilename: string
+    public keyData: EncryptedKeystoreV3Json
 
     /**
      * Create a new account object, using the provided password.
@@ -78,6 +79,7 @@ export default class Account {
      */
     constructor(address?: string, password?: string, keyFilename?: string, keyData?: EncryptedKeystoreV3Json) {
         this.address = address
+        this.checksumAddress = toChecksumAddress(this.address)
         this.password = password
         this.keyFilename = keyFilename
         this.keyData = keyData
@@ -108,7 +110,7 @@ export default class Account {
 
     public async unlock(web3: Web3): Promise<boolean> {
         if (typeof this.keyData === 'undefined') {
-            return web3.eth.personal.unlockAccount(this.getChecksumAddress(), this.password, null)
+            return web3.eth.personal.unlockAccount(this.checksumAddress, this.password, null)
         }
         return false
     }
@@ -135,7 +137,7 @@ export default class Account {
      * @param address Addresse to compare against
      */
     public isAddressEqual(address: string): boolean {
-        return toChecksumAddress(address) === this.getChecksumAddress()
+        return toChecksumAddress(address) === this.checksumAddress
     }
 
     /**
@@ -143,39 +145,5 @@ export default class Account {
      */
     public isPassword(): boolean {
         return this.password != null
-    }
-
-    /* Return the address of this account.
-     */
-    public getAddress(): string {
-        return this.address
-    }
-
-    /**
-     * Return the checksum address of this account.
-     */
-    public getChecksumAddress(): string {
-        return toChecksumAddress(this.address)
-    }
-
-    /**
-     * Return the password for this account.
-     */
-    public getPassword(): string {
-        return this.password
-    }
-
-    /**
-     * Return the key filename that was used to load the key data.
-     */
-    public getKeyFilename(): string {
-        return this.keyFilename
-    }
-
-    /**
-     * Return the encrypted key data that can be saved as a file
-     */
-    public getKeyData(): EncryptedKeystoreV3Json {
-        return this.keyData
     }
 }

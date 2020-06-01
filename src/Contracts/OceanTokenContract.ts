@@ -1,7 +1,7 @@
-import AContract from './AContract'
+import ContractBase from './ContractBase'
 import Account from '../Account'
 
-export default class OceanTokenContract extends AContract {
+export default class OceanTokenContract extends ContractBase {
     constructor() {
         super('OceanToken')
     }

@@ -5,10 +5,10 @@ import { TransactionReceipt } from 'web3-core'
 
 import Account from '../Account'
 
-export default abstract class AContract {
-    private name: string
-    private abi: AbiItem[]
-    private address: string
+export default class ContractBase {
+    readonly name: string
+    public abi: AbiItem[]
+    public address: string
     protected web3: Web3
     protected contract: Web3Contract
 
@@ -28,7 +28,7 @@ export default abstract class AContract {
     public getAccountAddress(accountAddress: Account | string): string {
         let address = <string>accountAddress
         if (typeof accountAddress === 'object' && accountAddress.constructor.name === 'Account') {
-            address = (<Account>accountAddress).getAddress()
+            address = (<Account>accountAddress).address
         }
         return address
     }
@@ -38,11 +38,11 @@ export default abstract class AContract {
     }
 
     public async callAsTransaction(contractMethod: any, account: Account): Promise<TransactionReceipt> {
-        const gasTransaction = {'from': account.getChecksumAddress() }
+        const gasTransaction = {'from': account.checksumAddress }
         const estimatedGas = await contractMethod.estimateGas(gasTransaction)
         const transaction = {
-            from: String(account.getAddress()),
-//            this.web3.utils.toChecksumAddress(this.getAddress()),
+            from: String(account.address),
+//            this.web3.utils.toChecksumAddress(this.address),
             gas: estimatedGas,
 //            data: contractMethod.encodeABI(),
         }
@@ -58,19 +58,5 @@ export default abstract class AContract {
     public toEther(amountWei: string): string {
         return this.web3.utils.fromWei(amountWei, 'ether')
     }
-    public getName(): string {
-        return this.name
-    }
-    public getWeb3(): Web3 {
-        return this.web3
-    }
-    public getAbi(): AbiItem[] {
-        return this.abi
-    }
-    public getAddress(): string {
-        return this.address
-    }
-    public getWeb3Contract(): Web3Contract {
-        return this.contract
-    }
+
 }

@@ -19,10 +19,10 @@ describe('Account Class', () => {
         it('should create a new Account object using a password', async () => {
             let account = Account.createNew(password)
             assert(account)
-            assert.equal(account.getPassword(), password)
-            assert(account.getAddress())
-            assert(account.getKeyData())
-            assert.equal(account.getKeyFilename(), null)
+            assert.equal(account.password, password)
+            assert(account.address)
+            assert(account.keyData)
+            assert.equal(account.keyFilename, null)
         })
     })
     describe('saveToFile', () => {
@@ -38,7 +38,7 @@ describe('Account Class', () => {
             fs.remove(filename)
         })
     })
-    
+
     describe('loadFromFile', () => {
         it('should load back the account from a key data file', async () => {
             let filename = '/tmp/testAccount_' + web3.utils.randomHex(16) + '.json'
@@ -52,17 +52,17 @@ describe('Account Class', () => {
 
             let savedAccount = await Account.createFromFile(password, filename)
             assert(savedAccount)
-            assert.equal(savedAccount.getAddress(), account.getAddress())
+            assert.equal(savedAccount.address, account.address)
             fs.remove(filename)
         })
     })
-    
+
     describe('common properties', () => {
         it('should return a checksum address', async () => {
-            assert(testAccount.getChecksumAddress())
+            assert(testAccount.checksumAddress)
         })
         it('should match address when the address is all lower case', async () => {
-            let address = testAccount.getAddress().toLowerCase()
+            let address = testAccount.address.toLowerCase()
             assert(testAccount.isAddressEqual(address))
         })
         it('should be a valid password', async () => {

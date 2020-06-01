@@ -17,21 +17,21 @@ describe("Starfish", () => {
         it("should create a basic Starfish object using a url string", async () => {
             let network = await Starfish.getInstance(setup.network.url);
             assert(network, 'network');
-            assert(network.getProvider(), 'provider')
-            assert(network.getWeb3(), 'web3')
-            assert(network.getArtifactsPath(), 'artifactsPath')
-            assert(network.getNetworkId(), 'networkId')
-            assert(network.getNetworkName(), 'networkName')
+            assert(network.provider, 'provider')
+            assert(network.web3, 'web3')
+            assert(network.artifactsPath, 'artifactsPath')
+            assert(network.networkId, 'networkId')
+            assert(network.networkName, 'networkName')
         })
         it("should create a basic Starfish object using a Provider object", async () => {
             let provider = new DirectProvider(setup.network.url)
             let network = await Starfish.getInstance(provider);
             assert(network, 'network');
-            assert(network.getProvider(), 'provider')
-            assert(network.getWeb3(), 'web3')
-            assert(network.getArtifactsPath(), 'artifactsPath')
-            assert(network.getNetworkId(), 'networkId')
-            assert(network.getNetworkName(), 'networkName')
+            assert(network.provider, 'provider')
+            assert(network.web3, 'web3')
+            assert(network.artifactsPath, 'artifactsPath')
+            assert(network.networkId, 'networkId')
+            assert(network.networkName, 'networkName')
         })
     })
     describe("account operations", () => {
@@ -64,7 +64,7 @@ describe("Starfish", () => {
             assert(startBalance)
             console.log(startBalance)
 
-            console.log('unlock', await account.unlock(network.getWeb3()))
+            console.log('unlock', await account.unlock(network.web3))
             const result = await network.requestTestTokens(account, requestAmount)
             const endBalance = await network.getTokenBalance(account.getAddress())
             assert(endBalance)

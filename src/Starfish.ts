@@ -2,7 +2,7 @@ import Web3 from 'web3'
 import IProvider from './Providers/IProvider'
 import DirectProvider from './Providers/DirectProvider'
 import Account from './Account'
-import AContract from './Contracts/AContract'
+import ContractBase from './Contracts/ContractBase'
 import ContractManager from './Contracts/ContractManager'
 import NetworkContract from './Contracts/NetworkContract'
 import OceanTokenContract from './Contracts/OceanTokenContract'
@@ -31,11 +31,11 @@ export default class Starfish {
     }
 
     private static instance
-    private provider: IProvider
-    private artifactsPath: string
-    private web3: Web3
-    private networkId: number
-    private networkName: string
+    public provider: IProvider
+    public artifactsPath: string
+    public web3: Web3
+    public networkId: number
+    public networkName: string
     protected networkNames: Map<number, string>
     protected contractManager: ContractManager
 
@@ -91,11 +91,11 @@ export default class Starfish {
      * @param name Name of the contract to load
      * @returns AContract that has been loadad
      */
-    public async getContract(name: string): Promise<AContract> {
+    public async getContract(name: string): Promise<ContractBase> {
         if (!this.contractManager) {
             this.contractManager = new ContractManager(this.web3, this.networkName, this.artifactsPath)
         }
-        return await this.contractManager.load(name)
+        return this.contractManager.load(name)
     }
 
     /*
@@ -139,38 +139,4 @@ export default class Starfish {
         return receipt.status === 1
     }
 
-    /**
-     * Return the current provider.
-     */
-    public getProvider(): IProvider {
-        return this.provider
-    }
-
-    /**
-     * Return the current artifacts path being used to load the contracts.
-     */
-    public getArtifactsPath(): string {
-        return this.artifactsPath
-    }
-
-    /**
-     * Return the web3 object used to acess the network node.
-     */
-    public getWeb3(): Web3 {
-        return this.web3
-    }
-
-    /**
-     * Return the connected network Id of the node
-     */
-    public getNetworkId(): number {
-        return this.networkId
-    }
-
-    /**
-     * Return the network name based on the network Id value.
-     */
-    public getNetworkName(): string {
-        return this.networkName
-    }
 }
