@@ -45,7 +45,7 @@ describe("Starfish", () => {
         })
 
         it("should get ether balance using an account object", async () => {
-            const account = await Account.createFromFile(accountConfig.password, accountConfig.keyfile)
+            const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
             const balance = await network.getEtherBalance(account)
             assert(balance)
         })
@@ -58,7 +58,8 @@ describe("Starfish", () => {
 
         it("should request some test tokens from a node account", async () => {
             const requestAmount = 10
-            const account = new Account(accountConfigNode.address, accountConfigNode.password)
+            const account = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
+            assert(account, 'load account')
             const startBalance = await network.getTokenBalance(account.address)
             assert(startBalance)
             assert(await account.unlock(network.web3), 'unlock account')
@@ -71,7 +72,7 @@ describe("Starfish", () => {
 
         it("should request some test tokens from a local account", async () => {
             const requestAmount = 10
-            const account = await Account.createFromFile(accountConfig.password, accountConfig.keyfile)
+            const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
             const startBalance = await network.getTokenBalance(account.address)
             assert(startBalance)
             const isDone = await network.requestTestTokens(account, requestAmount)

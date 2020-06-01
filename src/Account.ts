@@ -11,6 +11,7 @@ import Web3 from 'web3'
 import { toChecksumAddress } from 'web3-utils'
 import { EncryptedKeystoreV3Json, SignedTransaction } from 'web3-core'
 
+import Starfish from './Starfish'
 /**
  * Account class to hold a privatly owned account
  */
@@ -37,6 +38,37 @@ export default class Account {
     }
 
     /**
+     * Loads a new account object that has been already loaded on the network node.
+     * @param network Network node that has the account.
+     * @param address Address of the account on the node.
+     * @param password Password to access this account information in the account file.
+     * @returns A new account object with the nessecary information.
+     */
+    public static async loadFromNetwork(network: Starfish, address: string, password: string): Promise<Account> {
+        const accounts = await network.web3.eth.personal.getAccounts()
+        if (accounts.indexOf(address) >= 0) {
+            return new Account(address, password)
+        }
+        return null
+    }
+
+    /**
+     * Loads a new account object from an account file.
+     * @param password Password to access this account information in the account file.
+     * @param filename Filename of the account data.
+     * @returns A new account object with the nessecary information , or null if the password is incorect or file is not found.
+     */
+    public static async loadFromFile(password: string, filename: string): Promise<Account> {
+        const web3 = new Web3()
+        const data = await Account.loadKeyFileFromFile(filename)
+        if (data) {
+            const keyData = await web3.eth.accounts.decrypt(data, password)
+            return new Account(keyData.address, password, filename, data)
+        }
+        return null
+    }
+
+    /**
      * Load an account json file that contains the information needed to sign and hash messages.
      * @param filename Filename of the account file.
      * @returns Data that contains the account information. The user needs to pass the password
@@ -49,22 +81,6 @@ export default class Account {
             data = JSON.parse(rawData)
         }
         return data
-    }
-
-    /**
-     * Create a new account object from an account file.
-     * @param password Password to access this account information in the account file.
-     * @param filename Filename of the account data.
-     * @returns A new account object with the nessecary information , or null if the password is incorect or file is not found.
-     */
-    public static async createFromFile(password: string, filename: string): Promise<Account> {
-        const web3 = new Web3()
-        const data = await Account.loadKeyFileFromFile(filename)
-        if (data) {
-            const keyData = await web3.eth.accounts.decrypt(data, password)
-            return new Account(keyData.address, password, filename, data)
-        }
-        return null
     }
 
     /**

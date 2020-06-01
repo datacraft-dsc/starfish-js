@@ -1,13 +1,18 @@
 import assert from 'assert'
 import fs from 'fs-extra'
 
-
+import Starfish from '../src/Starfish'
 import Account from '../src/Account'
 import Web3 from 'web3'
+
+import { loadTestSetup } from './TestSetup'
 
 let web3 = new Web3()
 let password = web3.utils.randomHex(16)
 let testAccount = Account.createNew(password)
+
+let setup = loadTestSetup()
+const accountConfigNode = setup.accounts['accountNode']
 
 
 describe('Account Class', () => {
@@ -50,10 +55,19 @@ describe('Account Class', () => {
             await account.saveToFile(filename)
             assert(fs.pathExists(filename))
 
-            let savedAccount = await Account.createFromFile(password, filename)
+            let savedAccount = await Account.loadFromFile(password, filename)
             assert(savedAccount)
             assert.equal(savedAccount.address, account.address)
             fs.remove(filename)
+        })
+    })
+
+
+    describe('loadFromNetwork', () => {
+        it('should load an account from the network node', async () => {
+            const network = await Starfish.getInstance(setup.network.url);
+            const account = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
+            assert(account, 'load account')
         })
     })
 
