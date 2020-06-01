@@ -10,6 +10,7 @@ var network
 
 let setup = loadTestSetup()
 const accountConfig = setup.accounts['account1']
+// const accountConfigNode = setup.accounts['accountNode']
 
 describe("Starfish", () => {
     describe("basic object create", () => {
@@ -38,12 +39,12 @@ describe("Starfish", () => {
             network = await Starfish.getInstance(setup.network.url);
         })
         it("should get ether balance using an account address string", async () => {
-            let balance = await network.getEtherBalance(setup.accounts['account1'].address)
+            const balance = await network.getEtherBalance(accountConfig.address)
             assert(balance)
         })
         it("should get ether balance using an account object", async () => {
-            let account = new Account(accountConfig.address, accountConfig.password, accountConfig.keyfile)
-            let balance = await network.getEtherBalance(account)
+            const account = await Account.createFromFile(accountConfig.password, accountConfig.keyfile)
+            const balance = await network.getEtherBalance(account)
             assert(balance)
         })
 
@@ -51,19 +52,27 @@ describe("Starfish", () => {
             let balance = await network.getTokenBalance(accountConfig.address)
             assert(balance)
         })
+
 /*
+ *
+ * Not working at the moment...
+
         it("should request some test tokens", async () => {
             const requestAmount = 10
-            let network = await Starfish.getInstance('http://localhost:8545');
-            let startBalance = await network.getTokenBalance(testAddress)
+            const account = new Account(accountConfigNode.address, accountConfigNode.password)
+            const startBalance = await network.getTokenBalance(account.getAddress())
             assert(startBalance)
-            let result = await network.requestTestTokens(testAddress, requestAmount)
-            let endBalance = await network.getTokenBalance(testAddress)
+            console.log(startBalance)
+
+            console.log('unlock', await account.unlock(network.getWeb3()))
+            const result = await network.requestTestTokens(account, requestAmount)
+            const endBalance = await network.getTokenBalance(account.getAddress())
             assert(endBalance)
             console.log(startBalance, result, endBalance)
 
         })
 */
+
     })
 
 })

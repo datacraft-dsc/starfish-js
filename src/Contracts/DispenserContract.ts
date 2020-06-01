@@ -7,6 +7,10 @@ export default class DispenserContract extends AContract {
     }
 
     public async requestTokens(account: Account, amount: number): Promise<any> {
-        return await this.contract.methods.requestTokens(amount).send({ from: account.getChecksumAddress() })
+        console.log(amount)
+        const amountValue = this.web3.utils.numberToHex(amount.toLocaleString())
+        console.log(amountValue, account.getChecksumAddress())
+        return this.callAsTransaction(this.contract.methods.requestTokens(String(amount)), account)
+//        return this.contract.methods.requestTokens(amount).send({ from: account.getAddress() })
     }
 }

@@ -1,6 +1,7 @@
 import Web3 from 'web3'
 import { Contract as Web3Contract } from 'web3-eth-contract'
 import { AbiItem } from 'web3-utils'
+import { TransactionReceipt } from 'web3-core'
 
 import Account from '../Account'
 
@@ -34,6 +35,24 @@ export default abstract class AContract {
 
     public async waitForReceipt(txHash: string): Promise<any> {
         return await this.web3.eth.getTransactionReceipt(txHash)
+    }
+
+    public async callAsTransaction(contractMethod: any, account: Account): Promise<TransactionReceipt> {
+        const gasTransaction = {'from': account.getChecksumAddress() }
+        const estimatedGas = await contractMethod.estimateGas(gasTransaction)
+        const transaction = {
+            from: String(account.getAddress()),
+//            this.web3.utils.toChecksumAddress(this.getAddress()),
+            gas: estimatedGas,
+//            data: contractMethod.encodeABI(),
+        }
+        console.log(transaction)
+        return contractMethod.send(transaction)
+/*
+        const signedTxHash = await account.signTransaction(this.web3, txHash)
+        console.log(signedTxHash)
+        return this.web3.eth.sendSignedTransaction(signedTxHash.rawTransaction)
+*/
     }
 
     public toEther(amountWei: string): string {

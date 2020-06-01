@@ -9,7 +9,7 @@ import fs from 'fs-extra'
 import Web3 from 'web3'
 
 import { toChecksumAddress } from 'web3-utils'
-import { EncryptedKeystoreV3Json } from 'web3-core'
+import { EncryptedKeystoreV3Json, SignedTransaction } from 'web3-core'
 
 /**
  * Account class to hold a privatly owned account
@@ -98,10 +98,19 @@ export default class Account {
      * @param transaction Transaction that needs to be signed.
      * @returns Return the signed transaction.
      */
-    public async signTransaction(web3: Web3, transaction: unknown): Promise<any> {
+    public async signTransaction(web3: Web3, txHash: unknown): Promise<SignedTransaction> {
         // decode the keyData to find out the private key
         const data = await web3.eth.accounts.decrypt(this.keyData, this.password)
-        return await web3.eth.accounts.signTransaction(transaction, data.privateKey)
+        const txHashSigned = await web3.eth.accounts.signTransaction(txHash, data.privateKey)
+        console.log(txHashSigned)
+        return txHashSigned
+    }
+
+    public async unlock(web3: Web3): Promise<boolean> {
+        if (typeof this.keyData === 'undefined') {
+            return web3.eth.personal.unlockAccount(this.getChecksumAddress(), this.password, null)
+        }
+        return false
     }
 
     /**
