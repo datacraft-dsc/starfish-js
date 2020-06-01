@@ -1,7 +1,8 @@
 import Web3 from 'web3'
 import { Contract as Web3Contract } from 'web3-eth-contract'
 import { AbiItem } from 'web3-utils'
-import { TransactionReceipt } from 'web3-core'
+// import { TransactionReceipt } from 'web3-core'
+import { ContractSendMethod } from 'web3-eth-contract'
 
 import Account from '../Account'
 
@@ -33,26 +34,23 @@ export default class ContractBase {
         return address
     }
 
-    public async waitForReceipt(txHash: string): Promise<any> {
-        return await this.web3.eth.getTransactionReceipt(txHash)
-    }
-
-    public async callAsTransaction(contractMethod: unknown, account: Account): Promise<TransactionReceipt> {
+    public async callAsTransaction(contractMethod: ContractSendMethod, account: Account): Promise<any> {
         const gasTransaction = { from: account.checksumAddress }
         const estimatedGas = await contractMethod.estimateGas(gasTransaction)
         const transaction = {
-            from: String(account.address),
-            //            this.web3.utils.toChecksumAddress(this.address),
+            from: account.address,
+            to: this.address,
             gas: estimatedGas,
-            //            data: contractMethod.encodeABI(),
+            data: contractMethod.encodeABI(),
         }
-        console.log(transaction)
-        return contractMethod.send(transaction)
-        /*
-        const signedTxHash = await account.signTransaction(this.web3, txHash)
-        console.log(signedTxHash)
-        return this.web3.eth.sendSignedTransaction(signedTxHash.rawTransaction)
-        */
+        if (account.isLocal) {
+            // local account, that needs to sign the transaction and then send
+            const signedTransaction = await account.signTransaction(this.web3, transaction)
+            return this.web3.eth.sendSignedTransaction(signedTransaction.rawTransaction)
+        } else {
+            // the account is on the node, so send to the node, for the node to sign
+            return contractMethod.send(transaction)
+        }
     }
 
     public toEther(amountWei: string): string {

@@ -19,6 +19,7 @@ export default class Account {
     readonly checksumAddress: string
     readonly password: string
     readonly keyFilename: string
+    readonly isLocal: boolean
     public keyData: EncryptedKeystoreV3Json
 
     /**
@@ -83,6 +84,7 @@ export default class Account {
         this.password = password
         this.keyFilename = keyFilename
         this.keyData = keyData
+        this.isLocal = typeof this.keyData != 'undefined'
     }
 
     /**
@@ -100,12 +102,10 @@ export default class Account {
      * @param transaction Transaction that needs to be signed.
      * @returns Return the signed transaction.
      */
-    public async signTransaction(web3: Web3, txHash: unknown): Promise<SignedTransaction> {
+    public async signTransaction(web3: Web3, transaction: unknown): Promise<SignedTransaction> {
         // decode the keyData to find out the private key
         const data = await web3.eth.accounts.decrypt(this.keyData, this.password)
-        const txHashSigned = await web3.eth.accounts.signTransaction(txHash, data.privateKey)
-        console.log(txHashSigned)
-        return txHashSigned
+        return web3.eth.accounts.signTransaction(transaction, data.privateKey)
     }
 
     public async unlock(web3: Web3): Promise<boolean> {

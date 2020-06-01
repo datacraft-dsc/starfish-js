@@ -10,7 +10,7 @@ var network
 
 let setup = loadTestSetup()
 const accountConfig = setup.accounts['account1']
-// const accountConfigNode = setup.accounts['accountNode']
+const accountConfigNode = setup.accounts['accountNode']
 
 describe("Starfish", () => {
     describe("basic object create", () => {
@@ -38,10 +38,12 @@ describe("Starfish", () => {
         before( async () => {
             network = await Starfish.getInstance(setup.network.url);
         })
+
         it("should get ether balance using an account address string", async () => {
             const balance = await network.getEtherBalance(accountConfig.address)
             assert(balance)
         })
+
         it("should get ether balance using an account object", async () => {
             const account = await Account.createFromFile(accountConfig.password, accountConfig.keyfile)
             const balance = await network.getEtherBalance(account)
@@ -53,25 +55,33 @@ describe("Starfish", () => {
             assert(balance)
         })
 
-/*
- *
- * Not working at the moment...
 
-        it("should request some test tokens", async () => {
+        it("should request some test tokens from a node account", async () => {
             const requestAmount = 10
             const account = new Account(accountConfigNode.address, accountConfigNode.password)
             const startBalance = await network.getTokenBalance(account.address)
             assert(startBalance)
-            console.log(startBalance)
-
-            console.log('unlock', await account.unlock(network.web3))
-            const result = await network.requestTestTokens(account, requestAmount)
+            assert(await account.unlock(network.web3), 'unlock account')
+            const isDone = await network.requestTestTokens(account, requestAmount)
+            assert(isDone)
             const endBalance = await network.getTokenBalance(account.address)
-            assert(endBalance)
-            console.log(startBalance, result, endBalance)
-
+            assert(endBalance, 'end balance')
+            assert.equal(Number(startBalance) + requestAmount, endBalance, 'balance changed')
         })
-*/
+
+        it("should request some test tokens from a local account", async () => {
+            const requestAmount = 10
+            const account = await Account.createFromFile(accountConfig.password, accountConfig.keyfile)
+            const startBalance = await network.getTokenBalance(account.address)
+            assert(startBalance)
+            const isDone = await network.requestTestTokens(account, requestAmount)
+            assert(isDone)
+            const endBalance = await network.getTokenBalance(account.address)
+            assert(endBalance, 'end balance')
+            assert.equal(Number(startBalance) + requestAmount, endBalance, 'balance changed')
+        })
+
+
     })
 
 })

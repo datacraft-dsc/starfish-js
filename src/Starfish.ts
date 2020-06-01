@@ -134,8 +134,7 @@ export default class Starfish {
      */
     public async requestTestTokens(account: Account, amount: number): Promise<boolean> {
         const contract = <DispenserContract>await this.getContract('Dispenser')
-        const txHash = await contract.requestTokens(account, amount)
-        const receipt = await contract.waitForReceipt(txHash)
-        return receipt.status === 1
+        const receipt = await contract.requestTokens(account, amount)
+        return receipt.status
     }
 }
