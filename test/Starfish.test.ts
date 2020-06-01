@@ -60,19 +60,18 @@ describe("Starfish", () => {
         it("should request some test tokens", async () => {
             const requestAmount = 10
             const account = new Account(accountConfigNode.address, accountConfigNode.password)
-            const startBalance = await network.getTokenBalance(account.getAddress())
+            const startBalance = await network.getTokenBalance(account.address)
             assert(startBalance)
             console.log(startBalance)
 
             console.log('unlock', await account.unlock(network.web3))
             const result = await network.requestTestTokens(account, requestAmount)
-            const endBalance = await network.getTokenBalance(account.getAddress())
+            const endBalance = await network.getTokenBalance(account.address)
             assert(endBalance)
             console.log(startBalance, result, endBalance)
 
         })
 */
-
     })
 
 })

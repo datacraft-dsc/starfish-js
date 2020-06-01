@@ -37,26 +37,25 @@ export default class ContractBase {
         return await this.web3.eth.getTransactionReceipt(txHash)
     }
 
-    public async callAsTransaction(contractMethod: any, account: Account): Promise<TransactionReceipt> {
-        const gasTransaction = {'from': account.checksumAddress }
+    public async callAsTransaction(contractMethod: unknown, account: Account): Promise<TransactionReceipt> {
+        const gasTransaction = { from: account.checksumAddress }
         const estimatedGas = await contractMethod.estimateGas(gasTransaction)
         const transaction = {
             from: String(account.address),
-//            this.web3.utils.toChecksumAddress(this.address),
+            //            this.web3.utils.toChecksumAddress(this.address),
             gas: estimatedGas,
-//            data: contractMethod.encodeABI(),
+            //            data: contractMethod.encodeABI(),
         }
         console.log(transaction)
         return contractMethod.send(transaction)
-/*
+        /*
         const signedTxHash = await account.signTransaction(this.web3, txHash)
         console.log(signedTxHash)
         return this.web3.eth.sendSignedTransaction(signedTxHash.rawTransaction)
-*/
+        */
     }
 
     public toEther(amountWei: string): string {
         return this.web3.utils.fromWei(amountWei, 'ether')
     }
-
 }

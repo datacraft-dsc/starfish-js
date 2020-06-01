@@ -138,5 +138,4 @@ export default class Starfish {
         const receipt = await contract.waitForReceipt(txHash)
         return receipt.status === 1
     }
-
 }
