@@ -272,6 +272,6 @@ export default class Starfish {
         reference2?: string
     ): Promise<EventData[]> {
         const contract = <DirectPurchaseContract>await this.getContract('DirectPurchase')
-        return await contract.getEventLogs(fromAccountAddress, toAccountAddress, amount, reference1, reference2)
+        return contract.getEventLogs(fromAccountAddress, toAccountAddress, amount, reference1, reference2)
     }
 }
