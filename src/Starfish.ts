@@ -221,7 +221,7 @@ export default class Starfish {
         return eventLogs && eventLogs.length > 0
     }
 
-    public async getEventLogs(
+    public async getTokenEventLogs(
         fromAccountAddress: Account | string,
         toAccountAddress: Account | string,
         amount: number | string,

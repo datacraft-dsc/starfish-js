@@ -130,7 +130,7 @@ describe("Starfish", () => {
             // console.log(fromBalance, toBalance)
             assert(await network.sendTokenWithLog(fromAccount, toAccount, sendAmount, ref1))
             assert(await network.isTokenSent(fromAccount, toAccount, sendAmount, ref1))
-            const eventLogs = await network.getEventLogs(fromAccount, toAccount, sendAmount, ref1)
+            const eventLogs = await network.getTokenEventLogs(fromAccount, toAccount, sendAmount, ref1)
             assert(eventLogs)
         })
     })
