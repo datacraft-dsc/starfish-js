@@ -234,6 +234,7 @@ export default class Starfish {
         }
         return status
     }
+
     /**
      * Returns true if any token has been sent to the recipient 'toAccountAddress' with the amount, and optiona references.
      * @param account Account to send the token from. You must have access to the private password, or have this account unlocked.
@@ -254,6 +255,7 @@ export default class Starfish {
         const eventLogs = await contract.getEventLogs(fromAccountAddress, toAccountAddress, amount, reference1, reference2)
         return eventLogs && eventLogs.length > 0
     }
+
     /**
      * Returns a list of events that have been sent to the recipient 'toAccountAddress' with the amount, and optiona references.
      * @param account Account to send the token from. You must have access to the private password, or have this account unlocked.
@@ -263,7 +265,6 @@ export default class Starfish {
      * @param reference2 Reference #2 to save with the payment transaction.
      * @returns The list of events that have been found.
      */
-
     public async getTokenEventLogs(
         fromAccountAddress: Account | string,
         toAccountAddress: Account | string,
