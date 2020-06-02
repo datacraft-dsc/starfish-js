@@ -7,6 +7,7 @@ import ContractManager from './Contracts/ContractManager'
 import NetworkContract from './Contracts/NetworkContract'
 import OceanTokenContract from './Contracts/OceanTokenContract'
 import DispenserContract from './Contracts/DispenserContract'
+import DirectPurchaseContract from './Contracts/DirectPurchaseContract'
 
 import { isBalanceInsufficient } from './Helpers'
 
@@ -171,5 +172,39 @@ export default class Starfish {
         }
         const receipt = await contract.transfer(account, toAccountAddress, amount)
         return receipt.status
+    }
+
+    /*
+     *
+     *
+     *      Send Tokens (make payment) with logging on the block chain.
+     *
+     */
+    public async sendTokenWithLog(
+        account: Account,
+        toAccountAddress: Account | string,
+        amount: number | string,
+        reference1?: string,
+        reference2?: string
+    ): Promise<boolean> {
+        let status = false
+        const oceanContract = <OceanTokenContract>await this.getContract('OceanToken')
+        const directContract = <DirectPurchaseContract>await this.getContract('DirectPurchase')
+
+        const fromAccountBalance = await oceanContract.getBalance(account)
+        if (isBalanceInsufficient(fromAccountBalance, amount)) {
+            throw new Error(
+                `The account ${account.address} has insufficient funds of ${fromAccountBalance} tokens to send ${amount} tokens`
+            )
+        }
+
+        // first approve the transfer fo tokens for the direct-contract
+        const approved = await oceanContract.approveTransfer(account, directContract.address, amount)
+        status = approved.status
+        if (status) {
+            const receipt = await directContract.sendTokenWithLog(account, toAccountAddress, amount, reference1, reference2)
+            status = receipt.status
+        }
+        return status
     }
 }
