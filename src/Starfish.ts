@@ -146,17 +146,30 @@ export default class Starfish {
      *
      *
      */
-    public async sendEther(account: Account, toAccountAddress: Account | string, amount: number): Promise<boolean> {
-        const networkContract = new NetworkContract()
-        networkContract.load(this.web3)
-        const fromAccountBalance = await networkContract.getBalance(account)
+    public async sendEther(account: Account, toAccountAddress: Account | string, amount: number | string): Promise<boolean> {
+        const contract = new NetworkContract()
+        contract.load(this.web3)
+        const fromAccountBalance = await contract.getBalance(account)
 
         if (isBalanceInsufficient(fromAccountBalance, amount)) {
             throw new Error(
                 `The account ${account.address} has insufficient funds of ${fromAccountBalance} ether to send ${amount} ether`
             )
         }
-        const receipt = await networkContract.sendEther(account, toAccountAddress, amount)
+        const receipt = await contract.sendEther(account, toAccountAddress, amount)
+        return receipt.status
+    }
+
+    public async sendToken(account: Account, toAccountAddress: Account | string, amount: number | string): Promise<boolean> {
+        const contract = <OceanTokenContract>await this.getContract('OceanToken')
+        const fromAccountBalance = await contract.getBalance(account)
+
+        if (isBalanceInsufficient(fromAccountBalance, amount)) {
+            throw new Error(
+                `The account ${account.address} has insufficient funds of ${fromAccountBalance} tokens to send ${amount} tokens`
+            )
+        }
+        const receipt = await contract.transfer(account, toAccountAddress, amount)
         return receipt.status
     }
 }

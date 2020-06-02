@@ -101,6 +101,22 @@ describe("Starfish", () => {
             assert.equal(Number(toBalance) + sendAmount, sendToBalance)
         })
 
+        it("should send some tokens from one account to another", async () => {
+            const sendAmount = 10
+            const fromAccount = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
+            const toAccount = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
+            const fromBalance = await network.getTokenBalance(fromAccount)
+            const toBalance = await network.getTokenBalance(toAccount)
+            // console.log(fromBalance, toBalance)
+            assert(await network.sendToken(fromAccount, toAccount, sendAmount))
+            const sendFromBalance = await network.getTokenBalance(fromAccount)
+            const sendToBalance = await network.getTokenBalance(toAccount)
+            // console.log(sendFromBalance, sendToBalance)
+            assert.equal(Number(fromBalance) - sendAmount, sendFromBalance)
+            assert.equal(Number(toBalance) + sendAmount, sendToBalance)
+        })
+
+
     })
 
 })
