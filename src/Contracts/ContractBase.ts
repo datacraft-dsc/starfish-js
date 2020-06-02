@@ -34,26 +34,39 @@ export default class ContractBase {
         return address
     }
 
-    public async callAsTransaction(contractMethod: ContractSendMethod, account: Account): Promise<any> {
+    public async sendToContract(contractMethod: ContractSendMethod, account: Account): Promise<any> {
         const gasTransaction = { from: account.checksumAddress }
         const estimatedGas = await contractMethod.estimateGas(gasTransaction)
-        const transaction = {
-            from: account.address,
-            to: this.address,
-            gas: estimatedGas,
-            data: contractMethod.encodeABI(),
+        if (account.isLocal) {
+            const transaction = {
+                from: account.address,
+                to: this.address,
+                gas: estimatedGas,
+                data: contractMethod.encodeABI(),
+            }
+            // local account, that needs to sign the transaction and then send
+            const signedTransaction = await account.signTransaction(this.web3, transaction)
+            return this.web3.eth.sendSignedTransaction(signedTransaction.rawTransaction)
+        } else {
+            const transaction = {
+                from: account.address,
+                gas: estimatedGas,
+            }
+            // the account is on the node, so send to the node, for the node to sign
+            return contractMethod.send(transaction)
         }
+    }
+    public async sendTransaction(transaction: any, account: Account): Promise<any> {
+        const estimatedGas = await this.web3.eth.estimateGas(transaction)
+        transaction['gas'] = estimatedGas
+
         if (account.isLocal) {
             // local account, that needs to sign the transaction and then send
             const signedTransaction = await account.signTransaction(this.web3, transaction)
             return this.web3.eth.sendSignedTransaction(signedTransaction.rawTransaction)
         } else {
             // the account is on the node, so send to the node, for the node to sign
-            return contractMethod.send(transaction)
+            return this.web3.eth.sendTransaction(transaction)
         }
-    }
-
-    public toEther(amountWei: string): string {
-        return this.web3.utils.fromWei(amountWei, 'ether')
     }
 }

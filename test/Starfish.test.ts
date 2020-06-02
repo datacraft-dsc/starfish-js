@@ -81,7 +81,25 @@ describe("Starfish", () => {
             assert(endBalance, 'end balance')
             assert.equal(Number(startBalance) + requestAmount, endBalance, 'balance changed')
         })
-
+    })
+    describe("account operations", () => {
+        before( async () => {
+            network = await Starfish.getInstance(setup.network.url);
+        })
+        it("should send some ether from one account to another", async () => {
+            const sendAmount = 10
+            const fromAccount = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
+            const toAccount = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
+            const fromBalance = await network.getEtherBalance(fromAccount)
+            const toBalance = await network.getEtherBalance(toAccount)
+            // console.log(fromBalance, toBalance)
+            assert(await network.sendEther(fromAccount, toAccount, sendAmount))
+            const sendFromBalance = await network.getEtherBalance(fromAccount)
+            const sendToBalance = await network.getEtherBalance(toAccount)
+            // console.log(sendFromBalance, sendToBalance)
+            assert.equal(Number(fromBalance) - sendAmount, sendFromBalance)
+            assert.equal(Number(toBalance) + sendAmount, sendToBalance)
+        })
 
     })
 

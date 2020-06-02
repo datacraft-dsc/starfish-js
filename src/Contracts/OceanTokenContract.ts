@@ -1,5 +1,6 @@
 import ContractBase from './ContractBase'
 import Account from '../Account'
+import { toEther } from '../Helpers'
 
 export default class OceanTokenContract extends ContractBase {
     constructor() {
@@ -9,6 +10,6 @@ export default class OceanTokenContract extends ContractBase {
     public async getBalance(accountAddress: Account | string): Promise<string> {
         const address = this.getAccountAddress(accountAddress)
         const amountWei = await this.contract.methods.balanceOf(address).call()
-        return this.toEther(amountWei)
+        return toEther(amountWei)
     }
 }

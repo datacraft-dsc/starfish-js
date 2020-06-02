@@ -8,6 +8,8 @@ import NetworkContract from './Contracts/NetworkContract'
 import OceanTokenContract from './Contracts/OceanTokenContract'
 import DispenserContract from './Contracts/DispenserContract'
 
+import { isBalanceInsufficient } from './Helpers'
+
 /**
  * Starfish class to connect to a block chain network. To perform starfish operations
  *
@@ -135,6 +137,26 @@ export default class Starfish {
     public async requestTestTokens(account: Account, amount: number): Promise<boolean> {
         const contract = <DispenserContract>await this.getContract('Dispenser')
         const receipt = await contract.requestTokens(account, amount)
+        return receipt.status
+    }
+
+    /*
+     *
+     *      Send ether and tokens to another account
+     *
+     *
+     */
+    public async sendEther(account: Account, toAccountAddress: Account | string, amount: number): Promise<boolean> {
+        const networkContract = new NetworkContract()
+        networkContract.load(this.web3)
+        const fromAccountBalance = await networkContract.getBalance(account)
+
+        if (isBalanceInsufficient(fromAccountBalance, amount)) {
+            throw new Error(
+                `The account ${account.address} has insufficient funds of ${fromAccountBalance} ether to send ${amount} ether`
+            )
+        }
+        const receipt = await networkContract.sendEther(account, toAccountAddress, amount)
         return receipt.status
     }
 }
