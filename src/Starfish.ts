@@ -149,6 +149,13 @@ export default class Starfish {
      *
      *
      */
+    /**
+     * Send some ether to another account.
+     * @param account Account to send the ether from. You must have access to the private password, or have this account unlocked.
+     * @param toAccountAddress Account or address string of the account that will receive the payment.
+     * @param amount Amount to of ether to send.
+     * @returns True if the sending of the payment was made.
+     */
     public async sendEther(account: Account, toAccountAddress: Account | string, amount: number | string): Promise<boolean> {
         const contract = new NetworkContract()
         contract.load(this.web3)
@@ -163,6 +170,13 @@ export default class Starfish {
         return receipt.status
     }
 
+    /**
+     * Send some token to another account.
+     * @param account Account to send the token from. You must have access to the private password, or have this account unlocked.
+     * @param toAccountAddress Account or address string of the account that will receive the payment.
+     * @param amount Amount to of token to send.
+     * @returns True if the sending of the payment was made.
+     */
     public async sendToken(account: Account, toAccountAddress: Account | string, amount: number | string): Promise<boolean> {
         const contract = <OceanTokenContract>await this.getContract('OceanToken')
         const fromAccountBalance = await contract.getBalance(account)
@@ -181,6 +195,17 @@ export default class Starfish {
      *
      *      Send Tokens (make payment) with logging on the block chain.
      *
+     */
+
+    /**
+     * Send some token to another account and record the transaction with two optional references. These references are saved
+     * on the block chain with the payment transaction. They can be reterived later using the call {@link getTokenEventLogs}
+     * @param account Account to send the token from. You must have access to the private password, or have this account unlocked.
+     * @param toAccountAddress Account or address string of the account that will receive the payment.
+     * @param amount Amount to of token to send.
+     * @param reference1 Reference #1 to save with the payment transaction.
+     * @param reference2 Reference #2 to save with the payment transaction.
+     * @returns True if the sending of the payment was made.
      */
     public async sendTokenWithLog(
         account: Account,
@@ -209,6 +234,15 @@ export default class Starfish {
         }
         return status
     }
+    /**
+     * Returns true if any token has been sent to the recipient 'toAccountAddress' with the amount, and optiona references.
+     * @param account Account to send the token from. You must have access to the private password, or have this account unlocked.
+     * @param toAccountAddress Account or address string of the account that will receive the payment.
+     * @param amount Amount to of token to send.
+     * @param reference1 Reference #1 to save with the payment transaction.
+     * @param reference2 Reference #2 to save with the payment transaction.
+     * @returns True if a valid payment was found.
+     */
     public async isTokenSent(
         fromAccountAddress: Account | string,
         toAccountAddress: Account | string,
@@ -220,6 +254,15 @@ export default class Starfish {
         const eventLogs = await contract.getEventLogs(fromAccountAddress, toAccountAddress, amount, reference1, reference2)
         return eventLogs && eventLogs.length > 0
     }
+    /**
+     * Returns a list of events that have been sent to the recipient 'toAccountAddress' with the amount, and optiona references.
+     * @param account Account to send the token from. You must have access to the private password, or have this account unlocked.
+     * @param toAccountAddress Account or address string of the account that will receive the payment.
+     * @param amount Amount to of token to send.
+     * @param reference1 Reference #1 to save with the payment transaction.
+     * @param reference2 Reference #2 to save with the payment transaction.
+     * @returns The list of events that have been found.
+     */
 
     public async getTokenEventLogs(
         fromAccountAddress: Account | string,
