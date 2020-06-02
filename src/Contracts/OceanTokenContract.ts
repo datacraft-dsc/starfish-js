@@ -29,4 +29,3 @@ export default class OceanTokenContract extends ContractBase {
         return toEther(amountWei)
     }
 }
-
