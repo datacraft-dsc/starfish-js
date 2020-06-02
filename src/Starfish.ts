@@ -1,4 +1,6 @@
 import Web3 from 'web3'
+import { EventData } from 'web3-eth-contract'
+
 import IProvider from './Providers/IProvider'
 import DirectProvider from './Providers/DirectProvider'
 import Account from './Account'
@@ -206,5 +208,27 @@ export default class Starfish {
             status = receipt.status
         }
         return status
+    }
+    public async isTokenSent(
+        fromAccountAddress: Account | string,
+        toAccountAddress: Account | string,
+        amount: number | string,
+        reference1?: string,
+        reference2?: string
+    ): Promise<boolean> {
+        const contract = <DirectPurchaseContract>await this.getContract('DirectPurchase')
+        const eventLogs = await contract.getEventLogs(fromAccountAddress, toAccountAddress, amount, reference1, reference2)
+        return eventLogs && eventLogs.length > 0
+    }
+
+    public async getEventLogs(
+        fromAccountAddress: Account | string,
+        toAccountAddress: Account | string,
+        amount: number | string,
+        reference1?: string,
+        reference2?: string
+    ): Promise<EventData[]> {
+        const contract = <DirectPurchaseContract>await this.getContract('DirectPurchase')
+        return await contract.getEventLogs(fromAccountAddress, toAccountAddress, amount, reference1, reference2)
     }
 }

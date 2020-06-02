@@ -31,7 +31,7 @@ export default class OceanTokenContract extends ContractBase {
     ): Promise<TransactionReceipt> {
         const toAddress = this.getAccountAddress(toAccountAddress)
         const amountWei = toWei(amount)
-        return this.sendToContract(this.contract.methods.approveTransfer(toAddress, amountWei), account)
+        return this.sendToContract(this.contract.methods.approve(toAddress, amountWei), account)
     }
 
     public async getTotalSupply() {

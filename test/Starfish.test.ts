@@ -82,7 +82,7 @@ describe("Starfish", () => {
             assert.equal(Number(startBalance) + requestAmount, endBalance, 'balance changed')
         })
     })
-    describe("account operations", () => {
+    describe("Send ether and tokens to another account", () => {
         before( async () => {
             network = await Starfish.getInstance(setup.network.url);
         })
@@ -115,8 +115,24 @@ describe("Starfish", () => {
             assert.equal(Number(fromBalance) - sendAmount, sendFromBalance)
             assert.equal(Number(toBalance) + sendAmount, sendToBalance)
         })
-
-
+    })
+    describe("Send ether and tokens to another account with logging", () => {
+        before( async () => {
+            network = await Starfish.getInstance(setup.network.url);
+        })
+        it("should send some token from one account to another with logging", async () => {
+            const sendAmount = 1
+            const fromAccount = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
+            const toAccount = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
+            // const fromBalance = await network.getTokenBalance(fromAccount)
+            // const toBalance = await network.getTokenBalance(toAccount)
+            const ref1 = 'my ref string'
+            // console.log(fromBalance, toBalance)
+            assert(await network.sendTokenWithLog(fromAccount, toAccount, sendAmount, ref1))
+            assert(await network.isTokenSent(fromAccount, toAccount, sendAmount, ref1))
+            const eventLogs = await network.getEventLogs(fromAccount, toAccount, sendAmount, ref1)
+            assert(eventLogs)
+        })
     })
 
 })
