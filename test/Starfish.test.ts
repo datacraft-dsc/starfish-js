@@ -124,6 +124,9 @@ describe("Starfish", () => {
             const sendAmount = 1
             const fromAccount = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
             const toAccount = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
+            // get some tokens to send
+            assert(await network.requestTestTokens(fromAccount, sendAmount * 2))
+
             // const fromBalance = await network.getTokenBalance(fromAccount)
             // const toBalance = await network.getTokenBalance(toAccount)
             const ref1 = 'my ref string'
