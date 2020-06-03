@@ -14,7 +14,6 @@ export default class ProvenanceContract extends ContractBase {
     }
 
     public async getEventLogs(assetId: string): Promise<EventData[]> {
-        const address = this.getAccountAddress(accountAddress)
         const filter = {
             _assetID: assetId,
         }
