@@ -236,7 +236,8 @@ export default class Starfish {
     }
 
     /**
-     * Returns true if any token has been sent to the recipient 'toAccountAddress' with the amount, and optiona references.
+     * Returns true if any token has been sent to the recipient 'toAccountAddress' with the amount, and optional references.
+     * This method will only show any tokens sent by the method {@link sendTokenWithLog}.
      * @param account Account to send the token from. You must have access to the private password, or have this account unlocked.
      * @param toAccountAddress Account or address string of the account that will receive the payment.
      * @param amount Amount to of token to send.
@@ -258,6 +259,7 @@ export default class Starfish {
 
     /**
      * Returns a list of events that have been sent to the recipient 'toAccountAddress' with the amount, and optiona references.
+     * This call will only work with tokens send by the method {@link sendTokenWithLog}.
      * @param account Account to send the token from. You must have access to the private password, or have this account unlocked.
      * @param toAccountAddress Account or address string of the account that will receive the payment.
      * @param amount Amount to of token to send.
