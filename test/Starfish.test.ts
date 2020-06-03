@@ -1,4 +1,7 @@
+import { randomHex } from 'web3-utils'
+
 import assert from 'assert'
+
 
 import Starfish from '../src/Starfish'
 import Account from '../src/Account'
@@ -137,5 +140,20 @@ describe("Starfish", () => {
             assert(eventLogs)
         })
     })
+    describe("Register and get event logs for provenance", () => {
+        before( async () => {
+            network = await Starfish.getInstance(setup.network.url);
+        })
+        it("should register an asset id for provenance and then check the event logs", async () => {
+            const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
+            const assetId = randomHex(32)
+            assert(await network.provenanceRegister(account, assetId))
 
+            const eventLogs = await network.getProvenanceEventLogs(assetId)
+            assert(eventLogs)
+            assert(eventLogs[0])
+            assert.equal(eventLogs[0]['returnValues']['_assetID'], assetId)
+            // console.log(eventLogs)
+        })
+    })
 })

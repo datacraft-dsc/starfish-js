@@ -1,8 +1,8 @@
 import { TransactionReceipt } from 'web3-core'
+import { EventData } from 'web3-eth-contract'
 
 import ContractBase from './ContractBase'
 import Account from '../Account'
-import { toEther, toWei } from '../Helpers'
 
 export default class ProvenanceContract extends ContractBase {
     constructor() {
@@ -10,7 +10,7 @@ export default class ProvenanceContract extends ContractBase {
     }
 
     public async register(account: Account, assetId: string): Promise<TransactionReceipt> {
-        return this.sendToContract(this.contract.methods.register(assetId), account)
+        return this.sendToContract(this.contract.methods.registerAsset(assetId), account)
     }
 
     public async getEventLogs(assetId: string): Promise<EventData[]> {

@@ -293,7 +293,7 @@ export default class Starfish {
      * @param assetId Asset id to register. This is a 32 byte hex string ( '0x' + 64 hex chars )
      * @returns True if the registration was successfull.
      */
-    public async registerProvenance(account: Account, assetId: string): Promise<boolean> {
+    public async provenanceRegister(account: Account, assetId: string): Promise<boolean> {
         const contract = <ProvenanceContract>await this.getContract('Provenance')
         const receipt = await contract.register(account, assetId)
         return receipt.status
