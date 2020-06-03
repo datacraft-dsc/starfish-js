@@ -1,40 +1,40 @@
 import Web3 from 'web3'
 import { EventData } from 'web3-eth-contract'
 
-import IProvider from './Providers/IProvider'
-import DirectProvider from './Providers/DirectProvider'
+import IProvider from './Provider/IProvider'
+import DirectProvider from './Provider/DirectProvider'
 import Account from './Account'
-import ContractBase from './Contracts/ContractBase'
-import ContractManager from './Contracts/ContractManager'
-import NetworkContract from './Contracts/NetworkContract'
-import OceanTokenContract from './Contracts/OceanTokenContract'
-import DispenserContract from './Contracts/DispenserContract'
-import DirectPurchaseContract from './Contracts/DirectPurchaseContract'
-import ProvenanceContract from './Contracts/ProvenanceContract'
-import DIDRegistryContract from './Contracts/DIDRegistryContract'
+import ContractBase from './Contract/ContractBase'
+import ContractManager from './Contract/ContractManager'
+import NetworkContract from './Contract/NetworkContract'
+import OceanTokenContract from './Contract/OceanTokenContract'
+import DispenserContract from './Contract/DispenserContract'
+import DirectPurchaseContract from './Contract/DirectPurchaseContract'
+import ProvenanceContract from './Contract/ProvenanceContract'
+import DIDRegistryContract from './Contract/DIDRegistryContract'
 
 import { isBalanceInsufficient } from './Helpers'
 
 /**
- * Starfish class to connect to a block chain network. To perform starfish operations
+ * Network class to connect to a block chain network. To perform starfish operations
  *
  *
  */
-export default class Starfish {
+export default class Network {
     /**
-     * Return a instance of a Starfish object.
+     * Return a instance of a Network object.
      * @param urlProvider URL of the network node or a Provider object to access the node.
      * @param artifactsPath Path to the artifacts files that contain the contract ABI and address.
      * The artifact contract files must be in the format `<contractName>.<networkName>.json`.
      *
-     * @return The current Starfish object
+     * @return The current Network object
      */
-    public static async getInstance(urlProvider: string | IProvider, artifactsPath?: string): Promise<Starfish> {
-        if (!Starfish.instance) {
-            Starfish.instance = new Starfish()
-            await Starfish.instance.init(urlProvider, artifactsPath)
+    public static async getInstance(urlProvider: string | IProvider, artifactsPath?: string): Promise<Network> {
+        if (!Network.instance) {
+            Network.instance = new Network()
+            await Network.instance.init(urlProvider, artifactsPath)
         }
-        return Starfish.instance
+        return Network.instance
     }
 
     private static instance
@@ -65,7 +65,7 @@ export default class Starfish {
 
     /**
      * Initialize the starfish object using a url or Provider and arfitfacts path. It is better
-     * to call {@link getInstance} to create a new Starfish object.
+     * to call {@link getInstance} to create a new Network object.
      * @param urlProvider URL of the network node or a Provider object to access the node.
      * @param artifactsPath Path to the artifacts files that contain the contract ABI and address.
      */

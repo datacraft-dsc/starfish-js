@@ -11,7 +11,7 @@ import Web3 from 'web3'
 import { toChecksumAddress } from 'web3-utils'
 import { EncryptedKeystoreV3Json, SignedTransaction } from 'web3-core'
 
-import Starfish from './Starfish'
+import Network from './Network'
 /**
  * Account class to hold a privatly owned account
  */
@@ -44,7 +44,7 @@ export default class Account {
      * @param password Password to access this account information in the account file.
      * @returns A new account object with the nessecary information.
      */
-    public static async loadFromNetwork(network: Starfish, address: string, password: string): Promise<Account> {
+    public static async loadFromNetwork(network: Network, address: string, password: string): Promise<Account> {
         const accounts = await network.web3.eth.personal.getAccounts()
         if (accounts.indexOf(address) >= 0) {
             return new Account(address, password)

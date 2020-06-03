@@ -3,9 +3,9 @@ import { randomHex } from 'web3-utils'
 import assert from 'assert'
 
 
-import Starfish from '../src/Starfish'
+import Network from '../src/Network'
 import Account from '../src/Account'
-import DirectProvider from '../src/Providers/DirectProvider'
+import DirectProvider from '../src/Provider/DirectProvider'
 import { loadTestSetup } from './TestSetup'
 
 var network
@@ -15,10 +15,10 @@ let setup = loadTestSetup()
 const accountConfig = setup.accounts['account1']
 const accountConfigNode = setup.accounts['accountNode']
 
-describe("Starfish", () => {
+describe("Network", () => {
     describe("basic object create", () => {
         it("should create a basic Starfish object using a url string", async () => {
-            let network = await Starfish.getInstance(setup.network.url);
+            let network = await Network.getInstance(setup.network.url);
             assert(network, 'network');
             assert(network.provider, 'provider')
             assert(network.web3, 'web3')
@@ -28,7 +28,7 @@ describe("Starfish", () => {
         })
         it("should create a basic Starfish object using a Provider object", async () => {
             let provider = new DirectProvider(setup.network.url)
-            let network = await Starfish.getInstance(provider);
+            let network = await Network.getInstance(provider);
             assert(network, 'network');
             assert(network.provider, 'provider')
             assert(network.web3, 'web3')
@@ -39,7 +39,7 @@ describe("Starfish", () => {
     })
     describe("account operations", () => {
         before( async () => {
-            network = await Starfish.getInstance(setup.network.url);
+            network = await Network.getInstance(setup.network.url);
         })
 
         it("should get ether balance using an account address string", async () => {
@@ -87,7 +87,7 @@ describe("Starfish", () => {
     })
     describe("Send ether and tokens to another account", () => {
         before( async () => {
-            network = await Starfish.getInstance(setup.network.url);
+            network = await Network.getInstance(setup.network.url);
         })
         it("should send some ether from one account to another", async () => {
             const sendAmount = 10
@@ -121,7 +121,7 @@ describe("Starfish", () => {
     })
     describe("Send ether and tokens to another account with logging", () => {
         before( async () => {
-            network = await Starfish.getInstance(setup.network.url);
+            network = await Network.getInstance(setup.network.url);
         })
         it("should send some token from one account to another with logging", async () => {
             const sendAmount = 1
@@ -142,7 +142,7 @@ describe("Starfish", () => {
     })
     describe("Register and get event logs for provenance", () => {
         before( async () => {
-            network = await Starfish.getInstance(setup.network.url);
+            network = await Network.getInstance(setup.network.url);
         })
         it("should register an asset id for provenance and then check the event logs", async () => {
             const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
@@ -159,7 +159,7 @@ describe("Starfish", () => {
 
     describe("Register a did and get the stored ddo", () => {
         before( async () => {
-            network = await Starfish.getInstance(setup.network.url);
+            network = await Network.getInstance(setup.network.url);
         })
         it("should register didId for a ddo and then find it in the network", async () => {
             const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)

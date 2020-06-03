@@ -1,7 +1,7 @@
 import assert from 'assert'
 import fs from 'fs-extra'
 
-import Starfish from '../src/Starfish'
+import Network from '../src/Network'
 import Account from '../src/Account'
 import Web3 from 'web3'
 
@@ -65,7 +65,7 @@ describe('Account Class', () => {
 
     describe('loadFromNetwork', () => {
         it('should load an account from the network node', async () => {
-            const network = await Starfish.getInstance(setup.network.url);
+            const network = await Network.getInstance(setup.network.url);
             const account = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
             assert(account, 'load account')
         })
