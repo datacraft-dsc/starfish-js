@@ -11,6 +11,7 @@ import OceanTokenContract from './Contracts/OceanTokenContract'
 import DispenserContract from './Contracts/DispenserContract'
 import DirectPurchaseContract from './Contracts/DirectPurchaseContract'
 import ProvenanceContract from './Contracts/ProvenanceContract'
+import DIDRegistryContract from './Contracts/DIDRegistryContract'
 
 import { isBalanceInsufficient } from './Helpers'
 
@@ -293,7 +294,7 @@ export default class Starfish {
      * @param assetId Asset id to register. This is a 32 byte hex string ( '0x' + 64 hex chars )
      * @returns True if the registration was successfull.
      */
-    public async provenanceRegister(account: Account, assetId: string): Promise<boolean> {
+    public async registerProvenance(account: Account, assetId: string): Promise<boolean> {
         const contract = <ProvenanceContract>await this.getContract('Provenance')
         const receipt = await contract.register(account, assetId)
         return receipt.status
@@ -307,5 +308,21 @@ export default class Starfish {
     public async getProvenanceEventLogs(assetId: string): Promise<EventData[]> {
         const contract = <ProvenanceContract>await this.getContract('Provenance')
         return contract.getEventLogs(assetId)
+    }
+    /*
+     *
+     *
+     *      Register DID with a DDO string and reslove DID to a DDO string
+     *
+     *
+     */
+    public async registerDID(account: Account, didId: string, ddoText: string): Promise<boolean> {
+        const contract = <DIDRegistryContract>await this.getContract('DIDRegistry')
+        const receipt = await contract.register(account, didId, ddoText)
+        return receipt.status
+    }
+    public async resolveDID(didId: string): Promise<string> {
+        const contract = <DIDRegistryContract>await this.getContract('DIDRegistry')
+        return contract.getValue(didId)
     }
 }

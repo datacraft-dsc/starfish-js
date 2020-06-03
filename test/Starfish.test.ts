@@ -147,7 +147,7 @@ describe("Starfish", () => {
         it("should register an asset id for provenance and then check the event logs", async () => {
             const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
             const assetId = randomHex(32)
-            assert(await network.provenanceRegister(account, assetId))
+            assert(await network.registerProvenance(account, assetId))
 
             const eventLogs = await network.getProvenanceEventLogs(assetId)
             assert(eventLogs)
@@ -156,4 +156,21 @@ describe("Starfish", () => {
             // console.log(eventLogs)
         })
     })
+
+    describe("Register a did and get the stored ddo", () => {
+        before( async () => {
+            network = await Starfish.getInstance(setup.network.url);
+        })
+        it("should register didId for a ddo and then find it in the network", async () => {
+            const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
+            const didId = randomHex(32)
+            const ddo = `{"id": ${didId}}`
+            assert(await network.registerDID(account, didId, ddo))
+
+            const resolvedDDO = await network.resolveDID(didId)
+            // console.log(ddo, resolvedDDO)
+            assert.equal(ddo, resolvedDDO)
+        })
+    })
+
 })

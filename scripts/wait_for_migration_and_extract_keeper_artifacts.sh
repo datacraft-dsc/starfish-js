@@ -32,6 +32,7 @@ if [ ${CONTRACTS_READY} -eq 1 ]; then
 fi
 
 cp ${CONTRACT_FOLDER}/Provenance.development.json ${CONTRACT_FOLDER}/Provenance.spree.json
+cp ${CONTRACT_FOLDER}/DIDRegistry.development.json ${CONTRACT_FOLDER}/DIDRegistry.spree.json
 
 # docker cp ${KEEPER_CONTRACTS_DOCKER_ID}:/keeper-contracts/artifacts/. ./${CONTRACT_FOLDER}/
 echo "copied over the following contracts:"
