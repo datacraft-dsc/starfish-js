@@ -10,6 +10,7 @@ import NetworkContract from './Contracts/NetworkContract'
 import OceanTokenContract from './Contracts/OceanTokenContract'
 import DispenserContract from './Contracts/DispenserContract'
 import DirectPurchaseContract from './Contracts/DirectPurchaseContract'
+import ProvenanceContract from './Contracts/ProvenanceContract'
 
 import { isBalanceInsufficient } from './Helpers'
 
@@ -276,5 +277,35 @@ export default class Starfish {
     ): Promise<EventData[]> {
         const contract = <DirectPurchaseContract>await this.getContract('DirectPurchase')
         return contract.getEventLogs(fromAccountAddress, toAccountAddress, amount, reference1, reference2)
+    }
+
+    /*
+     *
+     *
+     *      Register and list Provenance
+     *
+     *
+     *
+     */
+    /**
+     * Register provenance on the network.
+     * @param account Account to register the provenance from.
+     * @param assetId Asset id to register. This is a 32 byte hex string ( '0x' + 64 hex chars )
+     * @returns True if the registration was successfull.
+     */
+    public async registerProvenance(account: Account, assetId: string): Promise<boolean> {
+        const contract = <ProvenanceContract>await this.getContract('Provenance')
+        const receipt = await contract.register(account, assetId)
+        return receipt.status
+    }
+
+    /**
+     * Return a list of provenance event logs for a given assetId.
+     * @param assetId Asset id to search for a provenance record.
+     * @returns List of event items found for this assetId.
+     */
+    public async getProvenanceEventLogs(assetId: string): Promise<EventData[]> {
+        const contract = <ProvenanceContract>await this.getContract('Provenance')
+        return contract.getEventLogs(assetId)
     }
 }
