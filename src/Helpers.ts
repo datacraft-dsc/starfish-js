@@ -15,6 +15,7 @@ export interface IDIDFragment {
     fragment?: string
     idHex?: string
 }
+
 /*
  *
  *
@@ -22,6 +23,7 @@ export interface IDIDFragment {
  *
  *
  */
+
 export function toEther(amountWei: string): string {
     return fromWei(amountWei, 'ether')
 }
@@ -132,7 +134,7 @@ export function toIdHex(assetId: string): string {
 }
 
 /*
- * Convert a DID string or a single hex number string to a an assetId.
+ * Convert a DID string or a single hex number string to an assetId.
  */
 export function decodeToAssetId(assetDIDId: string): string {
     const assetIdRegexp = new RegExp('^[0-9a-fx]+$', 'i')
