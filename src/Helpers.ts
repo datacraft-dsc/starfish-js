@@ -69,7 +69,7 @@ export function isDID(did: string): boolean {
     return false
 }
 
-export function didGenerateRandom(): string {
+export function didRandom(): string {
     return idToDID(randomHex(32))
 }
 
@@ -81,7 +81,7 @@ export function didParse(did): IDIDFragment {
         method: matchDID[1],
         id: matchDID[2],
     }
-    result['idHex'] = `0x${result['id']}`
+    result['idHex'] = toIdHex(result['id'])
     if (matchDID[3]) {
         result['path'] = matchDID[3]
         const fragmentRegexp = new RegExp('(/[a-f0-9]+)(#.*)', 'i')
@@ -106,4 +106,42 @@ export function didToId(did: string): string {
 
 export function removeLeadingHexZero(text: string): string {
     return text.replace(/^0x/i, '')
+}
+
+export function didCreate(id?: string, assetId?: string, fragment?: string): string {
+    if (!id) {
+        id = randomHex(32)
+    }
+    let did = idToDID(id)
+    if (assetId) {
+        did = did + '/' + removeLeadingHexZero(assetId)
+    }
+    if (fragment) {
+        did = did + `#${fragment}`
+    }
+    return did
+}
+
+export function toIdHex(assetId: string): string {
+    const assetIdRegexp = new RegExp('([a-f0-9]+)$', 'i')
+    const match = assetIdRegexp.exec(assetId)
+    if (match) {
+        return `0x${match[1]}`
+    }
+    return null
+}
+
+/*
+ * Convert a DID string or a single hex number string to a an assetId.
+ */
+export function decodeToAssetId(assetDIDId: string): string {
+    const assetIdRegexp = new RegExp('^[0-9a-fx]+$', 'i')
+    if (assetIdRegexp.test(assetDIDId)) {
+        return toIdHex(assetDIDId)
+    }
+    const result = didParse(assetDIDId)
+    if (!result['path']) {
+        throw new Error('No asset id in DID path')
+    }
+    return toIdHex(result['path'])
 }

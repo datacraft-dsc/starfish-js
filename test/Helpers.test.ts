@@ -7,16 +7,20 @@
 import {assert, expect} from 'chai'
 import {randomHex} from 'web3-utils'
 import {
-    didGenerateRandom,
+    didRandom,
     didValidate,
     removeLeadingHexZero,
-    didParse
+    didParse,
+    didToId,
+    idToDID,
+    decodeToAssetId,
+    didCreate
 } from '../src/Helpers'
 
 
 describe('DID Helper', () => {
     it('should validate a good did', async () => {
-        const testDID = didGenerateRandom()
+        const testDID = didRandom()
         assert(didValidate(testDID))
     })
     it('should throw an invalid header', async () => {
@@ -42,38 +46,51 @@ describe('DID Helper', () => {
         assert.equal(removeLeadingHexZero('x01234'), 'x01234')
     })
     it('should parse did to get minimum parts', async () => {
-        const testId = removeLeadingHexZero(randomHex(32))
-        const testDID = `did:dep:${testId}`
+        const testId = randomHex(32)
+        const testDID = didCreate(testId)
         const result = didParse(testDID)
         assert(result)
         assert.equal(result['method'], 'dep')
-        assert.equal(result['id'], testId)
-        assert.equal(result['idHex'], `0x${testId}`)
+        assert.equal(result['id'], removeLeadingHexZero(testId))
+        assert.equal(result['idHex'], testId)
         assert.isUndefined(result['path'])
         assert.isUndefined(result['fragment'])
     })
     it('should parse did to get path', async () => {
-        const testId = removeLeadingHexZero(randomHex(32))
-        const testAssetId = removeLeadingHexZero(randomHex(32))
-        const testDID = `did:dep:${testId}/${testAssetId}`
+        const testId = randomHex(32)
+        const testAssetId = randomHex(32)
+        const testDID = didCreate(testId, testAssetId)
         const result = didParse(testDID)
         assert(result)
         assert.equal(result['method'], 'dep')
-        assert.equal(result['id'], testId)
-        assert.equal(result['idHex'], `0x${testId}`)
-        assert.equal(result['path'], `/${testAssetId}`)
+        assert.equal(result['id'], removeLeadingHexZero(testId))
+        assert.equal(result['idHex'], testId)
+        assert.equal(result['path'], `/${removeLeadingHexZero(testAssetId)}`)
         assert.isUndefined(result['fragment'])
     })
     it('should parse did to get path and fragment', async () => {
-        const testId = removeLeadingHexZero(randomHex(32))
-        const testAssetId = removeLeadingHexZero(randomHex(32))
-        const testDID = `did:dep:${testId}/${testAssetId}#fragment`
+        const testId = randomHex(32)
+        const testAssetId = randomHex(32)
+        const testDID = didCreate(testId, testAssetId, 'fragment')
         const result = didParse(testDID)
         assert(result)
         assert.equal(result['method'], 'dep')
-        assert.equal(result['id'], testId)
-        assert.equal(result['idHex'], `0x${testId}`)
-        assert.equal(result['path'], `/${testAssetId}`)
+        assert.equal(result['id'], removeLeadingHexZero(testId))
+        assert.equal(result['idHex'], testId)
+        assert.equal(result['path'], `/${removeLeadingHexZero(testAssetId)}`)
         assert.equal(result['fragment'], '#fragment')
+    })
+    it('should convert a did to id and id to did', async () => {
+        const testId = randomHex(32)
+        const resultDID = idToDID(testId)
+        assert.equal(resultDID, `did:dep:${removeLeadingHexZero(testId)}`)
+        const resultId = didToId(resultDID)
+        assert.equal(testId, resultId)
+    })
+    it('should decode a string to a asset id from a DID or hex', async () => {
+        const testAssetId = randomHex(32)
+        const testDID = didCreate(null, testAssetId)
+        assert.equal(testAssetId, decodeToAssetId(testDID))
+        assert.equal(testAssetId, decodeToAssetId(testAssetId))
     })
 })
