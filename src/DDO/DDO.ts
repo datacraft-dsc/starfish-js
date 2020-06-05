@@ -9,36 +9,36 @@ import { didRandom } from '../Helpers'
 
 import { IDDO, IDDOService } from './IDDO'
 
-const SUPPORTED_SERVICES = {
-    meta: {
-        type: 'DEP.Meta',
-        uri: '/meta',
-    },
-    storage: {
-        type: 'DEP.Storage',
-        uri: '/assets',
-    },
-    invoke: {
-        type: 'DEP.Invoke',
-        uri: '/invoke',
-    },
-    market: {
-        type: 'DEP.Market',
-        uri: '/market',
-    },
-    trust: {
-        type: 'DEP.Trust',
-        uri: '/trust',
-    },
-    auth: {
-        type: 'DEP.Auth',
-        uri: '/auth',
-    },
-}
-
-const DEFAULT_VERSION = 'v1'
-
 export default class DDO {
+    static supportedServices = {
+        meta: {
+            type: 'DEP.Meta',
+            uri: '/meta',
+        },
+        storage: {
+            type: 'DEP.Storage',
+            uri: '/assets',
+        },
+        invoke: {
+            type: 'DEP.Invoke',
+            uri: '/invoke',
+        },
+        market: {
+            type: 'DEP.Market',
+            uri: '/market',
+        },
+        trust: {
+            type: 'DEP.Trust',
+            uri: '/trust',
+        },
+        auth: {
+            type: 'DEP.Auth',
+            uri: '/auth',
+        },
+    }
+
+    static defaultVersion = 'v1'
+
     public static createFromServiceList(url: string, serviceList: Array<string>, did?: string, version?: string): DDO {
         const ddo = new DDO(did)
         for (const name of serviceList) {
@@ -49,7 +49,7 @@ export default class DDO {
 
     public static createForAllServices(url: string, did?: string, version?: string): DDO {
         const ddo = new DDO(did)
-        for (const name in SUPPORTED_SERVICES) {
+        for (const name in DDO.supportedServices) {
             ddo.addService(name, url, version)
         }
         return ddo
@@ -82,13 +82,13 @@ export default class DDO {
 
     public addService(name: string, url: string, version?: string): IDDOService {
         if (!version) {
-            version = DEFAULT_VERSION
+            version = DDO.defaultVersion
         }
         let newService: IDDOService = null
-        if (SUPPORTED_SERVICES[name]) {
+        if (DDO.supportedServices[name]) {
             newService = {
-                type: `${SUPPORTED_SERVICES[name]['type']}.${version}`,
-                serviceEndpoint: `${url}/api/${version}/${SUPPORTED_SERVICES[name]['uri']}`,
+                type: `${DDO.supportedServices[name]['type']}.${version}`,
+                serviceEndpoint: `${url}/api/${version}/${DDO.supportedServices[name]['uri']}`,
             }
             const index = this.findServiceIndex(name)
             if (index >= 0) {
