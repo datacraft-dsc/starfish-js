@@ -67,7 +67,6 @@ export default class DDO {
         return name in DDO.supportedServices
     }
 
-
     public data: IDDO
 
     constructor(did: string | IDDO) {
@@ -84,7 +83,6 @@ export default class DDO {
             this.data['@context'] = 'https://www.w3.org/2019/did/v1'
         }
     }
-
 
     public addService(name: string, url: string, version?: string): IDDOService {
         if (!version) {
