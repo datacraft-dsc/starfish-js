@@ -49,5 +49,9 @@ describe('DDO Class', () => {
         assert(ddo.data.id)
         assert(ddo.getDID())
     })
+    it('should test a correct supported service name', async () => {
+        assert(DDO.isSupportedService('meta'))
+        assert.isFalse(DDO.isSupportedService('metabeta'))
+    })
 
 })
