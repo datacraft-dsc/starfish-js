@@ -75,7 +75,7 @@ export function didRandom(): string {
     return idToDID(randomHex(32))
 }
 
-export function didParse(did): IDIDFragment {
+export function didParse(did: string): IDIDFragment {
     didValidate(did)
     const didRegexp = new RegExp('^did:([a-z0-9]+):([a-f0-9]{64})(.*)', 'i')
     const matchDID = didRegexp.exec(did)

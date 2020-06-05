@@ -34,7 +34,7 @@ export default class OceanTokenContract extends ContractBase {
         return this.sendToContract(this.contract.methods.approve(toAddress, amountWei), account)
     }
 
-    public async getTotalSupply() {
+    public async getTotalSupply(): string {
         const amountWei = await this.contract.methods.totalSupply().call()
         return toEther(amountWei)
     }
