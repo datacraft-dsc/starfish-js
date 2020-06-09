@@ -1,6 +1,6 @@
 /*
 
-    Helpers for the starfish-js library
+    Utils for the starfish-js library
 
 */
 

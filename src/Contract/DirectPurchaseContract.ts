@@ -4,7 +4,7 @@ import { toHex } from 'web3-utils'
 
 import { ContractBase } from './ContractBase'
 import { Account } from '../Account'
-import { toWei } from '../Helpers'
+import { toWei } from '../Utils'
 
 export class DirectPurchaseContract extends ContractBase {
     constructor() {

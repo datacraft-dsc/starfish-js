@@ -2,7 +2,7 @@ import { TransactionReceipt } from 'web3-core'
 
 import { ContractBase } from './ContractBase'
 import { Account } from '../Account'
-import { toWei, toEther } from '../Helpers'
+import { toWei, toEther } from '../Utils'
 
 export class NetworkContract extends ContractBase {
     constructor() {

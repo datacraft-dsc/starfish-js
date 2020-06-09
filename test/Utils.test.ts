@@ -1,6 +1,6 @@
 /*
 
-    Test Helpers
+    Test Utils
 
 */
 // import assert from 'assert'
@@ -15,7 +15,7 @@ import {
     idToDID,
     decodeToAssetId,
     didCreate
-} from '../src/Helpers'
+} from '../src/Utils'
 
 
 describe('DID Helper', () => {

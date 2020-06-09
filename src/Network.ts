@@ -13,7 +13,7 @@ import { DirectPurchaseContract } from './Contract/DirectPurchaseContract'
 import { ProvenanceContract } from './Contract/ProvenanceContract'
 import { DIDRegistryContract } from './Contract/DIDRegistryContract'
 
-import { isBalanceInsufficient, isDID } from './Helpers'
+import { isBalanceInsufficient, isDID } from './Utils'
 import { DDO } from './DDO/DDO'
 import { RemoteAgent } from './Agent/RemoteAgent'
 import { IAgentAuthentication } from './Agent/RemoteAgent'
