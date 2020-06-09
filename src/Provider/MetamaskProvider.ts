@@ -1,8 +1,8 @@
 import Web3 from 'web3'
-import { provider as Web3Provider } from 'web3-core'
 import MetaMaskConnector from 'node-metamask'
 
-import IProvider from './IProvider'
+import { provider as Web3Provider } from 'web3-core'
+import { IProvider } from './IProvider'
 
 /**
  * This provider connects to opened websocket of Metamask.

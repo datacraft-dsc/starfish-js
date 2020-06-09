@@ -3,6 +3,7 @@
  */
 
 import Web3 from 'web3'
+
 import { provider as Web3Provider } from 'web3-core'
 
 export interface IProvider {

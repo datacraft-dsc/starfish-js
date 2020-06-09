@@ -1,6 +1,6 @@
 import Web3 from 'web3'
-import { provider as Web3Provider } from 'web3-core'
 
+import { provider as Web3Provider } from 'web3-core'
 import { IProvider } from './IProvider'
 
 /**
