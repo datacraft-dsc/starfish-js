@@ -1,26 +1,29 @@
 import Web3 from 'web3'
 import { EventData } from 'web3-eth-contract'
 
-import IProvider from './Provider/IProvider'
-import DirectProvider from './Provider/DirectProvider'
-import Account from './Account'
-import ContractBase from './Contract/ContractBase'
-import ContractManager from './Contract/ContractManager'
-import NetworkContract from './Contract/NetworkContract'
-import OceanTokenContract from './Contract/OceanTokenContract'
-import DispenserContract from './Contract/DispenserContract'
-import DirectPurchaseContract from './Contract/DirectPurchaseContract'
-import ProvenanceContract from './Contract/ProvenanceContract'
-import DIDRegistryContract from './Contract/DIDRegistryContract'
+import { IProvider } from './Provider/IProvider'
+import { DirectProvider } from './Provider/DirectProvider'
+import { Account } from './Account'
+import { ContractBase } from './Contract/ContractBase'
+import { ContractManager } from './Contract/ContractManager'
+import { NetworkContract } from './Contract/NetworkContract'
+import { OceanTokenContract } from './Contract/OceanTokenContract'
+import { DispenserContract } from './Contract/DispenserContract'
+import { DirectPurchaseContract } from './Contract/DirectPurchaseContract'
+import { ProvenanceContract } from './Contract/ProvenanceContract'
+import { DIDRegistryContract } from './Contract/DIDRegistryContract'
 
-import { isBalanceInsufficient } from './Helpers'
+import { isBalanceInsufficient, isDID } from './Helpers'
+import { DDO } from './DDO/DDO'
+import { RemoteAgent } from './Agent/RemoteAgent'
+import { IAgentAuthentication } from './Agent/RemoteAgent'
 
 /**
  * Network class to connect to a block chain network. To perform starfish operations
  *
  *
  */
-export default class Network {
+export class Network {
     /**
      * Return a instance of a Network object.
      * @param urlProvider URL of the network node or a Provider object to access the node.
@@ -324,5 +327,38 @@ export default class Network {
     public async resolveDID(didId: string): Promise<string> {
         const contract = <DIDRegistryContract>await this.getContract('DIDRegistry')
         return contract.getValue(didId)
+    }
+
+    /*
+     *
+     *
+     *          Helper for resolving agents
+     *
+     *
+     */
+    public async resolveAgent(
+        agentURLorDID: string,
+        username?: string,
+        password?: string,
+        authentication?: IAgentAuthentication
+    ): Promise<DDO> {
+        if (isDID(agentURLorDID)) {
+            const ddoText = await this.resolveDID(agentURLorDID)
+            if (ddoText) {
+                return DDO.createFromString(ddoText)
+            }
+        }
+        let agentAuthentication = authentication
+        if (!authentication) {
+            agentAuthentication = {
+                username: username,
+                password: password,
+            }
+        }
+        const ddoText = await RemoteAgent.resolveURL(agentURLorDID, agentAuthentication)
+        if (ddoText) {
+            return DDO.createFromString(ddoText)
+        }
+        return null
     }
 }

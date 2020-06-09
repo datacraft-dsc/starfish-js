@@ -1,13 +1,13 @@
 import Web3 from 'web3'
 import { provider as Web3Provider } from 'web3-core'
 
-import IProvider from './IProvider'
+import { IProvider } from './IProvider'
 
 /**
  * Web3 provider which uses direct HttpProvider
  * HttpProvider does not suport listening/subscribtion for events.
  */
-export default class DirectProvider implements IProvider {
+export class DirectProvider implements IProvider {
     private provider: Web3Provider
 
     /**

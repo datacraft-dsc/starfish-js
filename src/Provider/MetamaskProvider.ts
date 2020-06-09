@@ -11,7 +11,7 @@ import IProvider from './IProvider'
  * Technically Metamask extension in browser can open port not only for localhost but for external network.
  * This is not recommended due potential security breach.
  */
-export default class MetamaskProvider implements IProvider {
+export class MetamaskProvider implements IProvider {
     private connector: MetaMaskConnector
 
     /**

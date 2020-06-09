@@ -1,11 +1,10 @@
+import { assert } from 'chai'
 import { randomHex } from 'web3-utils'
 
-import assert from 'assert'
 
-
-import Network from '../src/Network'
-import Account from '../src/Account'
-import DirectProvider from '../src/Provider/DirectProvider'
+import { Network } from '../src/Network'
+import { Account } from '../src/Account'
+import { DirectProvider } from '../src/Provider/DirectProvider'
 import { loadTestSetup } from './TestSetup'
 
 var network
@@ -173,4 +172,14 @@ describe("Network", () => {
         })
     })
 
+    describe('Resolve Agent', async () => {
+        before( async () => {
+            network = await Network.getInstance(setup.network.url);
+        })
+        it('should find an agent using a URL', async () => {
+            const agentConfig = setup.agents['local']
+            const ddo = await network.resolveAgent(agentConfig['url'], agentConfig['username'], agentConfig['password'])
+            assert(ddo)
+        })
+    })
 })

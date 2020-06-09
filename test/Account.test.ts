@@ -1,8 +1,9 @@
-import assert from 'assert'
+import { assert } from 'chai'
+
 import fs from 'fs-extra'
 
-import Network from '../src/Network'
-import Account from '../src/Account'
+import { Network } from '../src/Network'
+import { Account } from '../src/Account'
 import Web3 from 'web3'
 
 import { loadTestSetup } from './TestSetup'

@@ -12,7 +12,7 @@ declare let window: any;
  * Metamask extension injects web3 object only on the page which is being run on http server.
  * It does not inject for local file:// protocol
  */
-export default class MetamaskProviderWeb implements IProvider {
+export class MetamaskProviderWeb implements IProvider {
     private provider: Web3Provider
 
     /**

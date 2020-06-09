@@ -2,11 +2,11 @@ import { TransactionReceipt } from 'web3-core'
 import { EventData } from 'web3-eth-contract'
 import { toHex } from 'web3-utils'
 
-import ContractBase from './ContractBase'
-import Account from '../Account'
+import { ContractBase } from './ContractBase'
+import { Account } from '../Account'
 import { toWei } from '../Helpers'
 
-export default class DirectPurchaseContract extends ContractBase {
+export class DirectPurchaseContract extends ContractBase {
     constructor() {
         super('DirectPurchase')
     }

@@ -1,9 +1,9 @@
 import { TransactionReceipt } from 'web3-core'
 
-import ContractBase from './ContractBase'
-import Account from '../Account'
+import { ContractBase } from './ContractBase'
+import { Account } from '../Account'
 
-export default class DIDRegistryContract extends ContractBase {
+export class DIDRegistryContract extends ContractBase {
     constructor() {
         super('DIDRegistry')
     }

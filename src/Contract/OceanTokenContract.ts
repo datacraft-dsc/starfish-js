@@ -1,10 +1,10 @@
 import { TransactionReceipt } from 'web3-core'
 
-import ContractBase from './ContractBase'
-import Account from '../Account'
+import { ContractBase } from './ContractBase'
+import { Account } from '../Account'
 import { toEther, toWei } from '../Helpers'
 
-export default class OceanTokenContract extends ContractBase {
+export class OceanTokenContract extends ContractBase {
     constructor() {
         super('OceanToken')
     }

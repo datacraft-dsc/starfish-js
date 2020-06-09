@@ -11,11 +11,11 @@ import Web3 from 'web3'
 import { toChecksumAddress } from 'web3-utils'
 import { EncryptedKeystoreV3Json, SignedTransaction } from 'web3-core'
 
-import Network from './Network'
+import { Network } from './Network'
 /**
  * Account class to hold a privatly owned account
  */
-export default class Account {
+export class Account {
     readonly address: string
     readonly checksumAddress: string
     readonly password: string

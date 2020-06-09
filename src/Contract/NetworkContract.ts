@@ -1,10 +1,10 @@
 import { TransactionReceipt } from 'web3-core'
 
-import ContractBase from './ContractBase'
-import Account from '../Account'
+import { ContractBase } from './ContractBase'
+import { Account } from '../Account'
 import { toWei, toEther } from '../Helpers'
 
-export default class NetworkContract extends ContractBase {
+export class NetworkContract extends ContractBase {
     constructor() {
         super('NetworkToken')
     }

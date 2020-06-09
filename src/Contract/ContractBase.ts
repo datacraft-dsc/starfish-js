@@ -4,9 +4,9 @@ import { AbiItem } from 'web3-utils'
 // import { TransactionReceipt } from 'web3-core'
 import { ContractSendMethod } from 'web3-eth-contract'
 
-import Account from '../Account'
+import { Account } from '../Account'
 
-export default class ContractBase {
+export class ContractBase {
     readonly name: string
     public abi: AbiItem[]
     public address: string

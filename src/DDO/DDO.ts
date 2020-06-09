@@ -9,7 +9,7 @@ import { didRandom } from '../Helpers'
 
 import { IDDO, IDDOService } from './IDDO'
 
-export default class DDO {
+export class DDO {
     static supportedServices = {
         meta: {
             type: 'DEP.Meta',

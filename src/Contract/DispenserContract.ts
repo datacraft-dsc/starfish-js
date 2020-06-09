@@ -1,8 +1,8 @@
-import ContractBase from './ContractBase'
-import Account from '../Account'
+import { ContractBase } from './ContractBase'
+import { Account } from '../Account'
 import { TransactionReceipt } from 'web3-core'
 
-export default class DispenserContract extends ContractBase {
+export class DispenserContract extends ContractBase {
     constructor() {
         super('Dispense')
     }

@@ -8,7 +8,7 @@ import IProvider from './IProvider'
  * Web3 provider which uses WebSocket
  * WebSocket provider is the only provider which does suport listening/subscribtion for events.
  */
-export default class WebSocketProvider implements IProvider {
+export class WebSocketProvider implements IProvider {
     private provider: WebsocketProvider
 
     /**

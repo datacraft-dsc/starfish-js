@@ -1,9 +1,10 @@
 import fs from 'fs-extra'
 import path from 'path'
 import Web3 from 'web3'
-import ContractBase from './ContractBase'
 
-export default class ContractManager {
+import { ContractBase } from './ContractBase'
+
+export class ContractManager {
     readonly web3: Web3
     readonly networkName: string
     readonly artifactsPath: string
