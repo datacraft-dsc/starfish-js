@@ -13,7 +13,7 @@ import { DirectPurchaseContract } from './Contract/DirectPurchaseContract'
 import { ProvenanceContract } from './Contract/ProvenanceContract'
 import { DIDRegistryContract } from './Contract/DIDRegistryContract'
 
-import { isBalanceInsufficient, isDID } from './Utils'
+import { isBalanceInsufficient, isDID, didToId } from './Utils'
 import { DDO } from './DDO/DDO'
 import { RemoteAgent } from './Agent/RemoteAgent'
 import { IAgentAuthentication } from './Agent/RemoteAgent'
@@ -319,13 +319,15 @@ export class Network {
      *
      *
      */
-    public async registerDID(account: Account, didId: string, ddoText: string): Promise<boolean> {
+    public async registerDID(account: Account, did: string, ddoText: string): Promise<boolean> {
         const contract = <DIDRegistryContract>await this.getContract('DIDRegistry')
+        const didId = didToId(did)
         const receipt = await contract.register(account, didId, ddoText)
         return receipt.status
     }
-    public async resolveDID(didId: string): Promise<string> {
+    public async resolveDID(did: string): Promise<string> {
         const contract = <DIDRegistryContract>await this.getContract('DIDRegistry')
+        const didId = didToId(did)
         return contract.getValue(didId)
     }
 

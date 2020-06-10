@@ -17,7 +17,7 @@ const accountConfigNode = setup.accounts['accountNode']
 
 
 describe('Account Class', () => {
-    describe('Creation', () => {
+    describe('Create class', () => {
         it('should create a new empty Account object', async () => {
             let account = new Account()
             assert(account)
@@ -31,6 +31,7 @@ describe('Account Class', () => {
             assert.equal(account.keyFilename, null)
         })
     })
+
     describe('saveToFile', () => {
         it('should create a new empty Account and save to file', async () => {
             let filename = '/tmp/testAccount_' + web3.utils.randomHex(16) + '.json'
@@ -63,7 +64,6 @@ describe('Account Class', () => {
         })
     })
 
-
     describe('loadFromNetwork', () => {
         it('should load an account from the network node', async () => {
             const network = await Network.getInstance(setup.network.url);
@@ -72,18 +72,23 @@ describe('Account Class', () => {
         })
     })
 
-    describe('common properties', () => {
+    describe('checksumAddress', () => {
         it('should return a checksum address', async () => {
             assert(testAccount.checksumAddress)
         })
+    })
+
+    describe('isAddressEqual', () => {
         it('should match address when the address is all lower case', async () => {
             let address = testAccount.address.toLowerCase()
             assert(testAccount.isAddressEqual(address))
         })
+    })
+
+    describe('isPassword', () => {
         it('should be a valid password', async () => {
             assert(testAccount.isPassword())
         })
-
     })
 
 })

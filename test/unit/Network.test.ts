@@ -5,6 +5,8 @@ import { randomHex } from 'web3-utils'
 import { Network } from 'starfish/Network'
 import { Account } from 'starfish/Account'
 import { DirectProvider } from 'starfish/Provider/DirectProvider'
+import { DDO } from 'starfish/DDO/DDO'
+
 import { loadTestSetup } from 'test/TestSetup'
 
 var network
@@ -14,9 +16,9 @@ let setup = loadTestSetup()
 const accountConfig = setup.accounts['account1']
 const accountConfigNode = setup.accounts['accountNode']
 
-describe("Network Class", () => {
-    describe("getInstance", () => {
-        it("should create a basic Starfish object using a url string", async () => {
+describe('Network Class', () => {
+    describe('getInstance', () => {
+        it('should create a basic Starfish object using a url string', async () => {
             let network = await Network.getInstance(setup.network.url);
             assert(network, 'network');
             assert(network.provider, 'provider')
@@ -25,7 +27,7 @@ describe("Network Class", () => {
             assert(network.networkId, 'networkId')
             assert(network.networkName, 'networkName')
         })
-        it("should create a basic Starfish object using a Provider object", async () => {
+        it('should create a basic Starfish object using a Provider object', async () => {
             let provider = new DirectProvider(setup.network.url)
             let network = await Network.getInstance(provider);
             assert(network, 'network');
@@ -36,31 +38,31 @@ describe("Network Class", () => {
             assert(network.networkName, 'networkName')
         })
     })
-    describe("account operations", () => {
+    describe('account operations', () => {
         before( async () => {
             network = await Network.getInstance(setup.network.url);
         })
-        describe("getEtherBalance", () => {
-            it("should get ether balance using an account address string", async () => {
+        describe('getEtherBalance', () => {
+            it('should get ether balance using an account address string', async () => {
                 const balance = await network.getEtherBalance(accountConfig.address)
                 assert(balance)
             })
-            it("should get ether balance using an account object", async () => {
+            it('should get ether balance using an account object', async () => {
                 const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const balance = await network.getEtherBalance(account)
                 assert(balance)
             })
         })
 
-        describe("getTokenBalance", () => {
-            it("should get a token balance", async () => {
+        describe('getTokenBalance', () => {
+            it('should get a token balance', async () => {
                 let balance = await network.getTokenBalance(accountConfig.address)
                 assert(balance)
             })
         })
 
-        describe("requestTestTokens", () => {
-            it("should request some test tokens from a node account", async () => {
+        describe('requestTestTokens', () => {
+            it('should request some test tokens from a node account', async () => {
                 const requestAmount = 10
                 const account = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
                 assert(account, 'load account')
@@ -73,7 +75,7 @@ describe("Network Class", () => {
                 assert(endBalance, 'end balance')
                 assert.equal(Number(startBalance) + requestAmount, endBalance, 'balance changed')
             })
-            it("should request some test tokens from a local account", async () => {
+            it('should request some test tokens from a local account', async () => {
                 const requestAmount = 10
                 const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const startBalance = await network.getTokenBalance(account.address)
@@ -87,12 +89,12 @@ describe("Network Class", () => {
         })
 
     })
-    describe("Send ether and tokens to another account", () => {
+    describe('Send ether and tokens to another account', () => {
         before( async () => {
             network = await Network.getInstance(setup.network.url);
         })
-        describe("sendEther", () => {
-            it("should send some ether from one account to another", async () => {
+        describe('sendEther', () => {
+            it('should send some ether from one account to another', async () => {
                 const sendAmount = 10
                 const fromAccount = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const toAccount = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
@@ -107,8 +109,8 @@ describe("Network Class", () => {
                 assert.equal(Number(toBalance) + sendAmount, sendToBalance)
             })
         })
-        describe("sendToken", () => {
-            it("should send some tokens from one account to another", async () => {
+        describe('sendToken', () => {
+            it('should send some tokens from one account to another', async () => {
                 const sendAmount = 10
                 const fromAccount = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const toAccount = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
@@ -124,12 +126,12 @@ describe("Network Class", () => {
             })
         })
     })
-    describe("Send ether and tokens to another account with logging", () => {
+    describe('Send ether and tokens to another account with logging', () => {
         before( async () => {
             network = await Network.getInstance(setup.network.url);
         })
-        describe("requestTestTokens", () => {
-            it("should send some token from one account to another with logging", async () => {
+        describe('requestTestTokens', () => {
+            it('should send some token from one account to another with logging', async () => {
                 const sendAmount = 1
                 const fromAccount = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const toAccount = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
@@ -148,12 +150,12 @@ describe("Network Class", () => {
         })
     })
 
-    describe("Register and get event logs for provenance", () => {
+    describe('Register and get event logs for provenance', () => {
         before( async () => {
             network = await Network.getInstance(setup.network.url);
         })
-        describe("registerProvenance", () => {
-            it("should register an asset id for provenance and then check the event logs", async () => {
+        describe('registerProvenance, getProvenanceEventLogs', () => {
+            it('should register an asset id for provenance and then check the event logs', async () => {
                 const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const assetId = randomHex(32)
                 assert(await network.registerProvenance(account, assetId))
@@ -167,18 +169,17 @@ describe("Network Class", () => {
         })
     })
 
-    describe("Register a did and get the stored ddo", () => {
+    describe('Register a did and get the stored ddo', () => {
         before( async () => {
             network = await Network.getInstance(setup.network.url);
         })
-        describe("registerDID", () => {
-            it("should register didId for a ddo and then find it in the network", async () => {
+        describe('registerDID', () => {
+            it('should register didId for a ddo and then find it in the network', async () => {
                 const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
-                const didId = randomHex(32)
-                const ddo = `{"id": ${didId}}`
-                assert(await network.registerDID(account, didId, ddo))
+                const ddo = DDO.createForAllServices('http://localhost')
+                assert(await network.registerDID(account, ddo.getDID(), ddo.toString()))
 
-                const resolvedDDO = await network.resolveDID(didId)
+                const resolvedDDO = await network.resolveDID(ddo.getDID())
                 // console.log(ddo, resolvedDDO)
                 assert.equal(ddo, resolvedDDO)
             })
@@ -188,10 +189,13 @@ describe("Network Class", () => {
             before( async () => {
                 network = await Network.getInstance(setup.network.url);
             })
-            it('should find an agent using a URL', async () => {
-                const agentConfig = setup.agents['local']
-                const ddo = await network.resolveAgent(agentConfig['url'], agentConfig['username'], agentConfig['password'])
-                assert(ddo)
+            it('should find an agent using a DID', async () => {
+                const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
+                const ddo = DDO.createForAllServices('http://localhost')
+                assert(await network.registerDID(account, ddo.getDID(), ddo.toString()))
+
+                const resolvedDDO = await network.resolveAgent(ddo.getDID())
+                assert(resolvedDDO)
             })
             it('should find an agent using a URL', async () => {
                 const agentConfig = setup.agents['local']
