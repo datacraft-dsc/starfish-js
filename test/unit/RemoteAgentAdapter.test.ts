@@ -80,6 +80,15 @@ describe('RemoteAgentAdapter', () => {
                 assert.equal(readMetadata, metadataText)
             })
         })
+        describe('getMetadataList', () => {
+            it('should read the metadata list on the agent', async () => {
+                const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
+                console.log(assetId)
+                const metadataList = await adapter.getMetadataList(metadataURL, accessToken)
+                assert(metadataList)
+                assert(metadataList[assetId])
+            })
+        })
 
     })
 })

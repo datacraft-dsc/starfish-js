@@ -97,4 +97,17 @@ export class RemoteAgentAdapter {
         }
         throw new Error(`Unable to read asset metadata at url ${metadatURL} error: ${response.status}`)
     }
+
+    public async getMetadataList(url: string, token?: string): Promise<any> {
+        const metadatURL = urljoin(url, '/index')
+        const headers = RemoteAgentAdapter.createHeaders('application/json', token)
+        const response = await fetch(metadatURL, {
+            method: 'GET',
+            headers: headers,
+        })
+        if (response.ok) {
+            return response.json()
+        }
+        throw new Error(`Unable to read metadata list at url ${metadatURL} error: ${response.status}`)
+    }
 }
