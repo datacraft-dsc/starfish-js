@@ -2,11 +2,11 @@ import { assert } from 'chai'
 
 import fs from 'fs-extra'
 
-import { Network } from '../src/Network'
-import { Account } from '../src/Account'
+import { Network } from 'starfish/Network'
+import { Account } from 'starfish/Account'
 import Web3 from 'web3'
 
-import { loadTestSetup } from './TestSetup'
+import { loadTestSetup } from 'test/TestSetup'
 
 let web3 = new Web3()
 let password = web3.utils.randomHex(16)

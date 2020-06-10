@@ -9,8 +9,8 @@ import { assert } from 'chai'
 
 import urljoin from 'url-join'
 
-import { RemoteAgentAdapter } from '../src/Middleware/RemoteAgentAdapter'
-import { loadTestSetup } from './TestSetup'
+import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
+import { loadTestSetup } from 'test/TestSetup'
 
 
 let setup = loadTestSetup()

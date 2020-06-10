@@ -15,7 +15,11 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "outDir": "./dist/node/",
-    "rootDir": "./src/",
+    "baseUrl": "src",
+    "paths": {
+      "starfish/*": ["*"],
+      "test/*": ["../test/*"]
+    },
     "sourceMap": true
   },
   "include": [
@@ -24,5 +28,5 @@
   "exclude": [
     "node_modules",
     "**/*.test.ts"
-  ]
+  ],
 }

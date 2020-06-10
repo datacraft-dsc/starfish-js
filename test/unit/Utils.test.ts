@@ -15,7 +15,7 @@ import {
     idToDID,
     decodeToAssetId,
     didCreate
-} from '../src/Utils'
+} from 'starfish/Utils'
 
 
 describe('DID Helper', () => {

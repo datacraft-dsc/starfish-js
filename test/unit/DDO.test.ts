@@ -6,7 +6,7 @@
 
 import { assert } from 'chai'
 
-import { DDO } from '../src/DDO/DDO'
+import { DDO } from 'starfish/DDO/DDO'
 
 describe('DDO Class', () => {
     it('should create a new ddo object from a list of services', async () => {

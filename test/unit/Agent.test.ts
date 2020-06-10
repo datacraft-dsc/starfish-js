@@ -11,7 +11,7 @@ import fetch, { Headers } from 'node-fetch'
 import { Base64 } from 'js-base64'
 import urljoin from 'url-join'
 
-import { loadTestSetup } from './TestSetup'
+import { loadTestSetup } from 'test/TestSetup'
 
 
 let setup = loadTestSetup()

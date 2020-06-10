@@ -2,10 +2,10 @@ import { assert } from 'chai'
 import { randomHex } from 'web3-utils'
 
 
-import { Network } from '../src/Network'
-import { Account } from '../src/Account'
-import { DirectProvider } from '../src/Provider/DirectProvider'
-import { loadTestSetup } from './TestSetup'
+import { Network } from 'starfish/Network'
+import { Account } from 'starfish/Account'
+import { DirectProvider } from 'starfish/Provider/DirectProvider'
+import { loadTestSetup } from 'test/TestSetup'
 
 var network
 

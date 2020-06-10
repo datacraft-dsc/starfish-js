@@ -1,7 +1,7 @@
 import assert from 'assert'
 
-import { ContractManager } from '../src/Contract/ContractManager'
-import { Network } from '../src/Network'
+import { ContractManager } from 'starfish/Contract/ContractManager'
+import { Network } from 'starfish/Network'
 
 
 describe('Contracts', () => {

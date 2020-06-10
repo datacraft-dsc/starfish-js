@@ -8,8 +8,8 @@
 import { assert } from 'chai'
 
 
-import { RemoteAgent } from '../src/Agent/RemoteAgent'
-import { loadTestSetup } from './TestSetup'
+import { RemoteAgent } from 'starfish/Agent/RemoteAgent'
+import { loadTestSetup } from 'test/TestSetup'
 
 
 let setup = loadTestSetup()
