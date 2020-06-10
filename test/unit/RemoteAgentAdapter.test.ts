@@ -31,18 +31,21 @@ const metadata = {
 
 
 describe('RemoteAgentAdapter', () => {
-    describe('getAuthorizationToken', () => {
+
+    describe('Access to agent', () => {
         before(async () => {
             adapter = RemoteAgentAdapter.getInstance()
         })
-        it('should fetch a current or new token', async () => {
-            const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
-            const token = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
-            assert(token)
+        describe('getAuthorizationToken', () => {
+            it('should fetch a current or new token', async () => {
+                const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
+                const token = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
+                assert(token)
+            })
         })
     })
 
-    describe('ddo based operations', () => {
+    describe('ddo based services', () => {
         before(async () => {
             adapter = RemoteAgentAdapter.getInstance()
             const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
@@ -56,7 +59,7 @@ describe('RemoteAgentAdapter', () => {
         })
     })
 
-    describe('metadata based operations', () => {
+    describe('metadata based services', () => {
         var metadataURL
         var metadataText
         before(async () => {
