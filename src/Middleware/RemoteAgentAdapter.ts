@@ -73,7 +73,7 @@ export class RemoteAgentAdapter {
 
     public async saveMetadata(metadata: string, url: string, token?: string): Promise<string> {
         const metadatURL = urljoin(url, '/data')
-        const headers = RemoteAgentAdapter.createHeaders('application/json', token)
+        const headers = RemoteAgentAdapter.createHeaders('text/plain', token)
         const response = await fetch(metadatURL, {
             method: 'POST',
             body: metadata,
@@ -83,5 +83,18 @@ export class RemoteAgentAdapter {
             return response.json()
         }
         throw new Error(`Unable to save asset metadata at url ${metadatURL} error: ${response.status}`)
+    }
+
+    public async readMetadata(assetId: string, url: string, token?: string): Promise<string> {
+        const metadatURL = urljoin(url, `/data/${assetId}`)
+        const headers = RemoteAgentAdapter.createHeaders('text/plain', token)
+        const response = await fetch(metadatURL, {
+            method: 'GET',
+            headers: headers,
+        })
+        if (response.ok) {
+            return response.text()
+        }
+        throw new Error(`Unable to read asset metadata at url ${metadatURL} error: ${response.status}`)
     }
 }

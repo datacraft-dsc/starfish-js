@@ -8,6 +8,7 @@
 import { assert } from 'chai'
 
 import urljoin from 'url-join'
+import { randomHex } from 'web3-utils'
 
 import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
 import { loadTestSetup } from 'test/TestSetup'
@@ -18,6 +19,15 @@ const agentConfig = setup.agents['local']
 
 var accessToken
 var adapter
+
+const metadata = {
+    "name": "testmetadata",
+    "description": "test metadata from starfish-js test",
+    "type": "dataset",
+    "contentType": "text/plain",
+    "contentHash": `${randomHex(32)}`,
+}
+
 
 
 describe('RemoteAgentAdapter', () => {
@@ -47,24 +57,27 @@ describe('RemoteAgentAdapter', () => {
     })
 
     describe('metadata based operations', () => {
+        var metadataURL
+        var metadataText
         before(async () => {
             adapter = RemoteAgentAdapter.getInstance()
             const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
+            metadataText = JSON.stringify(metadata)
+            metadataURL = `${agentConfig['url']}/api/v1/meta`
         })
         describe('saveMetadata', () =>  {
-            it('save metadata to a remote agent', async () => {
-                const url = `${agentConfig['url']}/api/v1/meta`
-                const metadata = {
-                    "name": "testmetadata",
-                    "description": "test metadata from starfish-js test",
-                    "type": "dataset",
-                    "contentType": "text/plain",
-                    "contentHash": "0x0000000000000000000000000000000",
-                }
-                const metadataText = JSON.stringify(metadata)
-                const assetId = await adapter.saveMetadata(metadataText, url, accessToken)
+            it('should save metadata to a remote agent', async () => {
+                const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
                 assert(assetId)
+            })
+        })
+        describe('readMetadata', () => {
+            it('should read a saved metadata item', async () => {
+                const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
+                const readMetadata = await adapter.readMetadata(assetId, metadataURL, accessToken)
+                assert(readMetadata)
+                assert.equal(readMetadata, metadataText)
             })
         })
 
