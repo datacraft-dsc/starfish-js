@@ -70,4 +70,18 @@ export class RemoteAgentAdapter {
         }
         throw new Error(`Unable to get DDO information from url ${ddoURL} error: ${response.status}`)
     }
+
+    public async saveMetadata(metadata: string, url: string, token?: string): Promise<string> {
+        const metadatURL = urljoin(url, '/data')
+        const headers = RemoteAgentAdapter.createHeaders('application/json', token)
+        const response = await fetch(metadatURL, {
+            method: 'POST',
+            body: metadata,
+            headers: headers,
+        })
+        if (response.ok) {
+            return response.json()
+        }
+        throw new Error(`Unable to save asset metadata at url ${metadatURL} error: ${response.status}`)
+    }
 }
