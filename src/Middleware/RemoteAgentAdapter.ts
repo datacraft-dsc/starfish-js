@@ -177,4 +177,17 @@ export class RemoteAgentAdapter {
         }
         throw new Error(`Unable to get a list of listing items at url ${listingURL} error: ${response.status}`)
     }
+    public async updateListing(listingId: string, listingDataText: string, url: string, token?: string): Promise<boolean> {
+        const listingURL = urljoin(url, `/listings/${listingId}`)
+        const headers = RemoteAgentAdapter.createHeaders('application/json', token)
+        const response = await fetch(listingURL, {
+            method: 'PUT',
+            headers: headers,
+            body: listingDataText,
+        })
+        if (response.ok) {
+            return true
+        }
+        throw new Error(`Unable to get listing data at url ${listingURL} error: ${response.status}`)
+    }
 }

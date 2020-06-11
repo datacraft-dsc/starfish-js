@@ -153,6 +153,16 @@ describe('RemoteAgentAdapter', () => {
                     /Unable to get a list of listing items/)
             })
         })
+        describe('updateListing', () => {
+            it('should update a listing at the surfer agent', async () => {
+                const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
+                const listingData = await adapter.addListing(listingText, assetId, marketURL, accessToken)
+                assert(listingData)
+                let newListingData = listingData
+                newListingData['info']['name'] = 'new data'
+                assert(await adapter.updateListing(listingData['id'], JSON.stringify(newListingData), marketURL, accessToken))
+            })
+        })
 
     })
 })
