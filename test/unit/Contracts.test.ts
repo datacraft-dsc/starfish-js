@@ -1,4 +1,4 @@
-import assert from 'assert'
+import { assert } from 'chai'
 
 import { ContractManager } from 'starfish/Contract/ContractManager'
 import { Network } from 'starfish/Network'

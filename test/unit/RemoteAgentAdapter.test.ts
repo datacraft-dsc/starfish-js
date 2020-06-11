@@ -5,7 +5,10 @@
  *
  */
 
-import { assert } from 'chai'
+import chai, { assert } from 'chai'
+import chaiAsPromised from 'chai-as-promised'
+chai.use(chaiAsPromised)
+
 
 import urljoin from 'url-join'
 import { randomHex } from 'web3-utils'
@@ -125,9 +128,28 @@ describe('RemoteAgentAdapter', () => {
             it('should create and add a new listing', async () => {
                 const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
                 const listingData = await adapter.addListing(listingText, assetId, marketURL, accessToken)
-                console.log(listingData)
                 assert(listingData)
             })
         })
+        describe('getListing', () => {
+            it('should get a listing using a listing id', async () => {
+                const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
+                const listingData = await adapter.addListing(listingText, assetId, marketURL, accessToken)
+                assert(listingData)
+                const readListingData = await adapter.getListing(listingData['id'], marketURL, accessToken)
+                assert(readListingData)
+            })
+        })
+
+        describe('getListingList', () => {
+            it('should get a list of listings, but does not work on the surfer agent', async () => {
+                const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
+                const listingData = await adapter.addListing(listingText, assetId, marketURL, accessToken)
+                assert(listingData)
+                assert.isRejected(adapter.getListingList(listingData['userid'], marketURL, accessToken),
+                    /Unable to get a list of listing items/)
+            })
+        })
+
     })
 })

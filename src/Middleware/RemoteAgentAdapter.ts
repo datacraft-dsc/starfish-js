@@ -10,10 +10,30 @@
 import fetch, { Headers } from 'node-fetch'
 import { Base64 } from 'js-base64'
 import urljoin from 'url-join'
+import queryString from 'query-string'
 
 export interface IListingData {
+    trust_level: number
+    userid: string
     assetid: string
-    info: string
+    agreement?: string
+    ctime: string
+    status: string
+    id: string
+    info: any
+    utime: string
+}
+
+interface IListingRequestData {
+    assetid: string
+    info: any
+}
+
+interface IListingListFilter {
+    username?: string
+    userid?: string
+    from?: number
+    size?: number
 }
 
 export class RemoteAgentAdapter {
@@ -116,10 +136,10 @@ export class RemoteAgentAdapter {
         throw new Error(`Unable to read metadata list at url ${metadatURL} error: ${response.status}`)
     }
 
-    public async addListing(listingText: string, assetId: string, url: string, token?: string): Promise<string> {
+    public async addListing(listingText: string, assetId: string, url: string, token?: string): Promise<IListingData> {
         const listingURL = urljoin(url, '/listings')
         const headers = RemoteAgentAdapter.createHeaders('application/json', token)
-        const data: IListingData = {
+        const data: IListingRequestData = {
             assetid: assetId,
             info: JSON.parse(listingText),
         }
@@ -132,5 +152,32 @@ export class RemoteAgentAdapter {
             return response.json()
         }
         throw new Error(`Unable to add listing data at url ${listingURL} error: ${response.status}`)
+    }
+    public async getListing(listingId: string, url: string, token?: string): Promise<IListingData> {
+        const listingURL = urljoin(url, `/listings/${listingId}`)
+        const headers = RemoteAgentAdapter.createHeaders('application/json', token)
+        const response = await fetch(listingURL, {
+            method: 'GET',
+            headers: headers,
+        })
+        if (response.ok) {
+            return response.json()
+        }
+        throw new Error(`Unable to get listing data at url ${listingURL} error: ${response.status}`)
+    }
+    public async getListingList(userId: string, url: string, token?: string): Promise<Array<IListingData>> {
+        const headers = RemoteAgentAdapter.createHeaders('application/json', token)
+        const filter: IListingListFilter = {
+            userid: userId,
+        }
+        const listingURL = urljoin(url, `/listings/${queryString.stringify(filter)}`)
+        const response = await fetch(listingURL, {
+            method: 'GET',
+            headers: headers,
+        })
+        if (response.ok) {
+            return response.json()
+        }
+        throw new Error(`Unable to get a list of listing items at url ${listingURL} error: ${response.status}`)
     }
 }
