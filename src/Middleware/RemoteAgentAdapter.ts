@@ -29,7 +29,7 @@ interface IListingRequestData {
     info: any
 }
 
-interface IListingListFilter {
+export interface IListingFilter {
     username?: string
     userid?: string
     from?: number
@@ -165,11 +165,8 @@ export class RemoteAgentAdapter {
         }
         throw new Error(`Unable to get listing data at url ${listingURL} error: ${response.status}`)
     }
-    public async getListingList(userId: string, url: string, token?: string): Promise<Array<IListingData>> {
+    public async getListingList(filter: IListingFilter, url: string, token?: string): Promise<Array<IListingData>> {
         const headers = RemoteAgentAdapter.createHeaders('application/json', token)
-        const filter: IListingListFilter = {
-            userid: userId,
-        }
         const listingURL = urljoin(url, `/listings/${queryString.stringify(filter)}`)
         const response = await fetch(listingURL, {
             method: 'GET',

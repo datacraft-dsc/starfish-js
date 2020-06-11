@@ -146,7 +146,10 @@ describe('RemoteAgentAdapter', () => {
                 const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
                 const listingData = await adapter.addListing(listingText, assetId, marketURL, accessToken)
                 assert(listingData)
-                assert.isRejected(adapter.getListingList(listingData['userid'], marketURL, accessToken),
+                const filter = {
+                    userid: listingData['userid']
+                }
+                assert.isRejected(adapter.getListingList(filter, marketURL, accessToken),
                     /Unable to get a list of listing items/)
             })
         })
