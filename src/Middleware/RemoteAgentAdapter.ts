@@ -11,6 +11,11 @@ import fetch, { Headers } from 'node-fetch'
 import { Base64 } from 'js-base64'
 import urljoin from 'url-join'
 
+export interface IListingData {
+    assetid: string
+    info: string
+}
+
 export class RemoteAgentAdapter {
     public static getInstance(): RemoteAgentAdapter {
         if (!RemoteAgentAdapter.instance) {
@@ -71,12 +76,12 @@ export class RemoteAgentAdapter {
         throw new Error(`Unable to get DDO information from url ${ddoURL} error: ${response.status}`)
     }
 
-    public async saveMetadata(metadata: string, url: string, token?: string): Promise<string> {
+    public async saveMetadata(metadataText: string, url: string, token?: string): Promise<string> {
         const metadatURL = urljoin(url, '/data')
         const headers = RemoteAgentAdapter.createHeaders('text/plain', token)
         const response = await fetch(metadatURL, {
             method: 'POST',
-            body: metadata,
+            body: metadataText,
             headers: headers,
         })
         if (response.ok) {
@@ -109,5 +114,23 @@ export class RemoteAgentAdapter {
             return response.json()
         }
         throw new Error(`Unable to read metadata list at url ${metadatURL} error: ${response.status}`)
+    }
+
+    public async addListing(listingText: string, assetId: string, url: string, token?: string): Promise<string> {
+        const listingURL = urljoin(url, '/listings')
+        const headers = RemoteAgentAdapter.createHeaders('application/json', token)
+        const data: IListingData = {
+            assetid: assetId,
+            info: JSON.parse(listingText),
+        }
+        const response = await fetch(listingURL, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: headers,
+        })
+        if (response.ok) {
+            return response.json()
+        }
+        throw new Error(`Unable to add listing data at url ${listingURL} error: ${response.status}`)
     }
 }

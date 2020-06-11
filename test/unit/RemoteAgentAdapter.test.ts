@@ -28,6 +28,18 @@ const metadata = {
     "contentHash": `${randomHex(32)}`,
 }
 
+const today = new Date(Date.now())
+const listing = {
+    'name': 'Test file asset',
+    'description': 'Test asset for sale',
+    'dateCreated': today.toISOString(),
+    'author': 'starfish-js-test',
+    'license': 'Closed',
+    'price': 3.141592,              // price is in ocean tokens
+    'extra_data': 'Some extra data',
+    'tags': ['asset', 'sale', 'test', 'starfish'],
+}
+
 
 
 describe('RemoteAgentAdapter', () => {
@@ -86,12 +98,36 @@ describe('RemoteAgentAdapter', () => {
         describe('getMetadataList', () => {
             it('should read the metadata list on the agent', async () => {
                 const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
-                console.log(assetId)
                 const metadataList = await adapter.getMetadataList(metadataURL, accessToken)
                 assert(metadataList)
                 assert(metadataList[assetId])
             })
         })
 
+    })
+    describe('market place services', () => {
+        var metadataURL
+        var metadataText
+        var marketURL
+        var listingText
+        before(async () => {
+            adapter = RemoteAgentAdapter.getInstance()
+            const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
+            accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
+
+            metadataText = JSON.stringify(metadata)
+            metadataURL = `${agentConfig['url']}/api/v1/meta`
+
+            listingText = JSON.stringify(listing)
+            marketURL = `${agentConfig['url']}/api/v1/market`
+        })
+        describe('addListing', () => {
+            it('should create and add a new listing', async () => {
+                const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
+                const listingData = await adapter.addListing(listingText, assetId, marketURL, accessToken)
+                console.log(listingData)
+                assert(listingData)
+            })
+        })
     })
 })
