@@ -15,8 +15,8 @@ import urljoin from 'url-join'
 import { randomHex, hexToBytes } from 'web3-utils'
 
 import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
-import { loadTestSetup } from 'test/TestSetup'
-
+import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
+import { decodeToAssetId, removeLeadingHexZero } from 'starfish/Utils'
 
 let setup = loadTestSetup()
 const agentConfig = setup.agents['local']
@@ -44,7 +44,7 @@ const listing = {
     'tags': ['asset', 'sale', 'test', 'starfish'],
 }
 
-
+const testInovkeName = 'Increment'
 
 describe('RemoteAgentAdapter', () => {
 
@@ -193,6 +193,34 @@ describe('RemoteAgentAdapter', () => {
                 const downloadData = await adapter.downloadAssetData(assetId, storageURL, accessToken)
                 assert(downloadData)
                 assert(downloadData.equals(assetData))
+            })
+        })
+    })
+    describe('invoke services', () => {
+        var invokeURL
+        var assetId
+        before(async () => {
+            adapter = RemoteAgentAdapter.getInstance()
+            const invokeList = await enableSurferInvokableOperations(agentConfig['url'], agentConfig['username'], agentConfig['password'])
+            assert(invokeList['invokables'][testInovkeName])
+            assetId = removeLeadingHexZero(decodeToAssetId(invokeList['invokables'][testInovkeName]))
+
+            const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
+            accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
+            invokeURL = `${agentConfig['url']}/api/v1/invoke/sync`
+        })
+        describe('invoke', () => {
+            it('should call an invoke service', async () => {
+                const testNumber = Math.random() * 100
+                const inputs = {
+                    n: testNumber
+                }
+                const result = await adapter.invoke(assetId, JSON.stringify(inputs), invokeURL, accessToken)
+                assert(result)
+                assert(result['outputs'])
+                assert.equal(result['status'], 'succeeded')
+                const outputs = result['outputs']
+                assert.equal(outputs['n'], testNumber  + 1)
             })
         })
     })

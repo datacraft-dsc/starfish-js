@@ -200,7 +200,7 @@ export class RemoteAgentAdapter {
     public async uploadAssetData(assetId: string, data: Buffer, url: string, token?: string): Promise<boolean> {
         const storageURL = urljoin(url, `/${assetId}`)
 
-        // formData.getHeaders does not read node-fetch Headers class, so we need to create a simple object instead.
+        // formData.getHeaders does not read node-fetch Headers object, so we need to create a simple object instead.
         const headers = {}
         if (token) {
             headers['Authorization'] = `token ${token}`
@@ -232,5 +232,18 @@ export class RemoteAgentAdapter {
             return response.buffer()
         }
         RemoteAgentAdapter.throwError('Unable to download asset data', response)
+    }
+    public async invoke(assetId: string, inputText: string, url: string, token?: string): Promise<any> {
+        const invokeURL = urljoin(url, `/${assetId}`)
+        const headers = RemoteAgentAdapter.createHeaders('application/octet-stream', token)
+        const response = await fetch(invokeURL, {
+            method: 'POST',
+            headers: headers,
+            body: inputText,
+        })
+        if (response.ok) {
+            return response.json()
+        }
+        RemoteAgentAdapter.throwError('Unable to call inovke', response)
     }
 }
