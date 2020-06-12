@@ -1,6 +1,6 @@
 import { assert } from 'chai'
-import { randomHex } from 'web3-utils'
 
+import { randomHex } from 'web3-utils'
 
 import { Network } from 'starfish/Network'
 import { Account } from 'starfish/Account'

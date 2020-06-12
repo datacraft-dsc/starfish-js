@@ -30,6 +30,6 @@ describe('Agent basic fetch using authorization', () => {
         })
         assert(response)
         assert(response.ok)
-        assert(await response.json())
+        assert.isFulfilled(response.json())
     })
 })

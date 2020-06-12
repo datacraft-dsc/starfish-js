@@ -3,7 +3,7 @@
     Test Utils
 
 */
-// import assert from 'assert'
+
 import { assert, expect } from 'chai'
 import { randomHex } from 'web3-utils'
 import {
