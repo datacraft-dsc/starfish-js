@@ -11,7 +11,7 @@ chai.use(chaiAsPromised)
 
 
 import urljoin from 'url-join'
-import { randomHex } from 'web3-utils'
+import { randomHex, sha3 } from 'web3-utils'
 
 import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
 import { loadTestSetup } from 'test/TestSetup'
@@ -163,6 +163,30 @@ describe('RemoteAgentAdapter', () => {
                 assert(await adapter.updateListing(listingData['id'], JSON.stringify(newListingData), marketURL, accessToken))
             })
         })
+    })
+    describe('market place services', () => {
+        var metadataURL
+        var metadataText
+        var storageURL
+        var assetId
+        var assetData
+        before(async () => {
+            adapter = RemoteAgentAdapter.getInstance()
+            const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
+            accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
+            assetData = randomHex(1024)
+            let metadataAsset = metadata
+            metadataAsset['contentHash'] = sha3(assetData)
+            metadataText = JSON.stringify(metadataAsset)
+            metadataURL = `${agentConfig['url']}/api/v1/meta`
+            assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
 
+            storageURL = `${agentConfig['url']}/api/v1/assets`
+        })
+        describe('uploadAssetData', () => {
+            it('should upload asset data', async () => {
+                assert(await adapter.uploadAssetData(assetId, assetData, storageURL, accessToken))
+            })
+        })
     })
 })

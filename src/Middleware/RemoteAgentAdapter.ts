@@ -7,10 +7,11 @@
  *
  */
 
-import fetch, { Headers } from 'node-fetch'
+import fetch, { Headers, Response } from 'node-fetch'
 import { Base64 } from 'js-base64'
 import urljoin from 'url-join'
 import queryString from 'query-string'
+import FormData from 'form-data'
 
 export interface IListingData {
     trust_level: number
@@ -44,9 +45,12 @@ export class RemoteAgentAdapter {
         return RemoteAgentAdapter.instance
     }
 
-    protected static throwError(message: string, url: string, status: number): never {
-        throw new Error(`RemoteAgentAdapter: ${message} from ${url} error: ${status}`)
+    protected static throwError(message: string, response: Response): never {
+        throw new Error(
+            `RemoteAgentAdapter: ${message} from \n${response.url}\n with error ${response.status}:${response.statusText}`
+        )
     }
+
     protected static createHeaders(contentType?: string, token?: string): Headers {
         const headers = new Headers()
         if (contentType) {
@@ -70,7 +74,7 @@ export class RemoteAgentAdapter {
             headers: headers,
         })
         if (!response.ok) {
-            RemoteAgentAdapter.throwError('Unable to get access token', url, response.status)
+            RemoteAgentAdapter.throwError('Unable to get access token', response)
         }
         const tokenList = await response.json()
         if (tokenList && tokenList.length > 0) {
@@ -83,7 +87,7 @@ export class RemoteAgentAdapter {
         if (response.ok) {
             return response.json()
         }
-        RemoteAgentAdapter.throwError('Unable to create new token', url, response.status)
+        RemoteAgentAdapter.throwError('Unable to create new token', response)
     }
 
     public async getDDO(url: string, token?: string): Promise<string> {
@@ -96,7 +100,7 @@ export class RemoteAgentAdapter {
         if (response.ok) {
             return response.text()
         }
-        RemoteAgentAdapter.throwError('Unable to get DDO information', ddoURL, response.status)
+        RemoteAgentAdapter.throwError('Unable to get DDO information', response)
     }
 
     public async saveMetadata(metadataText: string, url: string, token?: string): Promise<string> {
@@ -110,7 +114,7 @@ export class RemoteAgentAdapter {
         if (response.ok) {
             return response.json()
         }
-        RemoteAgentAdapter.throwError('Unable to save asset metadata', metadatURL, response.status)
+        RemoteAgentAdapter.throwError('Unable to save asset metadata', response)
     }
 
     public async readMetadata(assetId: string, url: string, token?: string): Promise<string> {
@@ -123,7 +127,7 @@ export class RemoteAgentAdapter {
         if (response.ok) {
             return response.text()
         }
-        RemoteAgentAdapter.throwError('Unable to read asset metadata', metadatURL, response.status)
+        RemoteAgentAdapter.throwError('Unable to read asset metadata', response)
     }
 
     public async getMetadataList(url: string, token?: string): Promise<any> {
@@ -136,7 +140,7 @@ export class RemoteAgentAdapter {
         if (response.ok) {
             return response.json()
         }
-        RemoteAgentAdapter.throwError('Unable to read metadata list', metadatURL, response.status)
+        RemoteAgentAdapter.throwError('Unable to read metadata list', response)
     }
 
     public async addListing(listingText: string, assetId: string, url: string, token?: string): Promise<IListingData> {
@@ -154,7 +158,7 @@ export class RemoteAgentAdapter {
         if (response.ok) {
             return response.json()
         }
-        RemoteAgentAdapter.throwError('Unable to add listing data', listingURL, response.status)
+        RemoteAgentAdapter.throwError('Unable to add listing data', response)
     }
     public async getListing(listingId: string, url: string, token?: string): Promise<IListingData> {
         const listingURL = urljoin(url, `/listings/${listingId}`)
@@ -166,7 +170,7 @@ export class RemoteAgentAdapter {
         if (response.ok) {
             return response.json()
         }
-        RemoteAgentAdapter.throwError('Unable to get listing data', listingURL, response.status)
+        RemoteAgentAdapter.throwError('Unable to get listing data', response)
     }
     public async getListingList(filter: IListingFilter, url: string, token?: string): Promise<Array<IListingData>> {
         const headers = RemoteAgentAdapter.createHeaders('application/json', token)
@@ -178,7 +182,7 @@ export class RemoteAgentAdapter {
         if (response.ok) {
             return response.json()
         }
-        RemoteAgentAdapter.throwError('Unable to get a list of listing items', listingURL, response.status)
+        RemoteAgentAdapter.throwError('Unable to get a list of listing items', response)
     }
     public async updateListing(listingId: string, listingDataText: string, url: string, token?: string): Promise<boolean> {
         const listingURL = urljoin(url, `/listings/${listingId}`)
@@ -191,19 +195,30 @@ export class RemoteAgentAdapter {
         if (response.ok) {
             return true
         }
-        RemoteAgentAdapter.throwError('Unable to get listing data', listingURL, response.status)
+        RemoteAgentAdapter.throwError('Unable to get listing data', response)
     }
-    public async uploadAssetData(assetId: string, data: string, url: string, size: number, token?: string): Promise<boolean> {
+    public async uploadAssetData(assetId: string, data: string, url: string, token?: string): Promise<boolean> {
         const storageURL = urljoin(url, `/${assetId}`)
-        const headers = RemoteAgentAdapter.createHeaders('application/json', token)
+
+        // formData.getHeaders does not read node-fetch Headers class, so we need to create a simple object instead.
+        const headers = {}
+        if (token) {
+            headers['Authorization'] = `token ${token}`
+        }
+
+        const form = new FormData()
+        form.append('file', data, {
+            filename: assetId,
+            contentType: 'application/octet-stream',
+        })
         const response = await fetch(storageURL, {
             method: 'POST',
-            headers: headers,
-            body: data,
+            headers: form.getHeaders(headers),
+            body: form,
         })
         if (response.ok) {
             return true
         }
-        RemoteAgentAdapter.throwError('Unable to upload asset data', storageURL, response.status)
+        RemoteAgentAdapter.throwError('Unable to upload asset data', response)
     }
 }
