@@ -5,7 +5,6 @@
  *
  */
 
-
 import crypto from 'crypto'
 
 export function calcAssetId(metadataText: string): string {

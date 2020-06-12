@@ -207,7 +207,7 @@ describe('RemoteAgentAdapter', () => {
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
             invokeURL = `${agentConfig['url']}/api/v1/invoke`
         })
-        describe('invoke', () => {
+        describe('invoke sync', () => {
             it('should call a sync invoke service', async () => {
                 const testNumber = Math.random() * 100
                 const inputs = {
@@ -220,6 +220,8 @@ describe('RemoteAgentAdapter', () => {
                 const outputs = result['outputs']
                 assert.equal(outputs['n'], testNumber  + 1)
             })
+        })
+        describe('invoke async, getJob', () => {
             it('should call an async invoke service, a get the job status', async () => {
                 const testNumber = Math.random() * 100
                 const inputs = {
@@ -238,7 +240,6 @@ describe('RemoteAgentAdapter', () => {
                 const outputs = jobResult['outputs']
                 assert.equal(outputs['n'], testNumber  + 1)
             })
-
         })
     })
 })
