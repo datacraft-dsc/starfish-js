@@ -197,7 +197,7 @@ export class RemoteAgentAdapter {
         }
         RemoteAgentAdapter.throwError('Unable to get listing data', response)
     }
-    public async uploadAssetData(assetId: string, data: string, url: string, token?: string): Promise<boolean> {
+    public async uploadAssetData(assetId: string, data: Buffer, url: string, token?: string): Promise<boolean> {
         const storageURL = urljoin(url, `/${assetId}`)
 
         // formData.getHeaders does not read node-fetch Headers class, so we need to create a simple object instead.
@@ -220,5 +220,17 @@ export class RemoteAgentAdapter {
             return true
         }
         RemoteAgentAdapter.throwError('Unable to upload asset data', response)
+    }
+    public async downloadAssetData(assetId: string, url: string, token?: string): Promise<Buffer> {
+        const storageURL = urljoin(url, `/${assetId}`)
+        const headers = RemoteAgentAdapter.createHeaders('application/octet-stream', token)
+        const response = await fetch(storageURL, {
+            method: 'GET',
+            headers: headers,
+        })
+        if (response.ok) {
+            return response.buffer()
+        }
+        RemoteAgentAdapter.throwError('Unable to download asset data', response)
     }
 }

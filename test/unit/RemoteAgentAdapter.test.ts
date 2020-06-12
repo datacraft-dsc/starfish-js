@@ -9,9 +9,10 @@ import chai, { assert } from 'chai'
 import chaiAsPromised from 'chai-as-promised'
 chai.use(chaiAsPromised)
 
+import crypto from 'crypto'
 
 import urljoin from 'url-join'
-import { randomHex, sha3 } from 'web3-utils'
+import { randomHex, hexToBytes } from 'web3-utils'
 
 import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
 import { loadTestSetup } from 'test/TestSetup'
@@ -88,6 +89,8 @@ describe('RemoteAgentAdapter', () => {
             it('should save metadata to a remote agent', async () => {
                 const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
                 assert(assetId)
+                const hashAssetId = crypto.createHash('SHA3-256').update(metadataText).digest('hex')
+                assert.equal(assetId, hashAssetId)
             })
         })
         describe('readMetadata', () => {
@@ -174,18 +177,22 @@ describe('RemoteAgentAdapter', () => {
             adapter = RemoteAgentAdapter.getInstance()
             const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
-            assetData = randomHex(1024)
-            let metadataAsset = metadata
-            metadataAsset['contentHash'] = sha3(assetData)
+            assetData = Buffer.from(hexToBytes(randomHex(1024)))
+            const metadataAsset = metadata
+            const hash = crypto.createHash('SHA3-256').update(assetData).digest('hex')
+            metadataAsset['contentType'] = 'application/octet-stream'
+            metadataAsset['contentHash'] = hash
             metadataText = JSON.stringify(metadataAsset)
             metadataURL = `${agentConfig['url']}/api/v1/meta`
             assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
-
             storageURL = `${agentConfig['url']}/api/v1/assets`
         })
-        describe('uploadAssetData', () => {
+        describe('uploadAssetData, downloadAssetData', () => {
             it('should upload asset data', async () => {
                 assert(await adapter.uploadAssetData(assetId, assetData, storageURL, accessToken))
+                const downloadData = await adapter.downloadAssetData(assetId, storageURL, accessToken)
+                assert(downloadData)
+                assert(downloadData.equals(assetData))
             })
         })
     })
