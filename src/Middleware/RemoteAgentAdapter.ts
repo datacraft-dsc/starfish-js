@@ -37,6 +37,12 @@ export interface IListingFilter {
     size?: number
 }
 
+export interface IInvokeResult {
+    status?: string
+    outputs?: any
+    'job-id': string
+}
+
 export class RemoteAgentAdapter {
     public static getInstance(): RemoteAgentAdapter {
         if (!RemoteAgentAdapter.instance) {
@@ -233,9 +239,12 @@ export class RemoteAgentAdapter {
         }
         RemoteAgentAdapter.throwError('Unable to download asset data', response)
     }
-    public async invoke(assetId: string, inputText: string, url: string, token?: string): Promise<any> {
-        const invokeURL = urljoin(url, `/${assetId}`)
-        const headers = RemoteAgentAdapter.createHeaders('application/octet-stream', token)
+    public async invoke(assetId: string, inputText: string, isSync: boolean, url: string, token?: string): Promise<IInvokeResult> {
+        let invokeURL = urljoin(url, `/async/${assetId}`)
+        if (isSync) {
+            invokeURL = urljoin(url, `/sync/${assetId}`)
+        }
+        const headers = RemoteAgentAdapter.createHeaders('application/json', token)
         const response = await fetch(invokeURL, {
             method: 'POST',
             headers: headers,
@@ -244,6 +253,18 @@ export class RemoteAgentAdapter {
         if (response.ok) {
             return response.json()
         }
-        RemoteAgentAdapter.throwError('Unable to call inovke', response)
+        RemoteAgentAdapter.throwError('Unable to call invoke', response)
+    }
+    public async getJob(jobId: string, url: string, token?: string): Promise<IInvokeResult> {
+        const invokeURL = urljoin(url, `/jobs/${jobId}`)
+        const headers = RemoteAgentAdapter.createHeaders('application/json', token)
+        const response = await fetch(invokeURL, {
+            method: 'GET',
+            headers: headers,
+        })
+        if (response.ok) {
+            return response.json()
+        }
+        RemoteAgentAdapter.throwError('Unable to get job', response)
     }
 }

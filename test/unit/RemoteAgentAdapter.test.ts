@@ -207,21 +207,40 @@ describe('RemoteAgentAdapter', () => {
 
             const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
-            invokeURL = `${agentConfig['url']}/api/v1/invoke/sync`
+            invokeURL = `${agentConfig['url']}/api/v1/invoke`
         })
         describe('invoke', () => {
-            it('should call an invoke service', async () => {
+            it('should call a sync invoke service', async () => {
                 const testNumber = Math.random() * 100
                 const inputs = {
                     n: testNumber
                 }
-                const result = await adapter.invoke(assetId, JSON.stringify(inputs), invokeURL, accessToken)
+                const result = await adapter.invoke(assetId, JSON.stringify(inputs), true, invokeURL, accessToken)
                 assert(result)
                 assert(result['outputs'])
                 assert.equal(result['status'], 'succeeded')
                 const outputs = result['outputs']
                 assert.equal(outputs['n'], testNumber  + 1)
             })
+            it('should call an async invoke service, a get the job status', async () => {
+                const testNumber = Math.random() * 100
+                const inputs = {
+                    n: testNumber
+                }
+                const result = await adapter.invoke(assetId, JSON.stringify(inputs), false, invokeURL, accessToken)
+                assert(result)
+                let jobResult
+                while (true) {
+                    jobResult = await adapter.getJob(result['job-id'], invokeURL, accessToken)
+                    if (jobResult['status'] == 'succeeded') {
+                        break
+                    }
+                }
+                assert(jobResult['outputs'])
+                const outputs = jobResult['outputs']
+                assert.equal(outputs['n'], testNumber  + 1)
+            })
+
         })
     })
 })
