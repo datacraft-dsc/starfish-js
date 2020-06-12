@@ -9,7 +9,6 @@ import chai, { assert } from 'chai'
 import chaiAsPromised from 'chai-as-promised'
 chai.use(chaiAsPromised)
 
-import crypto from 'crypto'
 
 import urljoin from 'url-join'
 import { randomHex, hexToBytes } from 'web3-utils'
@@ -17,6 +16,7 @@ import { randomHex, hexToBytes } from 'web3-utils'
 import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
 import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
 import { decodeToAssetId, removeLeadingHexZero } from 'starfish/Utils'
+import { calcAssetDataHash } from 'starfish/Crypto'
 
 let setup = loadTestSetup()
 const agentConfig = setup.agents['local']
@@ -89,8 +89,6 @@ describe('RemoteAgentAdapter', () => {
             it('should save metadata to a remote agent', async () => {
                 const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
                 assert(assetId)
-                const hashAssetId = crypto.createHash('SHA3-256').update(metadataText).digest('hex')
-                assert.equal(assetId, hashAssetId)
             })
         })
         describe('readMetadata', () => {
@@ -179,7 +177,7 @@ describe('RemoteAgentAdapter', () => {
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
             assetData = Buffer.from(hexToBytes(randomHex(1024)))
             const metadataAsset = metadata
-            const hash = crypto.createHash('SHA3-256').update(assetData).digest('hex')
+            const hash = calcAssetDataHash(assetData)
             metadataAsset['contentType'] = 'application/octet-stream'
             metadataAsset['contentHash'] = hash
             metadataText = JSON.stringify(metadataAsset)
