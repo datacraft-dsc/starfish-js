@@ -12,36 +12,9 @@ import { Base64 } from 'js-base64'
 import urljoin from 'url-join'
 import queryString from 'query-string'
 import FormData from 'form-data'
-
-export interface IListingData {
-    trust_level: number
-    userid: string
-    assetid: string
-    agreement?: string
-    ctime: string
-    status: string
-    id: string
-    info: any
-    utime: string
-}
-
-interface IListingRequestData {
-    assetid: string
-    info: any
-}
-
-export interface IListingFilter {
-    username?: string
-    userid?: string
-    from?: number
-    size?: number
-}
-
-export interface IInvokeResult {
-    status?: string
-    outputs?: any
-    'job-id': string
-}
+import { IMetadataList } from '../Interfaces/Metadata'
+import { IListingData, IListingRequestData, IListingFilter } from '../Interfaces/Listing'
+import { IInvokeResult } from '../Interfaces/Invoke'
 
 export class RemoteAgentAdapter {
     public static getInstance(): RemoteAgentAdapter {
@@ -136,7 +109,7 @@ export class RemoteAgentAdapter {
         RemoteAgentAdapter.throwError('Unable to read asset metadata', response)
     }
 
-    public async getMetadataList(url: string, token?: string): Promise<any> {
+    public async getMetadataList(url: string, token?: string): Promise<IMetadataList> {
         const metadatURL = urljoin(url, '/index')
         const headers = RemoteAgentAdapter.createHeaders('application/json', token)
         const response = await fetch(metadatURL, {
