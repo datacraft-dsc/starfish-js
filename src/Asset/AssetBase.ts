@@ -14,6 +14,16 @@ export class AssetBase {
     public metadata: IMetadata
     public did: string
 
+    public static generateMetadata(name: string, type: string, metadata?: IMetadata): IMetadata {
+        let newMetadata = {}
+        if (metadata) {
+            newMetadata = metadata
+        }
+        newMetadata['name'] = name
+        newMetadata['type'] = type
+        return newMetadata
+    }
+
     constructor(metadata: string | IMetadata, did?: string) {
         if (typeof metadata == 'string') {
             this.metadataText = metadata
