@@ -2,7 +2,7 @@ import { TransactionReceipt } from 'web3-core'
 import { EventData } from 'web3-eth-contract'
 
 import { ContractBase } from './ContractBase'
-import { Account } from '../Account'
+import { Account } from 'starfish/Account'
 
 export class ProvenanceContract extends ContractBase {
     constructor() {

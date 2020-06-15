@@ -7,7 +7,7 @@
  *
  */
 
-import { IDDO } from '../Interfaces/IDDO'
+import { IDDO } from 'starfish/Interfaces/IDDO'
 
 export class AgentBase {
     public ddo: IDDO

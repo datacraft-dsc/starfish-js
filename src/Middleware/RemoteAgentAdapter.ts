@@ -12,9 +12,10 @@ import { Base64 } from 'js-base64'
 import urljoin from 'url-join'
 import queryString from 'query-string'
 import FormData from 'form-data'
-import { IMetadataList } from '../Interfaces/Metadata'
-import { IListingData, IListingRequestData, IListingFilter } from '../Interfaces/Listing'
-import { IInvokeResult } from '../Interfaces/Invoke'
+
+import { IMetadataList } from 'starfish/Interfaces/Metadata'
+import { IListingData, IListingRequestData, IListingFilter } from 'starfish/Interfaces/Listing'
+import { IInvokeResult } from 'starfish/Interfaces/Invoke'
 
 export class RemoteAgentAdapter {
     public static getInstance(): RemoteAgentAdapter {

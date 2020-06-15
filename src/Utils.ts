@@ -6,15 +6,9 @@
 
 import { fromWei, toWei as web3ToWei, toBN, randomHex } from 'web3-utils'
 
-const NETWORK_DID_METHOD = 'dep'
+import { IDIDFragment } from 'starfish/Interfaces/IDIDFragment'
 
-export interface IDIDFragment {
-    method: string
-    id: string
-    path?: string
-    fragment?: string
-    idHex?: string
-}
+const NETWORK_DID_METHOD = 'dep'
 
 /*
  *

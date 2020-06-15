@@ -1,7 +1,7 @@
 import Web3 from 'web3'
 
 import { provider as Web3Provider } from 'web3-core'
-import { IProvider } from './IProvider'
+import { IProvider } from 'starfish/Interfaces/IProvider'
 
 /**
  * Web3 provider which uses direct HttpProvider

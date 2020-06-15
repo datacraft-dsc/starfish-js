@@ -6,8 +6,8 @@
  *
  */
 
-import { IMetadata } from '../Interfaces/Metadata'
-import { decodeToAssetId } from '../Utils'
+import { IMetadata } from 'starfish/Interfaces/Metadata'
+import { decodeToAssetId } from 'starfish/Utils'
 
 export class AssetBase {
     public metadataText: string

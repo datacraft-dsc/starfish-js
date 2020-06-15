@@ -1,5 +1,5 @@
 import { ContractBase } from './ContractBase'
-import { Account } from '../Account'
+import { Account } from 'starfish/Account'
 import { TransactionReceipt } from 'web3-core'
 
 export class DispenserContract extends ContractBase {

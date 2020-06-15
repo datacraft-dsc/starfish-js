@@ -2,7 +2,7 @@ import Web3 from 'web3'
 import { provider as Web3Provider } from 'web3-core'
 
 import { WebsocketProvider } from 'web3-providers-ws'
-import { IProvider } from './IProvider'
+import { IProvider } from 'starfish/Interfaces/IProvider'
 
 /**
  * Web3 provider which uses WebSocket

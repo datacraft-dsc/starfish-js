@@ -1,10 +1,9 @@
 import Web3 from 'web3'
 import { Contract as Web3Contract } from 'web3-eth-contract'
 import { AbiItem } from 'web3-utils'
-// import { TransactionReceipt } from 'web3-core'
 import { ContractSendMethod } from 'web3-eth-contract'
 
-import { Account } from '../Account'
+import { Account } from 'starfish/Account'
 
 export class ContractBase {
     readonly name: string

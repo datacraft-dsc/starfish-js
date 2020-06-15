@@ -2,7 +2,7 @@ import Web3 from 'web3'
 import MetaMaskConnector from 'node-metamask'
 
 import { provider as Web3Provider } from 'web3-core'
-import { IProvider } from './IProvider'
+import { IProvider } from 'starfish/Interfaces/IProvider'
 
 /**
  * This provider connects to opened websocket of Metamask.

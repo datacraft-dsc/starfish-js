@@ -9,10 +9,10 @@
 
 import urljoin from 'url-join'
 
-import { RemoteAgentAdapter } from '../Middleware/RemoteAgentAdapter'
+import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
 import { AgentBase } from './AgentBase'
-import { IAgentAuthentication } from '../Interfaces/IAgentAuthentication'
-import { IDDO } from '../Interfaces/IDDO'
+import { IAgentAuthentication } from 'starfish/Interfaces/IAgentAuthentication'
+import { IDDO } from 'starfish/Interfaces/IDDO'
 
 export class RemoteAgent extends AgentBase {
     // private authentication: IAgentAuthentication
