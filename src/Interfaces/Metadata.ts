@@ -51,7 +51,7 @@ export interface IMetadataData extends IMetadataBase {
 
 export interface IMetadataOperation extends IMetadataBase {
     // Opreation Asset
-    operation?: IOpereation
+    operation?: IOperation
 }
 
 export interface IMetadataBundle extends IMetadataBase {
