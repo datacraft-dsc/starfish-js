@@ -7,9 +7,13 @@
 
 import { didRandom } from '../Utils'
 
-import { IDDO, IDDOService } from './IDDO'
+import { IDDO, IDDOService } from '../Interfaces/IDDO'
 
-export class DDO {
+export class DDO implements IDDO {
+    id: string
+    '@context': string
+    service: Array<IDDOService>
+
     static supportedServices = {
         meta: {
             type: 'DEP.Meta',
@@ -56,7 +60,8 @@ export class DDO {
     }
 
     public static createFromString(ddoText: string): DDO {
-        return new DDO(<IDDO>JSON.parse(ddoText))
+        const data: IDDO = JSON.parse(ddoText)
+        return new DDO(data['id'], data['service'])
     }
 
     public static create(did?: string): DDO {
@@ -67,21 +72,17 @@ export class DDO {
         return name in DDO.supportedServices
     }
 
-    public data: IDDO
-
-    constructor(did: string | IDDO) {
-        if (did && typeof did === 'object') {
-            this.data = did
-        } else {
-            this.data = <IDDO>{}
-            this.data.service = []
-            if (did) {
-                this.data.id = <string>did
-            } else {
-                this.data.id = didRandom()
-            }
-            this.data['@context'] = 'https://www.w3.org/2019/did/v1'
+    constructor(did: string, service?: Array<IDDOService>) {
+        this.service = []
+        if (service) {
+            this.service = service
         }
+        if (did) {
+            this.id = <string>did
+        } else {
+            this.id = didRandom()
+        }
+        this['@context'] = 'https://www.w3.org/2019/did/v1'
     }
 
     public addService(name: string, url: string, version?: string): IDDOService {
@@ -96,9 +97,9 @@ export class DDO {
             }
             const index = this.findServiceIndex(name)
             if (index >= 0) {
-                this.data.service[index] = newService
+                this.service[index] = newService
             } else {
-                this.data.service.push(newService)
+                this.service.push(newService)
             }
         }
         return newService
@@ -108,7 +109,7 @@ export class DDO {
         let result = false
         const index = this.findServiceIndex(name)
         if (index >= 0) {
-            delete this.data.service[index]
+            delete this.service[index]
             result = true
         }
         return result
@@ -117,8 +118,8 @@ export class DDO {
     public findServiceIndex(name: string): number {
         let result = -1
         const nameRegExp = new RegExp(`/.${name}/.`, 'i')
-        for (let index = 0; index < this.data.service.length; index++) {
-            if (nameRegExp.test(this.data.service[index].type)) {
+        for (let index = 0; index < this.service.length; index++) {
+            if (nameRegExp.test(this.service[index].type)) {
                 result = index
                 break
             }
@@ -129,19 +130,19 @@ export class DDO {
     public findService(name: string): IDDOService {
         const index = this.findServiceIndex(name)
         if (index >= 0) {
-            return this.data.service[index]
+            return this.service[index]
         }
         return null
     }
 
     public toString(): string {
-        return JSON.stringify(this.data)
+        return JSON.stringify(<IDDO>this)
     }
 
     public getDID(): string {
-        return this.data.id
+        return this.id
     }
     public getServiceList(): Array<IDDOService> {
-        return this.data.service
+        return this.service
     }
 }

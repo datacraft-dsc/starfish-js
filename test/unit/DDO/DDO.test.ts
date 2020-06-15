@@ -13,9 +13,9 @@ describe('DDO Class', () => {
         const testURL = 'http://mytesturl.com'
         const ddo = DDO.createFromServiceList(testURL, ['meta', 'invoke'])
         assert(ddo)
-        assert.equal(ddo.data.service.length, 2)
+        assert.equal(ddo.service.length, 2)
         assert.equal(ddo.getServiceList().length, 2)
-        assert(ddo.data.id)
+        assert(ddo.id)
         assert(ddo.getDID())
     })
 
@@ -23,9 +23,9 @@ describe('DDO Class', () => {
         const testURL = 'http://mytesturl.com'
         const ddo = DDO.createForAllServices(testURL)
         assert(ddo)
-        assert.equal(ddo.data.service.length, 6)
+        assert.equal(ddo.service.length, 6)
         assert.equal(ddo.getServiceList().length, 6)
-        assert(ddo.data.id)
+        assert(ddo.id)
         assert(ddo.getDID())
     })
 
@@ -35,18 +35,18 @@ describe('DDO Class', () => {
         assert(ddo)
         const ddoText = ddo.toString()
         const readDDO = DDO.createFromString(ddoText)
-        assert.equal(readDDO.data.service.length, 6)
+        assert.equal(readDDO.service.length, 6)
         assert.equal(readDDO.getServiceList().length, 6)
-        assert(readDDO.data.id)
+        assert(readDDO.id)
         assert(readDDO.getDID())
-        assert.equal(ddo.data.id, readDDO.data.id)
+        assert.equal(ddo.id, readDDO.id)
     })
     it('should create an empty DDO object', async () => {
         const ddo = DDO.create()
         assert(ddo)
-        assert.equal(ddo.data.service.length, 0)
+        assert.equal(ddo.service.length, 0)
         assert.equal(ddo.getServiceList().length, 0)
-        assert(ddo.data.id)
+        assert(ddo.id)
         assert(ddo.getDID())
     })
     it('should test a correct supported service name', async () => {

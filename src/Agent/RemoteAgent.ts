@@ -11,14 +11,12 @@ import urljoin from 'url-join'
 
 import { RemoteAgentAdapter } from '../Middleware/RemoteAgentAdapter'
 import { AgentBase } from './AgentBase'
-
-export interface IAgentAuthentication {
-    username: string
-    password?: string
-    token?: string
-}
+import { IAgentAuthentication } from '../Interfaces/IAgentAuthentication'
+import { IDDO } from '../Interfaces/IDDO'
 
 export class RemoteAgent extends AgentBase {
+    // private authentication: IAgentAuthentication
+
     public static async resolveURL(url: string, authentication?: IAgentAuthentication): Promise<string> {
         let token = null
         const adapter = RemoteAgentAdapter.getInstance()
@@ -31,5 +29,10 @@ export class RemoteAgent extends AgentBase {
             }
         }
         return adapter.getDDO(url, token)
+    }
+
+    constructor(ddo: IDDO, authentication?: IAgentAuthentication) {
+        super(ddo)
+        // this.authentication = authentication
     }
 }

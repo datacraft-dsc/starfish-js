@@ -16,7 +16,7 @@ import { DIDRegistryContract } from './Contract/DIDRegistryContract'
 import { isBalanceInsufficient, isDID, didToId } from './Utils'
 import { DDO } from './DDO/DDO'
 import { RemoteAgent } from './Agent/RemoteAgent'
-import { IAgentAuthentication } from './Agent/RemoteAgent'
+import { IAgentAuthentication } from './Interfaces/IAgentAuthentication'
 
 /**
  * Network class to connect to a block chain network. To perform starfish operations
