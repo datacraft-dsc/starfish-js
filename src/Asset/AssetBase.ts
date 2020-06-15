@@ -14,9 +14,12 @@ export class AssetBase {
     public metadata: IMetadata
     public did: string
 
-    public static generateMetadata(name: string, type: string, metadata?: IMetadata): IMetadata {
+    public static generateMetadata(name: string, type: string, metadata?: string | IMetadata): IMetadata {
         let newMetadata = {}
         if (metadata) {
+            if (typeof metadata === 'string') {
+                newMetadata = JSON.parse(metadata)
+            }
             newMetadata = metadata
         }
         newMetadata['name'] = name

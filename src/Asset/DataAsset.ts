@@ -6,7 +6,7 @@
  *
  */
 
-import { IMetadataData } from '../Interfaces/Metadata'
+import { IMetadata, IMetadataData } from '../Interfaces/Metadata'
 import { AssetBase } from './AssetBase'
 import { calcAssetDataHash } from '../Crypto'
 
@@ -20,7 +20,7 @@ export class DataAsset extends AssetBase {
     }
 
     constructor(metadata: string | IMetadataData, did?: string, data?: Buffer) {
-        super(<Imetadata>metadata, did)
+        super(<IMetadata>metadata, did)
         this.data = data
         this.metadata['contentHash'] = calcAssetDataHash(data)
     }
