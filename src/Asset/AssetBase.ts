@@ -20,7 +20,7 @@ export class AssetBase {
             this.metadata = JSON.parse(metadata)
         } else {
             this.metadata = metadata
-            this.metadataTex = JSON.stringify(metadata)
+            this.metadataText = JSON.stringify(metadata)
         }
         this.did = did
     }
