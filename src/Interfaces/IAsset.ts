@@ -8,7 +8,7 @@
  *
  */
 
-import IMetadata from './IMetadata'
+import { IMetadata } from './IMetadata'
 
 export interface IAsset {
     did: string

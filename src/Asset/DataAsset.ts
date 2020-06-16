@@ -9,7 +9,7 @@
 import fs from 'fs-extra'
 import mime from 'mime-types'
 
-import { IMetadata, IMetadataData } from 'starfish/Interfaces/Metadata'
+import { IMetadata, IMetadataData } from 'starfish/Interfaces/IMetadata'
 import { AssetBase } from './AssetBase'
 import { calcAssetDataHash } from 'starfish/Crypto'
 

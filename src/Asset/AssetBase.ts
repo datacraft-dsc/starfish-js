@@ -6,7 +6,7 @@
  *
  */
 
-import { IMetadata } from 'starfish/Interfaces/Metadata'
+import { IMetadata } from 'starfish/Interfaces/IMetadata'
 import { IAsset } from 'starfish/Interfaces/IAsset'
 
 import { decodeToAssetId } from 'starfish/Utils'

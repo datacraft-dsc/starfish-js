@@ -13,9 +13,9 @@ import urljoin from 'url-join'
 import queryString from 'query-string'
 import FormData from 'form-data'
 
-import { IMetadataList } from 'starfish/Interfaces/Metadata'
-import { IListingData, IListingRequestData, IListingFilter } from 'starfish/Interfaces/Listing'
-import { IInvokeResult } from 'starfish/Interfaces/Invoke'
+import { IMetadataList } from 'starfish/Interfaces/IMetadata'
+import { IListingData, IListingRequestData, IListingFilter } from 'starfish/Interfaces/IListing'
+import { IInvokeResult } from 'starfish/Interfaces/IInvoke'
 
 export class RemoteAgentAdapter {
     public static getInstance(): RemoteAgentAdapter {
