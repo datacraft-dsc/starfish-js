@@ -8,8 +8,10 @@
  *
  */
 
+import IMetadata from './IMetadata'
+
 export interface IAsset {
-    public did
-    public metadata
-    public metadataText
+    did: string
+    metadata: IMetadata
+    metadataText: string
 }
