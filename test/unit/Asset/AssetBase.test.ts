@@ -14,7 +14,7 @@ describe('AssetBase Class', () => {
             const metadata = {
                 name: 'dataset'
             }
-            const asset = new AssetBase(metadata)
+            const asset = new AssetBase(JSON.stringify(metadata))
             assert(asset)
             assert(asset.metadata)
             assert(asset.metadataText)

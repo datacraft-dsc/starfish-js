@@ -339,13 +339,13 @@ export class Network {
      *
      */
     public async resolveAgent(
-        agentURLorDID: string,
+        agentAddress: string,
         username?: string,
         password?: string,
         authentication?: IAgentAuthentication
     ): Promise<DDO> {
-        if (isDID(agentURLorDID)) {
-            const ddoText = await this.resolveDID(agentURLorDID)
+        if (isDID(agentAddress)) {
+            const ddoText = await this.resolveDID(agentAddress)
             if (ddoText) {
                 return DDO.createFromString(ddoText)
             }
@@ -357,7 +357,7 @@ export class Network {
                 password: password,
             }
         }
-        const ddoText = await RemoteAgent.resolveURL(agentURLorDID, agentAuthentication)
+        const ddoText = await RemoteAgent.resolveURL(agentAddress, agentAuthentication)
         if (ddoText) {
             return DDO.createFromString(ddoText)
         }

@@ -18,8 +18,9 @@ export class DataAsset extends AssetBase {
 
     public static create(name: string, data: Buffer, metadata?: string | IMetadataData, did?: string): DataAsset {
         const storeMetadata = AssetBase.generateMetadata(name, 'dataset', metadata)
-        const asset = new DataAsset(storeMetadata, did, data)
-        return asset
+        storeMetadata['contentType'] = 'application/octet-stream'
+        storeMetadata['contentHash'] = calcAssetDataHash(data)
+        return new DataAsset(storeMetadata, did, data)
     }
 
     public static async createFromFile(
@@ -35,14 +36,17 @@ export class DataAsset extends AssetBase {
         if (mimeType) {
             storeMetadata['contentType'] = mimeType
         }
-        const asset = new DataAsset(storeMetadata, did, data)
-        return asset
+        storeMetadata['contentHash'] = calcAssetDataHash(data)
+        return new DataAsset(storeMetadata, did, data)
     }
 
-    constructor(metadata: string | IMetadataData, did?: string, data?: Buffer) {
-        super(<IMetadata>metadata, did)
+    constructor(metadata: string | IMetadata, did?: string, data?: Buffer) {
+        let metadataText = metadata
+        if (typeof metadata != 'string') {
+            metadataText = JSON.stringify(metadata)
+        }
+        super(<string>metadataText, did)
         this.data = data
-        this.metadata['contentHash'] = calcAssetDataHash(data)
     }
 
     public async saveToFile(filename: string): Promise<void> {

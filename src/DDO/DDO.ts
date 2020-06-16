@@ -109,7 +109,7 @@ export class DDO implements IDDO {
         let result = false
         const index = this.findServiceIndex(name)
         if (index >= 0) {
-            delete this.service[index]
+            this.service.splice(index, 1)
             result = true
         }
         return result
@@ -117,7 +117,7 @@ export class DDO implements IDDO {
 
     public findServiceIndex(name: string): number {
         let result = -1
-        const nameRegExp = new RegExp(`/.${name}/.`, 'i')
+        const nameRegExp = new RegExp(`\\.${name}\\.`, 'i')
         for (let index = 0; index < this.service.length; index++) {
             if (nameRegExp.test(this.service[index].type)) {
                 result = index

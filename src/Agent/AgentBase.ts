@@ -7,12 +7,31 @@
  *
  */
 
-import { IDDO } from 'starfish/Interfaces/IDDO'
+import urljoin from 'url-join'
+import { DDO } from 'starfish/DDO/DDO'
 
 export class AgentBase {
-    public ddo: IDDO
+    public ddo: DDO
 
-    constructor(ddo: IDDO) {
+    constructor(ddo: DDO) {
         this.ddo = ddo
+    }
+
+    protected getEndpoint(name: string, uri?: string): string {
+        const service = this.ddo.findService(name)
+        if (service) {
+            const url = service['serviceEndpoint']
+            if (uri) {
+                return urljoin(url, uri)
+            }
+            return url
+        }
+        return null
+    }
+    protected generateDIDForAsset(assetId: string): string {
+        return `${this.ddo.id}/${assetId}`
+    }
+    protected getDID(): string {
+        return this.ddo.id
     }
 }

@@ -11,18 +11,21 @@ import urljoin from 'url-join'
 
 import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
 import { AgentBase } from './AgentBase'
+//import { IAsset } from 'starfish/Interfaces/IAsset'
+import { AssetBase } from 'starfish/Asset/AssetBase'
 import { IAgentAuthentication } from 'starfish/Interfaces/IAgentAuthentication'
-import { IDDO } from 'starfish/Interfaces/IDDO'
+import { isDID } from 'starfish/Utils'
+import { Network } from 'starfish/Network'
+import { DDO } from 'starfish/DDO/DDO'
 
 export class RemoteAgent extends AgentBase {
-    // private authentication: IAgentAuthentication
+    public authentication: IAgentAuthentication
 
     public static async resolveURL(url: string, authentication?: IAgentAuthentication): Promise<string> {
         let token = null
         const adapter = RemoteAgentAdapter.getInstance()
         if (authentication) {
             token = authentication.token
-
             if (!token) {
                 const tokenURL = urljoin(url, '/api/v1/auth/token')
                 token = await adapter.getAuthorizationToken(authentication['username'], authentication['password'], tokenURL)
@@ -31,8 +34,51 @@ export class RemoteAgent extends AgentBase {
         return adapter.getDDO(url, token)
     }
 
-    constructor(ddo: IDDO, authentication?: IAgentAuthentication) {
+    public static async createFromAddress(
+        agentAddress: string,
+        network?: Network,
+        authentication?: IAgentAuthentication
+    ): Promise<RemoteAgent> {
+        let ddo = null
+        if (isDID(agentAddress)) {
+            if (network) {
+                ddo = await network.resolveAgent(agentAddress)
+            }
+        } else {
+            const ddoText = await RemoteAgent.resolveURL(agentAddress, authentication)
+            if (ddoText) {
+                ddo = DDO.createFromString(ddoText)
+            }
+        }
+        if (ddo) {
+            return new RemoteAgent(ddo, authentication)
+        }
+        return null
+    }
+
+    constructor(ddo: DDO, authentication?: IAgentAuthentication) {
         super(ddo)
-        // this.authentication = authentication
+        this.authentication = authentication
+    }
+
+    public async registerAsset(asset: AssetBase): Promise<AssetBase> {
+        const adapter = RemoteAgentAdapter.getInstance()
+        const token = await this.getAuthorizationToken()
+        const url = this.getEndpoint('meta')
+        const assetId = await adapter.saveMetadata(asset.metadataText, url, token)
+        asset.did = this.generateDIDForAsset(assetId)
+        return asset
+    }
+
+    protected async getAuthorizationToken(): Promise<string> {
+        if (!this.authentication) {
+            return null
+        }
+        if (this.authentication['token']) {
+            return this.authentication['token']
+        }
+        const tokenURL = this.getEndpoint('auth', 'token')
+        const adapter = RemoteAgentAdapter.getInstance()
+        return adapter.getAuthorizationToken(this.authentication['username'], this.authentication['password'], tokenURL)
     }
 }

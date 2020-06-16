@@ -7,10 +7,12 @@
  */
 
 import { IMetadata } from 'starfish/Interfaces/Metadata'
+import { IAsset } from 'starfish/Interfaces/IAsset'
+
 import { decodeToAssetId } from 'starfish/Utils'
 
-export class AssetBase {
-    public metadataText: string
+export class AssetBase implements IAsset {
+    readonly metadataText: string
     public metadata: IMetadata
     public did: string
 
@@ -27,14 +29,9 @@ export class AssetBase {
         return newMetadata
     }
 
-    constructor(metadata: string | IMetadata, did?: string) {
-        if (typeof metadata == 'string') {
-            this.metadataText = metadata
-            this.metadata = JSON.parse(metadata)
-        } else {
-            this.metadata = metadata
-            this.metadataText = JSON.stringify(metadata)
-        }
+    constructor(metadataText: string, did?: string) {
+        this.metadataText = metadataText
+        this.metadata = JSON.parse(metadataText)
         this.did = did
     }
 
