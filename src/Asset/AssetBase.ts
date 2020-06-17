@@ -9,7 +9,8 @@
 import { IMetadata } from 'starfish/Interfaces/IMetadata'
 import { IAsset } from 'starfish/Interfaces/IAsset'
 
-import { decodeToAssetId } from 'starfish/Utils'
+import { extractAssetId } from 'starfish/Utils'
+import { calcAssetId } from 'starfish/Crypto'
 
 export class AssetBase implements IAsset {
     readonly metadataText: string
@@ -36,6 +37,12 @@ export class AssetBase implements IAsset {
     }
 
     public getAssetId(): string {
-        return decodeToAssetId(this.did)
+        return extractAssetId(this.did)
+    }
+    public calcAssetId(): string {
+        return calcAssetId(this.metadataText)
+    }
+    public equals(asset: AssetBase): boolean {
+        return this.calcAssetId() == asset.calcAssetId()
     }
 }

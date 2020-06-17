@@ -13,7 +13,7 @@ import {
     didParse,
     didToId,
     idToDID,
-    decodeToAssetId,
+    extractAssetId,
     didCreate
 } from 'starfish/Utils'
 
@@ -87,10 +87,10 @@ describe('DID Helper', () => {
         const resultId = didToId(resultDID)
         assert.equal(testId, resultId)
     })
-    it('should decode a string to a asset id from a DID or hex', async () => {
+    it('should extract an asset id string to from a DID', async () => {
         const testAssetId = randomHex(32)
         const testDID = didCreate(null, testAssetId)
-        assert.equal(testAssetId, decodeToAssetId(testDID))
-        assert.equal(testAssetId, decodeToAssetId(testAssetId))
+        assert.equal(testAssetId, extractAssetId(testDID))
+        assert.equal(testAssetId, extractAssetId(testAssetId))
     })
 })

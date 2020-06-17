@@ -15,7 +15,7 @@ import { randomHex, hexToBytes } from 'web3-utils'
 
 import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
 import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
-import { decodeToAssetId, removeLeadingHexZero } from 'starfish/Utils'
+import { extractAssetId, removeLeadingHexZero } from 'starfish/Utils'
 import { calcAssetDataHash } from 'starfish/Crypto'
 
 let setup = loadTestSetup()
@@ -201,7 +201,7 @@ describe('RemoteAgentAdapter', () => {
             adapter = RemoteAgentAdapter.getInstance()
             const invokeList = await enableSurferInvokableOperations(agentConfig['url'], agentConfig['username'], agentConfig['password'])
             assert(invokeList['invokables'][testInovkeName])
-            assetId = removeLeadingHexZero(decodeToAssetId(invokeList['invokables'][testInovkeName]))
+            assetId = removeLeadingHexZero(extractAssetId(invokeList['invokables'][testInovkeName]))
 
             const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)

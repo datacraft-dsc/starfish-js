@@ -14,7 +14,7 @@ import { AgentBase } from './AgentBase'
 //import { IAsset } from 'starfish/Interfaces/IAsset'
 import { AssetBase } from 'starfish/Asset/AssetBase'
 import { IAgentAuthentication } from 'starfish/Interfaces/IAgentAuthentication'
-import { isDID } from 'starfish/Utils'
+import { isDID, extractAssetId } from 'starfish/Utils'
 import { Network } from 'starfish/Network'
 import { DDO } from 'starfish/DDO/DDO'
 
@@ -68,6 +68,15 @@ export class RemoteAgent extends AgentBase {
         const assetId = await adapter.saveMetadata(asset.metadataText, url, token)
         asset.did = this.generateDIDForAsset(assetId)
         return asset
+    }
+
+    public async getAsset(assetId: string): Promise<AssetBase> {
+        const adapter = RemoteAgentAdapter.getInstance()
+        const token = await this.getAuthorizationToken()
+        const url = this.getEndpoint('meta')
+        const safeAssetId = extractAssetId(assetId)
+        const metadata = await adapter.readMetadata(safeAssetId, url, token)
+        return new AssetBase(metadata, this.generateDIDForAsset(safeAssetId))
     }
 
     protected async getAuthorizationToken(): Promise<string> {

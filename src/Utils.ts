@@ -122,7 +122,7 @@ export function toIdHex(assetId: string): string {
     const assetIdRegexp = new RegExp('([a-f0-9]+)$', 'i')
     const match = assetIdRegexp.exec(assetId)
     if (match) {
-        return `0x${match[1]}`
+        return match[1]
     }
     return null
 }
@@ -130,7 +130,7 @@ export function toIdHex(assetId: string): string {
 /*
  * Convert a DID string or a single hex number string to an assetId.
  */
-export function decodeToAssetId(assetDIDId: string): string {
+export function extractAssetId(assetDIDId: string): string {
     const assetIdRegexp = new RegExp('^[0-9a-fx]+$', 'i')
     if (assetIdRegexp.test(assetDIDId)) {
         return toIdHex(assetDIDId)
