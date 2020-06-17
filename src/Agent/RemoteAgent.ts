@@ -100,11 +100,16 @@ export class RemoteAgent extends AgentBase {
         return asset
     }
 
-    public async invoke(asset: OperationAsset, inputs?: any, isAsync?: boolean): Promise<IInvokeResult> {
+    public async invoke(asset: string | OperationAsset, inputs?: any, isAsync?: boolean): Promise<IInvokeResult> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
         const url = this.getEndpoint('invoke')
-        const assetId = asset.getAssetId()
+        let assetId
+        if (typeof asset == 'string') {
+            assetId = extractAssetId(asset)
+        } else {
+            assetId = asset.getAssetId()
+        }
         let inputsText = ''
         if (inputs) {
             inputsText = JSON.stringify(inputs)

@@ -10,9 +10,10 @@ import { randomHex, hexToBytes } from 'web3-utils'
 
 
 import { RemoteAgent } from 'starfish/Agent/RemoteAgent'
-import { loadTestSetup } from 'test/TestSetup'
-import { DataAsset } from 'starfish/Asset'
+import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
+import { DataAsset, OperationAsset } from 'starfish/Asset'
 import { Network } from 'starfish/Network'
+import { extractAssetId, removeLeadingHexZero } from 'starfish/Utils'
 
 
 let setup = loadTestSetup()
@@ -21,6 +22,8 @@ const agentAuthentication = {
     username: agentConfig['username'],
     password: agentConfig['password'],
 }
+
+const testInovkeName = 'Increment'
 
 describe('RemoteAgent Class', () => {
     describe('resolveURL', () => {
@@ -86,7 +89,39 @@ describe('RemoteAgent Class', () => {
                     assert(newAsset.data.equals(data))
                 })
             })
-
+        })
+        describe('Test on an invokable asset', () => {
+            let invokeAsset: OperationAsset
+            let assetId: string
+            before( async () => {
+                const invokeList = await enableSurferInvokableOperations(agentConfig['url'], agentConfig['username'], agentConfig['password'])
+                assert(invokeList['invokables'][testInovkeName])
+                assetId = removeLeadingHexZero(extractAssetId(invokeList['invokables'][testInovkeName]))
+                invokeAsset = await agent.getAsset(assetId)
+            })
+            describe('invoke', () => {
+                let testNumber: number
+                let inputs
+                before( () => {
+                    testNumber = Math.random() * 100
+                    inputs = {
+                        n: testNumber
+                    }
+                })
+                it('should invoke a sync operation', async () => {
+                    const result = await agent.invoke(invokeAsset, inputs)
+                    assert(result)
+                    assert(result['outputs'])
+                    assert.equal(result['status'], 'succeeded')
+                    const outputs = result['outputs']
+                    assert.equal(outputs['n'], testNumber  + 1)
+                })
+                it('should invoke an async operation', async () => {
+                    const result = await agent.invoke(invokeAsset, inputs, true)
+                    assert(result)
+                    assert(result['job-id'])
+                })
+            })
         })
     })
 })
