@@ -22,7 +22,7 @@ const agentAuthentication = {
     password: agentConfig['password'],
 }
 
-describe('RemoteAgent', () => {
+describe('RemoteAgent Class', () => {
     describe('resolveURL', () => {
         it('should fetch a ddo from the agent url', async () => {
             const ddoText = await RemoteAgent.resolveURL(agentConfig['url'], agentAuthentication)
@@ -56,7 +56,7 @@ describe('RemoteAgent', () => {
                 assert(registerAsset.did)
             })
         })
-        describe('getAsset', () => {
+        describe('Test on a registered asset', () => {
             let data
             let registerAsset
             before( async () => {
@@ -64,12 +64,29 @@ describe('RemoteAgent', () => {
                 const asset = DataAsset.create('testAsset', data)
                 registerAsset = await agent.registerAsset(asset)
             })
-            it('should read asset from the remote agent', async () => {
-                const readAsset = await agent.getAsset(registerAsset.did)
-                assert(readAsset)
-                assert(readAsset.did)
-                assert.equal(readAsset.metadataText, registerAsset.metadataText)
+
+            describe('getAsset', () => {
+                it('should read asset from the remote agent', async () => {
+                    const readAsset = await agent.getAsset(registerAsset.did)
+                    assert(readAsset)
+                    assert(readAsset.did)
+                    assert.equal(readAsset.metadataText, registerAsset.metadataText)
+                })
             })
+            describe('uploadAsset', () => {
+                it('should upload asset data to remote agent', async () => {
+                    assert(await agent.uploadAsset(registerAsset))
+                })
+            })
+            describe('downloadAsset', () => {
+                it('should download asset data from a remote agent', async () => {
+                    assert(await agent.uploadAsset(registerAsset))
+                    const newAsset = await agent.downloadAsset(registerAsset.did)
+                    assert(newAsset)
+                    assert(newAsset.data.equals(data))
+                })
+            })
+
         })
     })
 })

@@ -13,6 +13,7 @@ import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
 import { AgentBase } from './AgentBase'
 //import { IAsset } from 'starfish/Interfaces/IAsset'
 import { AssetBase } from 'starfish/Asset/AssetBase'
+import { DataAsset } from 'starfish/Asset/DataAsset'
 import { IAgentAuthentication } from 'starfish/Interfaces/IAgentAuthentication'
 import { isDID, extractAssetId } from 'starfish/Utils'
 import { Network } from 'starfish/Network'
@@ -77,6 +78,24 @@ export class RemoteAgent extends AgentBase {
         const safeAssetId = extractAssetId(assetId)
         const metadata = await adapter.readMetadata(safeAssetId, url, token)
         return new AssetBase(metadata, this.generateDIDForAsset(safeAssetId))
+    }
+
+    public async uploadAsset(asset: DataAsset): Promise<boolean> {
+        const adapter = RemoteAgentAdapter.getInstance()
+        const token = await this.getAuthorizationToken()
+        const url = this.getEndpoint('storage')
+        const assetId = asset.getAssetId()
+        return adapter.uploadAssetData(assetId, asset.data, url, token)
+    }
+
+    public async downloadAsset(assetDIDorId: string): Promise<DataAsset> {
+        const adapter = RemoteAgentAdapter.getInstance()
+        const token = await this.getAuthorizationToken()
+        const url = this.getEndpoint('storage')
+        const assetId = extractAssetId(assetDIDorId)
+        const asset: DataAsset = <DataAsset>await this.getAsset(assetId)
+        asset.data = await adapter.downloadAssetData(assetId, url, token)
+        return asset
     }
 
     protected async getAuthorizationToken(): Promise<string> {
