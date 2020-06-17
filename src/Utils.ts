@@ -77,7 +77,7 @@ export function didParse(did: string): IDIDFragment {
         method: matchDID[1],
         id: matchDID[2],
     }
-    result['idHex'] = toIdHex(result['id'])
+    result['idHex'] = `0x${toIdHex(result['id'])}`
     if (matchDID[3]) {
         result['path'] = matchDID[3]
         const fragmentRegexp = new RegExp('(/[a-f0-9]+)(#.*)', 'i')

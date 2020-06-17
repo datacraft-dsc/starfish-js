@@ -40,40 +40,36 @@ describe('RemoteAgent', () => {
         })
     })
 
-    describe('registerAsset', () => {
+    describe('RemoteAgent methods', () => {
         let network
         let agent
         before( async () => {
             network = Network.getInstance(setup.network.url);
             agent = await RemoteAgent.createFromAddress(agentConfig['url'], network, agentAuthentication)
         })
-        it('should register a data asset', async () => {
-            const data = Buffer.from(hexToBytes(randomHex(1024)))
-            const asset = DataAsset.create('testAsset', data)
-            const registerAsset = await agent.registerAsset(asset)
-            assert(registerAsset)
-            assert(registerAsset.did)
+        describe('registerAsset', () => {
+            it('should register a data asset', async () => {
+                const data = Buffer.from(hexToBytes(randomHex(1024)))
+                const asset = DataAsset.create('testAsset', data)
+                const registerAsset = await agent.registerAsset(asset)
+                assert(registerAsset)
+                assert(registerAsset.did)
+            })
+        })
+        describe('getAsset', () => {
+            let data
+            let registerAsset
+            before( async () => {
+                data = Buffer.from(hexToBytes(randomHex(1024)))
+                const asset = DataAsset.create('testAsset', data)
+                registerAsset = await agent.registerAsset(asset)
+            })
+            it('should read asset from the remote agent', async () => {
+                const readAsset = await agent.getAsset(registerAsset.did)
+                assert(readAsset)
+                assert(readAsset.did)
+                assert.equal(readAsset.metadataText, registerAsset.metadataText)
+            })
         })
     })
-
-    describe('getAsset', () => {
-        let network
-        let agent
-        let data
-        let registerAsset
-        before( async () => {
-            network = Network.getInstance(setup.network.url);
-            agent = await RemoteAgent.createFromAddress(agentConfig['url'], network, agentAuthentication)
-            data = Buffer.from(hexToBytes(randomHex(1024)))
-            const asset = DataAsset.create('testAsset', data)
-            registerAsset = await agent.registerAsset(asset)
-        })
-        it('should read asset from the remote agent', async () => {
-            const readAsset = await agent.getAsset(registerAsset.did)
-            assert(readAsset)
-            assert(readAsset.did)
-            assert.equal(readAsset.metadataText, registerAsset.metadataText)
-        })
-    })
-
 })
