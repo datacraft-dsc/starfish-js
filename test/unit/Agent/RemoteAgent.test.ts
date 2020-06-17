@@ -93,21 +93,19 @@ describe('RemoteAgent Class', () => {
         describe('Test on an invokable asset', () => {
             let invokeAsset: OperationAsset
             let assetId: string
+            let testNumber: number
+            let inputs
             before( async () => {
                 const invokeList = await enableSurferInvokableOperations(agentConfig['url'], agentConfig['username'], agentConfig['password'])
                 assert(invokeList['invokables'][testInovkeName])
                 assetId = removeLeadingHexZero(extractAssetId(invokeList['invokables'][testInovkeName]))
                 invokeAsset = await agent.getAsset(assetId)
+                testNumber = Math.random() * 100
+                inputs = {
+                    n: testNumber
+                }
             })
             describe('invoke', () => {
-                let testNumber: number
-                let inputs
-                before( () => {
-                    testNumber = Math.random() * 100
-                    inputs = {
-                        n: testNumber
-                    }
-                })
                 it('should invoke a sync operation', async () => {
                     const result = await agent.invoke(invokeAsset, inputs)
                     assert(result)
@@ -120,6 +118,24 @@ describe('RemoteAgent Class', () => {
                     const result = await agent.invoke(invokeAsset, inputs, true)
                     assert(result)
                     assert(result['job-id'])
+                })
+            })
+            describe('getJob', () => {
+                it('should request job status on an sync operation, using the job-id', async () => {
+                    const result = await agent.invoke(invokeAsset, inputs, true)
+                    assert(result)
+                    assert(result['job-id'])
+                    const jobStatus = await agent.getJob(result['job-id'])
+                    assert(jobStatus)
+                    assert.equal(jobStatus['id'], result['job-id'])
+                })
+                it('should request job status on an sync operation, using the IInvokeResult record', async () => {
+                    const result = await agent.invoke(invokeAsset, inputs, true)
+                    assert(result)
+                    assert(result['job-id'])
+                    const jobStatus = await agent.getJob(result)
+                    assert(jobStatus)
+                    assert.equal(jobStatus['id'], result['job-id'])
                 })
             })
         })

@@ -117,6 +117,19 @@ export class RemoteAgent extends AgentBase {
         return adapter.invoke(assetId, inputsText, isAsync, url, token)
     }
 
+    public async getJob(jobId: string | IInvokeResult): Promise<IInvokeResult> {
+        const adapter = RemoteAgentAdapter.getInstance()
+        const token = await this.getAuthorizationToken()
+        const url = this.getEndpoint('invoke')
+        let safeJobId
+        if (typeof jobId === 'string') {
+            safeJobId = jobId
+        } else {
+            safeJobId = jobId['job-id']
+        }
+        return adapter.getJob(safeJobId, url, token)
+    }
+
     protected async getAuthorizationToken(): Promise<string> {
         if (!this.authentication) {
             return null
