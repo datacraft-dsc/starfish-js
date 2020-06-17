@@ -213,10 +213,10 @@ export class RemoteAgentAdapter {
         }
         RemoteAgentAdapter.throwError('Unable to download asset data', response)
     }
-    public async invoke(assetId: string, inputText: string, isSync: boolean, url: string, token?: string): Promise<IInvokeResult> {
-        let invokeURL = urljoin(url, `/async/${assetId}`)
-        if (isSync) {
-            invokeURL = urljoin(url, `/sync/${assetId}`)
+    public async invoke(assetId: string, inputText: string, isAsync: boolean, url: string, token?: string): Promise<IInvokeResult> {
+        let invokeURL = urljoin(url, `/sync/${assetId}`)
+        if (isAsync) {
+            invokeURL = urljoin(url, `/async/${assetId}`)
         }
         const headers = RemoteAgentAdapter.createHeaders('application/json', token)
         const response = await fetch(invokeURL, {

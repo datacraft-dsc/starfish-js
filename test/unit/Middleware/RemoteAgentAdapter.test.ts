@@ -213,7 +213,7 @@ describe('RemoteAgentAdapter', () => {
                 const inputs = {
                     n: testNumber
                 }
-                const result = await adapter.invoke(assetId, JSON.stringify(inputs), true, invokeURL, accessToken)
+                const result = await adapter.invoke(assetId, JSON.stringify(inputs), false, invokeURL, accessToken)
                 assert(result)
                 assert(result['outputs'])
                 assert.equal(result['status'], 'succeeded')
@@ -227,7 +227,7 @@ describe('RemoteAgentAdapter', () => {
                 const inputs = {
                     n: testNumber
                 }
-                const result = await adapter.invoke(assetId, JSON.stringify(inputs), false, invokeURL, accessToken)
+                const result = await adapter.invoke(assetId, JSON.stringify(inputs), true, invokeURL, accessToken)
                 assert(result)
                 let jobResult
                 while (true) {
