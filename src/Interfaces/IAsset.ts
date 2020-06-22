@@ -15,3 +15,7 @@ export interface IAsset {
     metadata: IMetadata
     metadataText: string
 }
+
+export interface IAssetList {
+    [assetId: string]: IAsset
+}
