@@ -3,7 +3,7 @@ import { Contract as Web3Contract } from 'web3-eth-contract'
 import { AbiItem } from 'web3-utils'
 import { ContractSendMethod } from 'web3-eth-contract'
 
-import { Account } from 'starfish/Account'
+import { Account } from '../Account'
 
 export class ContractBase {
     readonly name: string

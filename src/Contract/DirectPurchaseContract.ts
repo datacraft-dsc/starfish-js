@@ -3,8 +3,8 @@ import { EventData } from 'web3-eth-contract'
 import { toHex } from 'web3-utils'
 
 import { ContractBase } from './ContractBase'
-import { Account } from 'starfish/Account'
-import { toWei } from 'starfish/Utils'
+import { Account } from '../Account'
+import { toWei } from '../Utils'
 
 export class DirectPurchaseContract extends ContractBase {
     constructor() {

@@ -9,17 +9,17 @@
 
 import urljoin from 'url-join'
 
-import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
+import { RemoteAgentAdapter } from '../Middleware/RemoteAgentAdapter'
 import { AgentBase } from './AgentBase'
 //import { IAsset } from 'starfish/Interfaces/IAsset'
-import { AssetBase } from 'starfish/Asset/AssetBase'
-import { DataAsset } from 'starfish/Asset/DataAsset'
-import { OperationAsset } from 'starfish/Asset/OperationAsset'
-import { IAgentAuthentication } from 'starfish/Interfaces/IAgentAuthentication'
-import { IInvokeResult } from 'starfish/Interfaces/IInvoke'
-import { isDID, extractAssetId } from 'starfish/Utils'
-import { Network } from 'starfish/Network'
-import { DDO } from 'starfish/DDO/DDO'
+import { AssetBase } from '../Asset/AssetBase'
+import { DataAsset } from '../Asset/DataAsset'
+import { OperationAsset } from '../Asset/OperationAsset'
+import { IAgentAuthentication } from '../Interfaces/IAgentAuthentication'
+import { IInvokeResult } from '../Interfaces/IInvoke'
+import { isDID, extractAssetId } from '../Utils'
+import { Network } from '../Network'
+import { DDO } from '../DDO/DDO'
 
 export class RemoteAgent extends AgentBase {
     public authentication: IAgentAuthentication

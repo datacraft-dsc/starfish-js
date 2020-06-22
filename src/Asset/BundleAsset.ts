@@ -6,7 +6,7 @@
  *
  */
 
-import { IMetadata, IMetadataBundle, IBundleMap, IBundleContent } from 'starfish/Interfaces/IMetadata'
+import { IMetadata, IMetadataBundle, IBundleMap, IBundleContent } from '../Interfaces/IMetadata'
 import { AssetBase } from './AssetBase'
 
 export class BundleAsset extends AssetBase {

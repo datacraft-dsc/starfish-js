@@ -6,7 +6,7 @@
  *
  */
 
-import { IMetadataOperation } from 'starfish/Interfaces/IMetadata'
+import { IMetadataOperation } from '../Interfaces/IMetadata'
 import { AssetBase } from './AssetBase'
 
 export class OperationAsset extends AssetBase {

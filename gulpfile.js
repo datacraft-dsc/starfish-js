@@ -6,21 +6,28 @@ var buffer = require('vinyl-buffer');
 var sourcemaps = require('gulp-sourcemaps');
 var gutil = require('gulp-util');
 var uglify = require('gulp-uglify-es').default;
+// const tsConfigPaths = require('tsconfig-paths')
 
-var paths = {
-    pages: ['test/*.html']
+const paths = {
+    pages: ['test/integration/*.html']
 };
+
+gulp.task('copy-library', function () {
+    return gulp.src('src/**/*.ts')
+        .pipe(gulp.dest('dist/starfish'));
+});
 
 gulp.task('copy-html', function () {
     return gulp.src(paths.pages)
+        .pipe(gulp.src('test/integration/testweb.ts'))
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('dev', gulp.series(gulp.parallel('copy-html'), function () {
+gulp.task('dev', gulp.series(gulp.parallel(['copy-html', 'copy-library']), function () {
     return browserify({
         basedir: '.',
         debug: true,
-        entries: ['test/testweb.ts'],
+        entries: ['dist/testweb.ts'],
         cache: {},
         packageCache: {}
     })
@@ -38,7 +45,7 @@ gulp.task('final', gulp.series(gulp.parallel('copy-html'), function () {
     return browserify({
         basedir: '.',
         debug: false,
-        entries: ['test/testweb.ts'],
+        entries: ['test/integration/testweb.ts'],
         cache: {},
         packageCache: {}
     })

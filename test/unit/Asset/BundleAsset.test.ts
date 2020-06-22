@@ -49,6 +49,5 @@ describe('BundleAsset Class', () => {
             assert.equal(asset.metadata['type'], 'bundle')
             assert(asset.metadata.contents.testAsset_10.assetID)
         })
-
     })
 })

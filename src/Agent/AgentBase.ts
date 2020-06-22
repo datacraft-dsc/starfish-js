@@ -8,7 +8,7 @@
  */
 
 import urljoin from 'url-join'
-import { DDO } from 'starfish/DDO/DDO'
+import { DDO } from '../DDO/DDO'
 
 export class AgentBase {
     public ddo: DDO

@@ -6,11 +6,11 @@
  *
  */
 
-import { IMetadata } from 'starfish/Interfaces/IMetadata'
-import { IAsset } from 'starfish/Interfaces/IAsset'
+import { IMetadata } from '../Interfaces/IMetadata'
+import { IAsset } from '../Interfaces/IAsset'
 
-import { extractAssetId } from 'starfish/Utils'
-import { calcAssetId } from 'starfish/Crypto'
+import { extractAssetId } from '../Utils'
+import { calcAssetId } from '../Crypto'
 
 export class AssetBase implements IAsset {
     readonly metadataText: string

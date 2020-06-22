@@ -1,8 +1,8 @@
 import { TransactionReceipt } from 'web3-core'
 
 import { ContractBase } from './ContractBase'
-import { Account } from 'starfish/Account'
-import { toEther, toWei } from 'starfish/Utils'
+import { Account } from '../Account'
+import { toEther, toWei } from '../Utils'
 
 export class OceanTokenContract extends ContractBase {
     constructor() {

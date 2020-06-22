@@ -5,9 +5,9 @@
 
 */
 
-import { didRandom } from 'starfish/Utils'
+import { didRandom } from '../Utils'
 
-import { IDDO, IDDOService } from 'starfish/Interfaces/IDDO'
+import { IDDO, IDDOService } from '../Interfaces/IDDO'
 
 export class DDO implements IDDO {
     id: string

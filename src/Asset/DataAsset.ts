@@ -9,9 +9,9 @@
 import fs from 'fs-extra'
 import mime from 'mime-types'
 
-import { IMetadata, IMetadataData } from 'starfish/Interfaces/IMetadata'
+import { IMetadata, IMetadataData } from '../Interfaces/IMetadata'
 import { AssetBase } from './AssetBase'
-import { calcAssetDataHash } from 'starfish/Crypto'
+import { calcAssetDataHash } from '../Crypto'
 
 export class DataAsset extends AssetBase {
     public data: Buffer
