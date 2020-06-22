@@ -319,12 +319,25 @@ export class Network {
      *
      *
      */
+    /*
+     * Registers a DID on the block chain network, with an associated DDO.
+     * @param account Account to use to sign and pay for the registration.
+     * @param did DID string to register.
+     * @param ddoText DDO in JSON text.
+     * @returns True if the registration was successful.
+     */
     public async registerDID(account: Account, did: string, ddoText: string): Promise<boolean> {
         const contract = <DIDRegistryContract>await this.getContract('DIDRegistry')
         const didId = didToId(did)
         const receipt = await contract.register(account, didId, ddoText)
         return receipt.status
     }
+
+    /*
+     * Resolves a DID to a DDO text string if found on the block chain network.
+     * @param did DID to search find.
+     * @returns DDO as a JSON text if found, else return null.
+     */
     public async resolveDID(did: string): Promise<string> {
         const contract = <DIDRegistryContract>await this.getContract('DIDRegistry')
         const didId = didToId(did)
@@ -337,6 +350,15 @@ export class Network {
      *          Helper for resolving agents
      *
      *
+     */
+
+    /*
+     * Resolves an agent address to a DDO object. An agent address can be a URL, DID or Asset DID.
+     * @param agentAddress DID, URL or Asset DID of the agent to resolve.
+     * @param username Optional username of the agent to access.
+     * @param password Optional password of the agent to access.
+     * @param authentication Optionas authentication object, this can be used instead of the username/password
+     * @returns a DDO object if the agent is found, else returns null.
      */
     public async resolveAgent(
         agentAddress: string,
