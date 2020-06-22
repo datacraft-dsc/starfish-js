@@ -66,13 +66,13 @@ function getReference(){
     return value;
 }
 
-/*
+
 async function stop(e:Event) {
   // await directPurchase.shutdown();
 }
-*/
 
-/*
+
+
 window.addEventListener('load', function() {
     var startBtn = window.document.getElementById("startBtn");
     startBtn.addEventListener("click", (e:Event) => start(e));
@@ -80,4 +80,3 @@ window.addEventListener('load', function() {
     stopBtn.addEventListener("click", (e:Event) => stop(e));
 })
 
-*/
