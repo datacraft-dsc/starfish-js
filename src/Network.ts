@@ -355,7 +355,7 @@ export class Network {
     /*
      * Resolves an agent address to a DDO object. An agent address can be a URL, DID or Asset DID.
      * @param agentAddress DID, URL or Asset DID of the agent to resolve.
-     * @param username Optional username of the agent to access.
+     * @param username Optional username of the agent to access. Access is only used if the URL is provided.
      * @param password Optional password of the agent to access.
      * @param authentication Optionas authentication object, this can be used instead of the username/password
      * @returns a DDO object if the agent is found, else returns null.

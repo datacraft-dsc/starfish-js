@@ -14,7 +14,7 @@ import { calcAssetId } from 'starfish/Crypto'
 
 export class AssetBase implements IAsset {
     readonly metadataText: string
-    public metadata: IMetadata
+    readonly metadata: IMetadata
     public did: string
 
     public static generateMetadata(name: string, type: string, metadata?: string | IMetadata): IMetadata {
