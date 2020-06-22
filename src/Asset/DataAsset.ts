@@ -18,8 +18,8 @@ export class DataAsset extends AssetBase {
 
     public static create(name: string, data: Buffer, metadata?: string | IMetadataData, did?: string): DataAsset {
         const storeMetadata = AssetBase.generateMetadata(name, 'dataset', metadata)
-        storeMetadata['contentType'] = 'application/octet-stream'
-        storeMetadata['contentHash'] = calcAssetDataHash(data)
+        storeMetadata.contentType = 'application/octet-stream'
+        storeMetadata.contentHash = calcAssetDataHash(data)
         return new DataAsset(storeMetadata, did, data)
     }
 
@@ -31,12 +31,12 @@ export class DataAsset extends AssetBase {
     ): Promise<DataAsset> {
         const storeMetadata = AssetBase.generateMetadata(name, 'dataset', metadata)
         const data = await fs.readFile(filename)
-        storeMetadata['contentType'] = 'application/octet-stream'
+        storeMetadata.contentType = 'application/octet-stream'
         const mimeType = mime.lookup(filename)
         if (mimeType) {
-            storeMetadata['contentType'] = mimeType
+            storeMetadata.contentType = mimeType
         }
-        storeMetadata['contentHash'] = calcAssetDataHash(data)
+        storeMetadata.contentHash = calcAssetDataHash(data)
         return new DataAsset(storeMetadata, did, data)
     }
 

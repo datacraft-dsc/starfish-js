@@ -6,23 +6,19 @@
  *
  */
 
-import { IMetadata, IMetadataData } from 'starfish/Interfaces/IMetadata'
+import { IMetadata, IMetadataBundle, IBundleMap } from 'starfish/Interfaces/IMetadata'
 import { AssetBase } from './AssetBase'
 
 export class BundleAsset extends AssetBase {
-    public assetList: Map<string, AssetBase>
+    public assetList: IBundleMap
 
-    public static create(
-        name: string,
-        assetList: Map<string, AssetBase>,
-        metadata?: string | IMetadataData,
-        did?: string
-    ): BundleAsset {
+    public static create(name: string, assetList: IBundleMap, metadata?: string | IMetadataBundle, did?: string): BundleAsset {
         const storeMetadata = AssetBase.generateMetadata(name, 'bundle', metadata)
+        storeMetadata.contents = assetList
         return new BundleAsset(storeMetadata, did, assetList)
     }
 
-    constructor(metadata: string | IMetadata, did?: string, assetList?: Map<string, AssetBase>) {
+    constructor(metadata: string | IMetadata, did?: string, assetList?: IBundleMap) {
         let metadataText = metadata
         if (typeof metadata != 'string') {
             metadataText = JSON.stringify(metadata)
@@ -32,17 +28,17 @@ export class BundleAsset extends AssetBase {
         if (assetList) {
             this.assetList = assetList
         } else {
-            this.assetList = new Map<string, AssetBase>()
+            this.assetList = {}
         }
     }
 
-    public setAsset(name: string, asset: AssetBase): void {
-        this.assetList.set(name, asset)
+    public setAsset(name: string, assetId: string): void {
+        this.assetList[name] = assetId
     }
-    public getAsset(name: string): AssetBase {
-        return this.assetList.get(name)
+    public getAsset(name: string): string {
+        return this.assetList[name]
     }
     public deleteAsset(name: string): void {
-        this.assetList.delete(name)
+        delete this.assetList[name]
     }
 }
