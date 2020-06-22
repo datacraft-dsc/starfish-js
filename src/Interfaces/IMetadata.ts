@@ -18,8 +18,12 @@ export interface IOperation {
     outputs: any
 }
 
+export interface IBundleContent {
+    assetID: string
+}
+
 export interface IBundleMap {
-    [name: string]: string
+    [name: string]: IBundleContent
 }
 
 export interface IMetadataBase {

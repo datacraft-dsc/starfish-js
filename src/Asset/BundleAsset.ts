@@ -6,13 +6,13 @@
  *
  */
 
-import { IMetadata, IMetadataBundle, IBundleMap } from 'starfish/Interfaces/IMetadata'
+import { IMetadata, IMetadataBundle, IBundleMap, IBundleContent } from 'starfish/Interfaces/IMetadata'
 import { AssetBase } from './AssetBase'
 
 export class BundleAsset extends AssetBase {
     public assetList: IBundleMap
 
-    public static create(name: string, assetList: IBundleMap, metadata?: string | IMetadataBundle, did?: string): BundleAsset {
+    public static create(name: string, assetList?: IBundleMap, metadata?: string | IMetadataBundle, did?: string): BundleAsset {
         const storeMetadata = AssetBase.generateMetadata(name, 'bundle', metadata)
         storeMetadata.contents = assetList
         return new BundleAsset(storeMetadata, did, assetList)
@@ -33,10 +33,10 @@ export class BundleAsset extends AssetBase {
     }
 
     public setAsset(name: string, assetId: string): void {
-        this.assetList[name] = assetId
+        this.assetList[name] = <IBundleContent>{ assetID: assetId }
     }
     public getAsset(name: string): string {
-        return this.assetList[name]
+        return this.assetList[name].assetID
     }
     public deleteAsset(name: string): void {
         delete this.assetList[name]
