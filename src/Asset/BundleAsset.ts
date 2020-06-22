@@ -12,10 +12,25 @@ import { AssetBase } from './AssetBase'
 export class BundleAsset extends AssetBase {
     public assetList: IBundleMap
 
-    public static create(name: string, assetList?: IBundleMap, metadata?: string | IMetadataBundle, did?: string): BundleAsset {
+    public static create(
+        name: string,
+        assetList?: IBundleMap | Map<string, string>,
+        metadata?: string | IMetadataBundle,
+        did?: string
+    ): BundleAsset {
         const storeMetadata = AssetBase.generateMetadata(name, 'bundle', metadata)
-        storeMetadata.contents = assetList
-        return new BundleAsset(storeMetadata, did, assetList)
+        storeMetadata.contents = <IBundleMap>{}
+        if (assetList && 'forEach' in assetList) {
+            if (assetList) {
+                const assetMap = <Map<string, string>>assetList
+                assetMap.forEach((assetId: string, name: string) => {
+                    storeMetadata.contents[name] = <IBundleContent>{ assetID: assetId }
+                })
+            }
+        } else {
+            storeMetadata.contents = <IBundleMap>assetList
+        }
+        return new BundleAsset(storeMetadata, did, storeMetadata.contents)
     }
 
     constructor(metadata: string | IMetadata, did?: string, assetList?: IBundleMap) {
