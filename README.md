@@ -73,24 +73,24 @@ Currently only provide basic account balance information
     npm run test
     ```
 
-## Currently not working until the rebuild is completed..
+## Test/Develompent standalone web server
 
 1. Building for the browser with debugging support
 
     ```
-    gulp dev
+    npm run build:server
+
     google-chrome --remote-debugging-port=9222
+
     # this is needed since metamask is not injected into web3 if url is file:// protocol
-    npm install http-server -g
-    http-server # this will expose current working directory as http://localhost:8080/
-    # Run dubugging in VS Code with "Attach Chrome" configuration (.vscode/launch.json)
+
+    npm run test:server
+
+    server test/standalone # this will expose current working directory as http://localhost:5000/
+
+    # Run dubugging in VS Code with "Attach Chrome" configuration (test/server/.vscode/launch.json)
     ```
 
-1. Building final minified version for the browser
-
-    ```
-    gulp final
-    ```
 ## Documentation
 
 None at the moment

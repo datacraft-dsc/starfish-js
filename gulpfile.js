@@ -9,8 +9,8 @@ var uglify = require('gulp-uglify-es').default;
 
 const paths = {
     pages: [
-        'test/integration/*.html',
-        'test/integration/testweb.ts'
+        'test/server/*.html',
+        'test/server/testweb.ts'
     ],
     starfish: 'src/**/*.ts'
 };
@@ -43,29 +43,12 @@ gulp.task('dev', gulp.series(gulp.parallel(['copy-html', 'copy-library']), funct
     .pipe(gulp.dest('dist/node'))
 }));
 
-gulp.task('final', gulp.series(gulp.parallel('copy-html'), function () {
-    return browserify({
-        basedir: '.',
-        debug: false,
-        entries: ['test/integration/testweb.ts'],
-        cache: {},
-        packageCache: {}
-    })
-    .plugin(tsify)
-    .bundle()
-    .on('error', gutil.log)
-    .pipe(source('testwebBundle.js'))
-    .pipe(buffer())
-    .pipe(uglify())
-    .pipe(gulp.dest('dist/node'))
-}));
-
 // Rerun the dev task when a file changes
 gulp.task('watch', function() {
     gulp.watch('src/**/*.ts', gulp.parallel('dev'));
 });
 
-gulp.task('build', gulp.parallel('dev', 'final'));
+gulp.task('build', gulp.parallel('dev'));
 
 // an alias.
 gulp.task('default', gulp.parallel('build'));
