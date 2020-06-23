@@ -3,7 +3,6 @@
 
 ## Release 0.0.1
 
-+   Remote Agent
-+   Implemented DEX Contracts
++   Online documentation
 +   add Changelog
 

@@ -93,7 +93,7 @@ Currently only provide basic account balance information
 
 ## Documentation
 
-None at the moment
+[starfish-js API documentation](https://dex-company.github.io/starfish-js)
 
 ## Code style
 
