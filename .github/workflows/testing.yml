@@ -57,7 +57,7 @@ jobs:
     # adding docs in testing at the moment -- move to deploy later
     - name: Build Docs
       run: |
-        npm run docs
+        npm run build:docs
         touch docs/.nojekyll
     - name: Deploy Docs
       uses: peaceiris/actions-gh-pages@v2.5.0

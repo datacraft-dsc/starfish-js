@@ -17,7 +17,7 @@
     "build:dist": "cross-env NODE_ENV=production webpack",
     "build:watch": "tsc -w",
     "build:server": "npm run clean && gulp",
-    "docs": "typedoc --mode modules --out ./docs/ ./src/",
+    "build:docs": "typedoc --mode modules --out ./docs/ ./src/",
     "run": "ts-node",
     "release": "./node_modules/release-it/bin/release-it.js --src.tagName='v%s' --github.release --npm.publish --non-interactive",
     "release-minor": "./node_modules/release-it/bin/release-it.js minor --src.tagName='v%s' --github.release --npm.publish --non-interactive",
