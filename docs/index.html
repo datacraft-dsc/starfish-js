@@ -1,0 +1,317 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@dex/starfish</title>
+	<meta name="description" content="Documentation for @dex/starfish">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@dex/starfish</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>@dex/starfish</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#starfish-js" id="starfish-js" style="color: inherit; text-decoration: none;">
+					<h1>starfish-js</h1>
+				</a>
+				<p>Toolkit for Decentralised Data Ecosystem development in Javascript</p>
+				<p><img src="https://github.com/DEX-Company/starfish-js/workflows/testing/badge.svg" alt="">
+					<a href="https://github.com/DEX-Company/starfish-js/graphs/contributors"><img src="https://img.shields.io/github/contributors/DEX-Company/starfish-js.svg" alt="GitHub contributors"></a>
+				<a href="https://github.com/DEX-Company/barge/develop"><img src="https://img.shields.io/badge/barge-develop-blue.svg" alt="Barge Version"></a></p>
+				<hr>
+				<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
+					<h2>Table of Contents</h2>
+				</a>
+				<ul>
+					<li><a href="#overview">Overview</a></li>
+					<li><a href="#features">Features</a></li>
+					<li><a href="#prerequisites">Prerequisites</a></li>
+					<li><a href="#quickstart">Quickstart</a></li>
+					<li><a href="#environment-variables">Environment variables</a></li>
+					<li><a href="#code-style">Code style</a></li>
+					<li><a href="#testing">Testing</a></li>
+					<li><a href="#new-version">New Version</a></li>
+					<li><a href="#license">License</a></li>
+				</ul>
+				<hr>
+				<a href="#overview" id="overview" style="color: inherit; text-decoration: none;">
+					<h2>Overview</h2>
+				</a>
+				<p>Starfish-js is an open source developer toolkit for the data economy. It allows developers, data scientists and enterprises to create, interact, integrate and manage decentralised data supply lines through standardised and simple-to-use APIs.</p>
+				<p>Based on an underlying data ecosystem standard, Starfish provides high-level APIs for common tasks within the data economy, for example, registering/publishing an asset, for subsequent use in a digital supply line. In this case, an asset can be any data set, model or data service. The high-level API also allows developers to invoke operation on an asset, e.g. computing a predictive model or anonymising sensitive personal information, among other capabilities.</p>
+				<p>Starfish works with blockchain networks and common web services through agents, allowing unprecedented flexibility in asset discovery and data supply line management.</p>
+				<a href="#features" id="features" style="color: inherit; text-decoration: none;">
+					<h2>Features</h2>
+				</a>
+				<p>Currently only provide basic account balance information</p>
+				<a href="#prerequisites" id="prerequisites" style="color: inherit; text-decoration: none;">
+					<h2>Prerequisites</h2>
+				</a>
+				<a href="#development" id="development" style="color: inherit; text-decoration: none;">
+					<h2>Development</h2>
+				</a>
+				<ol>
+					<li><p>Install requirements</p>
+					<pre><code> npm <span class="hljs-keyword">install</span></code></pre></li>
+					<li><p>Create the local testing environment using <a href="https://github.com/DEX-Company/barge">barge</a>.</p>
+						<p> In a sepearte terminal session you need to clone and checkout the correct taged
+						version of <code>barge</code> repository, by doing the following:</p>
+						<pre><code> git clone http<span class="hljs-variable">s:</span>//github.<span class="hljs-keyword">com</span>/DEX-Company/barge.git
+ <span class="hljs-keyword">cd</span> barge
+ git checkout <span class="hljs-keyword">tags</span>/dex-<span class="hljs-number">2019</span>-<span class="hljs-number">05</span>-<span class="hljs-number">24</span>
+ ./start_ocean.<span class="hljs-keyword">sh</span> --<span class="hljs-keyword">no</span>-brizo --<span class="hljs-keyword">no</span>-pleuston --local-spree-node</code></pre></li>
+					<li><p>Copy keeper artifacts</p>
+						<p> A bash script is available to copy keeper artifacts into this file directly from a running docker image. This script needs to run in the root of the project.
+						The script waits until the keeper contracts are deployed, and then copies the artifacts.</p>
+						<pre><code> .<span class="hljs-regexp">/scripts/</span>wait_for_migration_and_extract_keeper_artifacts.sh</code></pre><p> The artifacts contain the addresses of all the deployed contracts and their ABI definitions required to interact with them.</p>
+					</li>
+					<li><p>Run the unit tests</p>
+					<pre><code> npm <span class="hljs-keyword">run</span><span class="bash"> <span class="hljs-built_in">test</span></span></code></pre></li>
+				</ol>
+				<a href="#testdevelompent-standalone-web-server" id="testdevelompent-standalone-web-server" style="color: inherit; text-decoration: none;">
+					<h2>Test/Develompent standalone web server</h2>
+				</a>
+				<ol>
+					<li><p>Building for the browser with debugging support</p>
+						<pre><code> npm run build:<span class="hljs-keyword">server</span>
+
+ google-chrome <span class="hljs-comment">--remote-debugging-port=9222</span>
+
+ # this <span class="hljs-keyword">is</span> needed since metamask <span class="hljs-keyword">is</span> <span class="hljs-keyword">not</span> injected <span class="hljs-keyword">into</span> web3 <span class="hljs-keyword">if</span> url <span class="hljs-keyword">is</span> file:// protocol
+
+ npm run test:<span class="hljs-keyword">server</span>
+
+ <span class="hljs-keyword">server</span> test/standalone # this will expose <span class="hljs-keyword">current</span> working directory <span class="hljs-keyword">as</span> http://localhost:<span class="hljs-number">5000</span>/
+
+ # Run dubugging <span class="hljs-keyword">in</span> VS Code <span class="hljs-keyword">with</span> &quot;Attach Chrome&quot; <span class="hljs-keyword">configuration</span> (test/<span class="hljs-keyword">server</span>/.vscode/launch.json)</code></pre></li>
+				</ol>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h2>Documentation</h2>
+				</a>
+				<p>None at the moment</p>
+				<a href="#code-style" id="code-style" style="color: inherit; text-decoration: none;">
+					<h2>Code style</h2>
+				</a>
+				<p>ESlint recomended rules. Using the <code>&quot;extends&quot;: &quot;eslint:recommended&quot;</code> parameter.
+				Also using Prettier standard with ESlint.</p>
+				<p>You need to run
+				<code>npm run lint</code></p>
+				<p>To make sure there are no formating and lint errors.</p>
+				<a href="#testing" id="testing" style="color: inherit; text-decoration: none;">
+					<h2>Testing</h2>
+				</a>
+				<p>Automatic tests are setup github actions. Using the <code>npm</code> framework.</p>
+				<p>To test run</p>
+				<pre><code><span class="hljs-string">``</span><span class="hljs-string">`
+npm test
+`</span><span class="hljs-string">``</span></code></pre>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<pre><code>Copyright 2018 Ocean Protocol Foundation Ltd.
+
+Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+you may not <span class="hljs-keyword">use</span> this <span class="hljs-keyword">file</span> <span class="hljs-keyword">except</span> <span class="hljs-keyword">in</span> compliance <span class="hljs-keyword">with</span> the License.
+You may obtain a copy <span class="hljs-keyword">of</span> the License <span class="hljs-keyword">at</span>
+
+   <span class="hljs-keyword">http</span>://www.apache.org/licenses/LICENSE<span class="hljs-number">-2.0</span>
+
+Unless <span class="hljs-keyword">required</span> <span class="hljs-keyword">by</span> applicable law <span class="hljs-keyword">or</span> agreed <span class="hljs-keyword">to</span> <span class="hljs-keyword">in</span> writing, software
+<span class="hljs-keyword">distributed</span> <span class="hljs-keyword">under</span> the License <span class="hljs-keyword">is</span> <span class="hljs-keyword">distributed</span> <span class="hljs-keyword">on</span> an <span class="hljs-string">&quot;AS IS&quot;</span> BASIS,
+<span class="hljs-keyword">WITHOUT</span> WARRANTIES <span class="hljs-keyword">OR</span> CONDITIONS <span class="hljs-keyword">OF</span> <span class="hljs-keyword">ANY</span> KIND, either express <span class="hljs-keyword">or</span> implied.
+See the License <span class="hljs-keyword">for</span> the specific <span class="hljs-keyword">language</span> governing permissions <span class="hljs-keyword">and</span>
+limitations <span class="hljs-keyword">under</span> the License.</code></pre>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_account_.html">&quot;<wbr>Account&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_agent_agentbase_.html">&quot;<wbr>Agent/<wbr>Agent<wbr>Base&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_agent_remoteagent_.html">&quot;<wbr>Agent/<wbr>Remote<wbr>Agent&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_asset_.html">&quot;<wbr>Asset&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_asset_assetbase_.html">&quot;<wbr>Asset/<wbr>Asset<wbr>Base&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_asset_bundleasset_.html">&quot;<wbr>Asset/<wbr>Bundle<wbr>Asset&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_asset_dataasset_.html">&quot;<wbr>Asset/<wbr>Data<wbr>Asset&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_asset_operationasset_.html">&quot;<wbr>Asset/<wbr>Operation<wbr>Asset&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_contract_contractbase_.html">&quot;<wbr>Contract/<wbr>Contract<wbr>Base&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_contract_contractmanager_.html">&quot;<wbr>Contract/<wbr>Contract<wbr>Manager&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_contract_didregistrycontract_.html">&quot;<wbr>Contract/DIDRegistry<wbr>Contract&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_contract_directpurchasecontract_.html">&quot;<wbr>Contract/<wbr>Direct<wbr>Purchase<wbr>Contract&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_contract_dispensercontract_.html">&quot;<wbr>Contract/<wbr>Dispenser<wbr>Contract&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_contract_networkcontract_.html">&quot;<wbr>Contract/<wbr>Network<wbr>Contract&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_contract_oceantokencontract_.html">&quot;<wbr>Contract/<wbr>Ocean<wbr>Token<wbr>Contract&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_contract_provenancecontract_.html">&quot;<wbr>Contract/<wbr>Provenance<wbr>Contract&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_crypto_.html">&quot;<wbr>Crypto&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_ddo_ddo_.html">&quot;DDO/DDO&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_interfaces_iagentauthentication_.html">&quot;<wbr>Interfaces/IAgent<wbr>Authentication&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_interfaces_iasset_.html">&quot;<wbr>Interfaces/IAsset&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_interfaces_iddo_.html">&quot;<wbr>Interfaces/IDDO&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_interfaces_ididfragment_.html">&quot;<wbr>Interfaces/IDIDFragment&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_interfaces_iinvoke_.html">&quot;<wbr>Interfaces/IInvoke&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_interfaces_ilisting_.html">&quot;<wbr>Interfaces/IListing&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_interfaces_imetadata_.html">&quot;<wbr>Interfaces/IMetadata&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_interfaces_iprovider_.html">&quot;<wbr>Interfaces/IProvider&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_middleware_remoteagentadapter_.html">&quot;<wbr>Middleware/<wbr>Remote<wbr>Agent<wbr>Adapter&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_network_.html">&quot;<wbr>Network&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_provider_directprovider_.html">&quot;<wbr>Provider/<wbr>Direct<wbr>Provider&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_provider_metamaskprovider_.html">&quot;<wbr>Provider/<wbr>Metamask<wbr>Provider&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_provider_metamaskproviderweb_.html">&quot;<wbr>Provider/<wbr>Metamask<wbr>Provider<wbr>Web&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_provider_websocketprovider_.html">&quot;<wbr>Provider/<wbr>Web<wbr>Socket<wbr>Provider&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_utils_.html">&quot;<wbr>Utils&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
