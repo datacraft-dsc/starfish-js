@@ -43,6 +43,17 @@ export class DDO implements IDDO {
 
     static defaultVersion = 'v1'
 
+    /*
+     * @param url Base url for all of the services. e.g. 'https://my-agent'
+     * @param serviceList Array of string list of service names to include:
+     *   they can be meta, storage, invoke, market, trust, auth
+     * @param did DID string that has been assigned to this agent
+     * @param version Optional version number, Defaults: v1.
+     *   API services will be created using the following format:
+     *      <URL>/api/<version>/<service_uri>
+     *
+     * @returns a DDO object with the correct information set.
+     */
     public static createFromServiceList(url: string, serviceList: Array<string>, did?: string, version?: string): DDO {
         const ddo = new DDO(did)
         for (const name of serviceList) {
@@ -51,6 +62,13 @@ export class DDO implements IDDO {
         return ddo
     }
 
+    /*
+     * Create a DDO for all services
+     * @param url  Base url for all of the services. e.g. 'https://my-agent'
+     * @param did DID string that has been assigned to this agent
+     * @param version Optional version number, Defaults: v1.
+     * @returns a DDO object with the correct information set.
+     */
     public static createForAllServices(url: string, did?: string, version?: string): DDO {
         const ddo = new DDO(did)
         for (const name in DDO.supportedServices) {
@@ -59,15 +77,31 @@ export class DDO implements IDDO {
         return ddo
     }
 
+    /*
+     * Create a DDO from a DDO JSON string.
+     * @param ddoText DDO as a JSON string.
+     * @returns a DDO object
+     */
     public static createFromString(ddoText: string): DDO {
         const data: IDDO = JSON.parse(ddoText)
         return new DDO(data['id'], data['service'])
     }
 
+    /*
+     * Create an empty DDO with an optional DID.
+     * @param did Optional DID to add to the DDO object.
+     * @returns a DDO object
+     */
     public static create(did?: string): DDO {
         return new DDO(did)
     }
 
+    /*
+     * Test to see if this DDO supports the service name. The service name can be
+     * @param name of the service.
+     *      meta, storage, invoke, market, trust, auth
+     * @returns Boolean true if the service is supported by this agent DDO
+     */
     public static isSupportedService(name: string): boolean {
         return name in DDO.supportedServices
     }
@@ -85,6 +119,13 @@ export class DDO implements IDDO {
         this['@context'] = 'https://www.w3.org/2019/did/v1'
     }
 
+    /*
+     * Add a new service, or update a current service.
+     * @param name Name of the service to add or replace
+     * @param url URL of the service
+     * @param version Optional version number of the service API
+     * @returns a IDDOService interface describing the new service.
+     */
     public addService(name: string, url: string, version?: string): IDDOService {
         if (!version) {
             version = DDO.defaultVersion
@@ -105,6 +146,11 @@ export class DDO implements IDDO {
         return newService
     }
 
+    /*
+     * Remove a service from the DDO object.
+     * @param name Name of the service to remove.
+     * @returns True if the service was found and removed.
+     */
     public removeService(name: string): boolean {
         let result = false
         const index = this.findServiceIndex(name)
@@ -115,6 +161,11 @@ export class DDO implements IDDO {
         return result
     }
 
+    /*
+     * Find a service and return it's index in the service list.
+     * @param name Name of the service to find
+     * @returns index >=0 if a service is found, else return -1
+     */
     public findServiceIndex(name: string): number {
         let result = -1
         const nameRegExp = new RegExp(`\\.${name}\\.`, 'i')
@@ -127,6 +178,11 @@ export class DDO implements IDDO {
         return result
     }
 
+    /*
+     * Find a service and return the service record IDDOService.
+     * @param name Name of the service to find.
+     * @returns a valid IDDOService record, else return null
+     */
     public findService(name: string): IDDOService {
         const index = this.findServiceIndex(name)
         if (index >= 0) {
@@ -135,13 +191,23 @@ export class DDO implements IDDO {
         return null
     }
 
+    /*
+     * Convert this DDO object to string.
+     */
     public toString(): string {
         return JSON.stringify(<IDDO>this)
     }
 
+    /*
+     * Return the DID for this DDO object.
+     */
     public getDID(): string {
         return this.id
     }
+
+    /*
+     * Return a list of IDDOService records for services saved in this DDO object.
+     */
     public getServiceList(): Array<IDDOService> {
         return this.service
     }
