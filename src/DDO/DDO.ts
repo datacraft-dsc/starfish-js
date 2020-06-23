@@ -43,7 +43,7 @@ export class DDO implements IDDO {
 
     static defaultVersion = 'v1'
 
-    /*
+    /**
      * @param url Base url for all of the services. e.g. 'https://my-agent'
      * @param serviceList Array of string list of service names to include:
      *   they can be meta, storage, invoke, market, trust, auth
@@ -62,7 +62,7 @@ export class DDO implements IDDO {
         return ddo
     }
 
-    /*
+    /**
      * Create a DDO for all services
      * @param url  Base url for all of the services. e.g. 'https://my-agent'
      * @param did DID string that has been assigned to this agent
@@ -77,7 +77,7 @@ export class DDO implements IDDO {
         return ddo
     }
 
-    /*
+    /**
      * Create a DDO from a DDO JSON string.
      * @param ddoText DDO as a JSON string.
      * @returns a DDO object
@@ -87,7 +87,7 @@ export class DDO implements IDDO {
         return new DDO(data['id'], data['service'])
     }
 
-    /*
+    /**
      * Create an empty DDO with an optional DID.
      * @param did Optional DID to add to the DDO object.
      * @returns a DDO object
@@ -96,7 +96,7 @@ export class DDO implements IDDO {
         return new DDO(did)
     }
 
-    /*
+    /**
      * Test to see if this DDO supports the service name. The service name can be
      * @param name of the service.
      *      meta, storage, invoke, market, trust, auth
@@ -106,6 +106,14 @@ export class DDO implements IDDO {
         return name in DDO.supportedServices
     }
 
+    /**
+     * Constructs a new DDO object, please use the following static methods instead:
+     *
+     * {@link createFromServiceList}
+     * {@link createForAllServices}
+     * {@link createFromString}
+     * {@link create}
+     */
     constructor(did: string, service?: Array<IDDOService>) {
         this.service = []
         if (service) {
@@ -119,7 +127,7 @@ export class DDO implements IDDO {
         this['@context'] = 'https://www.w3.org/2019/did/v1'
     }
 
-    /*
+    /**
      * Add a new service, or update a current service.
      * @param name Name of the service to add or replace
      * @param url URL of the service
