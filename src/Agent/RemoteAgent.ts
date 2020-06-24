@@ -1,5 +1,6 @@
-/*
- *
+/**
+ *  @category Agent
+ *  @preferred
  *
  *    Remote Agent class
  *
@@ -20,8 +21,18 @@ import { Network } from '../Network'
 import { DDO } from '../DDO/DDO'
 
 export class RemoteAgent extends AgentBase {
+    /**
+     *
+     */
     public authentication: IAgentAuthentication
 
+    /**
+     * Using the provided URL resolve the Agent DDO and return the DDO as a JSON text. Some agents require login access
+     * to obtain their internal DDO record to resolve.
+     * @param url URL of the agent to get the DDO and resolve.
+     * @param authentication Authentication interface to set if the Agent requires authentication access to it's api.
+     * @returns String of the DDO JSON text or null if the agent is not found or the authentication is invalid.
+     */
     public static async resolveURL(url: string, authentication?: IAgentAuthentication): Promise<string> {
         let token = null
         const adapter = RemoteAgentAdapter.getInstance()
@@ -35,6 +46,14 @@ export class RemoteAgent extends AgentBase {
         return adapter.getDDO(url, token)
     }
 
+    /**
+     * Create a new RemoteAgent object using the agent's address.
+     * The address can be a URL, DID or Asset DID
+     * @param agentAddress URL, DID or Asset DID of the agent to resolve.
+     * @param network Network object to resolve all DID's. If non provided only a URL resolve will work.
+     * @param authentication For URL resolving you need to provide an optional authentication data to access the remote agent.
+     * @returns RemoteAgent object if successful or null
+     */
     public static async createFromAddress(
         agentAddress: string,
         network?: Network,
@@ -57,11 +76,22 @@ export class RemoteAgent extends AgentBase {
         return null
     }
 
+    /**
+     * Construct an new Remote Agent object. Please use {@link createFromAddress} to correctly resolve the agent
+     * and obtain the correct DDO record.
+     * @param ddo DDO to use for this agent.
+     * @param authentication Authentication data needed for Agent access.
+     */
     constructor(ddo: DDO, authentication?: IAgentAuthentication) {
         super(ddo)
         this.authentication = authentication
     }
 
+    /**
+     * Register a new asset with this agent.
+     * @param asset Asset to register.
+     * @returns The asset with the DID and assetId set
+     */
     public async registerAsset(asset: AssetBase): Promise<AssetBase> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
@@ -71,6 +101,11 @@ export class RemoteAgent extends AgentBase {
         return asset
     }
 
+    /**
+     * Get an asset from the agent.
+     * @param assetId This can be a full assetDID `<agentDID>/<assetId>` or just an assetId
+     * @returns The asset found saved in the remote agent, else null for not found.
+     */
     public async getAsset(assetId: string): Promise<AssetBase> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
@@ -80,6 +115,11 @@ export class RemoteAgent extends AgentBase {
         return new AssetBase(metadata, this.generateDIDForAsset(safeAssetId))
     }
 
+    /**
+     * Upload data asset's data.
+     * @param asset Data asset data to upload.
+     * @return True if uploaded
+     */
     public async uploadAsset(asset: DataAsset): Promise<boolean> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
@@ -88,6 +128,11 @@ export class RemoteAgent extends AgentBase {
         return adapter.uploadAssetData(assetId, asset.data, url, token)
     }
 
+    /**
+     * Download the assets data from the remote agent.
+     * @param assetDIDorId AssetDID or assetId of the asset to download
+     * @returns DataAsset with the data downloaded, or null for no asset found.
+     */
     public async downloadAsset(assetDIDorId: string): Promise<DataAsset> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
@@ -98,6 +143,15 @@ export class RemoteAgent extends AgentBase {
         return asset
     }
 
+    /**
+     * Invoke an operation on the remote Agent.
+     * @param asset This can be a string for an assetDID or assetID,
+     * or an OperationAsset that has been read using {@link getAsset}.
+     * @param asset AssetId or AssetDID as a string, or OperationAsset.
+     * @param inputs Object for the invoke service to be passed.
+     * @Param isAsync If true run the invokable service as async, defaults to False - run as a sync service.
+     * @returns The `outputs` and `status`, if the invoke is sync, else for async just return the `job-id`
+     */
     public async invoke(asset: string | OperationAsset, inputs?: any, isAsync?: boolean): Promise<IInvokeResult> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
@@ -115,6 +169,11 @@ export class RemoteAgent extends AgentBase {
         return adapter.invoke(assetId, inputsText, isAsync, url, token)
     }
 
+    /**
+     * Get a job from the remote agent.
+     * @param jobId Job id string or the InvokeResult returned by the async invoke call.
+     * @returns A new InovkeResult on the status and results of the running job.
+     */
     public async getJob(jobId: string | IInvokeResult): Promise<IInvokeResult> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
@@ -128,6 +187,9 @@ export class RemoteAgent extends AgentBase {
         return adapter.getJob(safeJobId, url, token)
     }
 
+    /**
+     * Used internally to obtain a new OAuth token.
+     */
     protected async getAuthorizationToken(): Promise<string> {
         if (!this.authentication) {
             return null

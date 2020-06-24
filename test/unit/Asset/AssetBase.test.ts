@@ -8,7 +8,7 @@ import { assert } from 'chai'
 
 import { AssetBase } from 'starfish/Asset/AssetBase'
 import { didRandom } from 'starfish/Utils'
-import { calcAssetId } from 'starfish/Crypto'
+import { calculateAssetId } from 'starfish/Crypto'
 
 describe('AssetBase Class', () => {
     describe('AssetBase constructor', () => {
@@ -46,7 +46,7 @@ describe('AssetBase Class', () => {
                 description: 'This is the metadata disciption',
             }
             metadataText = JSON.stringify(metadata)
-            assetId =calcAssetId(metadataText)
+            assetId =calculateAssetId(metadataText)
             assetDID = `${didRandom()}${assetId}`
             asset = new AssetBase(metadataText, assetDID)
 
@@ -57,9 +57,9 @@ describe('AssetBase Class', () => {
             })
         })
 
-        describe('calcAssetId', () => {
+        describe('calculateAssetId', () => {
             it('should calculate the correct assetId', () => {
-                assert.equal(asset.calcAssetId(), assetId)
+                assert.equal(asset.calculateAssetId(), assetId)
             })
         })
         describe('equals', () => {
