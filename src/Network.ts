@@ -32,6 +32,7 @@ export class Network {
      * The artifact contract files must be in the format `<contractName>.<networkName>.json`.
      *
      * @return The current Network object
+     * @category Static Create
      */
     public static async getInstance(urlProvider: string | IProvider, artifactsPath?: string): Promise<Network> {
         if (!Network.instance) {

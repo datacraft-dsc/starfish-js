@@ -16,6 +16,15 @@ import { calcAssetDataHash } from '../Crypto'
 export class DataAsset extends AssetBase {
     public data: Buffer
 
+    /**
+     * Create a DataAsset.
+     * @param name Name of the asset to create
+     * @param data Data buffer to use for the data.
+     * @param metadata Extra metadata to add to the asset metadata.
+     * @param did DID of the asset.
+     * @returns a new DataAseet object.
+     * @category Static Create
+     */
     public static create(name: string, data: Buffer, metadata?: string | IMetadataData, did?: string): DataAsset {
         const storeMetadata = AssetBase.generateMetadata(name, 'dataset', metadata)
         storeMetadata.contentType = 'application/octet-stream'
@@ -23,6 +32,15 @@ export class DataAsset extends AssetBase {
         return new DataAsset(storeMetadata, did, data)
     }
 
+    /**
+     * Create a new data asset object from a file.
+     * @param name Name of the asset
+     * @param filename Filename of the file to read.
+     * @param metadata Extra metadata to use to create the asset.
+     * @prama did DID of the asset.
+     * @returns a DataAsset object with the data and contentType obtained from the file.
+     * @category Static Create
+     */
     public static async createFromFile(
         name: string,
         filename: string,
@@ -40,6 +58,9 @@ export class DataAsset extends AssetBase {
         return new DataAsset(storeMetadata, did, data)
     }
 
+    /**
+     * Contstruct a DataAsset.
+     */
     constructor(metadata: string | IMetadata, did?: string, data?: Buffer) {
         let metadataText = metadata
         if (typeof metadata != 'string') {
@@ -49,6 +70,11 @@ export class DataAsset extends AssetBase {
         this.data = data
     }
 
+    /**
+     * Save the asset data to a file.
+     * @param filename Name of file to save too.
+     * @returns True if successful, else False.
+     */
     public async saveToFile(filename: string): Promise<void> {
         fs.writeFile(filename, this.data)
     }

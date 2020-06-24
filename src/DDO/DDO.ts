@@ -53,6 +53,7 @@ export class DDO implements IDDO {
      *      <URL>/api/<version>/<service_uri>
      *
      * @returns a DDO object with the correct information set.
+     * @category Static Create
      */
     public static createFromServiceList(url: string, serviceList: Array<string>, did?: string, version?: string): DDO {
         const ddo = new DDO(did)
@@ -68,6 +69,7 @@ export class DDO implements IDDO {
      * @param did DID string that has been assigned to this agent
      * @param version Optional version number, Defaults: v1.
      * @returns a DDO object with the correct information set.
+     * @category Static Create
      */
     public static createForAllServices(url: string, did?: string, version?: string): DDO {
         const ddo = new DDO(did)
@@ -81,6 +83,7 @@ export class DDO implements IDDO {
      * Create a DDO from a DDO JSON string.
      * @param ddoText DDO as a JSON string.
      * @returns a DDO object
+     * @category Static Create
      */
     public static createFromString(ddoText: string): DDO {
         const data: IDDO = JSON.parse(ddoText)
@@ -91,6 +94,7 @@ export class DDO implements IDDO {
      * Create an empty DDO with an optional DID.
      * @param did Optional DID to add to the DDO object.
      * @returns a DDO object
+     * @category Static Create
      */
     public static create(did?: string): DDO {
         return new DDO(did)

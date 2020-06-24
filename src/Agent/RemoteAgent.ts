@@ -53,6 +53,7 @@ export class RemoteAgent extends AgentBase {
      * @param network Network object to resolve all DID's. If non provided only a URL resolve will work.
      * @param authentication For URL resolving you need to provide an optional authentication data to access the remote agent.
      * @returns RemoteAgent object if successful or null
+     * @category Static Create
      */
     public static async createFromAddress(
         agentAddress: string,
