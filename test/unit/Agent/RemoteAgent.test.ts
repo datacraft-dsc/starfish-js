@@ -11,7 +11,7 @@ import { randomHex, hexToBytes } from 'web3-utils'
 
 import { RemoteAgent } from 'starfish/Agent/RemoteAgent'
 import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
-import { DataAsset, OperationAsset } from 'starfish/Asset'
+import { DataAsset, OperationAsset } from 'starfish/Asset/Asset'
 import { Network } from 'starfish/Network'
 import { extractAssetId, removeLeadingHexZero } from 'starfish/Utils'
 

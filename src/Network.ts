@@ -4,15 +4,16 @@ import { EventData } from 'web3-eth-contract'
 import { IProvider } from './Interfaces/IProvider'
 import { DirectProvider } from './Provider/DirectProvider'
 import { Account } from './Account'
-import { ContractBase } from './Contract/ContractBase'
-import { ContractManager } from './Contract/ContractManager'
-import { NetworkContract } from './Contract/NetworkContract'
-import { OceanTokenContract } from './Contract/OceanTokenContract'
-import { DispenserContract } from './Contract/DispenserContract'
-import { DirectPurchaseContract } from './Contract/DirectPurchaseContract'
-import { ProvenanceContract } from './Contract/ProvenanceContract'
-import { DIDRegistryContract } from './Contract/DIDRegistryContract'
-
+import {
+    ContractBase,
+    ContractManager,
+    NetworkContract,
+    OceanTokenContract,
+    DispenserContract,
+    DirectPurchaseContract,
+    ProvenanceContract,
+    DIDRegistryContract,
+} from './Contract/Contract'
 import { isBalanceInsufficient, isDID, didToId } from './Utils'
 import { DDO } from './DDO/DDO'
 import { RemoteAgent } from './Agent/RemoteAgent'

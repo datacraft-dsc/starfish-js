@@ -29,9 +29,15 @@ Based on an underlying data ecosystem standard, Starfish provides high-level API
 
 Starfish works with blockchain networks and common web services through agents, allowing unprecedented flexibility in asset discovery and data supply line management.
 
+
 ## Features
 
 Currently only provide basic account balance information
+
+## Documentation
+
+[starfish-js API documentation](https://dex-company.github.io/starfish-js)
+
 
 ## Prerequisites
 
@@ -90,10 +96,6 @@ Currently only provide basic account balance information
 
     # Run dubugging in VS Code with "Attach Chrome" configuration (test/server/.vscode/launch.json)
     ```
-
-## Documentation
-
-[starfish-js API documentation](https://dex-company.github.io/starfish-js)
 
 ## Code style
 
