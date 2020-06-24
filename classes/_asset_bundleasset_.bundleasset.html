@@ -108,7 +108,7 @@
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
-							<h3>Methods</h3>
+							<h3>Other Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_asset_bundleasset_.bundleasset.html#calculateassetid" class="tsd-kind-icon">calculate<wbr>Asset<wbr>Id</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_asset_bundleasset_.bundleasset.html#deleteasset" class="tsd-kind-icon">delete<wbr>Asset</a></li>
@@ -116,8 +116,11 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_asset_bundleasset_.bundleasset.html#getasset" class="tsd-kind-icon">get<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_asset_bundleasset_.bundleasset.html#getassetid" class="tsd-kind-icon">get<wbr>Asset<wbr>Id</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_asset_bundleasset_.bundleasset.html#setasset" class="tsd-kind-icon">set<wbr>Asset</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_asset_bundleasset_.bundleasset.html#create" class="tsd-kind-icon">create</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_asset_bundleasset_.bundleasset.html#generatemetadata" class="tsd-kind-icon">generate<wbr>Metadata</a></li>
+							</ul>
+							<h3>Static Create Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_asset_bundleasset_.bundleasset.html#create" class="tsd-kind-icon">create</a></li>
 							</ul>
 						</section>
 					</div>
@@ -136,19 +139,39 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/BundleAsset.ts#L34">Asset/BundleAsset.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/BundleAsset.ts#L42">Asset/BundleAsset.ts:42</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Construct a new BundleAsset. Please use <a href="_asset_bundleasset_.bundleasset.html#create">create</a> method instead to create a new BundleAsset object.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>metadata: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_imetadata_.imetadata.html" class="tsd-signature-type">IMetadata</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Metadata of the asset as string or as an object.</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> did: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>DID of the asset.</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> assetList: <a href="../interfaces/_interfaces_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Bundle asset list of the assets assigned to this bundle.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_asset_bundleasset_.bundleasset.html" class="tsd-signature-type">BundleAsset</a></h4>
@@ -164,7 +187,7 @@
 					<div class="tsd-signature tsd-kind-icon">asset<wbr>List<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_interfaces_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/BundleAsset.ts#L13">Asset/BundleAsset.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/BundleAsset.ts#L13">Asset/BundleAsset.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -176,7 +199,7 @@
 						<p>Implementation of <a href="../interfaces/_interfaces_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_interfaces_iasset_.iasset.html#did">did</a></p>
 						<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#did">did</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L18">Asset/AssetBase.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/AssetBase.ts#L18">Asset/AssetBase.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -188,7 +211,7 @@
 						<p>Implementation of <a href="../interfaces/_interfaces_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_interfaces_iasset_.iasset.html#metadata">metadata</a></p>
 						<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#metadata">metadata</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L17">Asset/AssetBase.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/AssetBase.ts#L17">Asset/AssetBase.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -200,13 +223,13 @@
 						<p>Implementation of <a href="../interfaces/_interfaces_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_interfaces_iasset_.iasset.html#metadatatext">metadataText</a></p>
 						<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#metadatatext">metadataText</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L16">Asset/AssetBase.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/AssetBase.ts#L16">Asset/AssetBase.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
+				<h2>Other Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
 					<a name="calculateassetid" class="tsd-anchor"></a>
 					<h3>calculate<wbr>Asset<wbr>Id</h3>
@@ -218,7 +241,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#calculateassetid">calculateAssetId</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L63">Asset/AssetBase.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/AssetBase.ts#L63">Asset/AssetBase.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -240,7 +263,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/BundleAsset.ts#L56">Asset/BundleAsset.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/BundleAsset.ts#L70">Asset/BundleAsset.ts:70</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -264,7 +287,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#equals">equals</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L71">Asset/AssetBase.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/AssetBase.ts#L71">Asset/AssetBase.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -293,7 +316,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/BundleAsset.ts#L53">Asset/BundleAsset.ts:53</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/BundleAsset.ts#L67">Asset/BundleAsset.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -317,7 +340,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#getassetid">getAssetId</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L56">Asset/AssetBase.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/AssetBase.ts#L56">Asset/AssetBase.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -339,7 +362,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/BundleAsset.ts#L50">Asset/BundleAsset.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/BundleAsset.ts#L64">Asset/BundleAsset.ts:64</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -355,38 +378,6 @@
 						</li>
 					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="create" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> create</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, assetList<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_interfaces_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>, metadata<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_imetadata_.imetadatabundle.html" class="tsd-signature-type">IMetadataBundle</a>, did<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asset_bundleasset_.bundleasset.html" class="tsd-signature-type">BundleAsset</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/BundleAsset.ts#L15">Asset/BundleAsset.ts:15</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>name: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> assetList: <a href="../interfaces/_interfaces_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> metadata: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_imetadata_.imetadatabundle.html" class="tsd-signature-type">IMetadataBundle</a></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> did: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_asset_bundleasset_.bundleasset.html" class="tsd-signature-type">BundleAsset</a></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
 					<a name="generatemetadata" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> generate<wbr>Metadata</h3>
@@ -398,7 +389,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#generatemetadata">generateMetadata</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L28">Asset/AssetBase.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/AssetBase.ts#L28">Asset/AssetBase.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -430,6 +421,58 @@
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_interfaces_imetadata_.imetadata.html" class="tsd-signature-type">IMetadata</a></h4>
 							<p>A new metadata object or the metadata argument value that was provided
 							with the <code>name</code> and <code>type</code> set.</p>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Static Create Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="create" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> create</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, assetList<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_interfaces_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>, metadata<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_imetadata_.imetadatabundle.html" class="tsd-signature-type">IMetadataBundle</a>, did<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asset_bundleasset_.bundleasset.html" class="tsd-signature-type">BundleAsset</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Asset/BundleAsset.ts#L23">Asset/BundleAsset.ts:23</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a new Bundle asset object.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Name of the asset.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> assetList: <a href="../interfaces/_interfaces_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>List of assetId&#39;s. This can be a IBundleMap object, or a Map with name-&gt;assetId.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> metadata: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_imetadata_.imetadatabundle.html" class="tsd-signature-type">IMetadataBundle</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Metadata to provide with the asset.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> did: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Asset DID to assign to the asset.</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_asset_bundleasset_.bundleasset.html" class="tsd-signature-type">BundleAsset</a></h4>
 						</li>
 					</ul>
 				</section>
