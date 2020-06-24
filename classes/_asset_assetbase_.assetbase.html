@@ -115,7 +115,7 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_asset_assetbase_.assetbase.html#calcassetid" class="tsd-kind-icon">calc<wbr>Asset<wbr>Id</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_asset_assetbase_.assetbase.html#calculateassetid" class="tsd-kind-icon">calculate<wbr>Asset<wbr>Id</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_asset_assetbase_.assetbase.html#equals" class="tsd-kind-icon">equals</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_asset_assetbase_.assetbase.html#getassetid" class="tsd-kind-icon">get<wbr>Asset<wbr>Id</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_asset_assetbase_.assetbase.html#generatemetadata" class="tsd-kind-icon">generate<wbr>Metadata</a></li>
@@ -136,16 +136,32 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Asset/AssetBase.ts#L31">Asset/AssetBase.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L39">Asset/AssetBase.ts:39</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Consruct an asset using it&#39;s metadata in string form, and optional asset DID.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>metadataText: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>The asset metadata in text form. The reason for this is that the assetId is created using
+											the hash of the metadata text. This text should provide the same assetId as the one given.</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> did: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>AssetDID of this asset.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_asset_assetbase_.assetbase.html" class="tsd-signature-type">AssetBase</a></h4>
@@ -162,7 +178,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_interfaces_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_interfaces_iasset_.iasset.html#did">did</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Asset/AssetBase.ts#L18">Asset/AssetBase.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L18">Asset/AssetBase.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -173,7 +189,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_interfaces_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_interfaces_iasset_.iasset.html#metadata">metadata</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Asset/AssetBase.ts#L17">Asset/AssetBase.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L17">Asset/AssetBase.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -184,7 +200,7 @@
 					<aside class="tsd-sources">
 						<p>Implementation of <a href="../interfaces/_interfaces_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_interfaces_iasset_.iasset.html#metadatatext">metadataText</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Asset/AssetBase.ts#L16">Asset/AssetBase.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L16">Asset/AssetBase.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -192,18 +208,23 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="calcassetid" class="tsd-anchor"></a>
-					<h3>calc<wbr>Asset<wbr>Id</h3>
+					<a name="calculateassetid" class="tsd-anchor"></a>
+					<h3>calculate<wbr>Asset<wbr>Id</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">calc<wbr>Asset<wbr>Id<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">calculate<wbr>Asset<wbr>Id<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Asset/AssetBase.ts#L42">Asset/AssetBase.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L63">Asset/AssetBase.ts:63</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calculate the assetId based on the metadata text.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
@@ -218,9 +239,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Asset/AssetBase.ts#L45">Asset/AssetBase.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L71">Asset/AssetBase.ts:71</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Compares two assets and see if they are equal.
+									This methods just compares the two calculated asset id&#39;s.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -241,9 +268,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Asset/AssetBase.ts#L39">Asset/AssetBase.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L56">Asset/AssetBase.ts:56</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the assetId from the internal assetDID.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
@@ -258,22 +290,38 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Asset/AssetBase.ts#L20">Asset/AssetBase.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Asset/AssetBase.ts#L28">Asset/AssetBase.ts:28</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Generate a valid metadata object based on the name and type of asset.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Name of the asset.</p>
+									</div>
 								</li>
 								<li>
 									<h5>type: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Type of the asset, see <a href="https://github.com/DEX-Company/DEPs/tree/master/8">DEP #8</a> to the allowed types</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> metadata: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_imetadata_.imetadata.html" class="tsd-signature-type">IMetadata</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>A pre filled in metadata as a JSON string or object.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_interfaces_imetadata_.imetadata.html" class="tsd-signature-type">IMetadata</a></h4>
+							<p>A new metadata object or the metadata argument value that was provided
+							with the <code>name</code> and <code>type</code> set.</p>
 						</li>
 					</ul>
 				</section>
@@ -310,7 +358,7 @@
 								<a href="_asset_assetbase_.assetbase.html#metadatatext" class="tsd-kind-icon">metadata<wbr>Text</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_asset_assetbase_.assetbase.html#calcassetid" class="tsd-kind-icon">calc<wbr>Asset<wbr>Id</a>
+								<a href="_asset_assetbase_.assetbase.html#calculateassetid" class="tsd-kind-icon">calculate<wbr>Asset<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_asset_assetbase_.assetbase.html#equals" class="tsd-kind-icon">equals</a>

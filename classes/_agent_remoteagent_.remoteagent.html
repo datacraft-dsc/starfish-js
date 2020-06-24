@@ -132,16 +132,32 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/RemoteAgent.ts#L58">Agent/RemoteAgent.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/RemoteAgent.ts#L77">Agent/RemoteAgent.ts:77</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Construct an new Remote Agent object. Please use <a href="_agent_remoteagent_.remoteagent.html#createfromaddress">createFromAddress</a> to correctly resolve the agent
+									and obtain the correct DDO record.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>ddo: <a href="_ddo_ddo_.ddo.html" class="tsd-signature-type">DDO</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>DDO to use for this agent.</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> authentication: <a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Authentication data needed for Agent access.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_agent_remoteagent_.remoteagent.html" class="tsd-signature-type">RemoteAgent</a></h4>
@@ -157,7 +173,7 @@
 					<div class="tsd-signature tsd-kind-icon">authentication<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/RemoteAgent.ts#L23">Agent/RemoteAgent.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/RemoteAgent.ts#L27">Agent/RemoteAgent.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -168,7 +184,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#ddo">ddo</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/AgentBase.ts#L14">Agent/AgentBase.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/AgentBase.ts#L14">Agent/AgentBase.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -185,16 +201,25 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/RemoteAgent.ts#L91">Agent/RemoteAgent.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/RemoteAgent.ts#L136">Agent/RemoteAgent.ts:136</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Download the assets data from the remote agent.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>assetDIDorId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>AssetDID or assetId of the asset to download</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_asset_dataasset_.dataasset.html" class="tsd-signature-type">DataAsset</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>DataAsset with the data downloaded, or null for no asset found.</p>
 						</li>
 					</ul>
 				</section>
@@ -209,16 +234,25 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#generatedidforasset">generateDIDForAsset</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/AgentBase.ts#L31">Agent/AgentBase.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/AgentBase.ts#L47">Agent/AgentBase.ts:47</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Generate a full assetDID using the assetId.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>assetId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>assetId to use to generate the full asset DID.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>The full assetDID in the format <code>agentDID/assetId</code></p>
 						</li>
 					</ul>
 				</section>
@@ -232,16 +266,25 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/RemoteAgent.ts#L74">Agent/RemoteAgent.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/RemoteAgent.ts#L109">Agent/RemoteAgent.ts:109</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get an asset from the agent.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>assetId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>This can be a full assetDID <code>&lt;agentDID&gt;/&lt;assetId&gt;</code> or just an assetId</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_asset_assetbase_.assetbase.html" class="tsd-signature-type">AssetBase</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The asset found saved in the remote agent, else null for not found.</p>
 						</li>
 					</ul>
 				</section>
@@ -255,9 +298,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/RemoteAgent.ts#L131">Agent/RemoteAgent.ts:131</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/RemoteAgent.ts#L193">Agent/RemoteAgent.ts:193</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Used internally to obtain a new OAuth token.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
@@ -273,9 +321,14 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#getdid">getDID</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/AgentBase.ts#L34">Agent/AgentBase.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/AgentBase.ts#L54">Agent/AgentBase.ts:54</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the current DID of the agent.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
@@ -291,19 +344,33 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#getendpoint">getEndpoint</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/AgentBase.ts#L20">Agent/AgentBase.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/AgentBase.ts#L30">Agent/AgentBase.ts:30</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd><p>Obtain the service endpoint.</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Name of the endpoint to get</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> uri: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI to append to the found endpoint</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>The full URL of the service, or null if not found</p>
 						</li>
 					</ul>
 				</section>
@@ -317,16 +384,25 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/RemoteAgent.ts#L118">Agent/RemoteAgent.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/RemoteAgent.ts#L177">Agent/RemoteAgent.ts:177</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a job from the remote agent.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>jobId: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Job id string or the InvokeResult returned by the async invoke call.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>A new InovkeResult on the status and results of the running job.</p>
 						</li>
 					</ul>
 				</section>
@@ -340,22 +416,39 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/RemoteAgent.ts#L101">Agent/RemoteAgent.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/RemoteAgent.ts#L155">Agent/RemoteAgent.ts:155</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Invoke an operation on the remote Agent.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>asset: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="_asset_operationasset_.operationasset.html" class="tsd-signature-type">OperationAsset</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>AssetId or AssetDID as a string, or OperationAsset.</p>
+										</div>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> inputs: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Object for the invoke service to be passed.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> isAsync: <span class="tsd-signature-type">boolean</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>If true run the invokable service as async, defaults to False - run as a sync service.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The <code>outputs</code> and <code>status</code>, if the invoke is sync, else for async just return the <code>job-id</code></p>
 						</li>
 					</ul>
 				</section>
@@ -369,16 +462,25 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/RemoteAgent.ts#L65">Agent/RemoteAgent.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/RemoteAgent.ts#L95">Agent/RemoteAgent.ts:95</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Register a new asset with this agent.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>asset: <a href="_asset_assetbase_.assetbase.html" class="tsd-signature-type">AssetBase</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Asset to register.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_asset_assetbase_.assetbase.html" class="tsd-signature-type">AssetBase</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>The asset with the DID and assetId set</p>
 						</li>
 					</ul>
 				</section>
@@ -392,16 +494,25 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/RemoteAgent.ts#L83">Agent/RemoteAgent.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/RemoteAgent.ts#L123">Agent/RemoteAgent.ts:123</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Upload data asset&#39;s data.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>asset: <a href="_asset_dataasset_.dataasset.html" class="tsd-signature-type">DataAsset</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Data asset data to upload.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>True if uploaded</p>
 						</li>
 					</ul>
 				</section>
@@ -415,22 +526,38 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/RemoteAgent.ts#L38">Agent/RemoteAgent.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/RemoteAgent.ts#L57">Agent/RemoteAgent.ts:57</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Create a new RemoteAgent object using the agent&#39;s address.
+									The address can be a URL, DID or Asset DID</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>agentAddress: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URL, DID or Asset DID of the agent to resolve.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> network: <a href="_network_.network.html" class="tsd-signature-type">Network</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Network object to resolve all DID&#39;s. If non provided only a URL resolve will work.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> authentication: <a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>For URL resolving you need to provide an optional authentication data to access the remote agent.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_agent_remoteagent_.remoteagent.html" class="tsd-signature-type">RemoteAgent</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>RemoteAgent object if successful or null</p>
 						</li>
 					</ul>
 				</section>
@@ -444,19 +571,32 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/RemoteAgent.ts#L25">Agent/RemoteAgent.ts:25</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/RemoteAgent.ts#L36">Agent/RemoteAgent.ts:36</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Using the provided URL resolve the Agent DDO and return the DDO as a JSON text. Some agents require login access
+									to obtain their internal DDO record to resolve.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>url: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URL of the agent to get the DDO and resolve.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> authentication: <a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Authentication interface to set if the Agent requires authentication access to it&#39;s api.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>String of the DDO JSON text or null if the agent is not found or the authentication is invalid.</p>
 						</li>
 					</ul>
 				</section>

@@ -121,9 +121,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/AgentBase.ts#L14">Agent/AgentBase.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/AgentBase.ts#L14">Agent/AgentBase.ts:14</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Construct a base agent using it&#39;s DDO.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -143,7 +148,7 @@
 					<div class="tsd-signature tsd-kind-icon">ddo<span class="tsd-signature-symbol">:</span> <a href="_ddo_ddo_.ddo.html" class="tsd-signature-type">DDO</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/AgentBase.ts#L14">Agent/AgentBase.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/AgentBase.ts#L14">Agent/AgentBase.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -160,16 +165,25 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/AgentBase.ts#L31">Agent/AgentBase.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/AgentBase.ts#L47">Agent/AgentBase.ts:47</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Generate a full assetDID using the assetId.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>assetId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>assetId to use to generate the full asset DID.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>The full assetDID in the format <code>agentDID/assetId</code></p>
 						</li>
 					</ul>
 				</section>
@@ -183,9 +197,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/AgentBase.ts#L34">Agent/AgentBase.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/AgentBase.ts#L54">Agent/AgentBase.ts:54</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the current DID of the agent.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
@@ -200,19 +219,33 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Agent/AgentBase.ts#L20">Agent/AgentBase.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Agent/AgentBase.ts#L30">Agent/AgentBase.ts:30</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<dl class="tsd-comment-tags">
+									<dt>internal</dt>
+									<dd><p>Obtain the service endpoint.</p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Name of the endpoint to get</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> uri: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>URI to append to the found endpoint</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>The full URL of the service, or null if not found</p>
 						</li>
 					</ul>
 				</section>

@@ -74,7 +74,7 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_crypto_.html#calcassetdatahash" class="tsd-kind-icon">calc<wbr>Asset<wbr>Data<wbr>Hash</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_crypto_.html#calcassetid" class="tsd-kind-icon">calc<wbr>Asset<wbr>Id</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_crypto_.html#calculateassetid" class="tsd-kind-icon">calculate<wbr>Asset<wbr>Id</a></li>
 							</ul>
 						</section>
 					</div>
@@ -92,39 +92,57 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Crypto.ts#L14">Crypto.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Crypto.ts#L24">Crypto.ts:24</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Calculate the content hash of any asset data.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>buffer: <span class="tsd-signature-type">Buffer</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Data to calculate the hash.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>the SHA-256 hash of the data as hex string.</p>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="calcassetid" class="tsd-anchor"></a>
-					<h3>calc<wbr>Asset<wbr>Id</h3>
+					<a name="calculateassetid" class="tsd-anchor"></a>
+					<h3>calculate<wbr>Asset<wbr>Id</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">calc<wbr>Asset<wbr>Id<span class="tsd-signature-symbol">(</span>metadataText<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">calculate<wbr>Asset<wbr>Id<span class="tsd-signature-symbol">(</span>metadataText<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/94eb62b/src/Crypto.ts#L10">Crypto.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/eb66588/src/Crypto.ts#L15">Crypto.ts:15</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Caluclate the assetId based on the metadata text. At the moment no validation is done on the text.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>metadataText: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>text to calculate the hash on.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>SHA-256 of the metadata text as hex string.</p>
 						</li>
 					</ul>
 				</section>
@@ -147,7 +165,7 @@
 						<a href="_crypto_.html#calcassetdatahash" class="tsd-kind-icon">calc<wbr>Asset<wbr>Data<wbr>Hash</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_crypto_.html#calcassetid" class="tsd-kind-icon">calc<wbr>Asset<wbr>Id</a>
+						<a href="_crypto_.html#calculateassetid" class="tsd-kind-icon">calculate<wbr>Asset<wbr>Id</a>
 					</li>
 				</ul>
 			</nav>
