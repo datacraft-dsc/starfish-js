@@ -14,7 +14,7 @@ export interface ILink {
 export interface IOperation {
     class?: string
     modes?: Array<string>
-    inputs: unkown
+    inputs: unknown
     outputs: unknown
 }
 
