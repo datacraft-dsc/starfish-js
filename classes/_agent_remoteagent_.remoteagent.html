@@ -102,6 +102,7 @@
 						<section class="tsd-index-section ">
 							<h3>Other Methods</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#createlisting" class="tsd-kind-icon">create<wbr>Listing</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#downloadasset" class="tsd-kind-icon">download<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_agent_remoteagent_.remoteagent.html#generatedidforasset" class="tsd-kind-icon">generateDIDFor<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#getasset" class="tsd-kind-icon">get<wbr>Asset</a></li>
@@ -109,8 +110,11 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_agent_remoteagent_.remoteagent.html#getdid" class="tsd-kind-icon">getDID</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_agent_remoteagent_.remoteagent.html#getendpoint" class="tsd-kind-icon">get<wbr>Endpoint</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#getjob" class="tsd-kind-icon">get<wbr>Job</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#getlisting" class="tsd-kind-icon">get<wbr>Listing</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#getlistinglist" class="tsd-kind-icon">get<wbr>Listing<wbr>List</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#invoke" class="tsd-kind-icon">invoke</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#registerasset" class="tsd-kind-icon">register<wbr>Asset</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#updatelisting" class="tsd-kind-icon">update<wbr>Listing</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#uploadasset" class="tsd-kind-icon">upload<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_agent_remoteagent_.remoteagent.html#resolveurl" class="tsd-kind-icon">resolveURL</a></li>
 							</ul>
@@ -135,7 +139,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/RemoteAgent.ts#L78">Agent/RemoteAgent.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L78">Agent/RemoteAgent.ts:78</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -176,7 +180,7 @@
 					<div class="tsd-signature tsd-kind-icon">authentication<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/RemoteAgent.ts#L27">Agent/RemoteAgent.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L27">Agent/RemoteAgent.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -187,13 +191,39 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#ddo">ddo</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/AgentBase.ts#L14">Agent/AgentBase.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/AgentBase.ts#L14">Agent/AgentBase.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Other Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="createlisting" class="tsd-anchor"></a>
+					<h3>create<wbr>Listing</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Listing<span class="tsd-signature-symbol">(</span>listingInfo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, assetDIDorId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L147">Agent/RemoteAgent.ts:147</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>listingInfo: <span class="tsd-signature-type">unknown</span></h5>
+								</li>
+								<li>
+									<h5>assetDIDorId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="downloadasset" class="tsd-anchor"></a>
 					<h3>download<wbr>Asset</h3>
@@ -204,7 +234,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/RemoteAgent.ts#L137">Agent/RemoteAgent.ts:137</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L137">Agent/RemoteAgent.ts:137</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -237,7 +267,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#generatedidforasset">generateDIDForAsset</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/AgentBase.ts#L47">Agent/AgentBase.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/AgentBase.ts#L47">Agent/AgentBase.ts:47</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -269,7 +299,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/RemoteAgent.ts#L110">Agent/RemoteAgent.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L110">Agent/RemoteAgent.ts:110</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -301,7 +331,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/RemoteAgent.ts#L194">Agent/RemoteAgent.ts:194</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L224">Agent/RemoteAgent.ts:224</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -324,7 +354,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#getdid">getDID</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/AgentBase.ts#L54">Agent/AgentBase.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/AgentBase.ts#L54">Agent/AgentBase.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -347,7 +377,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#getendpoint">getEndpoint</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/AgentBase.ts#L30">Agent/AgentBase.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/AgentBase.ts#L30">Agent/AgentBase.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -387,7 +417,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/RemoteAgent.ts#L178">Agent/RemoteAgent.ts:178</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L208">Agent/RemoteAgent.ts:208</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -410,16 +440,62 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="invoke" class="tsd-anchor"></a>
-					<h3>invoke</h3>
+					<a name="getlisting" class="tsd-anchor"></a>
+					<h3>get<wbr>Listing</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">invoke<span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="_asset_operationasset_.operationasset.html" class="tsd-signature-type">OperationAsset</a>, inputs<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span>, isAsync<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Listing<span class="tsd-signature-symbol">(</span>listingId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/RemoteAgent.ts#L156">Agent/RemoteAgent.ts:156</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L163">Agent/RemoteAgent.ts:163</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>listingId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getlistinglist" class="tsd-anchor"></a>
+					<h3>get<wbr>Listing<wbr>List</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Listing<wbr>List<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_ilisting_.ilistingfilter.html" class="tsd-signature-type">IListingFilter</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L170">Agent/RemoteAgent.ts:170</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>filter: <a href="../interfaces/_interfaces_ilisting_.ilistingfilter.html" class="tsd-signature-type">IListingFilter</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="invoke" class="tsd-anchor"></a>
+					<h3>invoke</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">invoke<span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="_asset_operationasset_.operationasset.html" class="tsd-signature-type">OperationAsset</a>, inputs<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">unknown</span>, isAsync<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L186">Agent/RemoteAgent.ts:186</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -438,7 +514,7 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> inputs: <span class="tsd-signature-type">any</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> inputs: <span class="tsd-signature-type">unknown</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Object for the invoke service to be passed.</p>
 									</div>
@@ -465,7 +541,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/RemoteAgent.ts#L96">Agent/RemoteAgent.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L96">Agent/RemoteAgent.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -488,6 +564,29 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="updatelisting" class="tsd-anchor"></a>
+					<h3>update<wbr>Listing</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Listing<span class="tsd-signature-symbol">(</span>listingData<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L156">Agent/RemoteAgent.ts:156</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>listingData: <a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="uploadasset" class="tsd-anchor"></a>
 					<h3>upload<wbr>Asset</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -497,7 +596,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/RemoteAgent.ts#L124">Agent/RemoteAgent.ts:124</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L124">Agent/RemoteAgent.ts:124</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -529,7 +628,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/RemoteAgent.ts#L36">Agent/RemoteAgent.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L36">Agent/RemoteAgent.ts:36</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -571,7 +670,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0bbdd94/src/Agent/RemoteAgent.ts#L58">Agent/RemoteAgent.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/0e1c3a6/src/Agent/RemoteAgent.ts#L58">Agent/RemoteAgent.ts:58</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -636,6 +735,9 @@
 								<a href="_agent_remoteagent_.remoteagent.html#ddo" class="tsd-kind-icon">ddo</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_agent_remoteagent_.remoteagent.html#createlisting" class="tsd-kind-icon">create<wbr>Listing</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_agent_remoteagent_.remoteagent.html#downloadasset" class="tsd-kind-icon">download<wbr>Asset</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
@@ -657,10 +759,19 @@
 								<a href="_agent_remoteagent_.remoteagent.html#getjob" class="tsd-kind-icon">get<wbr>Job</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_agent_remoteagent_.remoteagent.html#getlisting" class="tsd-kind-icon">get<wbr>Listing</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_agent_remoteagent_.remoteagent.html#getlistinglist" class="tsd-kind-icon">get<wbr>Listing<wbr>List</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_agent_remoteagent_.remoteagent.html#invoke" class="tsd-kind-icon">invoke</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_agent_remoteagent_.remoteagent.html#registerasset" class="tsd-kind-icon">register<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_agent_remoteagent_.remoteagent.html#updatelisting" class="tsd-kind-icon">update<wbr>Listing</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_agent_remoteagent_.remoteagent.html#uploadasset" class="tsd-kind-icon">upload<wbr>Asset</a>
