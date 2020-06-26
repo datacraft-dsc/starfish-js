@@ -144,6 +144,13 @@ export class RemoteAgent extends AgentBase {
         return asset
     }
 
+    /**
+     * Create a new listing on the remote agent.
+     * @param listingInfo An object that contains all of the listing information.
+     * @param assedDIDorId Asset DID or assetId for the associtated asset for this listing.
+     * @returns A listing data object. This contains the information saved by the remote agent as well as the `.info` property,
+     * which contains the `listingInfo`.
+     */
     public async createListing(listingInfo: unknown, assetDIDorId: string): Promise<IListingData> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
@@ -153,6 +160,11 @@ export class RemoteAgent extends AgentBase {
         return adapter.addListing(listingText, assetId, url, token)
     }
 
+    /**
+     * Update a listing. You need to get the listingData by calling the @{link getListing} or {@link createListing}.
+     * @param listingData The full listing data object that was returned after a @{link getListing} or {@link createListing}.
+     * @returns a new updated IListingData object.
+     */
     public async updateListing(listingData: IListingData): Promise<IListingData> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
@@ -160,6 +172,11 @@ export class RemoteAgent extends AgentBase {
         return adapter.updateListing(listingData, url, token)
     }
 
+    /**
+     * Get a listing from the remote Agent.
+     * @param listingId Id of the listing data.
+     * @returns a valid IListingData Object.
+     */
     public async getListing(listingId: string): Promise<IListingData> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
@@ -167,6 +184,11 @@ export class RemoteAgent extends AgentBase {
         return adapter.getListing(listingId, url, token)
     }
 
+    /**
+     * Get a list of listing data objects.
+     * @param filter The filter to use to get a list of listing data items.
+     * @returns an Array of IListingData items found using the filter.
+     */
     public async getListingList(filter: IListingFilter): Promise<Array<IListingData>> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
