@@ -9,7 +9,7 @@ import fs from 'fs-extra'
 import Web3 from 'web3'
 
 import { toChecksumAddress } from 'web3-utils'
-import { EncryptedKeystoreV3Json, SignedTransaction } from 'web3-core'
+import { EncryptedKeystoreV3Json, SignedTransaction, TransactionConfig } from 'web3-core'
 
 import { Network } from './Network'
 /**
@@ -107,7 +107,7 @@ export class Account {
      * Save the key data to a file.
      * @param filename Filename to write the account key data too.
      */
-    public async saveToFile(filename: string): Promise<any> {
+    public async saveToFile(filename: string): Promise<unknown> {
         const data = JSON.stringify(this.keyData)
         return await fs.writeFile(filename, data)
     }
@@ -118,7 +118,7 @@ export class Account {
      * @param transaction Transaction that needs to be signed.
      * @returns Return the signed transaction.
      */
-    public async signTransaction(web3: Web3, transaction: unknown): Promise<SignedTransaction> {
+    public async signTransaction(web3: Web3, transaction: TransactionConfig): Promise<SignedTransaction> {
         // decode the keyData to find out the private key
         const data = await web3.eth.accounts.decrypt(this.keyData, this.password)
         return web3.eth.accounts.signTransaction(transaction, data.privateKey)

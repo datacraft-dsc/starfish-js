@@ -14,13 +14,13 @@ export interface IListingData {
     ctime: string
     status: string
     id: string
-    info: any
+    info: unknown
     utime: string
 }
 
 export interface IListingRequestData {
     assetid: string
-    info: any
+    info: unknown
 }
 
 export interface IListingFilter {

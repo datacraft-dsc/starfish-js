@@ -14,7 +14,7 @@ export class ContractManager {
         this.networkName = networkName
         this.artifactsPath = artifactsPath
     }
-    public async load(name: string, artifactFilename?: string, hasArtifact?: boolean): Promise<ContractBase> {
+    public async load(name: string, artifactFilename?: string): Promise<ContractBase> {
         let contractInstance = null
         if (!artifactFilename) {
             artifactFilename = `${name}.${this.networkName}.json`

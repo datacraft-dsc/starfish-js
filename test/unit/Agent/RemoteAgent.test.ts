@@ -90,6 +90,50 @@ describe('RemoteAgent Class', () => {
                 })
             })
         })
+        describe('Test Market API', () => {
+            let data
+            let registerAsset
+            const listing = {
+                price: 100,
+                description: 'test listing',
+            }
+            before( async () => {
+                data = Buffer.from(hexToBytes(randomHex(1024)))
+                const asset = DataAsset.create('testAsset', data)
+                registerAsset = await agent.registerAsset(asset)
+            })
+
+            describe('createListing', () => {
+                it('should create a new listing', async () => {
+                    const listingSaved = await agent.createListing(listing, registerAsset.did)
+                    assert(listingSaved)
+                    assert(listingSaved.assetid)
+                    assert(listingSaved.userid)
+                })
+            })
+            describe('updateListing', () => {
+                it('should update a current listing', async () => {
+                    const listingSaved = await agent.createListing(listing, registerAsset.did)
+                    assert(listingSaved)
+                    assert.equal(listingSaved.status, 'unpublished')
+                    listingSaved.status = 'published'
+                    const listingUpdated = await agent.updateListing(listingSaved)
+                    assert.equal(listingUpdated.status, 'published')
+                })
+            })
+            describe('getListing', () => {
+                it('should get a listing using the listing id', async () => {
+                    const listingSaved = await agent.createListing(listing, registerAsset.did)
+                    assert(listingSaved)
+                    const listingRead = await agent.getListing(listingSaved.id)
+                    assert.equal(listingSaved.id, listingRead.id)
+                })
+            })
+            describe('getListingList', () => {
+                // not supported on Surfer - bug shows an error
+            })
+
+        })
         describe('Test on an invokable asset', () => {
             let invokeAsset: OperationAsset
             let assetId: string

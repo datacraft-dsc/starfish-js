@@ -2,6 +2,7 @@ import Web3 from 'web3'
 import { Contract as Web3Contract } from 'web3-eth-contract'
 import { AbiItem } from 'web3-utils'
 import { ContractSendMethod } from 'web3-eth-contract'
+import { TransactionConfig, TransactionReceipt } from 'web3-core'
 
 import { Account } from '../Account'
 
@@ -55,7 +56,7 @@ export class ContractBase {
             return contractMethod.send(transaction)
         }
     }
-    public async sendTransaction(transaction: any, account: Account): Promise<any> {
+    public async sendTransaction(transaction: TransactionConfig, account: Account): Promise<TransactionReceipt> {
         const estimatedGas = await this.web3.eth.estimateGas(transaction)
         transaction['gas'] = estimatedGas
 

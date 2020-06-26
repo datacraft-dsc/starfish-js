@@ -164,16 +164,16 @@ export class RemoteAgentAdapter {
         }
         RemoteAgentAdapter.throwError('Unable to get a list of listing items', response)
     }
-    public async updateListing(listingId: string, listingDataText: string, url: string, token?: string): Promise<boolean> {
-        const listingURL = urljoin(url, `/listings/${listingId}`)
+    public async updateListing(listingData: IListingData, url: string, token?: string): Promise<IListingData> {
+        const listingURL = urljoin(url, `/listings/${listingData.id}`)
         const headers = RemoteAgentAdapter.createHeaders('application/json', token)
         const response = await fetch(listingURL, {
             method: 'PUT',
             headers: headers,
-            body: listingDataText,
+            body: JSON.stringify(listingData),
         })
         if (response.ok) {
-            return true
+            return this.getListing(listingData.id, url, token)
         }
         RemoteAgentAdapter.throwError('Unable to get listing data', response)
     }

@@ -161,7 +161,8 @@ describe('RemoteAgentAdapter', () => {
                 assert(listingData)
                 let newListingData = listingData
                 newListingData['info']['name'] = 'new data'
-                assert(await adapter.updateListing(listingData['id'], JSON.stringify(newListingData), marketURL, accessToken))
+                const updateListingData = await adapter.updateListing(newListingData, marketURL, accessToken)
+                assert(updateListingData)
             })
         })
     })

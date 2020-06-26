@@ -1,6 +1,5 @@
 /**
- *  @category Agent
- *  @preferred
+ *
  *
  *    Remote Agent class
  *
@@ -15,6 +14,7 @@ import { AgentBase } from './AgentBase'
 //import { IAsset } from 'starfish/Interfaces/IAsset'
 import { AssetBase, DataAsset, OperationAsset } from '../Asset/Asset'
 import { IAgentAuthentication } from '../Interfaces/IAgentAuthentication'
+import { IListingData, IListingFilter } from '../Interfaces/IListing'
 import { IInvokeResult } from '../Interfaces/IInvoke'
 import { isDID, extractAssetId } from '../Utils'
 import { Network } from '../Network'
@@ -144,6 +144,36 @@ export class RemoteAgent extends AgentBase {
         return asset
     }
 
+    public async createListing(listingInfo: unknown, assetDIDorId: string): Promise<IListingData> {
+        const adapter = RemoteAgentAdapter.getInstance()
+        const token = await this.getAuthorizationToken()
+        const url = this.getEndpoint('market')
+        const assetId = extractAssetId(assetDIDorId)
+        const listingText = JSON.stringify(listingInfo)
+        return adapter.addListing(listingText, assetId, url, token)
+    }
+
+    public async updateListing(listingData: IListingData): Promise<IListingData> {
+        const adapter = RemoteAgentAdapter.getInstance()
+        const token = await this.getAuthorizationToken()
+        const url = this.getEndpoint('market')
+        return adapter.updateListing(listingData, url, token)
+    }
+
+    public async getListing(listingId: string): Promise<IListingData> {
+        const adapter = RemoteAgentAdapter.getInstance()
+        const token = await this.getAuthorizationToken()
+        const url = this.getEndpoint('market')
+        return adapter.getListing(listingId, url, token)
+    }
+
+    public async getListingList(filter: IListingFilter): Promise<Array<IListingData>> {
+        const adapter = RemoteAgentAdapter.getInstance()
+        const token = await this.getAuthorizationToken()
+        const url = this.getEndpoint('market')
+        return adapter.getListingList(filter, url, token)
+    }
+
     /**
      * Invoke an operation on the remote Agent.
      * @param asset This can be a string for an assetDID or assetID,
@@ -153,7 +183,7 @@ export class RemoteAgent extends AgentBase {
      * @Param isAsync If true run the invokable service as async, defaults to False - run as a sync service.
      * @returns The `outputs` and `status`, if the invoke is sync, else for async just return the `job-id`
      */
-    public async invoke(asset: string | OperationAsset, inputs?: any, isAsync?: boolean): Promise<IInvokeResult> {
+    public async invoke(asset: string | OperationAsset, inputs?: unknown, isAsync?: boolean): Promise<IInvokeResult> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
         const url = this.getEndpoint('invoke')

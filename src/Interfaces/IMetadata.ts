@@ -14,8 +14,8 @@ export interface ILink {
 export interface IOperation {
     class?: string
     modes?: Array<string>
-    inputs: any
-    outputs: any
+    inputs: unkown
+    outputs: unknown
 }
 
 export interface IBundleContent {
@@ -37,7 +37,7 @@ export interface IMetadataBase {
     links?: Array<ILink>
     inLanguage?: string
     tags?: Array<string>
-    additionalInformation?: any
+    additionalInformation?: unknown
 }
 
 export interface IMetadataData extends IMetadataBase {
