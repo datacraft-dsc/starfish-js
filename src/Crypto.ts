@@ -21,6 +21,6 @@ export function calculateAssetId(metadataText: string): string {
  * @param buffer Data to calculate the hash.
  * @returns the SHA-256 hash of the data as hex string.
  */
-export function calcAssetDataHash(buffer: Buffer): string {
+export function calculateAssetDataHash(buffer: Buffer): string {
     return crypto.createHash('SHA3-256').update(buffer).digest('hex')
 }

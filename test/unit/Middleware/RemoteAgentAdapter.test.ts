@@ -16,7 +16,7 @@ import { randomHex, hexToBytes } from 'web3-utils'
 import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
 import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
 import { extractAssetId, removeLeadingHexZero } from 'starfish/Utils'
-import { calcAssetDataHash } from 'starfish/Crypto'
+import { calculateAssetDataHash } from 'starfish/Crypto'
 
 let setup = loadTestSetup()
 const agentConfig = setup.agents['local']
@@ -178,7 +178,7 @@ describe('RemoteAgentAdapter', () => {
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
             assetData = Buffer.from(hexToBytes(randomHex(1024)))
             const metadataAsset = metadata
-            const hash = calcAssetDataHash(assetData)
+            const hash = calculateAssetDataHash(assetData)
             metadataAsset['contentType'] = 'application/octet-stream'
             metadataAsset['contentHash'] = hash
             metadataText = JSON.stringify(metadataAsset)

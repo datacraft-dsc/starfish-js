@@ -11,7 +11,7 @@ import mime from 'mime-types'
 
 import { IMetadata, IMetadataData } from '../Interfaces/IMetadata'
 import { AssetBase } from './AssetBase'
-import { calcAssetDataHash } from '../Crypto'
+import { calculateAssetDataHash } from '../Crypto'
 
 export class DataAsset extends AssetBase {
     public data: Buffer
@@ -28,7 +28,7 @@ export class DataAsset extends AssetBase {
     public static create(name: string, data: Buffer, metadata?: string | IMetadataData, did?: string): DataAsset {
         const storeMetadata = AssetBase.generateMetadata(name, 'dataset', metadata)
         storeMetadata.contentType = 'application/octet-stream'
-        storeMetadata.contentHash = calcAssetDataHash(data)
+        storeMetadata.contentHash = calculateAssetDataHash(data)
         return new DataAsset(storeMetadata, did, data)
     }
 
@@ -54,7 +54,7 @@ export class DataAsset extends AssetBase {
         if (mimeType) {
             storeMetadata.contentType = mimeType
         }
-        storeMetadata.contentHash = calcAssetDataHash(data)
+        storeMetadata.contentHash = calculateAssetDataHash(data)
         return new DataAsset(storeMetadata, did, data)
     }
 
