@@ -5,7 +5,7 @@
 
 */
 
-import fs from 'fs-extra'
+import fs from 'fs'
 import Web3 from 'web3'
 
 import { toChecksumAddress } from 'web3-utils'
@@ -76,9 +76,9 @@ export class Account {
      */
     public static async loadKeyDataFromFile(filename: string): Promise<EncryptedKeystoreV3Json> {
         let data = null
-        if (fs.pathExists(filename)) {
-            const rawData = await fs.readFile(filename)
-            data = JSON.parse(rawData)
+        if (fs.existsSync(filename)) {
+            const rawData = await fs.promises.readFile(filename)
+            data = JSON.parse(rawData.toString('utf-8'))
         }
         return data
     }
@@ -109,7 +109,7 @@ export class Account {
      */
     public async saveToFile(filename: string): Promise<unknown> {
         const data = JSON.stringify(this.keyData)
-        return await fs.writeFile(filename, data)
+        return await fs.promises.writeFile(filename, data)
     }
 
     /**

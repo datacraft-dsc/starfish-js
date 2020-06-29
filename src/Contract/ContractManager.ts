@@ -1,4 +1,4 @@
-import fs from 'fs-extra'
+import fs from 'fs'
 import path from 'path'
 import Web3 from 'web3'
 
@@ -22,7 +22,8 @@ export class ContractManager {
         const pathFilename = this.findArtifactFile([this.artifactsPath, __dirname], artifactFilename)
         if (pathFilename) {
             // import relative to this module
-            const contractData = JSON.parse(await fs.readFile(pathFilename))
+            const articleData = await fs.promises.readFile(pathFilename)
+            const contractData = JSON.parse(articleData.toString('utf-8'))
             const contractName = `./${name}Contract`
             const contractClass = await import(contractName)
             const constructorName = Object.keys(contractClass)[0]
@@ -34,7 +35,7 @@ export class ContractManager {
     public findArtifactFile(pathList: Array<string>, filename: string): string | null {
         for (const testPath of pathList) {
             const pathFilename = path.join(testPath, filename)
-            if (fs.pathExists(pathFilename)) {
+            if (fs.existsSync(pathFilename)) {
                 return pathFilename
             }
         }
