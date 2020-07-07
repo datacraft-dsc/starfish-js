@@ -3,7 +3,6 @@ import path from 'path'
 import Web3 from 'web3'
 import fetch from 'node-fetch'
 
-
 import { ContractBase } from './ContractBase'
 import { IArtifactsPackage, IArtifact } from '../Interfaces/IArtifactsPackage'
 
@@ -41,7 +40,7 @@ export class ContractManager {
     }
 
     public async loadArtifactFromFile(name: string, path?: string, filename?: string): Promise<IArtifact> {
-        path = (path) ? path : 'artifacts'
+        path = path ? path : 'artifacts'
 
         let artifactFilename = filename
         if (!artifactFilename) {
@@ -55,19 +54,21 @@ export class ContractManager {
         }
     }
 
-    public loadArtifactFromPackage(name) : IArtifact {
-        if (this.artifactsPackage &&
+    public loadArtifactFromPackage(name: string): IArtifact {
+        if (
+            this.artifactsPackage &&
             this.artifactsPackage.artifacts &&
             this.artifactsPackage.artifacts[this.networkId] &&
-            this.artifactsPackage.artifacts[this.networkId][name]) {
-                return this.artifactsPackage.artifacts[this.networkId][name]
+            this.artifactsPackage.artifacts[this.networkId][name]
+        ) {
+            return this.artifactsPackage.artifacts[this.networkId][name]
         }
     }
 
     public async loadLocalArtifactsPackage(timeoutSeconds?: number, url?: string): Promise<void> {
         let data = await ContractManager.requestLocalArtifactsPackage(url)
-        let counter = (timeoutSeconds) ? timeoutSeconds : 20
-        const requestDataTimeout = setInterval( async () => {
+        let counter = timeoutSeconds ? timeoutSeconds : 20
+        const requestDataTimeout = setInterval(async () => {
             data = await ContractManager.requestLocalArtifactsPackage(url)
             counter--
             if (data || counter < 0) {
@@ -101,5 +102,4 @@ export class ContractManager {
         }
         return response.json()
     }
-
 }

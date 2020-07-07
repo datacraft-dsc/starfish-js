@@ -92,7 +92,7 @@ export class Network {
         await this.connect()
 
         this.contractManager = new ContractManager(this.web3, this.networkId, this.networkName)
-        if ( this.options.autoLoadLocalArtifacts && this.networkName == 'local') {
+        if (this.options.autoLoadLocalArtifacts && this.networkName == 'local') {
             await this.contractManager.loadLocalArtifactsPackage()
         }
     }

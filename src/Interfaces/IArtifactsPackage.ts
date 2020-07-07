@@ -9,9 +9,9 @@
  */
 
 export interface IArtifact {
-    name: string,
-    abi: unknown,
-    address: string,
+    name: string
+    abi: unknown
+    address: string
 }
 
 export interface IArtifactContracts {
