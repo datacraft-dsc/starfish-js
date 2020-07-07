@@ -4,9 +4,9 @@ import { ContractBase } from './ContractBase'
 import { Account } from '../Account'
 import { toEther, toWei } from '../Utils'
 
-export class OceanTokenContract extends ContractBase {
+export class DexTokenContract extends ContractBase {
     constructor() {
-        super('OceanToken')
+        super('DexToken')
     }
 
     public async getBalance(accountAddress: Account | string): Promise<string> {

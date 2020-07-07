@@ -19,13 +19,13 @@ const accountConfigNode = setup.accounts['accountNode']
 describe('Network Class', () => {
     describe('getInstance', () => {
         it('should create a basic Starfish object using a url string', async () => {
-            let network = await Network.getInstance(setup.network.url);
+            let network = await Network.getInstance(setup.network.url, { 'artifactsPath': 'artifactsPath' });
             assert(network, 'network');
             assert(network.provider, 'provider')
             assert(network.web3, 'web3')
-            assert(network.artifactsPath, 'artifactsPath')
             assert(network.networkId, 'networkId')
             assert(network.networkName, 'networkName')
+            assert(network.options.artifactsPath, 'artifactsPath')
         })
         it('should create a basic Starfish object using a Provider object', async () => {
             let provider = new DirectProvider(setup.network.url)
@@ -33,11 +33,11 @@ describe('Network Class', () => {
             assert(network, 'network');
             assert(network.provider, 'provider')
             assert(network.web3, 'web3')
-            assert(network.artifactsPath, 'artifactsPath')
             assert(network.networkId, 'networkId')
             assert(network.networkName, 'networkName')
         })
     })
+
     describe('account operations', () => {
         before( async () => {
             network = await Network.getInstance(setup.network.url);
@@ -49,6 +49,7 @@ describe('Network Class', () => {
             })
             it('should get ether balance using an account object', async () => {
                 const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
+                assert(account, 'load account')
                 const balance = await network.getEtherBalance(account)
                 assert(balance)
             })
@@ -63,7 +64,7 @@ describe('Network Class', () => {
 
         describe('requestTestTokens', () => {
             it('should request some test tokens from a node account', async () => {
-                const requestAmount = 10
+                const requestAmount = 1
                 const account = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
                 assert(account, 'load account')
                 const startBalance = await network.getTokenBalance(account.address)
@@ -76,7 +77,7 @@ describe('Network Class', () => {
                 assert.equal(Number(startBalance) + requestAmount, endBalance, 'balance changed')
             })
             it('should request some test tokens from a local account', async () => {
-                const requestAmount = 10
+                const requestAmount = 1
                 const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const startBalance = await network.getTokenBalance(account.address)
                 assert(startBalance)
@@ -95,7 +96,7 @@ describe('Network Class', () => {
         })
         describe('sendEther', () => {
             it('should send some ether from one account to another', async () => {
-                const sendAmount = 10
+                const sendAmount = 1
                 const fromAccount = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const toAccount = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
                 const fromBalance = await network.getEtherBalance(fromAccount)
@@ -111,7 +112,7 @@ describe('Network Class', () => {
         })
         describe('sendToken', () => {
             it('should send some tokens from one account to another', async () => {
-                const sendAmount = 10
+                const sendAmount = 1
                 const fromAccount = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const toAccount = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
                 const fromBalance = await network.getTokenBalance(fromAccount)

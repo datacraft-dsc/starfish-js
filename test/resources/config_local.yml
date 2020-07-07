@@ -1,0 +1,37 @@
+
+# Config settings for delevelopment local block chain network
+
+
+network:
+  url: http://localhost:8545
+
+accounts:
+  account1:
+    address: '0x32F098d6965ef0164151162787C69219F6D333dB'
+    password: dex-secret
+    keyfile: test/resources/account_key_files/local/32F098d6965ef0164151162787C69219F6D333dB.json
+
+  account2:
+    address: '0xAa7CA83822670633D633D0195BC7d68EDF5b2ea0'
+    password: dex-secret
+    keyfile: test/resources/account_key_files/local/Aa7CA83822670633D633D0195BC7d68EDF5b2ea0.json
+
+# this is account's key file is on the local ethereum node
+  accountNode:
+    address: '0xB4CB6E576409e0CbA1ae44Bd68B6F9551987AFee'
+    password: dex-secret
+
+# list of available agents via their DID and/or URL
+# each agent section header is [<agent name> agent]
+
+agents:
+  local:
+    url: http://localhost:3030
+    username: Aladdin
+    password: OpenSesame
+
+  cloud:
+    url: http://surfer-prod.southeastasia.cloudapp.azure.com:3030
+    username: Aladdin
+    password: OpenSesame
+

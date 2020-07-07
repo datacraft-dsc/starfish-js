@@ -9,6 +9,6 @@ export class DispenserContract extends ContractBase {
     }
 
     public async requestTokens(account: Account, amount: number): Promise<TransactionReceipt> {
-        return this.sendToContract(this.contract.methods.requestTokens(String(amount)), account)
+        return this.sendToContract(this.contract.methods.requestTokens(amount), account)
     }
 }

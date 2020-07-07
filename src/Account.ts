@@ -45,7 +45,7 @@ export class Account {
      * @returns A new account object with the nessecary information.
      */
     public static async loadFromNetwork(network: Network, address: string, password: string): Promise<Account> {
-        const accounts = await network.web3.eth.personal.getAccounts()
+        const accounts = await network.web3.eth.getAccounts()
         if (accounts.indexOf(address) >= 0) {
             return new Account(address, password)
         }

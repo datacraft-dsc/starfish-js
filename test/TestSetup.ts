@@ -11,7 +11,7 @@ import urljoin from 'url-join'
 import fetch, { Headers } from 'node-fetch'
 import { Base64 } from 'js-base64'
 
-const CONFIG_FILENAME = 'test/resources/config_development.conf'
+const CONFIG_FILENAME = 'test/resources/config_local.yml'
 
 function loadConfig(filename): any {
     const doc = yaml.safeLoad(fs.readFileSync(filename))

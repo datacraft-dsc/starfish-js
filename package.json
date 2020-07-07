@@ -1,6 +1,6 @@
 {
   "name": "@dex/starfish",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "JavaScript client library for Ocean Eco System",
   "main": "./dist/node/starfish.js",
   "browser": "./dist/browser/starfish.cjs2.min.js",
