@@ -5,7 +5,7 @@ Toolkit for Decentralised Data Ecosystem development in Javascript
 
 ![](https://github.com/DEX-Company/starfish-js/workflows/testing/badge.svg)
 [![GitHub contributors](https://img.shields.io/github/contributors/DEX-Company/starfish-js.svg)](https://github.com/DEX-Company/starfish-js/graphs/contributors)
-[![dex-chain Version](https://img.shields.io/badge/dex--chain-master-blue.svg)](https://github.com/DEX-Company/dex-chain/master)
+[![dex-chain Version](https://img.shields.io/badge/dex--chain-master-blue.svg)](https://github.com/DEX-Company/dex-chain)
 
 ---
 
@@ -52,8 +52,7 @@ Currently only provide basic account balance information
 
 1. Create the local testing environment using [dex-chain](https://github.com/DEX-Company/dex-chain).
 
-    In a sepearte terminal session you need to clone and checkout the correct taged
-    version of ```dex-chain``` repository, by doing the following:
+    In a sepearte terminal session you need to clone and checkout ```dex-chain``` repository, by doing the following:
     ```
     git clone https://github.com/DEX-Company/dex-chain.git
     cd dex-chain
