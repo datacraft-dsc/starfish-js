@@ -31,19 +31,17 @@ jobs:
         token: ${{ secrets.ACCESS_TOKEN }}
         ref: develop
         path: surfer
-    - name: Install Barge
+    - name: Install dex-chain
       uses: actions/checkout@v1
       with:
-        repository: DEX-Company/barge
-        # ref: tags/dex-2019-10-09
+        repository: DEX-Company/dex-chain
         ref: develop
-        path: barge
-    - name: Start Barge
+        path: dex-chain
+    - name: Start dex-chain
       run: |
-        cd ../barge
-        sudo sysctl -w vm.max_map_count=262144
-        ./start_ocean.sh --no-brizo --no-surfer --no-koi --no-aquarius --no-dashboard --no-secret-store --local-spree-node &
-        sleep 120
+        cd ../dex-chain
+        ./start_dex_chain.sh test &
+        sleep 30
     - name : Start Surfer
       run: |
         cd ../surfer
