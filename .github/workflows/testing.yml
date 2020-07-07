@@ -47,7 +47,7 @@ jobs:
         cd ../surfer
         clojure -M:main &
     - name: sleep and wait for dex-chain & surfer to load...
-      run: sleep 120
+      run: sleep 100
     - name: Test
       run: npm test
       env:
