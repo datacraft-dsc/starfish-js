@@ -4,7 +4,7 @@ dist/
 coverage/
 test/**/*.js
 src/**/*.js
-artifacts
+/artifacts/
 build
 docs/
 

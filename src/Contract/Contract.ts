@@ -13,7 +13,7 @@ import { DIDRegistryContract } from './DIDRegistryContract'
 import { DirectPurchaseContract } from './DirectPurchaseContract'
 import { DispenserContract } from './DispenserContract'
 import { NetworkContract } from './NetworkContract'
-import { OceanTokenContract } from './OceanTokenContract'
+import { DexTokenContract } from './DexTokenContract'
 import { ProvenanceContract } from './ProvenanceContract'
 
 export {
@@ -23,6 +23,6 @@ export {
     DirectPurchaseContract,
     DispenserContract,
     NetworkContract,
-    OceanTokenContract,
+    DexTokenContract,
     ProvenanceContract,
 }

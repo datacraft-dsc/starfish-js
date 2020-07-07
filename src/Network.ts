@@ -8,7 +8,7 @@ import {
     ContractBase,
     ContractManager,
     NetworkContract,
-    OceanTokenContract,
+    DexTokenContract,
     DispenserContract,
     DirectPurchaseContract,
     ProvenanceContract,
@@ -18,6 +18,7 @@ import { isBalanceInsufficient, isDID, didToId } from './Utils'
 import { DDO } from './DDO/DDO'
 import { RemoteAgent } from './Agent/RemoteAgent'
 import { IAgentAuthentication } from './Interfaces/IAgentAuthentication'
+import { INetworkOptions } from './Interfaces/INetwork'
 
 /**
  * Network class to connect to a block chain network. To perform starfish operations
@@ -34,17 +35,17 @@ export class Network {
      * @return The current Network object
      * @category Static Create
      */
-    public static async getInstance(urlProvider: string | IProvider, artifactsPath?: string): Promise<Network> {
+    public static async getInstance(urlProvider: string | IProvider, options?: INetworkOptions): Promise<Network> {
         if (!Network.instance) {
             Network.instance = new Network()
-            await Network.instance.init(urlProvider, artifactsPath)
         }
+        await Network.instance.init(urlProvider, options)
         return Network.instance
     }
 
     private static instance
     public provider: IProvider
-    public artifactsPath: string
+    public options: INetworkOptions
     public web3: Web3
     public networkId: number
     public networkName: string
@@ -62,6 +63,7 @@ export class Network {
             [77, 'POA_Sokol'],
             [99, 'POA_Core'],
             [100, 'xDai'],
+            [1337, 'local'], // local private network - for testing
             [8995, 'nile'], // Ocean Protocol Public test net
             [8996, 'spree'], // Ocean Protocol local test net
             [0xcea11, 'pacific'], // Ocean Protocol Public mainnet
@@ -74,17 +76,25 @@ export class Network {
      * @param urlProvider URL of the network node or a Provider object to access the node.
      * @param artifactsPath Path to the artifacts files that contain the contract ABI and address.
      */
-    public async init(urlProvider: string | IProvider, artifactsPath?: string): Promise<void> {
+    public async init(urlProvider: string | IProvider, options?: INetworkOptions): Promise<void> {
         if (typeof urlProvider === 'string') {
             this.provider = new DirectProvider(urlProvider)
         } else {
             this.provider = urlProvider
         }
-        if (artifactsPath === undefined) {
-            artifactsPath = 'artifacts'
+        this.options = {}
+        if (options) {
+            this.options = options
         }
-        this.artifactsPath = artifactsPath
+        if (this.options.autoLoadLocalArtifacts === undefined) {
+            this.options.autoLoadLocalArtifacts = true
+        }
         await this.connect()
+
+        this.contractManager = new ContractManager(this.web3, this.networkId, this.networkName)
+        if ( this.options.autoLoadLocalArtifacts && this.networkName == 'local') {
+            await this.contractManager.loadLocalArtifactsPackage()
+        }
     }
 
     /**
@@ -104,10 +114,7 @@ export class Network {
      * @returns AContract that has been loadad
      */
     public async getContract(name: string): Promise<ContractBase> {
-        if (!this.contractManager) {
-            this.contractManager = new ContractManager(this.web3, this.networkName, this.artifactsPath)
-        }
-        return this.contractManager.load(name)
+        return this.contractManager.load(name, this.options.artifactsPath)
     }
 
     /*
@@ -134,7 +141,7 @@ export class Network {
      * @returns Token balance as a string.
      */
     public async getTokenBalance(accountAddress: Account | string): Promise<string> {
-        const contract = <OceanTokenContract>await this.getContract('OceanToken')
+        const contract = <DexTokenContract>await this.getContract('DexToken')
         return await contract.getBalance(accountAddress)
     }
 
@@ -185,7 +192,7 @@ export class Network {
      * @returns True if the sending of the payment was made.
      */
     public async sendToken(account: Account, toAccountAddress: Account | string, amount: number | string): Promise<boolean> {
-        const contract = <OceanTokenContract>await this.getContract('OceanToken')
+        const contract = <DexTokenContract>await this.getContract('DexToken')
         const fromAccountBalance = await contract.getBalance(account)
 
         if (isBalanceInsufficient(fromAccountBalance, amount)) {
@@ -222,10 +229,10 @@ export class Network {
         reference2?: string
     ): Promise<boolean> {
         let status = false
-        const oceanContract = <OceanTokenContract>await this.getContract('OceanToken')
+        const dexContract = <DexTokenContract>await this.getContract('DexToken')
         const directContract = <DirectPurchaseContract>await this.getContract('DirectPurchase')
 
-        const fromAccountBalance = await oceanContract.getBalance(account)
+        const fromAccountBalance = await dexContract.getBalance(account)
         if (isBalanceInsufficient(fromAccountBalance, amount)) {
             throw new Error(
                 `The account ${account.address} has insufficient funds of ${fromAccountBalance} tokens to send ${amount} tokens`
@@ -233,7 +240,7 @@ export class Network {
         }
 
         // first approve the transfer fo tokens for the direct-contract
-        const approved = await oceanContract.approveTransfer(account, directContract.address, amount)
+        const approved = await dexContract.approveTransfer(account, directContract.address, amount)
         status = approved.status
         if (status) {
             const receipt = await directContract.sendTokenWithLog(account, toAccountAddress, amount, reference1, reference2)
