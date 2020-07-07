@@ -47,6 +47,7 @@ jobs:
       run: |
         cd ../surfer
         clojure -M:main &
+        sleep 10
     - name: Test
       run: npm test
       env:
