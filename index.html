@@ -110,18 +110,12 @@
 				<ol>
 					<li><p>Install requirements</p>
 					<pre><code> npm <span class="hljs-keyword">install</span></code></pre></li>
-					<li><p>Create the local testing environment using <a href="https://github.com/DEX-Company/barge">barge</a>.</p>
+					<li><p>Create the local testing environment using <a href="https://github.com/DEX-Company/dex-chain">dex-chain</a>.</p>
 						<p> In a sepearte terminal session you need to clone and checkout the correct taged
-						version of <code>barge</code> repository, by doing the following:</p>
-						<pre><code> git clone http<span class="hljs-variable">s:</span>//github.<span class="hljs-keyword">com</span>/DEX-Company/barge.git
- <span class="hljs-keyword">cd</span> barge
- git checkout <span class="hljs-keyword">tags</span>/dex-<span class="hljs-number">2019</span>-<span class="hljs-number">05</span>-<span class="hljs-number">24</span>
- ./start_ocean.<span class="hljs-keyword">sh</span> --<span class="hljs-keyword">no</span>-brizo --<span class="hljs-keyword">no</span>-pleuston --local-spree-node</code></pre></li>
-					<li><p>Copy keeper artifacts</p>
-						<p> A bash script is available to copy keeper artifacts into this file directly from a running docker image. This script needs to run in the root of the project.
-						The script waits until the keeper contracts are deployed, and then copies the artifacts.</p>
-						<pre><code> .<span class="hljs-regexp">/scripts/</span>wait_for_migration_and_extract_keeper_artifacts.sh</code></pre><p> The artifacts contain the addresses of all the deployed contracts and their ABI definitions required to interact with them.</p>
-					</li>
+						version of <code>dex-chain</code> repository, by doing the following:</p>
+						<pre><code> git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/DEX-Company/</span>dex-chain.git
+ cd dex-chain
+ ./start_dex_chain.sh test</code></pre></li>
 					<li><p>Run the unit tests</p>
 					<pre><code> npm <span class="hljs-keyword">run</span><span class="bash"> <span class="hljs-built_in">test</span></span></code></pre></li>
 				</ol>
@@ -219,6 +213,9 @@ limitations <span class="hljs-keyword">under</span> the License.</code></pre>
 						<a href="modules/_contract_didregistrycontract_.html">&quot;<wbr>Contract/DIDRegistry<wbr>Contract&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/_contract_dextokencontract_.html">&quot;<wbr>Contract/<wbr>Dex<wbr>Token<wbr>Contract&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/_contract_directpurchasecontract_.html">&quot;<wbr>Contract/<wbr>Direct<wbr>Purchase<wbr>Contract&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -226,9 +223,6 @@ limitations <span class="hljs-keyword">under</span> the License.</code></pre>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_contract_networkcontract_.html">&quot;<wbr>Contract/<wbr>Network<wbr>Contract&quot;</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_contract_oceantokencontract_.html">&quot;<wbr>Contract/<wbr>Ocean<wbr>Token<wbr>Contract&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_contract_provenancecontract_.html">&quot;<wbr>Contract/<wbr>Provenance<wbr>Contract&quot;</a>
@@ -241,6 +235,9 @@ limitations <span class="hljs-keyword">under</span> the License.</code></pre>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_interfaces_iagentauthentication_.html">&quot;<wbr>Interfaces/IAgent<wbr>Authentication&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_interfaces_iartifactspackage_.html">&quot;<wbr>Interfaces/IArtifacts<wbr>Package&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_interfaces_iasset_.html">&quot;<wbr>Interfaces/IAsset&quot;</a>
@@ -259,6 +256,9 @@ limitations <span class="hljs-keyword">under</span> the License.</code></pre>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_interfaces_imetadata_.html">&quot;<wbr>Interfaces/IMetadata&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_interfaces_inetwork_.html">&quot;<wbr>Interfaces/INetwork&quot;</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_interfaces_iprovider_.html">&quot;<wbr>Interfaces/IProvider&quot;</a>
