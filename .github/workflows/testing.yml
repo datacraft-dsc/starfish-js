@@ -42,12 +42,12 @@ jobs:
         docker login docker.pkg.github.com --username billbsing --password ${{ secrets.ACCESS_PACKAGES }}
         cd ../dex-chain
         ./start_dex_chain.sh test &
-        sleep 30
     - name : Start Surfer
       run: |
         cd ../surfer
         clojure -M:main &
-        sleep 30
+    - name: sleep and wait for dex-chain & surfer to load...
+      run: sleep 120
     - name: Test
       run: npm test
       env:
