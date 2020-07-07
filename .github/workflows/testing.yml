@@ -39,6 +39,7 @@ jobs:
         path: dex-chain
     - name: Start dex-chain
       run: |
+        docker login docker.pkg.github.com --username billbsing --password ${{ secrets.ACCESS_TOKEN }}
         cd ../dex-chain
         ./start_dex_chain.sh test &
         sleep 30

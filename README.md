@@ -51,27 +51,15 @@ Currently only provide basic account balance information
     npm install
     ```
 
-1. Create the local testing environment using [barge](https://github.com/DEX-Company/barge).
+1. Create the local testing environment using [dex-chain](https://github.com/DEX-Company/dex-chain).
 
     In a sepearte terminal session you need to clone and checkout the correct taged
-    version of ```barge``` repository, by doing the following:
+    version of ```dex-chain``` repository, by doing the following:
     ```
-    git clone https://github.com/DEX-Company/barge.git
-    cd barge
-    git checkout tags/dex-2019-05-24
-    ./start_ocean.sh --no-brizo --no-pleuston --local-spree-node
+    git clone https://github.com/DEX-Company/dex-chain.git
+    cd dex-chain
+    ./start_dex_chain.sh test
     ```
-
-1. Copy keeper artifacts
-
-    A bash script is available to copy keeper artifacts into this file directly from a running docker image. This script needs to run in the root of the project.
-    The script waits until the keeper contracts are deployed, and then copies the artifacts.
-
-    ```
-    ./scripts/wait_for_migration_and_extract_keeper_artifacts.sh
-    ```
-
-    The artifacts contain the addresses of all the deployed contracts and their ABI definitions required to interact with them.
 
 1. Run the unit tests
 
