@@ -13,8 +13,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
-        #registry-url: https://npm.pkg.github.com
-        #scope: '@convex-dev'
     - name: Install dependencies
       run: npm install
       env:
@@ -34,9 +32,11 @@ jobs:
         docker login docker.pkg.github.com --username ${{ github.actor }} --password ${{ secrets.ACCESS_PACKAGES }}
         cd dex-chain
         ./start_dex_chain.sh test &
+    - name: Install java
     - uses: actions/setup-java@v1
       with:
         java-version: '11.0.5'
+    - name: Install clojure
     - uses: DeLaGuardo/setup-clojure@2.0
       with:
         tools-deps: '1.10.1.483'
@@ -52,7 +52,7 @@ jobs:
         cd surfer
         clojure -M:main &
         scripts/wait_for_surfer.sh
-    - name: sleep and wait for dex-chain to load...
+    - name: Wait for dex-chain to load...
       run: sleep 2
     - name: Test
       run: npm test
