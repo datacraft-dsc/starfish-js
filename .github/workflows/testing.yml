@@ -14,9 +14,8 @@ jobs:
         registry-url: https://npm.pkg.github.com
         scope: '@convex-dev'
     - name: Install dependencies
-      run: npm ci
+      run: npm install
       env:
-        CI: true
         NODE_AUTH_TOKEN: ${{ secrets.ACCESS_PACKAGES }}
     - uses: actions/checkout@v2
     - uses: actions/setup-java@v1
