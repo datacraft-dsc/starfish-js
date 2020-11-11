@@ -62,7 +62,8 @@
     "node-metamask": "^1.1.2",
     "query-string": "^6.13.0",
     "url-join": "^4.0.1",
-    "web3": "^1.2.8"
+    "web3": "^1.2.8",
+    "@convex-dev/convex-api-js": "0.0.1"
   },
   "devDependencies": {
     "@types/mocha": "^5.2.6",

@@ -28,4 +28,5 @@ export interface IListingFilter {
     userid?: string
     from?: number
     size?: number
+    [x: string]: string
 }
