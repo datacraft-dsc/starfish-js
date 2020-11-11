@@ -15,8 +15,10 @@ jobs:
         registry-url: https://npm.pkg.github.com/convex-dev
     - name: append token to .npmc file
       run: |
-        echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+        echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> .npmrc
         cat .npmrc
+      env:
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
     - uses: actions/checkout@v1
     - uses: actions/setup-java@v1
       with:
@@ -26,8 +28,6 @@ jobs:
         tools-deps: '1.10.1.483'
     - name: Install dependencies
       run: npm install
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
     - name: Build dependencies
       run: npm run build --if-present
     - name: Run Lint Test
