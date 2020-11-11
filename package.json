@@ -8,7 +8,7 @@
     "test": "mocha",
     "clean": "rm -rf ./dist/ ./doc/ ./coverage ./.nyc_output",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts src/",
-    "build": "npm run clean && npm run build:tsc",
+    "build": "npm run clean && tsc",
     "build:docs": "typedoc --mode modules --out ./docs/ ./src/",
     "run": "ts-node"
   },
