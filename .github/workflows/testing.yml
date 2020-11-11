@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: setup .npmrc
+    - name: Setup .npmrc for github packages
       run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.ACCESS_PACKAGES }}" >> ~/.npmrc
     - name: Set up node js
       uses: actions/setup-node@v1
@@ -16,12 +16,20 @@ jobs:
         #registry-url: https://npm.pkg.github.com
         #scope: '@convex-dev'
     - name: Install dependencies
-      run: npm install
+      run: npm install --production=false
+      env:
+        CI: true
     - name: Build dependencies
       run: npm run build --if-present
     - name: Run Lint Test
       run: npm run lint
     - uses: actions/checkout@v2
+    - name: Install dex-chain
+      uses: actions/checkout@v2
+      with:
+        repository: DEX-Company/dex-chain
+        ref: master
+        path: dex-chain
     - uses: actions/setup-java@v1
       with:
         java-version: '11.0.5'
@@ -35,12 +43,6 @@ jobs:
         token: ${{ secrets.ACCESS_TOKEN }}
         ref: develop
         path: surfer
-    - name: Install dex-chain
-      uses: actions/checkout@v2
-      with:
-        repository: DEX-Company/dex-chain
-        ref: master
-        path: dex-chain
     - name: Start dex-chain
       run: |
         docker login docker.pkg.github.com --username billbsing --password ${{ secrets.ACCESS_PACKAGES }}
@@ -52,7 +54,7 @@ jobs:
         clojure -M:main &
         scripts/wait_for_surfer.sh
     - name: sleep and wait for dex-chain & surfer to load...
-      run: sleep 50
+      run: sleep 20
     - name: Test
       run: npm test
       env:
