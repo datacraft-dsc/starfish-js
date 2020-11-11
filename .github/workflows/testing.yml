@@ -14,9 +14,10 @@ jobs:
         registry-url: https://npm.pkg.github.com
         scope: '@convex-dev'
     - name: Install dependencies
-      run: npm ci --registry=https://registry.npmjs.org
+      run: npm ci
       env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        CI: true
+        NODE_AUTH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
     - uses: actions/checkout@v2
     - uses: actions/setup-java@v1
       with:
