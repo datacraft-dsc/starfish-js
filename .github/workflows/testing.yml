@@ -12,7 +12,9 @@ jobs:
       with:
         node-version: 12.x
         always-auth: true
-        registry-url: https://npm.pkg.github.com/
+        registry-url:
+        - https://npm.pkg.github.com
+        - https://registry.npmjs.org
         scope: '@convex-dev'
     - name: Install dependencies
       run: npm ci
