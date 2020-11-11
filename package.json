@@ -10,7 +10,7 @@
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts src/",
     "build": "npm run clean && npm run build:tsc",
     "build:docs": "typedoc --mode modules --out ./docs/ ./src/",
-    "run": "ts-node",
+    "run": "ts-node"
   },
   "nyc": {
     "include": [
@@ -95,6 +95,6 @@
     "test": "test"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com"
+    "registry": "https://npm.pkg.github.com"
   }
 }
