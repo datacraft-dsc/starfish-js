@@ -11,11 +11,11 @@ import Web3 from 'web3'
 import { toChecksumAddress } from 'web3-utils'
 import { EncryptedKeystoreV3Json, SignedTransaction, TransactionConfig } from 'web3-core'
 
-import { Network } from './Network'
+import { EthereumNetwork } from './EthereumNetwork'
 /**
- * Account class to hold a privatly owned account
+ * EthereumAccount class to hold a privatly owned account
  */
-export class Account {
+export class EthereumAccount {
     readonly address: string
     readonly checksumAddress: string
     readonly password: string
@@ -27,43 +27,43 @@ export class Account {
      * Create a new account object, using the provided password.
      * @param password Password to use for this new account.
      * @param entropy Entropy for the account generation.
-     * @returns A new Account object.
+     * @returns A new EthereumAccount object.
      */
-    public static createNew(password: string, entropy?: string): Account {
+    public static createNew(password: string, entropy?: string): EthereumAccount {
         const web3 = new Web3()
         const result = web3.eth.accounts.create(entropy)
         const address = result.address
         const keyData = web3.eth.accounts.encrypt(result.privateKey, password)
-        return new Account(address, password, null, keyData)
+        return new EthereumAccount(address, password, null, keyData)
     }
 
     /**
-     * Loads a new account object that has been already loaded on the network node.
-     * @param network Network node that has the account.
+     * Loads a new EthereumAccount object that has been already loaded on the network node.
+     * @param network EthereumNetwork node that has the account.
      * @param address Address of the account on the node.
      * @param password Password to access this account information in the account file.
-     * @returns A new account object with the nessecary information.
+     * @returns A new EthereumAccount object with the nessecary information.
      */
-    public static async loadFromNetwork(network: Network, address: string, password: string): Promise<Account> {
+    public static async loadFromNetwork(network: EthereumNetwork, address: string, password: string): Promise<EthereumAccount> {
         const accounts = await network.web3.eth.getAccounts()
         if (accounts.indexOf(address) >= 0) {
-            return new Account(address, password)
+            return new EthereumAccount(address, password)
         }
         return null
     }
 
     /**
-     * Loads a new account object from an account file.
+     * Loads a new EthereumAccount object from an account file.
      * @param password Password to access this account information in the account file.
      * @param filename Filename of the account data.
-     * @returns A new account object with the nessecary information , or null if the password is incorect or file is not found.
+     * @returns A new EthereumAccount object with the nessecary information , or null if the password is incorect or file is not found.
      */
-    public static async loadFromFile(password: string, filename: string): Promise<Account> {
+    public static async loadFromFile(password: string, filename: string): Promise<EthereumAccount> {
         const web3 = new Web3()
-        const data = await Account.loadKeyDataFromFile(filename)
+        const data = await EthereumAccount.loadKeyDataFromFile(filename)
         if (data) {
             const keyData = await web3.eth.accounts.decrypt(data, password)
-            return new Account(keyData.address, password, filename, data)
+            return new EthereumAccount(keyData.address, password, filename, data)
         }
         return null
     }
@@ -84,7 +84,7 @@ export class Account {
     }
 
     /**
-     * Construct a new account object. Please use the following static methods:
+     * Construct a new EthereumAccount object. Please use the following static methods:
      *
      *   +   {@link createNew}
      *   +   {@link createFromFile}

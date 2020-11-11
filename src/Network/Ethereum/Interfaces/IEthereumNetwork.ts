@@ -2,7 +2,7 @@
  *
  *
  *
- *      Network Interface
+ *      NetworkEthereum Interface
  *
  *
  *

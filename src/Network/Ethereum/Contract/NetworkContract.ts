@@ -1,23 +1,23 @@
 import { TransactionReceipt } from 'web3-core'
 
 import { ContractBase } from './ContractBase'
-import { Account } from '../Account'
-import { toWei, toEther } from '../Utils'
+import { EthereumAccount } from '../EthereumAccount'
+import { toWei, toEther } from '../../../Utils'
 
 export class NetworkContract extends ContractBase {
     constructor() {
         super('NetworkToken')
     }
 
-    public async getBalance(accountAddress: Account | string): Promise<string> {
+    public async getBalance(accountAddress: EthereumAccount | string): Promise<string> {
         const address = this.getAccountAddress(accountAddress)
         const amountWei = await this.web3.eth.getBalance(address)
         return toEther(amountWei)
     }
 
     public async sendEther(
-        account: Account,
-        toAccountAddress: Account | string,
+        account: EthereumAccount,
+        toAccountAddress: EthereumAccount | string,
         amount: number | string
     ): Promise<TransactionReceipt> {
         const toAddress = this.getAccountAddress(toAccountAddress)

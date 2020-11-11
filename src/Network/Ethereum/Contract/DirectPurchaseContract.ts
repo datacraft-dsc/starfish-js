@@ -3,8 +3,8 @@ import { EventData } from 'web3-eth-contract'
 import { toHex } from 'web3-utils'
 
 import { ContractBase } from './ContractBase'
-import { Account } from '../Account'
-import { toWei } from '../Utils'
+import { EthereumAccount } from '../EthereumAccount'
+import { toWei } from '../../../Utils'
 
 export class DirectPurchaseContract extends ContractBase {
     constructor() {
@@ -12,8 +12,8 @@ export class DirectPurchaseContract extends ContractBase {
     }
 
     public async sendTokenWithLog(
-        account: Account,
-        toAccountAddress: Account | string,
+        account: EthereumAccount,
+        toAccountAddress: EthereumAccount | string,
         amount: number | string,
         reference1?: string,
         reference2?: string
@@ -32,8 +32,8 @@ export class DirectPurchaseContract extends ContractBase {
     }
 
     public async getEventLogs(
-        fromAccountAddress: Account | string,
-        toAccountAddress: Account | string,
+        fromAccountAddress: EthereumAccount | string,
+        toAccountAddress: EthereumAccount | string,
         amount: number | string,
         reference1?: string,
         reference2?: string

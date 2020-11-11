@@ -17,7 +17,7 @@ import { IAgentAuthentication } from '../Interfaces/IAgentAuthentication'
 import { IListingData, IListingFilter } from '../Interfaces/IListing'
 import { IInvokeResult } from '../Interfaces/IInvoke'
 import { isDID, extractAssetId } from '../Utils'
-import { Network } from '../Network'
+import { EthereumNetwork } from '../Network/Ethereum/EthereumNetwork'
 import { DDO } from '../DDO/DDO'
 
 export class RemoteAgent extends AgentBase {
@@ -50,14 +50,14 @@ export class RemoteAgent extends AgentBase {
      * Create a new RemoteAgent object using the agent's address.
      * The address can be a URL, DID or Asset DID
      * @param agentAddress URL, DID or Asset DID of the agent to resolve.
-     * @param network Network object to resolve all DID's. If non provided only a URL resolve will work.
+     * @param network EthereumNetwork object to resolve all DID's. If non provided only a URL resolve will work.
      * @param authentication For URL resolving you need to provide an optional authentication data to access the remote agent.
      * @returns RemoteAgent object if successful or null
      * @category Static Create
      */
     public static async createFromAddress(
         agentAddress: string,
-        network?: Network,
+        network?: EthereumNetwork,
         authentication?: IAgentAuthentication
     ): Promise<RemoteAgent> {
         let ddo = null

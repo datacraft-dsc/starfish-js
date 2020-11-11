@@ -1,9 +1,9 @@
 import Web3 from 'web3'
 import { EventData } from 'web3-eth-contract'
 
-import { IProvider } from './Interfaces/IProvider'
-import { DirectProvider } from './Provider/DirectProvider'
-import { Account } from './Account'
+import { IProvider } from '../../Interfaces/IProvider'
+import { DirectProvider } from '../../Provider/DirectProvider'
+import { EthereumAccount } from './EthereumAccount'
 import {
     ContractBase,
     ContractManager,
@@ -14,33 +14,33 @@ import {
     ProvenanceContract,
     DIDRegistryContract,
 } from './Contract/Contract'
-import { isBalanceInsufficient, isDID, didToId } from './Utils'
-import { DDO } from './DDO/DDO'
-import { RemoteAgent } from './Agent/RemoteAgent'
-import { IAgentAuthentication } from './Interfaces/IAgentAuthentication'
-import { INetworkOptions } from './Interfaces/INetwork'
+import { isBalanceInsufficient, isDID, didToId } from '../../Utils'
+import { DDO } from '../../DDO/DDO'
+import { RemoteAgent } from '../../Agent/RemoteAgent'
+import { IAgentAuthentication } from '../../Interfaces/IAgentAuthentication'
+import { INetworkOptions } from './Interfaces/IEthereumNetwork'
 
 /**
- * Network class to connect to a block chain network. To perform starfish operations
+ * EthereumNetwork class to connect to a block chain network. To perform starfish operations
  *
  *
  */
-export class Network {
+export class EthereumNetwork {
     /**
-     * Return a instance of a Network object.
+     * Return a instance of a EthereumNetwork object.
      * @param urlProvider URL of the network node or a Provider object to access the node.
      * @param artifactsPath Path to the artifacts files that contain the contract ABI and address.
      * The artifact contract files must be in the format `<contractName>.<networkName>.json`.
      *
-     * @return The current Network object
+     * @return The current EthereumNetwork object
      * @category Static Create
      */
-    public static async getInstance(urlProvider: string | IProvider, options?: INetworkOptions): Promise<Network> {
-        if (!Network.instance) {
-            Network.instance = new Network()
+    public static async getInstance(urlProvider: string | IProvider, options?: INetworkOptions): Promise<EthereumNetwork> {
+        if (!EthereumNetwork.instance) {
+            EthereumNetwork.instance = new EthereumNetwork()
         }
-        await Network.instance.init(urlProvider, options)
-        return Network.instance
+        await EthereumNetwork.instance.init(urlProvider, options)
+        return EthereumNetwork.instance
     }
 
     private static instance
@@ -72,7 +72,7 @@ export class Network {
 
     /**
      * Initialize the starfish object using a url or Provider and arfitfacts path. It is better
-     * to call {@link getInstance} to create a new Network object.
+     * to call {@link getInstance} to create a new EthereumNetwork object.
      * @param urlProvider URL of the network node or a Provider object to access the node.
      * @param artifactsPath Path to the artifacts files that contain the contract ABI and address.
      */
@@ -126,10 +126,10 @@ export class Network {
 
     /**
      * Return the ether balance for a given account or account address.
-     * @param accountAddress Acount object on account address string.
+     * @param accountAddress EthereumAccount object on account address string.
      * @returns Ether balance as a string.
      */
-    public async getEtherBalance(accountAddress: Account | string): Promise<string> {
+    public async getEtherBalance(accountAddress: EthereumAccount | string): Promise<string> {
         const contract = new NetworkContract()
         contract.load(this.web3)
         return await contract.getBalance(accountAddress)
@@ -140,7 +140,7 @@ export class Network {
      * @param accountAddress Acount object on account address string.
      * @returns Token balance as a string.
      */
-    public async getTokenBalance(accountAddress: Account | string): Promise<string> {
+    public async getTokenBalance(accountAddress: EthereumAccount | string): Promise<string> {
         const contract = <DexTokenContract>await this.getContract('DexToken')
         return await contract.getBalance(accountAddress)
     }
@@ -151,7 +151,7 @@ export class Network {
      * @param amount Amount to request.
      * @returns True if successfull.
      */
-    public async requestTestTokens(account: Account, amount: number): Promise<boolean> {
+    public async requestTestTokens(account: EthereumAccount, amount: number): Promise<boolean> {
         const contract = <DispenserContract>await this.getContract('Dispenser')
         const receipt = await contract.requestTokens(account, amount)
         return receipt.status
@@ -165,12 +165,16 @@ export class Network {
      */
     /**
      * Send some ether to another account.
-     * @param account Account to send the ether from. You must have access to the private password, or have this account unlocked.
-     * @param toAccountAddress Account or address string of the account that will receive the payment.
+     * @param account EthereumAccount to send the ether from. You must have access to the private password, or have this account unlocked.
+     * @param toAccountAddress EthereumAccount or address string of the account that will receive the payment.
      * @param amount Amount to of ether to send.
      * @returns True if the sending of the payment was made.
      */
-    public async sendEther(account: Account, toAccountAddress: Account | string, amount: number | string): Promise<boolean> {
+    public async sendEther(
+        account: EthereumAccount,
+        toAccountAddress: EthereumAccount | string,
+        amount: number | string
+    ): Promise<boolean> {
         const contract = new NetworkContract()
         contract.load(this.web3)
         const fromAccountBalance = await contract.getBalance(account)
@@ -186,12 +190,16 @@ export class Network {
 
     /**
      * Send some token to another account.
-     * @param account Account to send the token from. You must have access to the private password, or have this account unlocked.
-     * @param toAccountAddress Account or address string of the account that will receive the payment.
+     * @param account EthereumAccount to send the token from. You must have access to the private password, or have this account unlocked.
+     * @param toAccountAddress EthereumAccount or address string of the account that will receive the payment.
      * @param amount Amount to of token to send.
      * @returns True if the sending of the payment was made.
      */
-    public async sendToken(account: Account, toAccountAddress: Account | string, amount: number | string): Promise<boolean> {
+    public async sendToken(
+        account: EthereumAccount,
+        toAccountAddress: EthereumAccount | string,
+        amount: number | string
+    ): Promise<boolean> {
         const contract = <DexTokenContract>await this.getContract('DexToken')
         const fromAccountBalance = await contract.getBalance(account)
 
@@ -214,16 +222,16 @@ export class Network {
     /**
      * Send some token to another account and record the transaction with two optional references. These references are saved
      * on the block chain with the payment transaction. They can be reterived later using the call {@link getTokenEventLogs}
-     * @param account Account to send the token from. You must have access to the private password, or have this account unlocked.
-     * @param toAccountAddress Account or address string of the account that will receive the payment.
+     * @param account EthereumAccount to send the token from. You must have access to the private password, or have this account unlocked.
+     * @param toAccountAddress EthereumAccount or address string of the account that will receive the payment.
      * @param amount Amount to of token to send.
      * @param reference1 Reference #1 to save with the payment transaction.
      * @param reference2 Reference #2 to save with the payment transaction.
      * @returns True if the sending of the payment was made.
      */
     public async sendTokenWithLog(
-        account: Account,
-        toAccountAddress: Account | string,
+        account: EthereumAccount,
+        toAccountAddress: EthereumAccount | string,
         amount: number | string,
         reference1?: string,
         reference2?: string
@@ -252,16 +260,16 @@ export class Network {
     /**
      * Returns true if any token has been sent to the recipient 'toAccountAddress' with the amount, and optional references.
      * This method will only show any tokens sent by the method {@link sendTokenWithLog}.
-     * @param account Account to send the token from. You must have access to the private password, or have this account unlocked.
-     * @param toAccountAddress Account or address string of the account that will receive the payment.
+     * @param account EthereumAccount to send the token from. You must have access to the private password, or have this account unlocked.
+     * @param toAccountAddress EthereumAccount or address string of the account that will receive the payment.
      * @param amount Amount to of token to send.
      * @param reference1 Reference #1 to save with the payment transaction.
      * @param reference2 Reference #2 to save with the payment transaction.
      * @returns True if a valid payment was found.
      */
     public async isTokenSent(
-        fromAccountAddress: Account | string,
-        toAccountAddress: Account | string,
+        fromAccountAddress: EthereumAccount | string,
+        toAccountAddress: EthereumAccount | string,
         amount: number | string,
         reference1?: string,
         reference2?: string
@@ -274,16 +282,16 @@ export class Network {
     /**
      * Returns a list of events that have been sent to the recipient 'toAccountAddress' with the amount, and optiona references.
      * This call will only work with tokens send by the method {@link sendTokenWithLog}.
-     * @param account Account to send the token from. You must have access to the private password, or have this account unlocked.
-     * @param toAccountAddress Account or address string of the account that will receive the payment.
+     * @param account EthereumAccount to send the token from. You must have access to the private password, or have this account unlocked.
+     * @param toAccountAddress EthereumAccount or address string of the account that will receive the payment.
      * @param amount Amount to of token to send.
      * @param reference1 Reference #1 to save with the payment transaction.
      * @param reference2 Reference #2 to save with the payment transaction.
      * @returns The list of events that have been found.
      */
     public async getTokenEventLogs(
-        fromAccountAddress: Account | string,
-        toAccountAddress: Account | string,
+        fromAccountAddress: EthereumAccount | string,
+        toAccountAddress: EthereumAccount | string,
         amount: number | string,
         reference1?: string,
         reference2?: string
@@ -302,11 +310,11 @@ export class Network {
      */
     /**
      * Register provenance on the network.
-     * @param account Account to register the provenance from.
+     * @param account EthereumAccount to register the provenance from.
      * @param assetId Asset id to register. This is a 32 byte hex string ( '0x' + 64 hex chars )
      * @returns True if the registration was successfull.
      */
-    public async registerProvenance(account: Account, assetId: string): Promise<boolean> {
+    public async registerProvenance(account: EthereumAccount, assetId: string): Promise<boolean> {
         const contract = <ProvenanceContract>await this.getContract('Provenance')
         const receipt = await contract.register(account, assetId)
         return receipt.status
@@ -330,12 +338,12 @@ export class Network {
      */
     /*
      * Registers a DID on the block chain network, with an associated DDO.
-     * @param account Account to use to sign and pay for the registration.
+     * @param account EthereumAccount to use to sign and pay for the registration.
      * @param did DID string to register.
      * @param ddoText DDO in JSON text.
      * @returns True if the registration was successful.
      */
-    public async registerDID(account: Account, did: string, ddoText: string): Promise<boolean> {
+    public async registerDID(account: EthereumAccount, did: string, ddoText: string): Promise<boolean> {
         const contract = <DIDRegistryContract>await this.getContract('DIDRegistry')
         const didId = didToId(did)
         const receipt = await contract.register(account, didId, ddoText)
