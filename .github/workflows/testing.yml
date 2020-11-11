@@ -50,7 +50,7 @@ jobs:
       run: |
         cd surfer
         clojure -M:main &
-        scritps/wait_for_surfer.sh
+        scripts/wait_for_surfer.sh
     - name: sleep and wait for dex-chain & surfer to load...
       run: sleep 50
     - name: Test
