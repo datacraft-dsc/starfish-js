@@ -16,7 +16,7 @@ jobs:
         #registry-url: https://npm.pkg.github.com
         #scope: '@convex-dev'
     - name: Install dependencies
-      run: npm install --production=false
+      run: npm install
       env:
         CI: true
     - name: Build dependencies
@@ -29,6 +29,11 @@ jobs:
         repository: DEX-Company/dex-chain
         ref: master
         path: dex-chain
+    - name: Start dex-chain
+      run: |
+        docker login docker.pkg.github.com --username ${{ github.actor }} --password ${{ secrets.ACCESS_PACKAGES }}
+        cd dex-chain
+        ./start_dex_chain.sh test &
     - uses: actions/setup-java@v1
       with:
         java-version: '11.0.5'
@@ -42,18 +47,13 @@ jobs:
         token: ${{ secrets.ACCESS_TOKEN }}
         ref: develop
         path: surfer
-    - name: Start dex-chain
-      run: |
-        docker login docker.pkg.github.com --username billbsing --password ${{ secrets.ACCESS_PACKAGES }}
-        cd dex-chain
-        ./start_dex_chain.sh test &
     - name : Start Surfer
       run: |
         cd surfer
         clojure -M:main &
         scripts/wait_for_surfer.sh
-    - name: sleep and wait for dex-chain & surfer to load...
-      run: sleep 20
+    - name: sleep and wait for dex-chain to load...
+      run: sleep 2
     - name: Test
       run: npm test
       env:
