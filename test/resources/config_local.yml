@@ -21,12 +21,27 @@ ethereum:
       address: '0xd520Bc7A6024C0CAB5B02c32e760bAfBe10d58ea'
       password: dex-secret
 
+convex:
+  network:
+    url: https://convex.world
+
+  accounts:
+    account1:
+      address: '0x5288fec4153b702430771dfac8aed0b21cafca4344dae0d47b97f0bf532b3306'
+      password: secret
+      keyfile: tests/resources/network/convex/account_key_files/local/5288fec4153b702430771dfac8aed0b21cafca4344dae0d47b97f0bf532b3306.pem
+
 # list of available agents via their DID and/or URL
 # each agent section header is [<agent name> agent]
 
 agents:
   local:
     url: http://localhost:3030
+    username: Aladdin
+    password: OpenSesame
+
+  invokable:
+    url: http://localhost:9090
     username: Aladdin
     password: OpenSesame
 
