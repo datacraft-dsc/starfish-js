@@ -8,6 +8,7 @@
     "test": "mocha",
     "clean": "rm -rf ./dist/ ./doc/ ./coverage ./.nyc_output",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts src/",
+    "lint:fix": "eslint --fix --ignore-path .gitignore --ext .js,.ts src/",
     "build": "npm run clean && tsc",
     "build:docs": "typedoc --mode modules --out ./docs/ ./src/",
     "run": "ts-node"
@@ -42,7 +43,7 @@
   },
   "homepage": "https://github.com/DEX-Company/starfish-js#README",
   "dependencies": {
-    "@convex-dev/convex-api-js": "0.0.1",
+    "@convex-dev/convex-api-js": "^0.0.7",
     "bl": ">=2.2.1",
     "form-data": "^3.0.0",
     "js-base64": "^2.6.3",
