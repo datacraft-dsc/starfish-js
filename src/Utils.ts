@@ -51,6 +51,9 @@ export function isBalanceInsufficient(balanceEther: number | string, amount: num
     return balanceWei.lt(amountWei)
 }
 
+export function prefix0x(value: string): string {
+    return '0x' + value.replace(/^0x/, '')
+}
 /*
  *
  *

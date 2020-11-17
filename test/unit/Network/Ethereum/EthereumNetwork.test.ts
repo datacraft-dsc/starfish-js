@@ -2,24 +2,23 @@ import { assert } from 'chai'
 
 import { randomHex } from 'web3-utils'
 
-import { Network } from 'starfish/Network'
-import { Account } from 'starfish/Account'
+import { EthereumNetwork } from 'starfish/Network/Ethereum/EthereumNetwork'
+import { EthereumAccount } from 'starfish/Network/Ethereum/EthereumAccount'
 import { DirectProvider } from 'starfish/Provider/DirectProvider'
 import { DDO } from 'starfish/DDO/DDO'
 
 import { loadTestSetup } from 'test/TestSetup'
 
-var network
 
 
 let setup = loadTestSetup()
-const accountConfig = setup.accounts['account1']
-const accountConfigNode = setup.accounts['accountNode']
+const accountConfig = setup.ethereum.accounts['account1']
+const accountConfigNode = setup.ethereum.accounts['accountNode']
 
-describe('Network Class', () => {
+describe('EthereumNetwork Class', () => {
     describe('getInstance', () => {
         it('should create a basic Starfish object using a url string', async () => {
-            let network = await Network.getInstance(setup.network.url, { 'artifactsPath': 'artifactsPath' });
+            let network = await EthereumNetwork.getInstance(setup.ethereum.network.url, { 'artifactsPath': 'artifactsPath' });
             assert(network, 'network');
             assert(network.provider, 'provider')
             assert(network.web3, 'web3')
@@ -28,8 +27,8 @@ describe('Network Class', () => {
             assert(network.options.artifactsPath, 'artifactsPath')
         })
         it('should create a basic Starfish object using a Provider object', async () => {
-            let provider = new DirectProvider(setup.network.url)
-            let network = await Network.getInstance(provider);
+            let provider = new DirectProvider(setup.ethereum.network.url)
+            let network = await EthereumNetwork.getInstance(provider);
             assert(network, 'network');
             assert(network.provider, 'provider')
             assert(network.web3, 'web3')
@@ -39,8 +38,9 @@ describe('Network Class', () => {
     })
 
     describe('account operations', () => {
+        let network
         before( async () => {
-            network = await Network.getInstance(setup.network.url);
+            network = await EthereumNetwork.getInstance(setup.ethereum.network.url);
         })
         describe('getEtherBalance', () => {
             it('should get ether balance using an account address string', async () => {
@@ -48,7 +48,7 @@ describe('Network Class', () => {
                 assert(balance)
             })
             it('should get ether balance using an account object', async () => {
-                const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
+                const account = await EthereumAccount.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 assert(account, 'load account')
                 const balance = await network.getEtherBalance(account)
                 assert(balance)
@@ -65,7 +65,7 @@ describe('Network Class', () => {
         describe('requestTestTokens', () => {
             it('should request some test tokens from a node account', async () => {
                 const requestAmount = 1
-                const account = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
+                const account = await EthereumAccount.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
                 assert(account, 'load account')
                 const startBalance = await network.getTokenBalance(account.address)
                 assert(startBalance)
@@ -78,7 +78,7 @@ describe('Network Class', () => {
             })
             it('should request some test tokens from a local account', async () => {
                 const requestAmount = 1
-                const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
+                const account = await EthereumAccount.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const startBalance = await network.getTokenBalance(account.address)
                 assert(startBalance)
                 const isDone = await network.requestTestTokens(account, requestAmount)
@@ -91,14 +91,15 @@ describe('Network Class', () => {
 
     })
     describe('Send ether and tokens to another account', () => {
+        let network
         before( async () => {
-            network = await Network.getInstance(setup.network.url);
+            network = await EthereumNetwork.getInstance(setup.ethereum.network.url);
         })
         describe('sendEther', () => {
             it('should send some ether from one account to another', async () => {
                 const sendAmount = 1
-                const fromAccount = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
-                const toAccount = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
+                const fromAccount = await EthereumAccount.loadFromFile(accountConfig.password, accountConfig.keyfile)
+                const toAccount = await EthereumAccount.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
                 const fromBalance = await network.getEtherBalance(fromAccount)
                 const toBalance = await network.getEtherBalance(toAccount)
                 // console.log(fromBalance, toBalance)
@@ -113,8 +114,8 @@ describe('Network Class', () => {
         describe('sendToken', () => {
             it('should send some tokens from one account to another', async () => {
                 const sendAmount = 1
-                const fromAccount = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
-                const toAccount = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
+                const fromAccount = await EthereumAccount.loadFromFile(accountConfig.password, accountConfig.keyfile)
+                const toAccount = await EthereumAccount.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
                 const fromBalance = await network.getTokenBalance(fromAccount)
                 const toBalance = await network.getTokenBalance(toAccount)
                 // console.log(fromBalance, toBalance)
@@ -128,14 +129,15 @@ describe('Network Class', () => {
         })
     })
     describe('Send ether and tokens to another account with logging', () => {
+        let network
         before( async () => {
-            network = await Network.getInstance(setup.network.url);
+            network = await EthereumNetwork.getInstance(setup.ethereum.network.url);
         })
         describe('requestTestTokens', () => {
             it('should send some token from one account to another with logging', async () => {
                 const sendAmount = 1
-                const fromAccount = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
-                const toAccount = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
+                const fromAccount = await EthereumAccount.loadFromFile(accountConfig.password, accountConfig.keyfile)
+                const toAccount = await EthereumAccount.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
                 // get some tokens to send
                 assert(await network.requestTestTokens(fromAccount, sendAmount * 2))
 
@@ -152,12 +154,13 @@ describe('Network Class', () => {
     })
 
     describe('Register and get event logs for provenance', () => {
+        let network
         before( async () => {
-            network = await Network.getInstance(setup.network.url);
+            network = await EthereumNetwork.getInstance(setup.ethereum.network.url);
         })
         describe('registerProvenance, getProvenanceEventLogs', () => {
             it('should register an asset id for provenance and then check the event logs', async () => {
-                const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
+                const account = await EthereumAccount.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const assetId = randomHex(32)
                 assert(await network.registerProvenance(account, assetId))
 
@@ -171,12 +174,13 @@ describe('Network Class', () => {
     })
 
     describe('Register a did and get the stored ddo', () => {
+        let network
         before( async () => {
-            network = await Network.getInstance(setup.network.url);
+            network = await EthereumNetwork.getInstance(setup.ethereum.network.url);
         })
         describe('registerDID', () => {
             it('should register didId for a ddo and then find it in the network', async () => {
-                const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
+                const account = await EthereumAccount.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const ddo = DDO.createForAllServices('http://localhost')
                 assert(await network.registerDID(account, ddo.getDID(), ddo.toString()))
 
@@ -188,10 +192,10 @@ describe('Network Class', () => {
 
         describe('resolveAgent', async () => {
             before( async () => {
-                network = await Network.getInstance(setup.network.url);
+            network = await EthereumNetwork.getInstance(setup.ethereum.network.url);
             })
             it('should find an agent using a DID', async () => {
-                const account = await Account.loadFromFile(accountConfig.password, accountConfig.keyfile)
+                const account = await EthereumAccount.loadFromFile(accountConfig.password, accountConfig.keyfile)
                 const ddo = DDO.createForAllServices('http://localhost')
                 assert(await network.registerDID(account, ddo.getDID(), ddo.toString()))
 

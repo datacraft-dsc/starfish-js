@@ -1,16 +1,15 @@
 import { assert } from 'chai'
 
-import { ContractManager } from 'starfish/Contract/ContractManager'
-import { Network } from 'starfish/Network'
+import { ContractManager } from 'starfish/Network/Ethereum/Contract/ContractManager'
+import { EthereumNetwork } from 'starfish/Network/Ethereum/EthereumNetwork'
 
 const artifactContractName = 'DexToken'
-const artifactsPath = 'test/resources/artifacts'
+const artifactsPath = 'test/resources/network/ethereum/artifacts'
 
-
-describe('ContractManager Class', async () => {
+describe('Ethereum ContractManager Class', async () => {
     let network
     before( async () => {
-        network = await Network.getInstance('http://localhost:8545');
+        network = await EthereumNetwork.getInstance('http://localhost:8545');
     })
     describe('constructor', async () => {
         it('should create a new ContractManager object', async () => {

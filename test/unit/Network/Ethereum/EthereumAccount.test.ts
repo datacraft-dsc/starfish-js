@@ -2,28 +2,28 @@ import { assert } from 'chai'
 
 import fs from 'fs-extra'
 
-import { Network } from 'starfish/Network'
-import { Account } from 'starfish/Account'
+import { EthereumNetwork } from 'starfish/Network/Ethereum/EthereumNetwork'
+import { EthereumAccount } from 'starfish/Network/Ethereum/EthereumAccount'
 import Web3 from 'web3'
 
 import { loadTestSetup } from 'test/TestSetup'
 
 let web3 = new Web3()
 let password = web3.utils.randomHex(16)
-let testAccount = Account.createNew(password)
+let testAccount = EthereumAccount.createNew(password)
 
 let setup = loadTestSetup()
-const accountConfigNode = setup.accounts['accountNode']
+const accountConfigNode = setup.ethereum.accounts['accountNode']
 
 
-describe('Account Class', () => {
+describe('EthereumAccount Class', () => {
     describe('Create class', () => {
-        it('should create a new empty Account object', async () => {
-            let account = new Account()
+        it('should create a new empty EthereumAccount object', async () => {
+            let account = new EthereumAccount()
             assert(account)
         })
-        it('should create a new Account object using a password', async () => {
-            let account = Account.createNew(password)
+        it('should create a new EthereumAccount object using a password', async () => {
+            let account = EthereumAccount.createNew(password)
             assert(account)
             assert.equal(account.password, password)
             assert(account.address)
@@ -33,12 +33,12 @@ describe('Account Class', () => {
     })
 
     describe('saveToFile', () => {
-        it('should create a new empty Account and save to file', async () => {
+        it('should create a new empty EthereumAccount and save to file', async () => {
             let filename = '/tmp/testAccount_' + web3.utils.randomHex(16) + '.json'
             if (fs.pathExists(filename)) {
                 fs.remove(filename)
             }
-            let account = Account.createNew(password)
+            let account = EthereumAccount.createNew(password)
             assert(account)
             await account.saveToFile(filename)
             assert(fs.pathExists(filename))
@@ -52,12 +52,12 @@ describe('Account Class', () => {
             if (fs.pathExists(filename)) {
                 fs.remove(filename)
             }
-            let account = Account.createNew(password)
+            let account = EthereumAccount.createNew(password)
             assert(account)
             await account.saveToFile(filename)
             assert(fs.pathExists(filename))
 
-            let savedAccount = await Account.loadFromFile(password, filename)
+            let savedAccount = await EthereumAccount.loadFromFile(password, filename)
             assert(savedAccount)
             assert.equal(savedAccount.address, account.address)
             fs.remove(filename)
@@ -66,8 +66,8 @@ describe('Account Class', () => {
 
     describe('loadFromNetwork', () => {
         it('should load an account from the network node', async () => {
-            const network = await Network.getInstance(setup.network.url);
-            const account = await Account.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
+            const network = await EthereumNetwork.getInstance(setup.ethereum.network.url);
+            const account = await EthereumAccount.loadFromNetwork(network, accountConfigNode.address, accountConfigNode.password)
             assert(account, 'load account')
         })
     })

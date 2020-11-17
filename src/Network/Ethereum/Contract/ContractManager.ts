@@ -4,7 +4,7 @@ import Web3 from 'web3'
 import fetch from 'node-fetch'
 
 import { ContractBase } from './ContractBase'
-import { IArtifactsPackage, IArtifact } from '../Interfaces/IArtifactsPackage'
+import { IArtifactsPackage, IArtifact } from '../../../Interfaces/IArtifactsPackage'
 
 export class ContractManager {
     readonly web3: Web3
@@ -72,7 +72,7 @@ export class ContractManager {
             data = await ContractManager.requestLocalArtifactsPackage(url)
             counter--
             if (data || counter < 0) {
-                requestDataTimeout.unref()
+                clearInterval(requestDataTimeout)
             }
         }, 1000)
         if (data && data.version) {

@@ -12,7 +12,7 @@ import { randomHex, hexToBytes } from 'web3-utils'
 import { RemoteAgent } from 'starfish/Agent/RemoteAgent'
 import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
 import { DataAsset, OperationAsset } from 'starfish/Asset/Asset'
-import { Network } from 'starfish/Network'
+import { EthereumNetwork } from 'starfish/Network/Ethereum/EthereumNetwork'
 import { extractAssetId, removeLeadingHexZero } from 'starfish/Utils'
 
 
@@ -35,7 +35,7 @@ describe('RemoteAgent Class', () => {
     describe('createFromAddress', () => {
         let network
         before( () => {
-            network = Network.getInstance(setup.network.url);
+            network = EthereumNetwork.getInstance(setup.ethereum.network.url);
         })
         it('should create new RemoteAgent from a URL', async () => {
             const agent = RemoteAgent.createFromAddress(agentConfig['url'], network, agentAuthentication)
@@ -47,7 +47,7 @@ describe('RemoteAgent Class', () => {
         let network
         let agent
         before( async () => {
-            network = Network.getInstance(setup.network.url);
+            network = EthereumNetwork.getInstance(setup.ethereum.network.url);
             agent = await RemoteAgent.createFromAddress(agentConfig['url'], network, agentAuthentication)
         })
         describe('registerAsset', () => {

@@ -1,28 +1,17 @@
 {
-  "name": "@dex/starfish",
+  "name": "@dex-company/starfish-js",
   "version": "0.0.2",
-  "description": "JavaScript client library for Ocean Eco System",
-  "main": "./dist/node/starfish.js",
-  "browser": "./dist/browser/starfish.cjs2.min.js",
+  "description": "JavaScript Starfish client library",
+  "main": "./dist/index.js",
+  "browser": "./dist/index.js",
   "scripts": {
     "test": "mocha",
-    "test:watch": "mocha -w --watch-extensions js,ts,json",
-    "test:cover": "nyc --report-dir coverage/unit mocha",
-    "test:server": "serve dist/",
     "clean": "rm -rf ./dist/ ./doc/ ./coverage ./.nyc_output",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts src/",
-    "start": "npm link @dex/starfish-js && npm run build:watch",
-    "build": "npm run clean && npm run build:tsc",
-    "build:tsc": "tsc",
-    "build:dist": "cross-env NODE_ENV=production webpack",
-    "build:watch": "tsc -w",
-    "build:server": "npm run clean && gulp",
+    "lint:fix": "eslint --fix --ignore-path .gitignore --ext .js,.ts src/",
+    "build": "npm run clean && tsc",
     "build:docs": "typedoc --mode modules --out ./docs/ ./src/",
-    "run": "ts-node",
-    "release": "./node_modules/release-it/bin/release-it.js --src.tagName='v%s' --github.release --npm.publish --non-interactive",
-    "release-minor": "./node_modules/release-it/bin/release-it.js minor --src.tagName='v%s' --github.release --npm.publish --non-interactive",
-    "release-major": "./node_modules/release-it/bin/release-it.js major --src.tagName='v%s' --github.release --npm.publish --non-interactive",
-    "prepublishOnly": "npm run build"
+    "run": "ts-node"
   },
   "nyc": {
     "include": [
@@ -54,6 +43,7 @@
   },
   "homepage": "https://github.com/DEX-Company/starfish-js#README",
   "dependencies": {
+    "@convex-dev/convex-api-js": "^0.0.7",
     "bl": ">=2.2.1",
     "form-data": "^3.0.0",
     "js-base64": "^2.6.3",
@@ -61,6 +51,7 @@
     "node-fetch": "^2.6.0",
     "node-metamask": "^1.1.2",
     "query-string": "^6.13.0",
+    "test": "^0.6.0",
     "url-join": "^4.0.1",
     "web3": "^1.2.8"
   },
@@ -103,5 +94,8 @@
   },
   "directories": {
     "test": "test"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

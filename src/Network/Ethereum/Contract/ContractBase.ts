@@ -4,7 +4,7 @@ import { AbiItem } from 'web3-utils'
 import { ContractSendMethod } from 'web3-eth-contract'
 import { TransactionConfig, TransactionReceipt } from 'web3-core'
 
-import { Account } from '../Account'
+import { EthereumAccount } from '../EthereumAccount'
 
 export class ContractBase {
     readonly name: string
@@ -26,15 +26,15 @@ export class ContractBase {
         }
     }
 
-    public getAccountAddress(accountAddress: Account | string): string {
+    public getAccountAddress(accountAddress: EthereumAccount | string): string {
         let address = <string>accountAddress
-        if (typeof accountAddress === 'object' && accountAddress.constructor.name === 'Account') {
-            address = (<Account>accountAddress).address
+        if (typeof accountAddress === 'object' && accountAddress.constructor.name === 'EthereumAccount') {
+            address = (<EthereumAccount>accountAddress).address
         }
         return address
     }
 
-    public async sendToContract(contractMethod: ContractSendMethod, account: Account): Promise<any> {
+    public async sendToContract(contractMethod: ContractSendMethod, account: EthereumAccount): Promise<any> {
         const gasTransaction = { from: account.checksumAddress }
         const estimatedGas = await contractMethod.estimateGas(gasTransaction)
         if (account.isLocal) {
@@ -56,7 +56,7 @@ export class ContractBase {
             return contractMethod.send(transaction)
         }
     }
-    public async sendTransaction(transaction: TransactionConfig, account: Account): Promise<TransactionReceipt> {
+    public async sendTransaction(transaction: TransactionConfig, account: EthereumAccount): Promise<TransactionReceipt> {
         const estimatedGas = await this.web3.eth.estimateGas(transaction)
         transaction['gas'] = estimatedGas
 

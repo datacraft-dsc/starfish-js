@@ -26,6 +26,7 @@ export interface IListingRequestData {
 export interface IListingFilter {
     username?: string
     userid?: string
-    from?: number
-    size?: number
+    from?: string
+    size?: string
+    [x: string]: string
 }

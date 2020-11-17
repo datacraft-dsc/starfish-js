@@ -1,14 +1,14 @@
 import { TransactionReceipt } from 'web3-core'
 
 import { ContractBase } from './ContractBase'
-import { Account } from '../Account'
+import { EthereumAccount } from '../EthereumAccount'
 
 export class DIDRegistryContract extends ContractBase {
     constructor() {
         super('DIDRegistry')
     }
 
-    public async register(account: Account, did: string, ddoText: string): Promise<TransactionReceipt> {
+    public async register(account: EthereumAccount, did: string, ddoText: string): Promise<TransactionReceipt> {
         return this.sendToContract(this.contract.methods.registerDID(did, ddoText), account)
     }
 
