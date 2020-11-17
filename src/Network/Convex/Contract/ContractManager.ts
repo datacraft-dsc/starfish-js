@@ -15,7 +15,7 @@ export class ContractManager {
         ContractManager.contracts = {}
     }
     public async load(name: string): Promise<ContractBase> {
-        if ( !ContractManager.contracts[name]) {
+        if (!ContractManager.contracts[name]) {
             const contractName = `./${name}Contract`
             const contractClass = await import(contractName)
             const constructorName = Object.keys(contractClass)[0]

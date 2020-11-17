@@ -1,4 +1,3 @@
-
 import { ConvexAccount, ConvexAPI } from '@convex-dev/convex-api-js'
 
 import { ContractBase } from './ContractBase'

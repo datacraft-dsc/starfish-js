@@ -1,4 +1,3 @@
-
 import { ConvexAPI, ConvexAccount } from '@convex-dev/convex-api-js'
 import { isBalanceInsufficient, didToId } from '../../Utils'
 import { ContractBase, ContractManager, DIDRegistryContract } from './Contract/Contract'
@@ -41,7 +40,6 @@ export class ConvexNetwork {
         this.convex = new ConvexAPI(this.url)
         this.contractManager = new ContractManager(this.convex)
     }
-
 
     /**
      * Load a contract based on it's name.

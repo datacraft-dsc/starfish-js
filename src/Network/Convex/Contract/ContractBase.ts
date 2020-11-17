@@ -1,4 +1,3 @@
-
 import { ConvexAccount, ConvexAPI } from '@convex-dev/convex-api-js'
 import { prefix0x } from '../../../Utils'
 
@@ -33,7 +32,7 @@ export class ContractBase {
         if (typeof deployAddress === 'object' && deployAddress.constructor.name === 'ConvexAccount') {
             address = (<ConvexAccount>deployAddress).address
         }
-        return  prefix0x(await this.convex.getAddress(this.name, address))
+        return prefix0x(await this.convex.getAddress(this.name, address))
     }
     public async getVersion(deployAddress: ConvexAccount | string): Promise<string> {
         let address = this.address
