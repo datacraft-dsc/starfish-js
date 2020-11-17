@@ -37,7 +37,9 @@ jobs:
         java-version: '11.0.5'
     - uses: DeLaGuardo/setup-clojure@2.0
       with:
-        cli: '1.10.1.483'
+        tools-deps: '1.10.1.483'
+      env:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
     - name: Install Surfer
       uses: actions/checkout@v2
       with:
