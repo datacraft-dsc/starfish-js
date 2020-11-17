@@ -33,7 +33,7 @@ export class ConvexNetwork {
     public url: string
     public convex: ConvexAPI
 
-    constructor () {
+    constructor() {
         this.queryAddress = '0x1de659D38A129e2358CD3c4aF906Bc5eE48B33F27915539897F9fd66813e2beB'
     }
     /**
