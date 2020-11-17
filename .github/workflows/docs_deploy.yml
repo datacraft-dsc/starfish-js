@@ -9,17 +9,21 @@ jobs:
   docs_deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
+    - name: Setup .npmrc for github packages
+      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.ACCESS_PACKAGES }}" >> ~/.npmrc
     - name: Set up node js
       uses: actions/setup-node@v1
       with:
         node-version: 12.x
     - name: Install dependencies
       run: npm install
-    - name: Build
-      run: |
-        npm run build:docs
-        touch docs/.nojekyll
+    - name: Build dependencies
+      run: npm run build --if-present
+    - name: Build Docs
+      run: npm run build:docs
+    - name: Touch doc file
+      run: touch docs/.nojekyll
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2.5.0
       env:
