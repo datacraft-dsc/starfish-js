@@ -9,7 +9,6 @@ import { DDO } from 'starfish/DDO/DDO'
 
 import { loadTestSetup } from 'test/TestSetup'
 
-var network
 
 
 let setup = loadTestSetup()
@@ -39,6 +38,7 @@ describe('EthereumNetwork Class', () => {
     })
 
     describe('account operations', () => {
+        let network
         before( async () => {
             network = await EthereumNetwork.getInstance(setup.ethereum.network.url);
         })
@@ -91,6 +91,7 @@ describe('EthereumNetwork Class', () => {
 
     })
     describe('Send ether and tokens to another account', () => {
+        let network
         before( async () => {
             network = await EthereumNetwork.getInstance(setup.ethereum.network.url);
         })
@@ -128,6 +129,7 @@ describe('EthereumNetwork Class', () => {
         })
     })
     describe('Send ether and tokens to another account with logging', () => {
+        let network
         before( async () => {
             network = await EthereumNetwork.getInstance(setup.ethereum.network.url);
         })
@@ -152,6 +154,7 @@ describe('EthereumNetwork Class', () => {
     })
 
     describe('Register and get event logs for provenance', () => {
+        let network
         before( async () => {
             network = await EthereumNetwork.getInstance(setup.ethereum.network.url);
         })
@@ -171,6 +174,7 @@ describe('EthereumNetwork Class', () => {
     })
 
     describe('Register a did and get the stored ddo', () => {
+        let network
         before( async () => {
             network = await EthereumNetwork.getInstance(setup.ethereum.network.url);
         })
