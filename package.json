@@ -2,8 +2,8 @@
   "name": "@dex-company/starfish-js",
   "version": "0.0.2",
   "description": "JavaScript Starfish client library",
-  "main": "./dist/node/starfish.js",
-  "browser": "./dist/browser/starfish.cjs2.min.js",
+  "main": "./dist/index.js",
+  "browser": "./dist/index.js",
   "scripts": {
     "test": "mocha",
     "clean": "rm -rf ./dist/ ./doc/ ./coverage ./.nyc_output",
