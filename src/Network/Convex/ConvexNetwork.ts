@@ -1,6 +1,9 @@
 import { ConvexAPI, ConvexAccount } from '@convex-dev/convex-api-js'
-import { isBalanceInsufficient, didToId } from '../../Utils'
+import { isBalanceInsufficient, isDID, didToId } from '../../Utils'
 import { ContractBase, ContractManager, DIDRegistryContract } from './Contract/Contract'
+import { DDO } from '../../DDO/DDO'
+import { RemoteAgent } from '../../Agent/RemoteAgent'
+import { IAgentAuthentication } from '../../Interfaces/IAgentAuthentication'
 
 /**
  *
@@ -26,9 +29,13 @@ export class ConvexNetwork {
 
     private static instance
     protected contractManager: ContractManager
+    readonly queryAddress: string
     public url: string
     public convex: ConvexAPI
 
+    constructor () {
+        this.queryAddress = '0x1de659D38A129e2358CD3c4aF906Bc5eE48B33F27915539897F9fd66813e2beB'
+    }
     /**
      * Initialize the starfish object using a url or Provider and arfitfacts path. It is better
      * to call {@link getInstance} to create a new EthereumNetwork object.
@@ -274,7 +281,7 @@ export class ConvexNetwork {
      * @param authentication Optionas authentication object, this can be used instead of the username/password
      * @returns a DDO object if the agent is found, else returns null.
      */
-    /*
+
     public async resolveAgent(
         agentAddress: string,
         username?: string,
@@ -282,7 +289,7 @@ export class ConvexNetwork {
         authentication?: IAgentAuthentication
     ): Promise<DDO> {
         if (isDID(agentAddress)) {
-            const ddoText = await this.resolveDID(agentAddress)
+            const ddoText = await this.resolveDID(agentAddress, this.queryAddress)
             if (ddoText) {
                 return DDO.createFromString(ddoText)
             }
@@ -300,5 +307,4 @@ export class ConvexNetwork {
         }
         return null
     }
-*/
 }

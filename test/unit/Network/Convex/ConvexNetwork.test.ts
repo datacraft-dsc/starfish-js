@@ -3,6 +3,8 @@ import { assert } from 'chai'
 import { ConvexAccount } from '@convex-dev/convex-api-js'
 import { ConvexNetwork } from 'starfish/Network/Convex/ConvexNetwork'
 import { didCreate, didToId } from 'starfish/Utils'
+import { DDO } from 'starfish/DDO/DDO'
+
 import { loadTestSetup } from 'test/TestSetup'
 
 let setup = loadTestSetup()
@@ -70,8 +72,6 @@ describe('ConvexNetwork Class', async () => {
 
         })
     })
-
-
     describe('Register and resolve a ddo using a test did', () => {
         let network
         let account
@@ -99,6 +99,27 @@ describe('ConvexNetwork Class', async () => {
                 assert.equal(JSON.stringify(ddo), resolve_ddo)
             })
         })
+    })
+    describe('Network helper methods', async () => {
+        let network
+        let account
+        before( async () => {
+            network = await ConvexNetwork.getInstance(setup.convex.network.url);
+            account = await ConvexAccount.importFromFile(accountConfig.keyfile, accountConfig.password)
+        })
+        describe('resolveAgent', async () => {
+            it('should find an agent using a DID', async () => {
+                const ddo = DDO.createForAllServices('http://localhost')
+                assert(await network.registerDID(account, ddo.getDID(), ddo.toString()))
 
+                const resolvedDDO = await network.resolveAgent(ddo.getDID())
+                assert(resolvedDDO)
+            })
+            it('should find an agent using a URL', async () => {
+                const agentConfig = setup.agents['local']
+                const ddo = await network.resolveAgent(agentConfig['url'], agentConfig['username'], agentConfig['password'])
+                assert(ddo)
+            })
+        })
     })
 })
