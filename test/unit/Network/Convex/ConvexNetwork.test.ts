@@ -83,10 +83,22 @@ describe('ConvexNetwork Class', async () => {
                 'name': 'test_ddo'
             }
         })
-        it('should register a ddo string on the convex network', async () => {
-            const did = didCreate()
-            const result = await network.registerDID(account, did, JSON.stringify(ddo))
-            assert.equal(result, didToId(did))
+        describe('registerDID', () => {
+            it('should register a ddo string on the convex network', async () => {
+                const did = didCreate()
+                const result = await network.registerDID(account, did, JSON.stringify(ddo))
+                assert.equal(result, didToId(did))
+            })
         })
+        describe('resolveDID', () => {
+            it('should resolve a ddo string on the convex network', async () => {
+                const did = didCreate()
+                const result = await network.registerDID(account, did, JSON.stringify(ddo))
+                assert.equal(result, didToId(did))
+                const resolve_ddo = await network.resolveDID(did, account)
+                assert.equal(JSON.stringify(ddo), resolve_ddo)
+            })
+        })
+
     })
 })

@@ -24,6 +24,6 @@ export class DIDRegistryContract extends ContractBase {
     public async resolve(did: string, account: ConvexAccount | string): Promise<string> {
         const commandLine = `(resolve ${did})`
         const result: IDDOResult = await this.query(commandLine, account)
-        return prefix0x(result.value)
+        return result.value
     }
 }

@@ -24,7 +24,7 @@ export class ContractBase {
     }
 
     public async query(commandLine: string, account: ConvexAccount | string): Promise<unknown> {
-        const transaction = `(call ${this.address} (${commandLine})`
+        const transaction = `(call ${this.address} ${commandLine})`
         return this.convex.query(transaction, account)
     }
 
