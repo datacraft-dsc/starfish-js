@@ -7,14 +7,21 @@ const CONTRACT_ACCOUNTS = {
 }
 
 export class ContractManager {
+    private static contracts
     readonly convex: ConvexAPI
 
     public constructor(convex: ConvexAPI) {
         this.convex = convex
+        ContractManager.contracts = {}
     }
     public async load(name: string): Promise<ContractBase> {
-        const contract = new ContractBase(this.convex, name)
-        await contract.load(CONTRACT_ACCOUNTS.development)
-        return contract
+        if ( !ContractManager.contracts[name]) {
+            const contractName = `./${name}Contract`
+            const contractClass = await import(contractName)
+            const constructorName = Object.keys(contractClass)[0]
+            ContractManager.contracts[name] = new contractClass[constructorName](this.convex)
+            await ContractManager.contracts[name].load(CONTRACT_ACCOUNTS.development)
+        }
+        return ContractManager.contracts[name]
     }
 }

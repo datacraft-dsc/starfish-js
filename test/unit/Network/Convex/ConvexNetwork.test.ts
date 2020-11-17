@@ -2,7 +2,7 @@ import { assert } from 'chai'
 
 import { ConvexAccount } from '@convex-dev/convex-api-js'
 import { ConvexNetwork } from 'starfish/Network/Convex/ConvexNetwork'
-
+import { didCreate, didToId } from 'starfish/Utils'
 import { loadTestSetup } from 'test/TestSetup'
 
 let setup = loadTestSetup()
@@ -71,4 +71,22 @@ describe('ConvexNetwork Class', async () => {
         })
     })
 
+
+    describe('Register and resolve a ddo using a test did', () => {
+        let network
+        let account
+        let ddo
+        before( async () => {
+            network = await ConvexNetwork.getInstance(setup.convex.network.url);
+            account = await ConvexAccount.importFromFile(accountConfig.keyfile, accountConfig.password)
+            ddo = {
+                'name': 'test_ddo'
+            }
+        })
+        it('should register a ddo string on the convex network', async () => {
+            const did = didCreate()
+            const result = await network.registerDID(account, did, JSON.stringify(ddo))
+            assert.equal(result, didToId(did))
+        })
+    })
 })

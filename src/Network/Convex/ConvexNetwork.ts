@@ -1,7 +1,7 @@
-import { ContractBase, ContractManager } from './Contract/Contract'
 
-import { isBalanceInsufficient } from '../../Utils'
 import { ConvexAPI, ConvexAccount } from '@convex-dev/convex-api-js'
+import { isBalanceInsufficient, didToId } from '../../Utils'
+import { ContractBase, ContractManager, DIDRegistryContract } from './Contract/Contract'
 
 /**
  *
@@ -38,18 +38,10 @@ export class ConvexNetwork {
      */
     public async init(url: string): Promise<void> {
         this.url = url
-        await this.connect()
+        this.convex = new ConvexAPI(this.url)
         this.contractManager = new ContractManager(this.convex)
     }
 
-    /**
-     * Connect to the network node.
-     * @returns True if the connection is successfull.
-     */
-    public async connect(): Promise<boolean> {
-        this.convex = new ConvexAPI(this.url)
-        return true
-    }
 
     /**
      * Load a contract based on it's name.
@@ -248,26 +240,26 @@ export class ConvexNetwork {
      * @param ddoText DDO in JSON text.
      * @returns True if the registration was successful.
      */
-    /*
-    public async registerDID(account: ConvexAccount, did: string, ddoText: string): Promise<boolean> {
+
+    public async registerDID(account: ConvexAccount, did: string, ddoText: string): Promise<string> {
         const contract = <DIDRegistryContract>await this.getContract('DIDRegistry')
         const didId = didToId(did)
-        const receipt = await contract.register(account, didId, ddoText)
-        return receipt.status
+        const result = await contract.register(account, didId, ddoText)
+        return result
     }
-*/
+
     /*
      * Resolves a DID to a DDO text string if found on the block chain network.
      * @param did DID to search find.
      * @returns DDO as a JSON text if found, else return null.
      */
-    /*
-    public async resolveDID(did: string): Promise<string> {
+
+    public async resolveDID(did: string, account: ConvexAccount | string): Promise<string> {
         const contract = <DIDRegistryContract>await this.getContract('DIDRegistry')
         const didId = didToId(did)
-        return contract.getValue(didId)
+        return contract.resolve(didId, account)
     }
-*/
+
     /*
      *
      *
