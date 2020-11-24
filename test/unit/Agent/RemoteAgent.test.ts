@@ -161,25 +161,25 @@ describe('RemoteAgent Class', () => {
                 it('should invoke an async operation', async () => {
                     const result = await agent.invoke(invokeAsset, inputs, true)
                     assert(result)
-                    assert(result['job-id'])
+                    assert(result['jobId'])
                 })
             })
             describe('getJob', () => {
-                it('should request job status on an sync operation, using the job-id', async () => {
+                it('should request job status on an sync operation, using the jobId', async () => {
                     const result = await agent.invoke(invokeAsset, inputs, true)
                     assert(result)
-                    assert(result['job-id'])
-                    const jobStatus = await agent.getJob(result['job-id'])
+                    assert(result['jobId'])
+                    const jobStatus = await agent.getJob(result['jobId'])
                     assert(jobStatus)
-                    assert.equal(jobStatus['id'], result['job-id'])
+                    assert.equal(jobStatus['id'], result['jobId'])
                 })
                 it('should request job status on an sync operation, using the IInvokeResult record', async () => {
                     const result = await agent.invoke(invokeAsset, inputs, true)
                     assert(result)
-                    assert(result['job-id'])
+                    assert(result['jobId'])
                     const jobStatus = await agent.getJob(result)
                     assert(jobStatus)
-                    assert.equal(jobStatus['id'], result['job-id'])
+                    assert.equal(jobStatus['id'], result['jobId'])
                 })
             })
         })

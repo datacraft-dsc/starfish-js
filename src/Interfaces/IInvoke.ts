@@ -10,5 +10,5 @@
 export interface IInvokeResult {
     status?: string
     outputs?: unknown
-    'job-id': string
+    'jobId': string
 }

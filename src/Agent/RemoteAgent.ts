@@ -203,7 +203,7 @@ export class RemoteAgent extends AgentBase {
      * @param asset AssetId or AssetDID as a string, or OperationAsset.
      * @param inputs Object for the invoke service to be passed.
      * @Param isAsync If true run the invokable service as async, defaults to False - run as a sync service.
-     * @returns The `outputs` and `status`, if the invoke is sync, else for async just return the `job-id`
+     * @returns The `outputs` and `status`, if the invoke is sync, else for async just return the `jobId`
      */
     public async invoke(asset: string | OperationAsset, inputs?: unknown, isAsync?: boolean): Promise<IInvokeResult> {
         const adapter = RemoteAgentAdapter.getInstance()
@@ -235,7 +235,7 @@ export class RemoteAgent extends AgentBase {
         if (typeof jobId === 'string') {
             safeJobId = jobId
         } else {
-            safeJobId = jobId['job-id']
+            safeJobId = jobId['jobId']
         }
         return adapter.getJob(safeJobId, url, token)
     }

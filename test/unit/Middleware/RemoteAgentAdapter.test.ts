@@ -232,7 +232,7 @@ describe('RemoteAgentAdapter', () => {
                 assert(result)
                 let jobResult
                 while (true) {
-                    jobResult = await adapter.getJob(result['job-id'], invokeURL, accessToken)
+                    jobResult = await adapter.getJob(result['jobId'], invokeURL, accessToken)
                     if (jobResult['status'] == 'succeeded') {
                         break
                     }

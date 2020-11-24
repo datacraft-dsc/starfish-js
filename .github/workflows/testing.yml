@@ -32,26 +32,16 @@ jobs:
         docker login docker.pkg.github.com --username ${{ github.actor }} --password ${{ secrets.ACCESS_PACKAGES }}
         cd dex-chain
         ./start_dex_chain.sh test &
-    - uses: actions/setup-java@v1
+    - name: Allow Docker access to github packages
+      uses: docker/login-action@v1
       with:
-        java-version: '11.0.5'
-    - uses: DeLaGuardo/setup-clojure@2.0
-      with:
-        tools-deps: '1.10.1.483'
-      env:
-        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-    - name: Install Surfer
-      uses: actions/checkout@v2
-      with:
-        repository: DEX-Company/surfer
-        token: ${{ secrets.ACCESS_TOKEN }}
-        ref: develop
-        path: surfer
-    - name : Start Surfer
-      run: |
-        cd surfer
-        clojure -M:main &
-        scripts/wait_for_surfer.sh
+        username: ${{ github.actor }}
+        password: ${{ secrets.ACCESS_PACKAGES }}
+        registry: docker.pkg.github.com
+    - name: Start surfer
+      run: docker run --publish 3030:3030 --detach docker.pkg.github.com/dex-company/surfer/surfer:latest
+    - name: Wait for surfer
+      run: docker run --network host docker.pkg.github.com/dex-company/surfer/surfer:latest ./scripts/wait_for_surfer.sh
     - name: Wait for dex-chain to load...
       run: sleep 2
     - name: Test
