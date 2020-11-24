@@ -1,5 +1,8 @@
 # Change Log
 
+## Release 0.1.1
++   Use JobId instead of job-id
+
 ## Release 0.1.0
 +   Convex network and basic ddo contract
 
