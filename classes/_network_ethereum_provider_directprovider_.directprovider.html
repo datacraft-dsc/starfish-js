@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MetamaskProviderWeb | @dex-company/starfish-js</title>
+	<title>DirectProvider | @dex-company/starfish-js</title>
 	<meta name="description" content="Documentation for @dex-company/starfish-js">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_provider_metamaskproviderweb_.html">&quot;Provider/MetamaskProviderWeb&quot;</a>
+					<a href="../modules/_network_ethereum_provider_directprovider_.html">&quot;Network/Ethereum/Provider/DirectProvider&quot;</a>
 				</li>
 				<li>
-					<a href="_provider_metamaskproviderweb_.metamaskproviderweb.html">MetamaskProviderWeb</a>
+					<a href="_network_ethereum_provider_directprovider_.directprovider.html">DirectProvider</a>
 				</li>
 			</ul>
-			<h1>Class MetamaskProviderWeb</h1>
+			<h1>Class DirectProvider</h1>
 		</div>
 	</div>
 </header>
@@ -72,9 +72,8 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>This provider uses injected web3 object to existing page in browser.
-							Metamask extension injects web3 object only on the page which is being run on http server.
-						It does not inject for local file:// protocol</p>
+						<p>Web3 provider which uses direct HttpProvider
+						HttpProvider does not suport listening/subscribtion for events.</p>
 					</div>
 				</div>
 			</section>
@@ -82,14 +81,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">MetamaskProviderWeb</span>
+						<span class="target">DirectProvider</span>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/_interfaces_iprovider_.iprovider.html" class="tsd-signature-type">IProvider</a></li>
+					<li><a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html" class="tsd-signature-type">IProvider</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -99,21 +98,21 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_provider_metamaskproviderweb_.metamaskproviderweb.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_network_ethereum_provider_directprovider_.directprovider.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_provider_metamaskproviderweb_.metamaskproviderweb.html#provider" class="tsd-kind-icon">provider</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_network_ethereum_provider_directprovider_.directprovider.html#provider" class="tsd-kind-icon">provider</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_provider_metamaskproviderweb_.metamaskproviderweb.html#checkifproviderenabled" class="tsd-kind-icon">check<wbr>IfProvider<wbr>Enabled</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_provider_metamaskproviderweb_.metamaskproviderweb.html#getprovider" class="tsd-kind-icon">get<wbr>Provider</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_provider_metamaskproviderweb_.metamaskproviderweb.html#stop" class="tsd-kind-icon">stop</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_ethereum_provider_directprovider_.directprovider.html#checkifproviderenabled" class="tsd-kind-icon">check<wbr>IfProvider<wbr>Enabled</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_ethereum_provider_directprovider_.directprovider.html#getprovider" class="tsd-kind-icon">get<wbr>Provider</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_ethereum_provider_directprovider_.directprovider.html#stop" class="tsd-kind-icon">stop</a></li>
 							</ul>
 						</section>
 					</div>
@@ -125,22 +124,27 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Metamask<wbr>Provider<wbr>Web<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_provider_metamaskproviderweb_.metamaskproviderweb.html" class="tsd-signature-type">MetamaskProviderWeb</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Direct<wbr>Provider<span class="tsd-signature-symbol">(</span>endpoint<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_network_ethereum_provider_directprovider_.directprovider.html" class="tsd-signature-type">DirectProvider</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/f7f5ad5/src/Provider/MetamaskProviderWeb.ts#L16">Provider/MetamaskProviderWeb.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/539618f/src/Network/Ethereum/Provider/DirectProvider.ts#L11">Network/Ethereum/Provider/DirectProvider.ts:11</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Constructs the MetamaskProviderWeb
-									Check if Metamask extension is installed in browser and if not prints message into console.</p>
+									<p>Constructs the DirectProvider</p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="_provider_metamaskproviderweb_.metamaskproviderweb.html" class="tsd-signature-type">MetamaskProviderWeb</a></h4>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>endpoint: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_network_ethereum_provider_directprovider_.directprovider.html" class="tsd-signature-type">DirectProvider</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -153,7 +157,7 @@
 					<div class="tsd-signature tsd-kind-icon">provider<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Web3Provider</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/f7f5ad5/src/Provider/MetamaskProviderWeb.ts#L16">Provider/MetamaskProviderWeb.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/539618f/src/Network/Ethereum/Provider/DirectProvider.ts#L11">Network/Ethereum/Provider/DirectProvider.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -169,18 +173,11 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/_interfaces_iprovider_.iprovider.html">IProvider</a>.<a href="../interfaces/_interfaces_iprovider_.iprovider.html#checkifproviderenabled">checkIfProviderEnabled</a></p>
+								<p>Implementation of <a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html">IProvider</a>.<a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html#checkifproviderenabled">checkIfProviderEnabled</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/f7f5ad5/src/Provider/MetamaskProviderWeb.ts#L52">Provider/MetamaskProviderWeb.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/539618f/src/Network/Ethereum/Provider/DirectProvider.ts#L33">Network/Ethereum/Provider/DirectProvider.ts:33</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Pull/update/renew provider status.
-										Checks if Metamask extension is enabled and if not tries to enable.
-									Pull accounts details from metamask and activate default account which is choosen in Metamask extension in browser by user</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
@@ -188,7 +185,6 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Promise with boolean result. True if provider is ready for work.</p>
 						</li>
 					</ul>
 				</section>
@@ -201,12 +197,18 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/_interfaces_iprovider_.iprovider.html">IProvider</a>.<a href="../interfaces/_interfaces_iprovider_.iprovider.html#getprovider">getProvider</a></p>
+								<p>Implementation of <a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html">IProvider</a>.<a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html#getprovider">getProvider</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/f7f5ad5/src/Provider/MetamaskProviderWeb.ts#L36">Provider/MetamaskProviderWeb.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/539618f/src/Network/Ethereum/Provider/DirectProvider.ts#L25">Network/Ethereum/Provider/DirectProvider.ts:25</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>return the Web3 provider</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Web3Provider</span></h4>
+							<p>Web3Provider</p>
 						</li>
 					</ul>
 				</section>
@@ -219,9 +221,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/_interfaces_iprovider_.iprovider.html">IProvider</a>.<a href="../interfaces/_interfaces_iprovider_.iprovider.html#stop">stop</a></p>
+								<p>Implementation of <a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html">IProvider</a>.<a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html#stop">stop</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/f7f5ad5/src/Provider/MetamaskProviderWeb.ts#L40">Provider/MetamaskProviderWeb.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/539618f/src/Network/Ethereum/Provider/DirectProvider.ts#L29">Network/Ethereum/Provider/DirectProvider.ts:29</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -237,7 +239,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/_provider_metamaskproviderweb_.html">&quot;<wbr>Provider/<wbr>Metamask<wbr>Provider<wbr>Web&quot;</a>
+						<a href="../modules/_network_ethereum_provider_directprovider_.html">&quot;<wbr>Network/<wbr>Ethereum/<wbr>Provider/<wbr>Direct<wbr>Provider&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -246,30 +248,27 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-module">
-						<a href="_provider_metamaskproviderweb_.metamaskproviderweb.html" class="tsd-kind-icon">Metamask<wbr>Provider<wbr>Web</a>
+						<a href="_network_ethereum_provider_directprovider_.directprovider.html" class="tsd-kind-icon">Direct<wbr>Provider</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_provider_metamaskproviderweb_.metamaskproviderweb.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_network_ethereum_provider_directprovider_.directprovider.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_provider_metamaskproviderweb_.metamaskproviderweb.html#provider" class="tsd-kind-icon">provider</a>
+								<a href="_network_ethereum_provider_directprovider_.directprovider.html#provider" class="tsd-kind-icon">provider</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_provider_metamaskproviderweb_.metamaskproviderweb.html#checkifproviderenabled" class="tsd-kind-icon">check<wbr>IfProvider<wbr>Enabled</a>
+								<a href="_network_ethereum_provider_directprovider_.directprovider.html#checkifproviderenabled" class="tsd-kind-icon">check<wbr>IfProvider<wbr>Enabled</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_provider_metamaskproviderweb_.metamaskproviderweb.html#getprovider" class="tsd-kind-icon">get<wbr>Provider</a>
+								<a href="_network_ethereum_provider_directprovider_.directprovider.html#getprovider" class="tsd-kind-icon">get<wbr>Provider</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_provider_metamaskproviderweb_.metamaskproviderweb.html#stop" class="tsd-kind-icon">stop</a>
+								<a href="_network_ethereum_provider_directprovider_.directprovider.html#stop" class="tsd-kind-icon">stop</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
-						<a href="../modules/_provider_metamaskproviderweb_.html#window" class="tsd-kind-icon">window</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

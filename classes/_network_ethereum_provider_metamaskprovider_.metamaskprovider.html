@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>WebSocketProvider | @dex-company/starfish-js</title>
+	<title>MetamaskProvider | @dex-company/starfish-js</title>
 	<meta name="description" content="Documentation for @dex-company/starfish-js">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_provider_websocketprovider_.html">&quot;Provider/WebSocketProvider&quot;</a>
+					<a href="../modules/_network_ethereum_provider_metamaskprovider_.html">&quot;Network/Ethereum/Provider/MetamaskProvider&quot;</a>
 				</li>
 				<li>
-					<a href="_provider_websocketprovider_.websocketprovider.html">WebSocketProvider</a>
+					<a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html">MetamaskProvider</a>
 				</li>
 			</ul>
-			<h1>Class WebSocketProvider</h1>
+			<h1>Class MetamaskProvider</h1>
 		</div>
 	</div>
 </header>
@@ -72,8 +72,11 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Web3 provider which uses WebSocket
-						WebSocket provider is the only provider which does suport listening/subscribtion for events.</p>
+						<p>This provider connects to opened websocket of Metamask.
+							To accept incoming connection it requires user action to go to URL <a href="http://localhost:3333">http://localhost:3333</a> in browser.
+							Thats why MetamaskProvider excluded from autotesting.
+							Technically Metamask extension in browser can open port not only for localhost but for external network.
+						This is not recommended due potential security breach.</p>
 					</div>
 				</div>
 			</section>
@@ -81,14 +84,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">WebSocketProvider</span>
+						<span class="target">MetamaskProvider</span>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/_interfaces_iprovider_.iprovider.html" class="tsd-signature-type">IProvider</a></li>
+					<li><a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html" class="tsd-signature-type">IProvider</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -98,21 +101,21 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_provider_websocketprovider_.websocketprovider.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_provider_websocketprovider_.websocketprovider.html#provider" class="tsd-kind-icon">provider</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html#connector" class="tsd-kind-icon">connector</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_provider_websocketprovider_.websocketprovider.html#checkifproviderenabled" class="tsd-kind-icon">check<wbr>IfProvider<wbr>Enabled</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_provider_websocketprovider_.websocketprovider.html#getprovider" class="tsd-kind-icon">get<wbr>Provider</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_provider_websocketprovider_.websocketprovider.html#stop" class="tsd-kind-icon">stop</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html#checkifproviderenabled" class="tsd-kind-icon">check<wbr>IfProvider<wbr>Enabled</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html#getprovider" class="tsd-kind-icon">get<wbr>Provider</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html#stop" class="tsd-kind-icon">stop</a></li>
 							</ul>
 						</section>
 					</div>
@@ -124,27 +127,21 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Web<wbr>Socket<wbr>Provider<span class="tsd-signature-symbol">(</span>endpoint<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_provider_websocketprovider_.websocketprovider.html" class="tsd-signature-type">WebSocketProvider</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Metamask<wbr>Provider<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html" class="tsd-signature-type">MetamaskProvider</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/f7f5ad5/src/Provider/WebSocketProvider.ts#L12">Provider/WebSocketProvider.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/539618f/src/Network/Ethereum/Provider/MetamaskProvider.ts#L15">Network/Ethereum/Provider/MetamaskProvider.ts:15</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Constructs the WebSocketProvider</p>
+									<p>Constructs the MetamaskProvider</p>
 								</div>
 							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>endpoint: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_provider_websocketprovider_.websocketprovider.html" class="tsd-signature-type">WebSocketProvider</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html" class="tsd-signature-type">MetamaskProvider</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -152,12 +149,12 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="provider" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> provider</h3>
-					<div class="tsd-signature tsd-kind-icon">provider<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">WebsocketProvider</span></div>
+					<a name="connector" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> connector</h3>
+					<div class="tsd-signature tsd-kind-icon">connector<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">MetaMaskConnector</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/f7f5ad5/src/Provider/WebSocketProvider.ts#L12">Provider/WebSocketProvider.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/539618f/src/Network/Ethereum/Provider/MetamaskProvider.ts#L15">Network/Ethereum/Provider/MetamaskProvider.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -173,9 +170,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/_interfaces_iprovider_.iprovider.html">IProvider</a>.<a href="../interfaces/_interfaces_iprovider_.iprovider.html#checkifproviderenabled">checkIfProviderEnabled</a></p>
+								<p>Implementation of <a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html">IProvider</a>.<a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html#checkifproviderenabled">checkIfProviderEnabled</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/f7f5ad5/src/Provider/WebSocketProvider.ts#L30">Provider/WebSocketProvider.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/539618f/src/Network/Ethereum/Provider/MetamaskProvider.ts#L36">Network/Ethereum/Provider/MetamaskProvider.ts:36</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -197,9 +194,9 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/_interfaces_iprovider_.iprovider.html">IProvider</a>.<a href="../interfaces/_interfaces_iprovider_.iprovider.html#getprovider">getProvider</a></p>
+								<p>Implementation of <a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html">IProvider</a>.<a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html#getprovider">getProvider</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/f7f5ad5/src/Provider/WebSocketProvider.ts#L22">Provider/WebSocketProvider.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/539618f/src/Network/Ethereum/Provider/MetamaskProvider.ts#L29">Network/Ethereum/Provider/MetamaskProvider.ts:29</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Web3Provider</span></h4>
@@ -215,11 +212,18 @@
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/_interfaces_iprovider_.iprovider.html">IProvider</a>.<a href="../interfaces/_interfaces_iprovider_.iprovider.html#stop">stop</a></p>
+								<p>Implementation of <a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html">IProvider</a>.<a href="../interfaces/_network_ethereum_interfaces_iprovider_.iprovider.html#stop">stop</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/f7f5ad5/src/Provider/WebSocketProvider.ts#L26">Provider/WebSocketProvider.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/DEX-Company/starfish-js/blob/539618f/src/Network/Ethereum/Provider/MetamaskProvider.ts#L46">Network/Ethereum/Provider/MetamaskProvider.ts:46</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>This provider requires manual shutting down.
+										Because internally it opens infinite cycle.
+									Otherwise it will hang.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -233,7 +237,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/_provider_websocketprovider_.html">&quot;<wbr>Provider/<wbr>Web<wbr>Socket<wbr>Provider&quot;</a>
+						<a href="../modules/_network_ethereum_provider_metamaskprovider_.html">&quot;<wbr>Network/<wbr>Ethereum/<wbr>Provider/<wbr>Metamask<wbr>Provider&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -242,22 +246,22 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-module">
-						<a href="_provider_websocketprovider_.websocketprovider.html" class="tsd-kind-icon">Web<wbr>Socket<wbr>Provider</a>
+						<a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html" class="tsd-kind-icon">Metamask<wbr>Provider</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_provider_websocketprovider_.websocketprovider.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_provider_websocketprovider_.websocketprovider.html#provider" class="tsd-kind-icon">provider</a>
+								<a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html#connector" class="tsd-kind-icon">connector</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_provider_websocketprovider_.websocketprovider.html#checkifproviderenabled" class="tsd-kind-icon">check<wbr>IfProvider<wbr>Enabled</a>
+								<a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html#checkifproviderenabled" class="tsd-kind-icon">check<wbr>IfProvider<wbr>Enabled</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_provider_websocketprovider_.websocketprovider.html#getprovider" class="tsd-kind-icon">get<wbr>Provider</a>
+								<a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html#getprovider" class="tsd-kind-icon">get<wbr>Provider</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_provider_websocketprovider_.websocketprovider.html#stop" class="tsd-kind-icon">stop</a>
+								<a href="_network_ethereum_provider_metamaskprovider_.metamaskprovider.html#stop" class="tsd-kind-icon">stop</a>
 							</li>
 						</ul>
 					</li>
