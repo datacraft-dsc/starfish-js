@@ -1,5 +1,8 @@
 # Change Log
 
+## Release 0.1.2
++   Include module index.ts file
+
 ## Release 0.1.1
 +   Use JobId instead of job-id
 
