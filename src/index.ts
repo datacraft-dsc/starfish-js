@@ -42,5 +42,3 @@ export { WebSocketProvider } from './Network/Ethereum/Provider/WebSocketProvider
 export { ConvexNetwork } from './Network/Convex/ConvexNetwork'
 export { ConvexAccount } from '@convex-dev/convex-api-js'
 export { ConvexContractManager } from './Network/Convex/Contract/ConvexContractManager'
-
-
