@@ -1,7 +1,6 @@
 import { assert } from 'chai'
 
-import { ContractManager } from 'starfish/Network/Convex/Contract/ContractManager'
-import { ConvexNetwork } from 'starfish/Network/Convex/ConvexNetwork'
+import { ConvexContractManager, ConvexNetwork } from 'starfish'
 
 
 describe('Convex ContractManager Class', async () => {
@@ -11,7 +10,7 @@ describe('Convex ContractManager Class', async () => {
     })
     describe('constructor', async () => {
         it('should create a new ContractManager object', async () => {
-            const manager = new ContractManager(network.convex)
+            const manager = new ConvexContractManager(network.convex)
             assert(manager)
         })
     })

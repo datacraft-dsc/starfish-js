@@ -1,6 +1,6 @@
 import { ConvexAPI, ConvexAccount } from '@convex-dev/convex-api-js'
 import { isBalanceInsufficient, isDID, didToId } from '../../Utils'
-import { ContractBase, ContractManager, DIDRegistryContract } from './Contract/Contract'
+import { ContractBase, ConvexContractManager, DIDRegistryContract } from './Contract/Contract'
 import { DDO } from '../../DDO/DDO'
 import { RemoteAgent } from '../../Agent/RemoteAgent'
 import { IAgentAuthentication } from '../../Interfaces/IAgentAuthentication'
@@ -28,7 +28,7 @@ export class ConvexNetwork {
     }
 
     private static instance
-    protected contractManager: ContractManager
+    protected contractManager: ConvexContractManager
     readonly queryAddress: string
     public url: string
     public convex: ConvexAPI
@@ -45,7 +45,7 @@ export class ConvexNetwork {
     public async init(url: string): Promise<void> {
         this.url = url
         this.convex = new ConvexAPI(this.url)
-        this.contractManager = new ContractManager(this.convex)
+        this.contractManager = new ConvexContractManager(this.convex)
     }
 
     /**

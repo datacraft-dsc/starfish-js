@@ -4,9 +4,9 @@ import Web3 from 'web3'
 import fetch from 'node-fetch'
 
 import { ContractBase } from './ContractBase'
-import { IArtifactsPackage, IArtifact } from '../../../Interfaces/IArtifactsPackage'
+import { IArtifactsPackage, IArtifact } from '../Interfaces/IArtifactsPackage'
 
-export class ContractManager {
+export class EthereumContractManager {
     readonly web3: Web3
     readonly networkName: string
     readonly networkId: number
@@ -66,10 +66,10 @@ export class ContractManager {
     }
 
     public async loadLocalArtifactsPackage(timeoutSeconds?: number, url?: string): Promise<void> {
-        let data = await ContractManager.requestLocalArtifactsPackage(url)
+        let data = await EthereumContractManager.requestLocalArtifactsPackage(url)
         let counter = timeoutSeconds ? timeoutSeconds : 20
         const requestDataTimeout = setInterval(async () => {
-            data = await ContractManager.requestLocalArtifactsPackage(url)
+            data = await EthereumContractManager.requestLocalArtifactsPackage(url)
             counter--
             if (data || counter < 0) {
                 clearInterval(requestDataTimeout)

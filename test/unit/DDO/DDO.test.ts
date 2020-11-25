@@ -6,7 +6,7 @@
 
 import { assert } from 'chai'
 
-import { DDO } from 'starfish/DDO/DDO'
+import { DDO } from 'starfish'
 
 describe('DDO Class', () => {
     describe('createFromServiceList', () => {

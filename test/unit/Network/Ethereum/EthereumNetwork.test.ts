@@ -2,10 +2,7 @@ import { assert } from 'chai'
 
 import { randomHex } from 'web3-utils'
 
-import { EthereumNetwork } from 'starfish/Network/Ethereum/EthereumNetwork'
-import { EthereumAccount } from 'starfish/Network/Ethereum/EthereumAccount'
-import { DirectProvider } from 'starfish/Provider/DirectProvider'
-import { DDO } from 'starfish/DDO/DDO'
+import { EthereumAccount, EthereumNetwork, DDO, DirectProvider} from 'starfish'
 
 import { loadTestSetup } from 'test/TestSetup'
 

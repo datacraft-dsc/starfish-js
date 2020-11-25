@@ -1,12 +1,12 @@
 import Web3 from 'web3'
 import { EventData } from 'web3-eth-contract'
 
-import { IProvider } from '../../Interfaces/IProvider'
-import { DirectProvider } from '../../Provider/DirectProvider'
+import { IProvider } from './Interfaces/IProvider'
+import { DirectProvider } from './Provider/DirectProvider'
 import { EthereumAccount } from './EthereumAccount'
 import {
     ContractBase,
-    ContractManager,
+    EthereumContractManager,
     NetworkContract,
     DexTokenContract,
     DispenserContract,
@@ -50,7 +50,7 @@ export class EthereumNetwork {
     public networkId: number
     public networkName: string
     protected networkNames: Map<number, string>
-    protected contractManager: ContractManager
+    protected contractManager: EthereumContractManager
 
     constructor() {
         this.networkNames = new Map([
@@ -91,7 +91,7 @@ export class EthereumNetwork {
         }
         await this.connect()
 
-        this.contractManager = new ContractManager(this.web3, this.networkId, this.networkName)
+        this.contractManager = new EthereumContractManager(this.web3, this.networkId, this.networkName)
         if (this.options.autoLoadLocalArtifacts && this.networkName == 'local') {
             await this.contractManager.loadLocalArtifactsPackage()
         }

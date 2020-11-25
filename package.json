@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "description": "JavaScript Starfish client library",
   "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "browser": "./dist/index.js",
   "scripts": {
     "test": "mocha",

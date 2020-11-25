@@ -1,9 +1,13 @@
 import { assert } from 'chai'
 
 import { ConvexAccount } from '@convex-dev/convex-api-js'
-import { ConvexNetwork } from 'starfish/Network/Convex/ConvexNetwork'
-import { didCreate, didToId } from 'starfish/Utils'
-import { DDO } from 'starfish/DDO/DDO'
+/*
+ *
+ *
+ *
+ */
+
+import { ConvexNetwork, DDO, didCreate, didToId } from 'starfish'
 
 import { loadTestSetup } from 'test/TestSetup'
 

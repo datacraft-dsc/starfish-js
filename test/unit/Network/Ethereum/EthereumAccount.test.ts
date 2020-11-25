@@ -2,8 +2,7 @@ import { assert } from 'chai'
 
 import fs from 'fs-extra'
 
-import { EthereumNetwork } from 'starfish/Network/Ethereum/EthereumNetwork'
-import { EthereumAccount } from 'starfish/Network/Ethereum/EthereumAccount'
+import { EthereumAccount, EthereumNetwork } from 'starfish'
 import Web3 from 'web3'
 
 import { loadTestSetup } from 'test/TestSetup'

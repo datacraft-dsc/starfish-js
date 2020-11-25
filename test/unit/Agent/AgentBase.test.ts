@@ -6,8 +6,7 @@
  */
 import { assert } from 'chai'
 
-import { DDO } from 'starfish/DDO/DDO'
-import { AgentBase } from 'starfish/Agent/AgentBase'
+import { AgentBase, DDO } from 'starfish'
 
 describe('AgentBase', () => {
     describe('constructor', () => {

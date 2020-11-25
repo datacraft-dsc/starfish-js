@@ -7,18 +7,19 @@
  *
  */
 
-import { ContractBase } from './ContractBase'
-import { ContractManager } from './ContractManager'
-import { DIDRegistryContract } from './DIDRegistryContract'
-import { DirectPurchaseContract } from './DirectPurchaseContract'
-import { DispenserContract } from './DispenserContract'
-import { NetworkContract } from './NetworkContract'
-import { DexTokenContract } from './DexTokenContract'
-import { ProvenanceContract } from './ProvenanceContract'
+export { ContractBase } from './ContractBase'
+export { EthereumContractManager } from './EthereumContractManager'
+export { DIDRegistryContract } from './DIDRegistryContract'
+export { DirectPurchaseContract } from './DirectPurchaseContract'
+export { DispenserContract } from './DispenserContract'
+export { NetworkContract } from './NetworkContract'
+export { DexTokenContract } from './DexTokenContract'
+export { ProvenanceContract } from './ProvenanceContract'
 
+/*
 export {
     ContractBase,
-    ContractManager,
+    EthereumContractManager,
     DIDRegistryContract,
     DirectPurchaseContract,
     DispenserContract,
@@ -26,3 +27,4 @@ export {
     DexTokenContract,
     ProvenanceContract,
 }
+*/

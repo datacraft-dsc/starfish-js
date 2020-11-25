@@ -7,8 +7,7 @@
 import { assert } from 'chai'
 import { randomHex } from 'web3-utils'
 
-import { BundleAsset } from 'starfish/Asset/BundleAsset'
-import { IBundleMap, IBundleContent } from 'starfish/Interfaces/IMetadata'
+import { BundleAsset, IBundleMap, IBundleContent } from 'starfish'
 
 describe('BundleAsset Class', () => {
     describe('create', () => {

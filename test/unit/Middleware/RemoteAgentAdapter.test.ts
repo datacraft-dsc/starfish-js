@@ -13,10 +13,8 @@ chai.use(chaiAsPromised)
 import urljoin from 'url-join'
 import { randomHex, hexToBytes } from 'web3-utils'
 
-import { RemoteAgentAdapter } from 'starfish/Middleware/RemoteAgentAdapter'
 import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
-import { extractAssetId, removeLeadingHexZero } from 'starfish/Utils'
-import { calculateAssetDataHash } from 'starfish/Crypto'
+import { calculateAssetDataHash, extractAssetId, removeLeadingHexZero, RemoteAgentAdapter } from 'starfish'
 
 let setup = loadTestSetup()
 const agentConfig = setup.agents['local']

@@ -7,10 +7,8 @@
 import { assert } from 'chai'
 import fs from 'fs-extra'
 
-
 import { randomHex, hexToBytes } from 'web3-utils'
-
-import { DataAsset } from 'starfish/Asset/DataAsset'
+import { DataAsset } from 'starfish'
 
 describe('DataAsset Class', () => {
     describe('create', () => {

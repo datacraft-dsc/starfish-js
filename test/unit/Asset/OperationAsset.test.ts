@@ -6,7 +6,7 @@
 
 import { assert } from 'chai'
 
-import { OperationAsset } from 'starfish/Asset/OperationAsset'
+import { OperationAsset } from 'starfish'
 
 describe('OperationAsset Class', () => {
     describe('create', () => {

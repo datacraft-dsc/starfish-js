@@ -9,12 +9,8 @@ import { assert } from 'chai'
 import { randomHex, hexToBytes } from 'web3-utils'
 
 
-import { RemoteAgent } from 'starfish/Agent/RemoteAgent'
 import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
-import { DataAsset, OperationAsset } from 'starfish/Asset/Asset'
-import { EthereumNetwork } from 'starfish/Network/Ethereum/EthereumNetwork'
-import { extractAssetId, removeLeadingHexZero } from 'starfish/Utils'
-
+import { EthereumNetwork, extractAssetId, DataAsset, RemoteAgent, removeLeadingHexZero, OperationAsset } from 'starfish'
 
 let setup = loadTestSetup()
 const agentConfig = setup.agents['local']

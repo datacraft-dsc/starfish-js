@@ -6,9 +6,7 @@
 
 import { assert } from 'chai'
 
-import { AssetBase } from 'starfish/Asset/AssetBase'
-import { didRandom } from 'starfish/Utils'
-import { calculateAssetId } from 'starfish/Crypto'
+import { AssetBase, didRandom, calculateAssetId } from 'starfish'
 
 describe('AssetBase Class', () => {
     describe('AssetBase constructor', () => {

@@ -15,7 +15,7 @@ import {
     idToDID,
     extractAssetId,
     didCreate
-} from 'starfish/Utils'
+} from 'starfish'
 
 
 describe('Utils', () => {
