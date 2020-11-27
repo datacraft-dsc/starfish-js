@@ -1,5 +1,8 @@
 # Change Log
 
+## Release 0.1.3
++   Upgrade convex-api-js to 0.0.8
+
 ## Release 0.1.2
 +   Include module index.ts file
 
