@@ -45,7 +45,7 @@ describe('ConvexNetwork Class', async () => {
             requestAmount = Math.floor(Math.random() * 10) + 1
         })
         it('should request some test tokens for a new account', async () => {
-            const account = ConvexAccount.createNew()
+            const account = ConvexAccount.create()
             const amount = await network.requestTestTokens(account, requestAmount)
             assert(amount)
             assert.equal(amount, requestAmount)
@@ -67,7 +67,7 @@ describe('ConvexNetwork Class', async () => {
         })
         it('should transfer some tokens from the test account to a new account', async () => {
             const fromAccount = await ConvexAccount.importFromFile(accountConfig.keyfile, accountConfig.password)
-            const toAccount = ConvexAccount.createNew()
+            const toAccount = ConvexAccount.create()
             const amount = await network.sendToken(fromAccount, toAccount, transferAmount)
             assert(amount)
             assert.equal(amount, transferAmount)
