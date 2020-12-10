@@ -43,7 +43,7 @@ jobs:
     - name: Wait for surfer
       run: docker run --network host docker.pkg.github.com/dex-company/surfer/surfer:latest ./scripts/wait_for_surfer.sh
     - name: Wait for dex-chain to load...
-      run: sleep 10
+      run: sleep 20
     - name: Test
       run: npm test
       env:
