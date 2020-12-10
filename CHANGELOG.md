@@ -1,5 +1,8 @@
 # Change Log
 
+## Release 0.1.4
++   Package upgrade
+
 ## Release 0.1.3
 +   Upgrade convex-api-js to 0.0.8
 
