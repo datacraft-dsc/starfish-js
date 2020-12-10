@@ -1,6 +1,6 @@
 {
   "name": "@dex-company/starfish-js",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "JavaScript Starfish client library",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
