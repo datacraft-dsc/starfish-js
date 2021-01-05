@@ -27,6 +27,13 @@ describe('ConvexNetwork Class', async () => {
         before( async () => {
             network = await ConvexNetwork.getInstance(setup.convex.network.url);
         })
+        it('should request some test tokens to the test account', async () => {
+            const requestAmount = Math.floor(Math.random() * 10) + 1
+            const account = await ConvexAccount.importFromFile(accountConfig.keyfile, accountConfig.password)
+            const amount = await network.requestTestTokens(account, requestAmount)
+            assert(amount)
+            assert.equal(amount, requestAmount)
+        })
         it('should get the token balance from the account address', async () => {
             const balance = await network.getTokenBalance(accountConfig.address)
             assert(balance)
