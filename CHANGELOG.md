@@ -1,5 +1,8 @@
 # Change Log
 
+## Release 0.2.0
++   Rename to datacraft-dsc
+
 ## Release 0.1.4
 +   Package upgrade
 
