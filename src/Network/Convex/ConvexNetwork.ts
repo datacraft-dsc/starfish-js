@@ -134,10 +134,10 @@ export class ConvexNetwork {
         reference2?: string
     ): Promise<boolean> {
         let status = false
-        const dexContract = <DexTokenContract>await this.getContract('DexToken')
+        const datacraftContract = <DatacraftTokenContract>await this.getContract('DatacraftToken')
         const directContract = <DirectPurchaseContract>await this.getContract('DirectPurchase')
 
-        const fromAccountBalance = await dexContract.getBalance(account)
+        const fromAccountBalance = await datacraftContract.getBalance(account)
         if (isBalanceInsufficient(fromAccountBalance, amount)) {
             throw new Error(
                 `The account ${account.address} has insufficient funds of ${fromAccountBalance} tokens to send ${amount} tokens`
@@ -145,7 +145,7 @@ export class ConvexNetwork {
         }
 
         // first approve the transfer fo tokens for the direct-contract
-        const approved = await dexContract.approveTransfer(account, directContract.address, amount)
+        const approved = await datacraftContract.approveTransfer(account, directContract.address, amount)
         status = approved.status
         if (status) {
             const receipt = await directContract.sendTokenWithLog(account, toAccountAddress, amount, reference1, reference2)

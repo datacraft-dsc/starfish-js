@@ -2,7 +2,7 @@ import { assert } from 'chai'
 
 import { EthereumContractManager, EthereumNetwork } from 'starfish'
 
-const artifactContractName = 'DexToken'
+const artifactContractName = 'DIDRegistry'
 const artifactsPath = 'test/resources/network/ethereum/artifacts'
 
 describe('Ethereum ContractManager Class', async () => {
@@ -26,7 +26,7 @@ describe('Ethereum ContractManager Class', async () => {
     describe('load', async () => {
         it('should load a contract', async () => {
             const manager = new EthereumContractManager(network.web3, network.networkId, network.networkName)
-            const contract = manager.load('DexToken', artifactsPath)
+            const contract = manager.load('DIDRegistry', artifactsPath)
             assert(contract)
         })
     })
@@ -51,7 +51,7 @@ describe('Ethereum ContractManager Class', async () => {
             const manager = new EthereumContractManager(network.web3, network.networkId, network.networkName)
             await manager.loadLocalArtifactsPackage()
             assert(manager.artifactsPackage)
-            const contract = manager.load('DexToken')
+            const contract = manager.load('DIDRegistry')
             assert(contract)
         })
     })

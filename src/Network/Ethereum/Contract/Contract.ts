@@ -13,7 +13,7 @@ export { DIDRegistryContract } from './DIDRegistryContract'
 export { DirectPurchaseContract } from './DirectPurchaseContract'
 export { DispenserContract } from './DispenserContract'
 export { NetworkContract } from './NetworkContract'
-export { DexTokenContract } from './DexTokenContract'
+export { DatacraftTokenContract } from './DatacraftTokenContract'
 export { ProvenanceContract } from './ProvenanceContract'
 
 /*
@@ -24,7 +24,7 @@ export {
     DirectPurchaseContract,
     DispenserContract,
     NetworkContract,
-    DexTokenContract,
+    DatacraftTokenContract,
     ProvenanceContract,
 }
 */

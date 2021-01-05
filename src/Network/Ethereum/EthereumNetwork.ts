@@ -8,7 +8,7 @@ import {
     ContractBase,
     EthereumContractManager,
     NetworkContract,
-    DexTokenContract,
+    DatacraftTokenContract,
     DispenserContract,
     DirectPurchaseContract,
     ProvenanceContract,
@@ -141,7 +141,7 @@ export class EthereumNetwork {
      * @returns Token balance as a string.
      */
     public async getTokenBalance(accountAddress: EthereumAccount | string): Promise<string> {
-        const contract = <DexTokenContract>await this.getContract('DexToken')
+        const contract = <DatacraftTokenContract>await this.getContract('DatacraftToken')
         return await contract.getBalance(accountAddress)
     }
 
@@ -200,7 +200,7 @@ export class EthereumNetwork {
         toAccountAddress: EthereumAccount | string,
         amount: number | string
     ): Promise<boolean> {
-        const contract = <DexTokenContract>await this.getContract('DexToken')
+        const contract = <DatacraftTokenContract>await this.getContract('DatacraftToken')
         const fromAccountBalance = await contract.getBalance(account)
 
         if (isBalanceInsufficient(fromAccountBalance, amount)) {
@@ -237,10 +237,10 @@ export class EthereumNetwork {
         reference2?: string
     ): Promise<boolean> {
         let status = false
-        const dexContract = <DexTokenContract>await this.getContract('DexToken')
+        const datacraftContract = <DatacraftTokenContract>await this.getContract('DatacraftToken')
         const directContract = <DirectPurchaseContract>await this.getContract('DirectPurchase')
 
-        const fromAccountBalance = await dexContract.getBalance(account)
+        const fromAccountBalance = await datacraftContract.getBalance(account)
         if (isBalanceInsufficient(fromAccountBalance, amount)) {
             throw new Error(
                 `The account ${account.address} has insufficient funds of ${fromAccountBalance} tokens to send ${amount} tokens`
@@ -248,7 +248,7 @@ export class EthereumNetwork {
         }
 
         // first approve the transfer fo tokens for the direct-contract
-        const approved = await dexContract.approveTransfer(account, directContract.address, amount)
+        const approved = await datacraftContract.approveTransfer(account, directContract.address, amount)
         status = approved.status
         if (status) {
             const receipt = await directContract.sendTokenWithLog(account, toAccountAddress, amount, reference1, reference2)

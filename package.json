@@ -1,5 +1,5 @@
 {
-  "name": "@dex-company/starfish-js",
+  "name": "@datacraft-dsc/starfish-js",
   "version": "0.1.4",
   "description": "JavaScript Starfish client library",
   "main": "./dist/index.js",
@@ -34,15 +34,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DEX-Company/starfish-js.git"
+    "url": "git+https://github.com/datacraft-dsc/starfish-js.git"
   },
   "keywords": [],
-  "author": "Dex <devops@dex.sg>",
+  "author": "Datacraft <devops@datacraft.sg>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/DEX-Company/starfish-js/issues"
+    "url": "https://github.com/datacraft-dsc/starfish-js/issues"
   },
-  "homepage": "https://github.com/DEX-Company/starfish-js#README",
+  "homepage": "https://github.com/datacraft-dsc/starfish-js#README",
   "dependencies": {
     "@convex-dev/convex-api-js": "^0.0.8",
     "bl": ">=2.2.1",

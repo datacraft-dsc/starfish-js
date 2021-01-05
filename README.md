@@ -3,9 +3,9 @@
 
 Toolkit for Decentralised Data Ecosystem development in Javascript
 
-![](https://github.com/DEX-Company/starfish-js/workflows/testing/badge.svg)
-[![GitHub contributors](https://img.shields.io/github/contributors/DEX-Company/starfish-js.svg)](https://github.com/DEX-Company/starfish-js/graphs/contributors)
-[![dex-chain Version](https://img.shields.io/badge/dex--chain-master-blue.svg)](https://github.com/DEX-Company/dex-chain)
+![](https://github.com/datacraft-dsc/starfish-js/workflows/testing/badge.svg)
+[![GitHub contributors](https://img.shields.io/github/contributors/datacraft-dsc/starfish-js.svg)](https://github.com/datacraft-dsc/starfish-js/graphs/contributors)
+[![datacraft-chain Version](https://img.shields.io/badge/datacraft--chain-master-blue.svg)](https://github.com/datacraft-dsc/datacraft-chain)
 
 ---
 
@@ -35,7 +35,7 @@ Currently only provide basic account balance information
 
 ## Documentation
 
-[starfish-js API documentation](https://dex-company.github.io/starfish-js)
+[starfish-js API documentation](https://datacraft-dsc.github.io/starfish-js)
 
 
 ## Prerequisites
@@ -50,13 +50,13 @@ Currently only provide basic account balance information
     npm install
     ```
 
-1. Create the local testing environment using [dex-chain](https://github.com/DEX-Company/dex-chain).
+1. Create the local testing environment using [datacraft-chain](https://github.com/datacraft-dsc/datacraft-chain).
 
-    In a sepearte terminal session you need to clone and checkout ```dex-chain``` repository, by doing the following:
+    In a sepearte terminal session you need to clone and checkout ```datacraft-chain``` repository, by doing the following:
     ```
-    git clone https://github.com/DEX-Company/dex-chain.git
-    cd dex-chain
-    ./start_dex_chain.sh test
+    git clone https://github.com/datacraft-dsc/datacraft-chain.git
+    cd datacraft-chain
+    ./scripts/start_datacraft_chain.sh test
     ```
 
 1. Run the unit tests
