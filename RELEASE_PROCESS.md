@@ -6,7 +6,7 @@ Notes on the current development/release lifecyle.
 +   Get the latest develop branch `git checkout develop`
 
 ## Increment the version if needed
-+   Bump to the next version `./bumpnersion.sh [patch|minor|major]`
++   Bump to the next version `npm version [patch|minor|major]`
 +   Add new version line in CHANGELOG.md
 
 ## Develop changes
