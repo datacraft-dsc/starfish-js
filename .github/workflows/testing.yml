@@ -25,7 +25,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: datacraft-dsc/datacraft-chain
-        ref: master
+        ref: release
         path: datacraft-chain
     - name: Start datacraft-chain
       run: |
