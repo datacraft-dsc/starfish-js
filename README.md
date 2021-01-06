@@ -106,6 +106,11 @@ To test run
     npm test
     ```
 
+## Release Process
+
+See [Release Process](https://github.com/datacraft-dsc/starfish-js/blob/develop/RELEASE_PROCESS.md)
+
+
 
 ## License
 
