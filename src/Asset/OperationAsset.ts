@@ -6,7 +6,7 @@
  *
  */
 
-import { IMetadataOperation } from '../Interfaces/IMetadata'
+import { IMetadataOperation } from './IMetadata'
 import { AssetBase } from './AssetBase'
 
 export class OperationAsset extends AssetBase {

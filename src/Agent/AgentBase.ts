@@ -7,17 +7,19 @@
  *
  */
 
-import urljoin from 'url-join'
+import { urlJoin } from 'url-join-ts'
 import { DDO } from '../DDO/DDO'
 
 export class AgentBase {
+    public ddoText: string
     public ddo: DDO
 
     /**
      * Construct a base agent using it's DDO.
      */
-    constructor(ddo: DDO) {
-        this.ddo = ddo
+    constructor(ddoText: string) {
+        this.ddoText = ddoText
+        this.ddo = DDO.createFromString(ddoText)
     }
 
     /**
@@ -32,7 +34,7 @@ export class AgentBase {
         if (service) {
             const url = service['serviceEndpoint']
             if (uri) {
-                return urljoin(url, uri)
+                return urlJoin(url, uri)
             }
             return url
         }

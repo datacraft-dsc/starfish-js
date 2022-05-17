@@ -5,7 +5,7 @@
 */
 
 import { assert } from 'chai'
-import { randomHex } from 'web3-utils'
+import { randomBytes } from 'crypto'
 
 import { BundleAsset, IBundleMap, IBundleContent } from 'starfish'
 
@@ -24,7 +24,7 @@ describe('BundleAsset Class', () => {
             const name = 'newBundleAsset'
             let assetList: Map<string, string> = new Map<string, string>()
             for ( let index = 0; index < 20; index ++ ) {
-                assetList.set(`testAsset_${index}`, randomHex(32))
+                assetList.set(`testAsset_${index}`, randomBytes(32).toString('hex'))
             }
             const asset = BundleAsset.create(name, assetList)
             assert(asset)
@@ -38,7 +38,7 @@ describe('BundleAsset Class', () => {
             const name = 'newBundleAsset'
             let assetList: IBundleMap = {}
             for ( let index = 0; index < 20; index ++ ) {
-                assetList[`testAsset_${index}`] = <IBundleContent>{ assetID: randomHex(32) }
+                assetList[`testAsset_${index}`] = <IBundleContent>{ assetID: randomBytes(32).toString('hex') }
             }
             const asset = BundleAsset.create(name, assetList)
             assert(asset)

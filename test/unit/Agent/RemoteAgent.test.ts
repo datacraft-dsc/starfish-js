@@ -6,11 +6,11 @@
  */
 
 import { assert } from 'chai'
-import { randomHex, hexToBytes } from 'web3-utils'
+import { randomBytes } from 'crypto'
 
 
 import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
-import { EthereumNetwork, extractAssetId, DataAsset, RemoteAgent, removeLeadingHexZero, OperationAsset } from 'starfish'
+import { extractAssetId, DataAsset, RemoteAgent, remove0xPrefix, OperationAsset } from 'starfish'
 
 let setup = loadTestSetup()
 const agentConfig = setup.agents['local']
@@ -26,29 +26,22 @@ describe('RemoteAgent Class', () => {
         it('should fetch a ddo from the agent url', async () => {
             const ddoText = await RemoteAgent.resolveURL(agentConfig['url'], agentAuthentication)
             assert(ddoText)
-        })
-    })
-    describe('createFromAddress', () => {
-        let network
-        before( () => {
-            network = EthereumNetwork.getInstance(setup.ethereum.network.url);
-        })
-        it('should create new RemoteAgent from a URL', async () => {
-            const agent = RemoteAgent.createFromAddress(agentConfig['url'], network, agentAuthentication)
+            const agent = new RemoteAgent(ddoText, agentAuthentication)
             assert(agent)
         })
     })
 
     describe('RemoteAgent methods', () => {
-        let network
         let agent
         before( async () => {
-            network = EthereumNetwork.getInstance(setup.ethereum.network.url);
-            agent = await RemoteAgent.createFromAddress(agentConfig['url'], network, agentAuthentication)
+            const ddoText = await RemoteAgent.resolveURL(agentConfig['url'], agentAuthentication)
+            assert(ddoText)
+            agent = new RemoteAgent(ddoText, agentAuthentication)
+            assert(agent)
         })
         describe('registerAsset', () => {
             it('should register a data asset', async () => {
-                const data = Buffer.from(hexToBytes(randomHex(1024)))
+                const data = Buffer.from(randomBytes(1024))
                 const asset = DataAsset.create('testAsset', data)
                 const registerAsset = await agent.registerAsset(asset)
                 assert(registerAsset)
@@ -59,7 +52,7 @@ describe('RemoteAgent Class', () => {
             let data
             let registerAsset
             before( async () => {
-                data = Buffer.from(hexToBytes(randomHex(1024)))
+                data = Buffer.from(randomBytes(1024))
                 const asset = DataAsset.create('testAsset', data)
                 registerAsset = await agent.registerAsset(asset)
             })
@@ -94,7 +87,7 @@ describe('RemoteAgent Class', () => {
                 description: 'test listing',
             }
             before( async () => {
-                data = Buffer.from(hexToBytes(randomHex(1024)))
+                data = Buffer.from(randomBytes(1024))
                 const asset = DataAsset.create('testAsset', data)
                 registerAsset = await agent.registerAsset(asset)
             })
@@ -138,7 +131,7 @@ describe('RemoteAgent Class', () => {
             before( async () => {
                 const invokeList = await enableSurferInvokableOperations(agentConfig['url'], agentConfig['username'], agentConfig['password'])
                 assert(invokeList['invokables'][testInovkeName])
-                assetId = removeLeadingHexZero(extractAssetId(invokeList['invokables'][testInovkeName]))
+                assetId = remove0xPrefix(extractAssetId(invokeList['invokables'][testInovkeName]))
                 invokeAsset = await agent.getAsset(assetId)
                 testNumber = Math.random() * 100
                 inputs = {

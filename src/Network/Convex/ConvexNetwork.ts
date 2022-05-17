@@ -1,10 +1,12 @@
-import { ConvexAPI, ConvexAccount } from '@convex-dev/convex-api-js'
+import { API as ConvexAPI, Account as ConvexAccount } from '@convex-dev/convex-api-js'
 import { isBalanceInsufficient, isDID, didToId } from '../../Utils'
-import { ContractBase, ConvexContractManager, DIDRegistryContract } from './Contract/Contract'
-import { DDO } from '../../DDO/DDO'
+import { ContractBase, ConvexContractManager, DIDRegistryContract, ProvenanceContract } from './Contract/Contract'
+// import { DDO } from '../../DDO/DDO'
 import { RemoteAgent } from '../../Agent/RemoteAgent'
-import { IAgentAuthentication } from '../../Interfaces/IAgentAuthentication'
+import { IAgentAuthentication } from '../../Agent/IAgentAuthentication'
 
+const DID_REGISTRY_CONTRACT_NAME = 'starfish.did'
+const PROVENANCE_CONTRACT_NAME = 'starfish.provenance'
 /**
  *
  * ConvexNetwork class to connect to the Convex.world network. To perform starfish operations
@@ -29,12 +31,12 @@ export class ConvexNetwork {
 
     private static instance
     protected contractManager: ConvexContractManager
-    readonly queryAddress: string
+    readonly queryAddress: BigInt
     public url: string
     public convex: ConvexAPI
 
     constructor() {
-        this.queryAddress = '0x1de659D38A129e2358CD3c4aF906Bc5eE48B33F27915539897F9fd66813e2beB'
+        this.queryAddress = BigInt(1)
     }
     /**
      * Initialize the starfish object using a url or Provider and arfitfacts path. It is better
@@ -53,8 +55,8 @@ export class ConvexNetwork {
      * @param name Name of the contract to load
      * @returns AContract that has been loadad
      */
-    public async getContract(name: string): Promise<ContractBase> {
-        return this.contractManager.load(name)
+    public async loadContract(name: string, registerName: string): Promise<ContractBase> {
+        return this.contractManager.load(name, registerName)
     }
 
     /*
@@ -69,7 +71,7 @@ export class ConvexNetwork {
      * @param accountAddress Acount object on account address string.
      * @returns Token balance as a string.
      */
-    public async getTokenBalance(accountAddress: ConvexAccount | string): Promise<number> {
+    public async getTokenBalance(accountAddress: ConvexAccount | BigInt): Promise<BigInt> {
         return await this.convex.getBalance(accountAddress)
     }
 
@@ -79,7 +81,7 @@ export class ConvexNetwork {
      * @param amount Amount to request.
      * @returns True if successfull.
      */
-    public async requestTestTokens(account: ConvexAccount, amount: number): Promise<number> {
+    public async requestTestTokens(account: ConvexAccount, amount: BigInt): Promise<BigInt> {
         return await this.convex.requestFunds(amount, account)
     }
 
@@ -97,7 +99,7 @@ export class ConvexNetwork {
      * @param amount Amount to of token to send.
      * @returns True if the sending of the payment was made.
      */
-    public async sendToken(account: ConvexAccount, toAccountAddress: ConvexAccount | string, amount: number): Promise<number> {
+    public async sendToken(account: ConvexAccount, toAccountAddress: ConvexAccount | BigInt, amount: BigInt): Promise<BigInt> {
         const fromAccountBalance = await this.convex.getBalance(account)
 
         if (isBalanceInsufficient(fromAccountBalance, amount)) {
@@ -247,7 +249,7 @@ export class ConvexNetwork {
      */
 
     public async registerDID(account: ConvexAccount, did: string, ddoText: string): Promise<string> {
-        const contract = <DIDRegistryContract>await this.getContract('DIDRegistry')
+        const contract = <DIDRegistryContract>await this.loadContract('DIDRegistry', DID_REGISTRY_CONTRACT_NAME)
         const didId = didToId(did)
         const result = await contract.register(account, didId, ddoText)
         return result
@@ -259,10 +261,16 @@ export class ConvexNetwork {
      * @returns DDO as a JSON text if found, else return null.
      */
 
-    public async resolveDID(did: string, account: ConvexAccount | string): Promise<string> {
-        const contract = <DIDRegistryContract>await this.getContract('DIDRegistry')
+    public async resolveDID(did: string, account: ConvexAccount | BigInt | number | string): Promise<string> {
+        const contract = <DIDRegistryContract>await this.loadContract('DIDRegistry', DID_REGISTRY_CONTRACT_NAME)
         const didId = didToId(did)
         return contract.resolve(didId, account)
+    }
+
+    public async registerProvenance(account: ConvexAccount, assetId: string, data: string): Promise<boolean> {
+        const contract = <ProvenanceContract>await this.loadContract('Provenance', PROVENANCE_CONTRACT_NAME)
+        const result = await contract.register(assetId, data, account)
+        return result != null
     }
 
     /*
@@ -287,11 +295,11 @@ export class ConvexNetwork {
         username?: string,
         password?: string,
         authentication?: IAgentAuthentication
-    ): Promise<DDO> {
+    ): Promise<string> {
         if (isDID(agentAddress)) {
             const ddoText = await this.resolveDID(agentAddress, this.queryAddress)
             if (ddoText) {
-                return DDO.createFromString(ddoText)
+                return ddoText
             }
         }
         let agentAuthentication = authentication
@@ -303,7 +311,17 @@ export class ConvexNetwork {
         }
         const ddoText = await RemoteAgent.resolveURL(agentAddress, agentAuthentication)
         if (ddoText) {
-            return DDO.createFromString(ddoText)
+            return ddoText
+        }
+        return null
+    }
+
+    public async resolveAgentDID(did: string): Promise<string> {
+        if (isDID(did)) {
+            const ddoText = await this.resolveDID(did, this.queryAddress)
+            if (ddoText) {
+                return ddoText
+            }
         }
         return null
     }

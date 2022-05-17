@@ -3,10 +3,10 @@
     Utils for the starfish-js library
 
 */
+import { prefix0x as convexPrefix0x, remove0xPrefix as convexRemove0xPrefix } from '@convex-dev/convex-api-js'
 
-import { fromWei, toWei as web3ToWei, toBN, randomHex } from 'web3-utils'
-
-import { IDIDFragment } from './Interfaces/IDIDFragment'
+import { IDIDFragment } from './Network/IDIDFragment'
+import { randomBytes } from 'crypto'
 
 const NETWORK_DID_METHOD = 'dep'
 
@@ -18,42 +18,12 @@ const NETWORK_DID_METHOD = 'dep'
  *
  */
 
-/**
- * Convert an amount in Wei to Ether
- * @param amountWei The amount to convert.
- * @returns the amount in Ether.
- * @category Contract Helpers
- */
-export function toEther(amountWei: string): string {
-    return fromWei(amountWei, 'ether')
+export function isBalanceInsufficient(balance: BigInt | number | string, amount: BigInt | number | string): boolean {
+    const balanceValue = Number(balance)
+    const amountValue = Number(amount)
+    return balanceValue < amountValue
 }
 
-/**
- * Converts an amount in Ether to Wei.
- * @param amountEther The amount in ether.
- * @returns the amount converted to Wei.
- * @category Contract Helpers
- */
-export function toWei(amountEther: number | string): string {
-    return web3ToWei(String(amountEther))
-}
-
-/**
- * Checks to see if the balance is sufficient for transfer of funds.
- * @param balanceEther The balance of the account in Ether.
- * @param amonut The amount to send/transfer.
- * @returns True if the amonut <= balanceEther.
- * @category Contract Helpers
- */
-export function isBalanceInsufficient(balanceEther: number | string, amount: number | string): boolean {
-    const balanceWei = toBN(toWei(balanceEther))
-    const amountWei = toBN(toWei(amount))
-    return balanceWei.lt(amountWei)
-}
-
-export function prefix0x(value: string): string {
-    return '0x' + value.replace(/^0x/, '')
-}
 /*
  *
  *
@@ -61,6 +31,26 @@ export function prefix0x(value: string): string {
  *
  *
  */
+/**
+ * Pre append a 0x prefix to the hex string
+ *
+ * @param value Value to pe-append 0x too
+ * @returns The hex string with a 0x pre appended
+ * @category DID Helpers
+ */
+export function prefix0x(value: string): string {
+    return convexPrefix0x(value)
+}
+
+/**
+ * Remove the leading `0x` from a hex string
+ * @param value Hex string to remove the leading 0x.
+ * @returns Cleaned up hex string.
+ * @category DID Helpers
+ */
+export function remove0xPrefix(value: string): string {
+    return convexRemove0xPrefix(value)
+}
 
 /**
  * Validates a DID.
@@ -111,7 +101,7 @@ export function isDID(did: string): boolean {
  * @category DID Helpers
  */
 export function didRandom(): string {
-    return idToDID(randomHex(32))
+    return idToDID(randomBytes(32).toString('hex'))
 }
 
 /**
@@ -155,7 +145,7 @@ export function didParse(did: string): IDIDFragment {
  * @category DID Helpers
  */
 export function idToDID(id: string): string {
-    const cleanId = removeLeadingHexZero(id)
+    const cleanId = convexRemove0xPrefix(id)
     return `did:${NETWORK_DID_METHOD}:${cleanId}`
 }
 
@@ -171,16 +161,6 @@ export function didToId(did: string): string {
 }
 
 /**
- * Remove the leading `0x` from a hex string
- * @param text Hex string to remove the leading 0x.
- * @returns Cleaned up hex string.
- * @category DID Helpers
- */
-export function removeLeadingHexZero(text: string): string {
-    return text.replace(/^0x/i, '')
-}
-
-/**
  * Create a DID using it's component parts.
  * @param id Id of the DID , if not given generate a random hex string (64 chars).
  * @param assetId Asset Id of the path, if null then no path
@@ -190,11 +170,11 @@ export function removeLeadingHexZero(text: string): string {
  */
 export function didCreate(id?: string, assetId?: string, fragment?: string): string {
     if (!id) {
-        id = randomHex(32)
+        id = randomBytes(32).toString('hex')
     }
     let did = idToDID(id)
     if (assetId) {
-        did = did + '/' + removeLeadingHexZero(assetId)
+        did = did + '/' + convexRemove0xPrefix(assetId)
     }
     if (fragment) {
         did = did + `#${fragment}`

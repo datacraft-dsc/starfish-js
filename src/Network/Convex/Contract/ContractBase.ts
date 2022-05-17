@@ -1,46 +1,45 @@
-import { ConvexAccount, ConvexAPI } from '@convex-dev/convex-api-js'
-import { prefix0x } from '../../../Utils'
+import { Account as ConvexAccount, API as ConvexAPI, toAddress } from '@convex-dev/convex-api-js'
 
 export class ContractBase {
-    readonly name: string
     readonly convex: ConvexAPI
-    public address: string
+    public address: BigInt
+    public owner: BigInt
     public version: string
 
-    constructor(convex: ConvexAPI, name: string) {
+    constructor(convex: ConvexAPI) {
         this.convex = convex
-        this.name = name
     }
 
-    public async load(deployAddress: ConvexAccount | string): Promise<void> {
-        this.address = await this.getAddress(deployAddress)
-        this.version = await this.getVersion(deployAddress)
+    public static escapeString(text: string): string {
+        let regexp = new RegExp(/\\\\/, 'g')
+        let encodedText = text.replace(regexp, '\\\\\\\\')
+
+        regexp = new RegExp(/"/, 'g')
+        encodedText = text.replace(regexp, '\\"')
+        return encodedText
     }
 
     public async send(commandLine: string, account: ConvexAccount): Promise<unknown> {
-        const transaction = `(call ${this.address} ${commandLine})`
+        const transaction = `(call #${this.address} ${commandLine})`
         return this.convex.send(transaction, account)
     }
 
-    public async query(commandLine: string, account: ConvexAccount | string): Promise<unknown> {
-        const transaction = `(call ${this.address} ${commandLine})`
-        return this.convex.query(transaction, account)
+    public async query(commandLine: string, addressAccount: ConvexAccount | BigInt | number | string): Promise<unknown> {
+        const transaction = `(call #${this.address} ${commandLine})`
+        return this.convex.query(transaction, addressAccount)
     }
 
-    public async getAddress(deployAddress: ConvexAccount | string): Promise<string> {
-        let address = <string>deployAddress
-        if (typeof deployAddress === 'object' && deployAddress.constructor.name === 'ConvexAccount') {
-            address = (<ConvexAccount>deployAddress).address
-        }
-        return prefix0x(await this.convex.getAddress(this.name, address))
+    public async resolveAddress(name: string): Promise<BigInt> {
+        const item = await this.convex.registry.item(name)
+        this.address = toAddress(item.address)
+        this.owner = toAddress(item.owner)
+        return this.address
     }
-    public async getVersion(deployAddress: ConvexAccount | string): Promise<string> {
-        let address = this.address
-        if (!address) {
-            address = prefix0x(await this.getAddress(deployAddress))
-        }
+
+    public async getVersion(): Promise<string> {
+        const address = this.address
         const comandLine = `(call ${address} (version))`
-        const result = await this.convex.query(comandLine, deployAddress)
+        const result = await this.convex.query(comandLine, address)
         if (result && result['value']) {
             return result['value']
         }

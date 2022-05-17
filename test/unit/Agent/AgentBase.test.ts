@@ -12,7 +12,7 @@ describe('AgentBase', () => {
     describe('constructor', () => {
         it('should create a new AgentBase object', async () => {
             const ddo = DDO.createForAllServices('localhost')
-            const agent = new AgentBase(ddo)
+            const agent = new AgentBase(ddo.toString())
             assert(agent)
         })
     })

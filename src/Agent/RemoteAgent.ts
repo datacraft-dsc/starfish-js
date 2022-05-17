@@ -7,18 +7,16 @@
  *
  */
 
-import urljoin from 'url-join'
+import { urlJoin } from 'url-join-ts'
 
 import { RemoteAgentAdapter } from '../Middleware/RemoteAgentAdapter'
 import { AgentBase } from './AgentBase'
-//import { IAsset } from 'starfish/Interfaces/IAsset'
 import { AssetBase, DataAsset, OperationAsset } from '../Asset/Asset'
-import { IAgentAuthentication } from '../Interfaces/IAgentAuthentication'
-import { IListingData, IListingFilter } from '../Interfaces/IListing'
-import { IInvokeResult } from '../Interfaces/IInvoke'
-import { isDID, extractAssetId } from '../Utils'
-import { EthereumNetwork } from '../Network/Ethereum/EthereumNetwork'
-import { DDO } from '../DDO/DDO'
+import { IAgentAuthentication } from '../Agent/IAgentAuthentication'
+import { IListingData, IListingFilter } from '../Asset/IListing'
+import { IInvokeResult } from '../Asset/IInvoke'
+import { extractAssetId } from '../Utils'
+// import { DDO } from '../DDO/DDO'
 
 export class RemoteAgent extends AgentBase {
     /**
@@ -39,7 +37,7 @@ export class RemoteAgent extends AgentBase {
         if (authentication) {
             token = authentication.token
             if (!token) {
-                const tokenURL = urljoin(url, '/api/v1/auth/token')
+                const tokenURL = urlJoin(url, '/api/v1/auth/token')
                 token = await adapter.getAuthorizationToken(authentication['username'], authentication['password'], tokenURL)
             }
         }
@@ -55,6 +53,7 @@ export class RemoteAgent extends AgentBase {
      * @returns RemoteAgent object if successful or null
      * @category Static Create
      */
+    /*
     public static async createFromAddress(
         agentAddress: string,
         network?: EthereumNetwork,
@@ -76,15 +75,15 @@ export class RemoteAgent extends AgentBase {
         }
         return null
     }
-
+    */
     /**
      * Construct an new Remote Agent object. Please use {@link createFromAddress} to correctly resolve the agent
      * and obtain the correct DDO record.
      * @param ddo DDO to use for this agent.
      * @param authentication Authentication data needed for Agent access.
      */
-    constructor(ddo: DDO, authentication?: IAgentAuthentication) {
-        super(ddo)
+    constructor(ddoText: string, authentication?: IAgentAuthentication) {
+        super(ddoText)
         this.authentication = authentication
     }
 

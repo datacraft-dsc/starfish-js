@@ -1,33 +1,13 @@
 
 # Config settings for delevelopment local block chain network
 
-ethereum:
-  network:
-    url: http://localhost:8545
-
-  accounts:
-    account1:
-      address: '0x19C2a80BE6f5fA50d4274FecdF7F4b441fB852c8'
-      password: datacraft-secret
-      keyfile: test/resources/network/ethereum/account_key_files/local/19C2a80BE6f5fA50d4274FecdF7F4b441fB852c8.json
-
-    account2:
-      address: '0xF3dc3d005F3e854Ce904A7bbF1e09dCe286caF64'
-      password: datacraft-secret
-      keyfile: test/resources/network/ethereum/account_key_files/local/F3dc3d005F3e854Ce904A7bbF1e09dCe286caF64.json
-
-    # this is account's key file is on the local ethereum node
-    accountNode:
-      address: '0xd520Bc7A6024C0CAB5B02c32e760bAfBe10d58ea'
-      password: datacraft-secret
-
 convex:
   network:
     url: https://convex.world
 
   accounts:
     account1:
-      address: '0x5288fec4153b702430771dfac8aed0b21cafca4344dae0d47b97f0bf532b3306'
+      name: starfish-js-test-account
       password: secret
       keyfile: test/resources/network/convex/account_key_files/local/5288fec4153b702430771dfac8aed0b21cafca4344dae0d47b97f0bf532b3306.pem
 

@@ -6,8 +6,8 @@
  *
  */
 
-import { IMetadata } from '../Interfaces/IMetadata'
-import { IAsset } from '../Interfaces/IAsset'
+import { IMetadata } from './IMetadata'
+import { IAsset } from './IAsset'
 
 import { extractAssetId } from '../Utils'
 import { calculateAssetId } from '../Crypto'

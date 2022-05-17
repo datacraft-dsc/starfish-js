@@ -10,11 +10,11 @@ import chaiAsPromised from 'chai-as-promised'
 chai.use(chaiAsPromised)
 
 
-import urljoin from 'url-join'
-import { randomHex, hexToBytes } from 'web3-utils'
+import { randomBytes } from 'crypto'
+import { urlJoin } from 'url-join-ts'
 
 import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
-import { calculateAssetDataHash, extractAssetId, removeLeadingHexZero, RemoteAgentAdapter } from 'starfish'
+import { calculateAssetDataHash, extractAssetId, remove0xPrefix, RemoteAgentAdapter } from 'starfish'
 
 let setup = loadTestSetup()
 const agentConfig = setup.agents['local']
@@ -27,7 +27,7 @@ const metadata = {
     "description": "test metadata from starfish-js test",
     "type": "dataset",
     "contentType": "text/plain",
-    "contentHash": `${randomHex(32)}`,
+    "contentHash": `${randomBytes(32).toString('hex')}`,
 }
 
 const today = new Date(Date.now())
@@ -52,7 +52,7 @@ describe('RemoteAgentAdapter', () => {
         })
         describe('getAuthorizationToken', () => {
             it('should fetch a current or new token', async () => {
-                const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
+                const tokenURL = urlJoin(agentConfig['url'], '/api/v1/auth/token')
                 const token = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
                 assert(token)
             })
@@ -62,7 +62,7 @@ describe('RemoteAgentAdapter', () => {
     describe('ddo based services', () => {
         before(async () => {
             adapter = RemoteAgentAdapter.getInstance()
-            const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
+            const tokenURL = urlJoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
         })
         describe('getDDO', () => {
@@ -78,7 +78,7 @@ describe('RemoteAgentAdapter', () => {
         var metadataText
         before(async () => {
             adapter = RemoteAgentAdapter.getInstance()
-            const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
+            const tokenURL = urlJoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
             metadataText = JSON.stringify(metadata)
             metadataURL = `${agentConfig['url']}/api/v1/meta`
@@ -114,7 +114,7 @@ describe('RemoteAgentAdapter', () => {
         var listingText
         before(async () => {
             adapter = RemoteAgentAdapter.getInstance()
-            const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
+            const tokenURL = urlJoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
 
             metadataText = JSON.stringify(metadata)
@@ -172,9 +172,9 @@ describe('RemoteAgentAdapter', () => {
         var assetData
         before(async () => {
             adapter = RemoteAgentAdapter.getInstance()
-            const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
+            const tokenURL = urlJoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
-            assetData = Buffer.from(hexToBytes(randomHex(1024)))
+            assetData = Buffer.from(randomBytes(1024))
             const metadataAsset = metadata
             const hash = calculateAssetDataHash(assetData)
             metadataAsset['contentType'] = 'application/octet-stream'
@@ -200,9 +200,9 @@ describe('RemoteAgentAdapter', () => {
             adapter = RemoteAgentAdapter.getInstance()
             const invokeList = await enableSurferInvokableOperations(agentConfig['url'], agentConfig['username'], agentConfig['password'])
             assert(invokeList['invokables'][testInovkeName])
-            assetId = removeLeadingHexZero(extractAssetId(invokeList['invokables'][testInovkeName]))
+            assetId = remove0xPrefix(extractAssetId(invokeList['invokables'][testInovkeName]))
 
-            const tokenURL = urljoin(agentConfig['url'], '/api/v1/auth/token')
+            const tokenURL = urlJoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
             invokeURL = `${agentConfig['url']}/api/v1/invoke`
         })

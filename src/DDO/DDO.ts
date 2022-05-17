@@ -7,7 +7,7 @@
 
 import { didRandom } from '../Utils'
 
-import { IDDO, IDDOService } from '../Interfaces/IDDO'
+import { IDDO, IDDOService } from './IDDO'
 
 export class DDO implements IDDO {
     id: string

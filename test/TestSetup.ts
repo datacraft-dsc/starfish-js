@@ -7,7 +7,7 @@
 
 import yaml from 'js-yaml'
 import fs from 'fs-extra'
-import urljoin from 'url-join'
+import { urlJoin } from 'url-join-ts'
 import fetch, { Headers } from 'node-fetch'
 import { Base64 } from 'js-base64'
 
@@ -19,8 +19,7 @@ function loadConfig(filename): any {
 }
 
 export function loadTestSetup(): any {
-    let data = loadConfig(CONFIG_FILENAME)
-    return data
+    return loadConfig(CONFIG_FILENAME)
 }
 
 export async function enableSurferInvokableOperations(url: string, username: string, password: string): Promise<boolean> {
@@ -30,7 +29,7 @@ export async function enableSurferInvokableOperations(url: string, username: str
         Authorization: `Basic ${auth}`,
     })
 
-    const importURL = urljoin(url, '/api/v1/admin/import-demo?id=operations')
+    const importURL = urlJoin(url, '/api/v1/admin/import-demo?id=operations')
     const response = await fetch(importURL, {
         method: 'POST',
         headers: headers,

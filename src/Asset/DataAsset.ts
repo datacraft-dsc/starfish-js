@@ -9,7 +9,7 @@
 import fs from 'fs'
 import mime from 'mime-types'
 
-import { IMetadata, IMetadataData } from '../Interfaces/IMetadata'
+import { IMetadata, IMetadataData } from './IMetadata'
 import { AssetBase } from './AssetBase'
 import { calculateAssetDataHash } from '../Crypto'
 

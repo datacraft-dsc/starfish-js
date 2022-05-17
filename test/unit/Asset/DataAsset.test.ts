@@ -7,13 +7,13 @@
 import { assert } from 'chai'
 import fs from 'fs-extra'
 
-import { randomHex, hexToBytes } from 'web3-utils'
+import { randomBytes } from 'crypto'
 import { DataAsset } from 'starfish'
 
 describe('DataAsset Class', () => {
     describe('create', () => {
         it('should create a new DataAsset object', async () => {
-            const data = Buffer.from(hexToBytes(randomHex(1024)))
+            const data = Buffer.from(randomBytes(1024))
             const name = 'newDataAsset'
             const asset = DataAsset.create(name, data)
             assert(asset)
@@ -28,7 +28,7 @@ describe('DataAsset Class', () => {
         const filename = '/tmp/testAssetDataFile.dat'
         let data
         before( () => {
-            data = Buffer.from(hexToBytes(randomHex(1024)))
+            data = Buffer.from(randomBytes(1024))
             fs.writeFile(filename, data)
         })
         it('should create a new DataAsset object from a file', async () => {
@@ -49,7 +49,7 @@ describe('DataAsset Class', () => {
     describe('saveToFile', () => {
         const filename = '/tmp/testAssetDataFile.dat'
         it('should save the data to a file', async () => {
-            const data = Buffer.from(hexToBytes(randomHex(1024)))
+            const data = Buffer.from(randomBytes(1024))
             const name = 'newDataAsset'
             const asset = DataAsset.create(name, data)
             await asset.saveToFile(filename)
