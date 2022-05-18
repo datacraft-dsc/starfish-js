@@ -35,7 +35,7 @@ export async function enableSurferInvokableOperations(url: string, username: str
         headers: headers,
     })
     if (response.ok) {
-        return response.json()
+        return await response.json()
     }
     return null
 }

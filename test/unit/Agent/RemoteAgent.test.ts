@@ -10,7 +10,7 @@ import { randomBytes } from 'crypto'
 
 
 import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
-import { extractAssetId, DataAsset, RemoteAgent, remove0xPrefix, OperationAsset } from 'starfish'
+import { AgentManager, DataAsset, extractAssetId, OperationAsset, RemoteAgent, remove0xPrefix } from 'starfish'
 
 let setup = loadTestSetup()
 const agentConfig = setup.agents['local']
@@ -170,6 +170,44 @@ describe('RemoteAgent Class', () => {
                     assert(jobStatus)
                     assert.equal(jobStatus['id'], result['jobId'])
                 })
+            })
+        })
+        describe('Test convinence methods and procedures to invoke an agent opreation', () => {
+            let agent
+            let testOperationName
+            before( async () => {
+                testOperationName = 'Tokenize Text'
+                const invokeList = await enableSurferInvokableOperations(agentConfig['url'], agentConfig['username'], agentConfig['password'])
+                assert(invokeList)
+                assert(invokeList['invokables'][testOperationName])
+                const agentManager = AgentManager.getInstance()
+                const authentication = {
+                    username: agentConfig['username'],
+                    password: agentConfig['password'],
+                }
+                agent = await agentManager.resolveAgentURL(agentConfig['url'], authentication)
+                assert(agent)
+            })
+            it('should find the invokable asset from the metadata on the agent', async () => {
+                const filter = {
+                    name: testOperationName,
+                    type: 'operation'
+                }
+                const metaDataList = await agent.findAsset(filter)
+                assert(metaDataList)
+                for (let assetId in metaDataList) {
+                    const metaData = metaDataList[assetId]
+                    assert(metaData.name === filter.name && metaData.type === filter.type)
+                }
+
+            })
+            it('should call a single invoke method using the name of the invokable service', async () => {
+                const inputs = {
+                    text: 'test text to tokenize'
+                }
+                const result = await agent.invokeByName(testOperationName, inputs)
+                assert(result)
+                assert.equal(result.status, 'succeeded')
             })
         })
     })

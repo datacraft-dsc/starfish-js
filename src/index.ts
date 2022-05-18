@@ -6,6 +6,7 @@
 */
 
 export { AgentBase } from './Agent/AgentBase'
+export { AgentAccess } from './AgentManager/AgentAccess'
 export { AgentManager } from './AgentManager/AgentManager'
 export { RemoteAgent } from './Agent/RemoteAgent'
 export { RemoteAgentAdapter } from './Middleware/RemoteAgentAdapter'
@@ -17,7 +18,7 @@ export { OperationAsset } from './Asset/OperationAsset'
 
 export { DDO } from './DDO/DDO'
 
-export * from './Asset/IMetadata'
+export * from './Asset/IMetaData'
 export * from './Utils'
 export { calculateAssetDataHash, calculateAssetId } from './Crypto'
 

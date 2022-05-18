@@ -11,42 +11,42 @@ import { AssetBase, didRandom, calculateAssetId } from 'starfish'
 describe('AssetBase Class', () => {
     describe('AssetBase constructor', () => {
         it('should create a new AssetBase object', async () => {
-            const metadata = {
+            const metaData = {
                 name: 'dataset'
             }
-            const asset = new AssetBase(JSON.stringify(metadata))
+            const asset = new AssetBase(JSON.stringify(metaData))
             assert(asset)
             assert(asset.metadata)
             assert(asset.metadataText)
         })
     })
     describe('generateMetadata', () => {
-        it('should create a new metadata object', async () => {
+        it('should create a new metaData object', async () => {
             const name = 'testmetadata'
-            const metadataType = 'dataset'
-            const metadata = AssetBase.generateMetadata(name, metadataType)
-            assert(metadata)
-            assert.equal(metadata['name'], name)
-            assert.equal(metadata['type'], metadataType)
+            const metaDataType = 'dataset'
+            const metaData = AssetBase.generateMetadata(name, metaDataType)
+            assert(metaData)
+            assert.equal(metaData['name'], name)
+            assert.equal(metaData['type'], metaDataType)
         })
     })
 
     describe('AssetBase Methods', () => {
-        let metadata
-        let metadataText
+        let metaData
+        let metaDataText
         let assetId
         let assetDID
         let asset
         before( () => {
-            metadata = {
+            metaData = {
                 name: 'testAsset',
                 type: 'dataset',
-                description: 'This is the metadata disciption',
+                description: 'This is the metaData disciption',
             }
-            metadataText = JSON.stringify(metadata)
-            assetId =calculateAssetId(metadataText)
+            metaDataText = JSON.stringify(metaData)
+            assetId =calculateAssetId(metaDataText)
             assetDID = `${didRandom()}${assetId}`
-            asset = new AssetBase(metadataText, assetDID)
+            asset = new AssetBase(metaDataText, assetDID)
 
         })
         describe('getAssetid', () => {
@@ -62,14 +62,14 @@ describe('AssetBase Class', () => {
         })
         describe('equals', () => {
             it('should both asset be equal', () => {
-                const newAsset = new AssetBase(metadataText, assetDID)
+                const newAsset = new AssetBase(metaDataText, assetDID)
                 assert(asset.equals(newAsset))
             })
-            it('should not equal to an asset with different metadata', () => {
-                const newMetadata = metadata
-                newMetadata['name'] = 'new metadata'
-                const newMetadataText = JSON.stringify(newMetadata)
-                const newAsset = new AssetBase(newMetadataText, assetDID)
+            it('should not equal to an asset with different metaData', () => {
+                const newMetaData = metaData
+                newMetaData['name'] = 'new metaData'
+                const newMetaDataText = JSON.stringify(newMetaData)
+                const newAsset = new AssetBase(newMetaDataText, assetDID)
                 assert.isNotOk(asset.equals(newAsset))
             })
         })

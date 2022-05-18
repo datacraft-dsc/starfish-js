@@ -14,6 +14,7 @@ import { AgentBase } from './AgentBase'
 import { AssetBase, DataAsset, OperationAsset } from '../Asset/Asset'
 import { IAgentAuthentication } from '../Agent/IAgentAuthentication'
 import { IListingData, IListingFilter } from '../Asset/IListing'
+import { IMetaData, IMetaDataList } from '../Asset/IMetaData'
 import { IInvokeResult } from '../Asset/IInvoke'
 import { extractAssetId } from '../Utils'
 // import { DDO } from '../DDO/DDO'
@@ -87,6 +88,13 @@ export class RemoteAgent extends AgentBase {
         this.authentication = authentication
     }
 
+    public async getMetaDataList(): Promise<IMetaDataList> {
+        const adapter = RemoteAgentAdapter.getInstance()
+        const token = await this.getAuthorizationToken()
+        const url = this.getEndpoint('meta')
+        return await adapter.getMetaDataList(url, token)
+    }
+
     /**
      * Register a new asset with this agent.
      * @param asset Asset to register.
@@ -113,6 +121,25 @@ export class RemoteAgent extends AgentBase {
         const safeAssetId = extractAssetId(assetId)
         const metadata = await adapter.readMetadata(safeAssetId, url, token)
         return new AssetBase(metadata, this.generateDIDForAsset(safeAssetId))
+    }
+
+    public async findAsset(filter: IMetaData): Promise<IMetaDataList> {
+        const result: IMetaDataList = {}
+        const metaDataList = await this.getMetaDataList()
+        for (const assetId in metaDataList) {
+            const metaData = metaDataList[assetId]
+            let isFound = true
+            for (const filterKey in filter) {
+                if (filter[filterKey] !== metaData[filterKey]) {
+                    isFound = false
+                    break
+                }
+            }
+            if (isFound) {
+                result[assetId] = metaData
+            }
+        }
+        return result
     }
 
     /**
@@ -221,6 +248,18 @@ export class RemoteAgent extends AgentBase {
         return adapter.invoke(assetId, inputsText, isAsync, url, token)
     }
 
+    public async invokeByName(name: string, inputs?: unknown, isAsync?: boolean): Promise<IInvokeResult> {
+        const filter = {
+            name: name,
+            type: 'operation',
+        }
+        const metaDataList = await this.findAsset(filter)
+        if (metaDataList) {
+            const assetId = Object.keys(metaDataList)[0]
+            return this.invoke(assetId, inputs, isAsync)
+        }
+        return null
+    }
     /**
      * Get a job from the remote agent.
      * @param jobId Job id string or the InvokeResult returned by the async invoke call.

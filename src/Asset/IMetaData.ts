@@ -1,6 +1,6 @@
 /*
 
-    Interfaces for Metadata
+    Interfaces for MetaData
 
 */
 
@@ -26,7 +26,7 @@ export interface IBundleMap {
     [name: string]: IBundleContent
 }
 
-export interface IMetadataBase {
+export interface IMetaDataBase {
     name?: string
     type?: string
     description?: string
@@ -40,7 +40,7 @@ export interface IMetadataBase {
     additionalInformation?: unknown
 }
 
-export interface IMetadataData extends IMetadataBase {
+export interface IMetaDataData extends IMetaDataBase {
     // Data Asset
     size?: string
     contentType?: string
@@ -49,18 +49,18 @@ export interface IMetadataData extends IMetadataBase {
     contentHash?: string
 }
 
-export interface IMetadataOperation extends IMetadataBase {
+export interface IMetaDataOperation extends IMetaDataBase {
     // Opreation Asset
     operation?: IOperation
 }
 
-export interface IMetadataBundle extends IMetadataBase {
+export interface IMetaDataBundle extends IMetaDataBase {
     // Bundle Asset
     contents?: IBundleMap
 }
 
-export interface IMetadata extends IMetadataData, IMetadataOperation, IMetadataBundle {}
+export interface IMetaData extends IMetaDataData, IMetaDataOperation, IMetaDataBundle {}
 
-export interface IMetadataList {
-    [assetId: string]: IMetadata
+export interface IMetaDataList {
+    [assetId: string]: IMetaData
 }

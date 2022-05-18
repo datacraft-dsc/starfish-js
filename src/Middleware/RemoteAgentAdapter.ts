@@ -13,7 +13,7 @@ import { urlJoin } from 'url-join-ts'
 import queryString from 'query-string'
 import FormData from 'form-data'
 
-import { IMetadataList } from '../Asset/IMetadata'
+import { IMetaDataList } from '../Asset/IMetaData'
 import { IListingData, IListingRequestData, IListingFilter } from '../Asset/IListing'
 import { IInvokeResult } from '../Asset/IInvoke'
 
@@ -110,7 +110,7 @@ export class RemoteAgentAdapter {
         RemoteAgentAdapter.throwError('Unable to read asset metadata', response)
     }
 
-    public async getMetadataList(url: string, token?: string): Promise<IMetadataList> {
+    public async getMetaDataList(url: string, token?: string): Promise<IMetaDataList> {
         const metadatURL = urlJoin(url, '/index')
         const headers = RemoteAgentAdapter.createHeaders('application/json', token)
         const response = await fetch(metadatURL, {

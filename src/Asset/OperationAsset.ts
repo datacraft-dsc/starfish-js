@@ -6,7 +6,7 @@
  *
  */
 
-import { IMetadataOperation } from './IMetadata'
+import { IMetaDataOperation } from './IMetaData'
 import { AssetBase } from './AssetBase'
 
 export class OperationAsset extends AssetBase {
@@ -17,8 +17,8 @@ export class OperationAsset extends AssetBase {
      * @param did DID of the asset.
      * @category Static Create
      */
-    public static create(name: string, metadata?: string | IMetadataOperation, did?: string): OperationAsset {
-        const storeMetadata = AssetBase.generateMetadata(name, 'operation', metadata)
-        return new OperationAsset(JSON.stringify(storeMetadata), did)
+    public static create(name: string, metaData?: string | IMetaDataOperation, did?: string): OperationAsset {
+        const storeMetaData = AssetBase.generateMetadata(name, 'operation', metaData)
+        return new OperationAsset(JSON.stringify(storeMetaData), did)
     }
 }

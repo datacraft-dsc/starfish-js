@@ -6,7 +6,7 @@
  *
  */
 
-import { IMetadata } from './IMetadata'
+import { IMetaData } from './IMetaData'
 import { IAsset } from './IAsset'
 
 import { extractAssetId } from '../Utils'
@@ -14,7 +14,7 @@ import { calculateAssetId } from '../Crypto'
 
 export class AssetBase implements IAsset {
     readonly metadataText: string
-    readonly metadata: IMetadata
+    readonly metadata: IMetaData
     public did: string
 
     /**
@@ -25,17 +25,17 @@ export class AssetBase implements IAsset {
      * @returns A new metadata object or the metadata argument value that was provided
      * with the `name` and `type` set.
      */
-    public static generateMetadata(name: string, type: string, metadata?: string | IMetadata): IMetadata {
-        let newMetadata = {}
-        if (metadata) {
-            if (typeof metadata === 'string') {
-                newMetadata = JSON.parse(metadata)
+    public static generateMetadata(name: string, type: string, metaData?: string | IMetaData): IMetaData {
+        let newMetaData = {}
+        if (metaData) {
+            if (typeof metaData === 'string') {
+                newMetaData = JSON.parse(metaData)
             }
-            newMetadata = metadata
+            newMetaData = metaData
         }
-        newMetadata['name'] = name
-        newMetadata['type'] = type
-        return newMetadata
+        newMetaData['name'] = name
+        newMetaData['type'] = type
+        return newMetaData
     }
 
     /**
@@ -44,9 +44,9 @@ export class AssetBase implements IAsset {
      * the hash of the metadata text. This text should provide the same assetId as the one given.
      * @param did AssetDID of this asset.
      */
-    constructor(metadataText: string, did?: string) {
-        this.metadataText = metadataText
-        this.metadata = JSON.parse(metadataText)
+    constructor(metaDataText: string, did?: string) {
+        this.metadataText = metaDataText
+        this.metadata = JSON.parse(metaDataText)
         this.did = did
     }
 

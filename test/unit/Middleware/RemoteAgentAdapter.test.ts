@@ -22,7 +22,7 @@ const agentConfig = setup.agents['local']
 var accessToken
 var adapter
 
-const metadata = {
+const metaData = {
     "name": "testmetadata",
     "description": "test metadata from starfish-js test",
     "type": "dataset",
@@ -73,24 +73,24 @@ describe('RemoteAgentAdapter', () => {
         })
     })
 
-    describe('metadata based services', () => {
+    describe('metaData based services', () => {
         var metadataURL
         var metadataText
         before(async () => {
             adapter = RemoteAgentAdapter.getInstance()
             const tokenURL = urlJoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
-            metadataText = JSON.stringify(metadata)
+            metadataText = JSON.stringify(metaData)
             metadataURL = `${agentConfig['url']}/api/v1/meta`
         })
         describe('saveMetadata', () =>  {
-            it('should save metadata to a remote agent', async () => {
+            it('should save metaData to a remote agent', async () => {
                 const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
                 assert(assetId)
             })
         })
         describe('readMetadata', () => {
-            it('should read a saved metadata item', async () => {
+            it('should read a saved metaData item', async () => {
                 const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
                 const readMetadata = await adapter.readMetadata(assetId, metadataURL, accessToken)
                 assert(readMetadata)
@@ -98,9 +98,9 @@ describe('RemoteAgentAdapter', () => {
             })
         })
         describe('getMetadataList', () => {
-            it('should read the metadata list on the agent', async () => {
+            it('should read the metaData list on the agent', async () => {
                 const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
-                const metadataList = await adapter.getMetadataList(metadataURL, accessToken)
+                const metadataList = await adapter.getMetaDataList(metadataURL, accessToken)
                 assert(metadataList)
                 assert(metadataList[assetId])
             })
@@ -108,8 +108,8 @@ describe('RemoteAgentAdapter', () => {
 
     })
     describe('market place services', () => {
-        var metadataURL
-        var metadataText
+        var metaDataURL
+        var metaDataText
         var marketURL
         var listingText
         before(async () => {
@@ -117,22 +117,22 @@ describe('RemoteAgentAdapter', () => {
             const tokenURL = urlJoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
 
-            metadataText = JSON.stringify(metadata)
-            metadataURL = `${agentConfig['url']}/api/v1/meta`
+            metaDataText = JSON.stringify(metaData)
+            metaDataURL = `${agentConfig['url']}/api/v1/meta`
 
             listingText = JSON.stringify(listing)
             marketURL = `${agentConfig['url']}/api/v1/market`
         })
         describe('addListing', () => {
             it('should create and add a new listing', async () => {
-                const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
+                const assetId = await adapter.saveMetadata(metaDataText, metaDataURL, accessToken)
                 const listingData = await adapter.addListing(listingText, assetId, marketURL, accessToken)
                 assert(listingData)
             })
         })
         describe('getListing', () => {
             it('should get a listing using a listing id', async () => {
-                const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
+                const assetId = await adapter.saveMetadata(metaDataText, metaDataURL, accessToken)
                 const listingData = await adapter.addListing(listingText, assetId, marketURL, accessToken)
                 assert(listingData)
                 const readListingData = await adapter.getListing(listingData['id'], marketURL, accessToken)
@@ -142,7 +142,7 @@ describe('RemoteAgentAdapter', () => {
 
         describe('getListingList', () => {
             it('should get a list of listings, but does not work on the surfer agent', async () => {
-                const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
+                const assetId = await adapter.saveMetadata(metaDataText, metaDataURL, accessToken)
                 const listingData = await adapter.addListing(listingText, assetId, marketURL, accessToken)
                 assert(listingData)
                 const filter = {
@@ -154,7 +154,7 @@ describe('RemoteAgentAdapter', () => {
         })
         describe('updateListing', () => {
             it('should update a listing at the surfer agent', async () => {
-                const assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
+                const assetId = await adapter.saveMetadata(metaDataText, metaDataURL, accessToken)
                 const listingData = await adapter.addListing(listingText, assetId, marketURL, accessToken)
                 assert(listingData)
                 let newListingData = listingData
@@ -165,8 +165,8 @@ describe('RemoteAgentAdapter', () => {
         })
     })
     describe('market place services', () => {
-        var metadataURL
-        var metadataText
+        var metaDataURL
+        var metaDataText
         var storageURL
         var assetId
         var assetData
@@ -175,13 +175,13 @@ describe('RemoteAgentAdapter', () => {
             const tokenURL = urlJoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)
             assetData = Buffer.from(randomBytes(1024))
-            const metadataAsset = metadata
+            const metaDataAsset = metaData
             const hash = calculateAssetDataHash(assetData)
-            metadataAsset['contentType'] = 'application/octet-stream'
-            metadataAsset['contentHash'] = hash
-            metadataText = JSON.stringify(metadataAsset)
-            metadataURL = `${agentConfig['url']}/api/v1/meta`
-            assetId = await adapter.saveMetadata(metadataText, metadataURL, accessToken)
+            metaDataAsset['contentType'] = 'application/octet-stream'
+            metaDataAsset['contentHash'] = hash
+            metaDataText = JSON.stringify(metaDataAsset)
+            metaDataURL = `${agentConfig['url']}/api/v1/meta`
+            assetId = await adapter.saveMetadata(metaDataText, metaDataURL, accessToken)
             storageURL = `${agentConfig['url']}/api/v1/assets`
         })
         describe('uploadAssetData, downloadAssetData', () => {

@@ -8,11 +8,11 @@
  *
  */
 
-import { IMetadata } from './IMetadata'
+import { IMetaData } from './IMetaData'
 
 export interface IAsset {
     did: string
-    metadata: IMetadata
+    metadata: IMetaData
     metadataText: string
 }
 

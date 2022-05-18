@@ -95,7 +95,8 @@ export class AgentManager {
         return agentAccess
     }
 
-    public async resolveAgentURL(url: string, authentication?: Authentication): Promise<RemoteAgent> {
+    public async resolveAgentURL(url: string, agentAuthentication?: IAgentAuthentication): Promise<RemoteAgent> {
+        const authentication = AgentManager.createAuthentication(agentAuthentication)
         const ddoText = await AgentAccess.resolveAgentURL(url, authentication)
         if (ddoText) {
             return new RemoteAgent(ddoText, authentication)
@@ -103,13 +104,18 @@ export class AgentManager {
         return null
     }
 
-    public async resolveAgentDID(did: string, authentication?: Authentication, network?: ConvexNetwork): Promise<RemoteAgent> {
+    public async resolveAgentDID(
+        did: string,
+        agentAuthentication?: IAgentAuthentication,
+        network?: ConvexNetwork
+    ): Promise<RemoteAgent> {
         if (network) {
             this.network = network
         }
         if (!this.network) {
             throw Error('no network set for resolving a did')
         }
+        const authentication = AgentManager.createAuthentication(agentAuthentication)
         const ddoText = await AgentAccess.resolveAgentDID(did, this.network)
         if (ddoText) {
             return new RemoteAgent(ddoText, authentication)
@@ -117,7 +123,8 @@ export class AgentManager {
         return null
     }
 
-    public async loadAgent(name_did_url: string, authentication?: Authentication): Promise<RemoteAgent> {
+    public async loadAgent(name_did_url: string, agentAuthentication?: IAgentAuthentication): Promise<RemoteAgent> {
+        const authentication = AgentManager.createAuthentication(agentAuthentication)
         const agentAccess = await this.findAgent(name_did_url)
         if (agentAccess) {
             return agentAccess.loadAgent(authentication)

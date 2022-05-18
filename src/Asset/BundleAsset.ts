@@ -6,7 +6,7 @@
  *
  */
 
-import { IMetadata, IMetadataBundle, IBundleMap, IBundleContent } from './IMetadata'
+import { IMetaData, IMetaDataBundle, IBundleMap, IBundleContent } from './IMetaData'
 import { AssetBase } from './AssetBase'
 
 export class BundleAsset extends AssetBase {
@@ -23,22 +23,22 @@ export class BundleAsset extends AssetBase {
     public static create(
         name: string,
         assetList?: IBundleMap | Map<string, string>,
-        metadata?: string | IMetadataBundle,
+        metaData?: string | IMetaDataBundle,
         did?: string
     ): BundleAsset {
-        const storeMetadata = AssetBase.generateMetadata(name, 'bundle', metadata)
-        storeMetadata.contents = <IBundleMap>{}
+        const storeMetaData = AssetBase.generateMetadata(name, 'bundle', metaData)
+        storeMetaData.contents = <IBundleMap>{}
         if (assetList && 'forEach' in assetList) {
             if (assetList) {
                 const assetMap = <Map<string, string>>assetList
                 assetMap.forEach((assetId: string, name: string) => {
-                    storeMetadata.contents[name] = <IBundleContent>{ assetID: assetId }
+                    storeMetaData.contents[name] = <IBundleContent>{ assetID: assetId }
                 })
             }
         } else {
-            storeMetadata.contents = <IBundleMap>assetList
+            storeMetaData.contents = <IBundleMap>assetList
         }
-        return new BundleAsset(storeMetadata, did, storeMetadata.contents)
+        return new BundleAsset(storeMetaData, did, storeMetaData.contents)
     }
 
     /**
@@ -47,12 +47,12 @@ export class BundleAsset extends AssetBase {
      * @param did DID of the asset.
      * @param assetList Bundle asset list of the assets assigned to this bundle.
      */
-    constructor(metadata: string | IMetadata, did?: string, assetList?: IBundleMap) {
-        let metadataText = metadata
-        if (typeof metadata != 'string') {
-            metadataText = JSON.stringify(metadata)
+    constructor(metaData: string | IMetaData, did?: string, assetList?: IBundleMap) {
+        let metaDataText = metaData
+        if (typeof metaData != 'string') {
+            metaDataText = JSON.stringify(metaData)
         }
-        super(<string>metadataText, did)
+        super(<string>metaDataText, did)
 
         if (assetList) {
             this.assetList = assetList
