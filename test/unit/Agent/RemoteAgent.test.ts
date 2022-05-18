@@ -185,7 +185,7 @@ describe('RemoteAgent Class', () => {
                     username: agentConfig['username'],
                     password: agentConfig['password'],
                 }
-                agent = await agentManager.loadAgentFromURL(agentConfig['url'], authentication)
+                agent = await agentManager.loadAgent(agentConfig['url'], authentication)
                 assert(agent)
             })
             it('should find the invokable asset from the metadata on the agent', async () => {

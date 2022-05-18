@@ -15,6 +15,7 @@ import { IAgentAuthentication } from '../Agent/IAgentAuthentication'
 import { IAgentData } from '../Agent/IAgentData'
 import { RemoteAgent } from '../Agent/RemoteAgent'
 import { IAgentItems, IAgentItem } from './IAgentItems'
+import { isDID } from '../Utils'
 
 export class AgentManager {
     /**
@@ -123,13 +124,21 @@ export class AgentManager {
         return null
     }
 
-    public async loadAgent(name_did_url: string, agentAuthentication?: IAgentAuthentication): Promise<RemoteAgent> {
+    public async loadAgent(
+        name_did_url: string,
+        agentAuthentication?: IAgentAuthentication,
+        network?: ConvexNetwork
+    ): Promise<RemoteAgent> {
         const authentication = AgentManager.createAuthentication(agentAuthentication)
         const agentAccess = await this.findAgent(name_did_url)
         if (agentAccess) {
             return agentAccess.loadAgent(authentication)
         }
-        return null
+        if (isDID(name_did_url)) {
+            return this.loadAgentFromDID(name_did_url, agentAuthentication, network)
+        }
+
+        return this.loadAgentFromURL(name_did_url, agentAuthentication)
     }
 
     public async loadDDO(name_did_url: string): Promise<DDO> {
