@@ -205,7 +205,7 @@ describe('RemoteAgent Class', () => {
                 const inputs = {
                     text: 'test text to tokenize'
                 }
-                const result = await agent.invokeByName(testOperationName, inputs)
+                const result = await agent.invoke(testOperationName, inputs)
                 assert(result)
                 assert.equal(result.status, 'succeeded')
             })

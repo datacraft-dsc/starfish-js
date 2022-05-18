@@ -15,6 +15,7 @@ import {
     didValidate,
     extractAssetId,
     idToDID,
+    isAssetId,
     prefix0x,
     remove0xPrefix,
 } from 'starfish'
@@ -97,5 +98,18 @@ describe('Utils', () => {
             assert.equal(testAssetId, extractAssetId(testDID))
             assert.equal(testAssetId, extractAssetId(testAssetId))
         })
+        it ('should validate an asset id string with no leading 0x', async () => {
+            const testAssetId = randomBytes(32).toString('hex')
+            assert(isAssetId(testAssetId))
+        })
+        it ('should validate an asset id string with leading 0x', async () => {
+            const testAssetId = prefix0x(randomBytes(32).toString('hex'))
+            assert(isAssetId(testAssetId))
+        })
+        it ('should not validate a non asset id string ', async () => {
+            const testAssetId = 'random test'
+            assert(!isAssetId(testAssetId))
+        })
+
     })
 })

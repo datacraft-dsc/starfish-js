@@ -16,7 +16,7 @@ import { IAgentAuthentication } from '../Agent/IAgentAuthentication'
 import { IListingData, IListingFilter } from '../Asset/IListing'
 import { IMetaData, IMetaDataList } from '../Asset/IMetaData'
 import { IInvokeResult } from '../Asset/IInvoke'
-import { extractAssetId } from '../Utils'
+import { extractAssetId, isAssetId } from '../Utils'
 // import { DDO } from '../DDO/DDO'
 
 export class RemoteAgent extends AgentBase {
@@ -224,22 +224,33 @@ export class RemoteAgent extends AgentBase {
 
     /**
      * Invoke an operation on the remote Agent.
-     * @param asset This can be a string for an assetDID or assetID,
+     * @param assetOrName This can be a string for an assetDID or assetID,
      * or an OperationAsset that has been read using {@link getAsset}.
-     * @param asset AssetId or AssetDID as a string, or OperationAsset.
      * @param inputs Object for the invoke service to be passed.
      * @Param isAsync If true run the invokable service as async, defaults to False - run as a sync service.
      * @returns The `outputs` and `status`, if the invoke is sync, else for async just return the `jobId`
      */
-    public async invoke(asset: string | OperationAsset, inputs?: unknown, isAsync?: boolean): Promise<IInvokeResult> {
+    public async invoke(assetOrName: string | OperationAsset, inputs?: unknown, isAsync?: boolean): Promise<IInvokeResult> {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
         const url = this.getEndpoint('invoke')
         let assetId
-        if (typeof asset == 'string') {
-            assetId = extractAssetId(asset)
+        if (typeof assetOrName == 'string') {
+            if (isAssetId(assetOrName)) {
+                assetId = extractAssetId(assetOrName)
+            }
+            else {
+                const filter = {
+                    name: assetOrName,
+                    type: 'operation',
+                }
+                const metaDataList = await this.findAsset(filter)
+                if (metaDataList) {
+                    assetId = Object.keys(metaDataList)[0]
+                }
+            }
         } else {
-            assetId = asset.getAssetId()
+            assetId = assetOrName.getAssetId()
         }
         let inputsText = ''
         if (inputs) {
@@ -248,18 +259,6 @@ export class RemoteAgent extends AgentBase {
         return adapter.invoke(assetId, inputsText, isAsync, url, token)
     }
 
-    public async invokeByName(name: string, inputs?: unknown, isAsync?: boolean): Promise<IInvokeResult> {
-        const filter = {
-            name: name,
-            type: 'operation',
-        }
-        const metaDataList = await this.findAsset(filter)
-        if (metaDataList) {
-            const assetId = Object.keys(metaDataList)[0]
-            return this.invoke(assetId, inputs, isAsync)
-        }
-        return null
-    }
     /**
      * Get a job from the remote agent.
      * @param jobId Job id string or the InvokeResult returned by the async invoke call.
