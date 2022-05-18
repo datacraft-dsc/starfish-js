@@ -238,8 +238,7 @@ export class RemoteAgent extends AgentBase {
         if (typeof assetOrName == 'string') {
             if (isAssetId(assetOrName)) {
                 assetId = extractAssetId(assetOrName)
-            }
-            else {
+            } else {
                 const filter = {
                     name: assetOrName,
                     type: 'operation',

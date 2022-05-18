@@ -215,7 +215,6 @@ export function extractAssetId(assetDIDId: string): string {
     return toIdHex(result['path'])
 }
 
-
 export function isAssetId(assetId: string): boolean {
     const assetIdRegexp = new RegExp('^[0-9a-f]{64}$', 'i')
     return assetIdRegexp.test(remove0xPrefix(assetId))
