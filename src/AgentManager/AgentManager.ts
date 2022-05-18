@@ -95,7 +95,7 @@ export class AgentManager {
         return agentAccess
     }
 
-    public async resolveAgentURL(url: string, agentAuthentication?: IAgentAuthentication): Promise<RemoteAgent> {
+    public async loadAgentFromURL(url: string, agentAuthentication?: IAgentAuthentication): Promise<RemoteAgent> {
         const authentication = AgentManager.createAuthentication(agentAuthentication)
         const ddoText = await AgentAccess.resolveAgentURL(url, authentication)
         if (ddoText) {
@@ -104,7 +104,7 @@ export class AgentManager {
         return null
     }
 
-    public async resolveAgentDID(
+    public async loadAgentFromDID(
         did: string,
         agentAuthentication?: IAgentAuthentication,
         network?: ConvexNetwork
