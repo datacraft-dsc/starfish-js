@@ -16,7 +16,7 @@ import { IAgentAuthentication } from '../Agent/IAgentAuthentication'
 import { IListingData, IListingFilter } from '../Asset/IListing'
 import { IMetaData, IMetaDataList } from '../Asset/IMetaData'
 import { IInvokeResult } from '../Asset/IInvoke'
-import { extractAssetId, isAssetId } from '../Utils'
+import { extractAssetId, isAssetId, isDID } from '../Utils'
 // import { DDO } from '../DDO/DDO'
 
 export class RemoteAgent extends AgentBase {
@@ -224,7 +224,7 @@ export class RemoteAgent extends AgentBase {
 
     /**
      * Invoke an operation on the remote Agent.
-     * @param assetOrName This can be a string for an assetDID or assetID,
+     * @param assetOrName This can be a string for an assetDID, assetID or name of the operation
      * or an OperationAsset that has been read using {@link getAsset}.
      * @param inputs Object for the invoke service to be passed.
      * @Param isAsync If true run the invokable service as async, defaults to False - run as a sync service.
@@ -236,7 +236,7 @@ export class RemoteAgent extends AgentBase {
         const url = this.getEndpoint('invoke')
         let assetId
         if (typeof assetOrName == 'string') {
-            if (isAssetId(assetOrName)) {
+            if (isAssetId(assetOrName) || isDID(assetOrName)) {
                 assetId = extractAssetId(assetOrName)
             } else {
                 const filter = {
