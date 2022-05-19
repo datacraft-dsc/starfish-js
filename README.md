@@ -66,17 +66,24 @@ You then can write the following code to execute an operation called 'Tokenize T
     const result = await agent.invoke('Tokenize Text', inputs)
     console.log(result)
 
-        {
-        status: 'succeeded',
-        id: '60590c5d-eb4e-4b6a-9fa6-0a08c361fdcb',
-        outputs: { tokens: [ 'test', 'text', 'to', 'tokenize' ] }
-        }
-
-
 ```
 
-## Prerequisites
+The output will look something like this:
 
+```json
+    {
+        "status": "succeeded",
+        "id": "60590c5d-eb4e-4b6a-9fa6-0a08c361fdcb",
+        "outputs": {
+            "tokens": [
+                "test",
+                "text",
+                "to",
+                "tokenize"
+            ]
+        }
+    }
+```
 
 ## Development
 
@@ -85,15 +92,6 @@ You then can write the following code to execute an operation called 'Tokenize T
 
     ```
     npm install
-    ```
-
-1. Create the local testing environment using [datacraft-chain](https://github.com/datacraft-dsc/datacraft-chain).
-
-    In a sepearte terminal session you need to clone and checkout ```datacraft-chain``` repository, by doing the following:
-    ```
-    git clone https://github.com/datacraft-dsc/datacraft-chain.git
-    cd datacraft-chain
-    ./scripts/start_datacraft_chain.sh test
     ```
 
 1. Run the unit tests
