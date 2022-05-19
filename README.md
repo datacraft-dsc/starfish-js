@@ -37,6 +37,43 @@ Currently only provide basic account balance information
 
 [starfish-js API documentation](https://datacraft-dsc.github.io/starfish-js)
 
+## Quick Start
+
+To start using starfish-js, you first need to add the package to your package.json file as
+
+    @datacraft-dsc/starfish-js
+
+You then can write the following code to execute an operation called 'Tokenize Text' from a public test agent.
+
+```typescript
+
+    import { AgentManager } from '@datacraft-dsc/starfish-js'
+    const agentURL = 'http://surfer-prod.southeastasia.cloudapp.azure.com:3030'
+
+    // get the agent manager object to find the agent
+    const agentManager = AgentManager.getInstance()
+
+    // load in the agent based on it's URL and access deatils
+    agent = await agentManager.loadAgent(agentURL, {
+        username: 'Aladdin',
+        password: 'OpenSesame',
+    })
+
+    // now call the 'Tokenize Text' operation
+    const inputs = {
+        text: 'test text to tokenize'
+    }
+    const result = await agent.invoke('Tokenize Text', inputs)
+    console.log(result)
+
+        {
+        status: 'succeeded',
+        id: '60590c5d-eb4e-4b6a-9fa6-0a08c361fdcb',
+        outputs: { tokens: [ 'test', 'text', 'to', 'tokenize' ] }
+        }
+
+
+```
 
 ## Prerequisites
 

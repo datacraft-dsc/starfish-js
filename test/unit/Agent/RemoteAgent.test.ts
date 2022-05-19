@@ -207,6 +207,7 @@ describe('RemoteAgent Class', () => {
                 }
                 const result = await agent.invoke(testOperationName, inputs)
                 assert(result)
+                console.log(result)
                 assert.equal(result.status, 'succeeded')
             })
         })
