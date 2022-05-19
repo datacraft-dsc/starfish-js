@@ -85,7 +85,7 @@
 			<section class="tsd-panel">
 				<h3>Implements</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/_interfaces_iasset_.iasset.html" class="tsd-signature-type">IAsset</a></li>
+					<li><a href="../interfaces/_asset_iasset_.iasset.html" class="tsd-signature-type">IAsset</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -132,14 +132,14 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Bundle<wbr>Asset<span class="tsd-signature-symbol">(</span>metadata<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_imetadata_.imetadata.html" class="tsd-signature-type">IMetadata</a>, did<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, assetList<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_interfaces_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asset_bundleasset_.bundleasset.html" class="tsd-signature-type">BundleAsset</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Bundle<wbr>Asset<span class="tsd-signature-symbol">(</span>metaData<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_asset_imetadata_.imetadata.html" class="tsd-signature-type">IMetaData</a>, did<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, assetList<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_asset_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asset_bundleasset_.bundleasset.html" class="tsd-signature-type">BundleAsset</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/BundleAsset.ts#L42">Asset/BundleAsset.ts:42</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/BundleAsset.ts#L42">Asset/BundleAsset.ts:42</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -150,12 +150,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>metadata: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_imetadata_.imetadata.html" class="tsd-signature-type">IMetadata</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Metadata of the asset as string or as an object.</p>
-										</div>
-									</div>
+									<h5>metaData: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_asset_imetadata_.imetadata.html" class="tsd-signature-type">IMetaData</a></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> did: <span class="tsd-signature-type">string</span></h5>
@@ -166,7 +161,7 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> assetList: <a href="../interfaces/_interfaces_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> assetList: <a href="../interfaces/_asset_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Bundle asset list of the assets assigned to this bundle.</p>
@@ -184,10 +179,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="assetlist" class="tsd-anchor"></a>
 					<h3>asset<wbr>List</h3>
-					<div class="tsd-signature tsd-kind-icon">asset<wbr>List<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_interfaces_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a></div>
+					<div class="tsd-signature tsd-kind-icon">asset<wbr>List<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_asset_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/BundleAsset.ts#L13">Asset/BundleAsset.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/BundleAsset.ts#L13">Asset/BundleAsset.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -196,22 +191,22 @@
 					<h3>did</h3>
 					<div class="tsd-signature tsd-kind-icon">did<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/_interfaces_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_interfaces_iasset_.iasset.html#did">did</a></p>
+						<p>Implementation of <a href="../interfaces/_asset_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_asset_iasset_.iasset.html#did">did</a></p>
 						<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#did">did</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/AssetBase.ts#L18">Asset/AssetBase.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/AssetBase.ts#L18">Asset/AssetBase.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 					<a name="metadata" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> metadata</h3>
-					<div class="tsd-signature tsd-kind-icon">metadata<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_interfaces_imetadata_.imetadata.html" class="tsd-signature-type">IMetadata</a></div>
+					<div class="tsd-signature tsd-kind-icon">metadata<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_asset_imetadata_.imetadata.html" class="tsd-signature-type">IMetaData</a></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/_interfaces_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_interfaces_iasset_.iasset.html#metadata">metadata</a></p>
+						<p>Implementation of <a href="../interfaces/_asset_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_asset_iasset_.iasset.html#metadata">metadata</a></p>
 						<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#metadata">metadata</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/AssetBase.ts#L17">Asset/AssetBase.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/AssetBase.ts#L17">Asset/AssetBase.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -220,10 +215,10 @@
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> metadata<wbr>Text</h3>
 					<div class="tsd-signature tsd-kind-icon">metadata<wbr>Text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
-						<p>Implementation of <a href="../interfaces/_interfaces_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_interfaces_iasset_.iasset.html#metadatatext">metadataText</a></p>
+						<p>Implementation of <a href="../interfaces/_asset_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_asset_iasset_.iasset.html#metadatatext">metadataText</a></p>
 						<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#metadatatext">metadataText</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/AssetBase.ts#L16">Asset/AssetBase.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/AssetBase.ts#L16">Asset/AssetBase.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -241,7 +236,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#calculateassetid">calculateAssetId</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/AssetBase.ts#L63">Asset/AssetBase.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/AssetBase.ts#L63">Asset/AssetBase.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -263,7 +258,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/BundleAsset.ts#L70">Asset/BundleAsset.ts:70</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/BundleAsset.ts#L70">Asset/BundleAsset.ts:70</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -287,7 +282,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#equals">equals</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/AssetBase.ts#L71">Asset/AssetBase.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/AssetBase.ts#L71">Asset/AssetBase.ts:71</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -316,7 +311,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/BundleAsset.ts#L67">Asset/BundleAsset.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/BundleAsset.ts#L67">Asset/BundleAsset.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -340,7 +335,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#getassetid">getAssetId</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/AssetBase.ts#L56">Asset/AssetBase.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/AssetBase.ts#L56">Asset/AssetBase.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -362,7 +357,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/BundleAsset.ts#L64">Asset/BundleAsset.ts:64</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/BundleAsset.ts#L64">Asset/BundleAsset.ts:64</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -382,14 +377,14 @@
 					<a name="generatemetadata" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> generate<wbr>Metadata</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">generate<wbr>Metadata<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, metadata<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_imetadata_.imetadata.html" class="tsd-signature-type">IMetadata</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_imetadata_.imetadata.html" class="tsd-signature-type">IMetadata</a></li>
+						<li class="tsd-signature tsd-kind-icon">generate<wbr>Metadata<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, metaData<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_asset_imetadata_.imetadata.html" class="tsd-signature-type">IMetaData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_asset_imetadata_.imetadata.html" class="tsd-signature-type">IMetaData</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#generatemetadata">generateMetadata</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/AssetBase.ts#L28">Asset/AssetBase.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/AssetBase.ts#L28">Asset/AssetBase.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -412,13 +407,10 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> metadata: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_imetadata_.imetadata.html" class="tsd-signature-type">IMetadata</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>A pre filled in metadata as a JSON string or object.</p>
-									</div>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> metaData: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_asset_imetadata_.imetadata.html" class="tsd-signature-type">IMetaData</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_interfaces_imetadata_.imetadata.html" class="tsd-signature-type">IMetadata</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_asset_imetadata_.imetadata.html" class="tsd-signature-type">IMetaData</a></h4>
 							<p>A new metadata object or the metadata argument value that was provided
 							with the <code>name</code> and <code>type</code> set.</p>
 						</li>
@@ -431,13 +423,13 @@
 					<a name="create" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> create</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, assetList<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_interfaces_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>, metadata<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_imetadata_.imetadatabundle.html" class="tsd-signature-type">IMetadataBundle</a>, did<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asset_bundleasset_.bundleasset.html" class="tsd-signature-type">BundleAsset</a></li>
+						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, assetList<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_asset_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span>, metaData<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_asset_imetadata_.imetadatabundle.html" class="tsd-signature-type">IMetaDataBundle</a>, did<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asset_bundleasset_.bundleasset.html" class="tsd-signature-type">BundleAsset</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Asset/BundleAsset.ts#L23">Asset/BundleAsset.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Asset/BundleAsset.ts#L23">Asset/BundleAsset.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -454,16 +446,13 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> assetList: <a href="../interfaces/_interfaces_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> assetList: <a href="../interfaces/_asset_imetadata_.ibundlemap.html" class="tsd-signature-type">IBundleMap</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>List of assetId&#39;s. This can be a IBundleMap object, or a Map with name-&gt;assetId.</p>
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> metadata: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_imetadata_.imetadatabundle.html" class="tsd-signature-type">IMetadataBundle</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Metadata to provide with the asset.</p>
-									</div>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> metaData: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_asset_imetadata_.imetadatabundle.html" class="tsd-signature-type">IMetaDataBundle</a></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> did: <span class="tsd-signature-type">string</span></h5>
@@ -555,7 +544,6 @@
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 			</ul>

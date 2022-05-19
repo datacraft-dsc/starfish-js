@@ -97,13 +97,15 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#authentication" class="tsd-kind-icon">authentication</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_agent_remoteagent_.remoteagent.html#ddo" class="tsd-kind-icon">ddo</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="_agent_remoteagent_.remoteagent.html#ddotext" class="tsd-kind-icon">ddo<wbr>Text</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
-							<h3>Other Methods</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#createlisting" class="tsd-kind-icon">create<wbr>Listing</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#downloadasset" class="tsd-kind-icon">download<wbr>Asset</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#findasset" class="tsd-kind-icon">find<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="_agent_remoteagent_.remoteagent.html#generatedidforasset" class="tsd-kind-icon">generateDIDFor<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#getasset" class="tsd-kind-icon">get<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_agent_remoteagent_.remoteagent.html#getauthorizationtoken" class="tsd-kind-icon">get<wbr>Authorization<wbr>Token</a></li>
@@ -112,15 +114,12 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#getjob" class="tsd-kind-icon">get<wbr>Job</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#getlisting" class="tsd-kind-icon">get<wbr>Listing</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#getlistinglist" class="tsd-kind-icon">get<wbr>Listing<wbr>List</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#getmetadatalist" class="tsd-kind-icon">get<wbr>Meta<wbr>Data<wbr>List</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#invoke" class="tsd-kind-icon">invoke</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#registerasset" class="tsd-kind-icon">register<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#updatelisting" class="tsd-kind-icon">update<wbr>Listing</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_agent_remoteagent_.remoteagent.html#uploadasset" class="tsd-kind-icon">upload<wbr>Asset</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_agent_remoteagent_.remoteagent.html#resolveurl" class="tsd-kind-icon">resolveURL</a></li>
-							</ul>
-							<h3>Static Create Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_agent_remoteagent_.remoteagent.html#createfromaddress" class="tsd-kind-icon">create<wbr>From<wbr>Address</a></li>
 							</ul>
 						</section>
 					</div>
@@ -132,34 +131,29 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Remote<wbr>Agent<span class="tsd-signature-symbol">(</span>ddo<span class="tsd-signature-symbol">: </span><a href="_ddo_ddo_.ddo.html" class="tsd-signature-type">DDO</a>, authentication<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_agent_remoteagent_.remoteagent.html" class="tsd-signature-type">RemoteAgent</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Remote<wbr>Agent<span class="tsd-signature-symbol">(</span>ddoText<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, authentication<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_agent_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_agent_remoteagent_.remoteagent.html" class="tsd-signature-type">RemoteAgent</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L78">Agent/RemoteAgent.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L46">Agent/RemoteAgent.ts:46</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Construct an new Remote Agent object. Please use <a href="_agent_remoteagent_.remoteagent.html#createfromaddress">createFromAddress</a> to correctly resolve the agent
+									<p>Construct an new Remote Agent object. Please use {@link createFromAddress} to correctly resolve the agent
 									and obtain the correct DDO record.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>ddo: <a href="_ddo_ddo_.ddo.html" class="tsd-signature-type">DDO</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>DDO to use for this agent.</p>
-										</div>
-									</div>
+									<h5>ddoText: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> authentication: <a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> authentication: <a href="../interfaces/_agent_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<div class="lead">
 											<p>Authentication data needed for Agent access.</p>
@@ -177,10 +171,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="authentication" class="tsd-anchor"></a>
 					<h3>authentication</h3>
-					<div class="tsd-signature tsd-kind-icon">authentication<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></div>
+					<div class="tsd-signature tsd-kind-icon">authentication<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_agent_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L27">Agent/RemoteAgent.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L26">Agent/RemoteAgent.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -191,24 +185,35 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#ddo">ddo</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/AgentBase.ts#L14">Agent/AgentBase.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/AgentBase.ts#L15">Agent/AgentBase.ts:15</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+					<a name="ddotext" class="tsd-anchor"></a>
+					<h3>ddo<wbr>Text</h3>
+					<div class="tsd-signature tsd-kind-icon">ddo<wbr>Text<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#ddotext">ddoText</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/AgentBase.ts#L14">Agent/AgentBase.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Other Methods</h2>
+				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="createlisting" class="tsd-anchor"></a>
 					<h3>create<wbr>Listing</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">create<wbr>Listing<span class="tsd-signature-symbol">(</span>listingInfo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, assetDIDorId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Listing<span class="tsd-signature-symbol">(</span>listingInfo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, assetDIDorId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L154">Agent/RemoteAgent.ts:154</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L180">Agent/RemoteAgent.ts:180</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -228,7 +233,7 @@
 									<h5>assetDIDorId: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>A listing data object. This contains the information saved by the remote agent as well as the <code>.info</code> property,
 							which contains the <code>listingInfo</code>.</p>
 						</li>
@@ -244,7 +249,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L137">Agent/RemoteAgent.ts:137</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L163">Agent/RemoteAgent.ts:163</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -266,6 +271,29 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="findasset" class="tsd-anchor"></a>
+					<h3>find<wbr>Asset</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">find<wbr>Asset<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">: </span><a href="../interfaces/_asset_imetadata_.imetadata.html" class="tsd-signature-type">IMetaData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_imetadata_.imetadatalist.html" class="tsd-signature-type">IMetaDataList</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L126">Agent/RemoteAgent.ts:126</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>filter: <a href="../interfaces/_asset_imetadata_.imetadata.html" class="tsd-signature-type">IMetaData</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_imetadata_.imetadatalist.html" class="tsd-signature-type">IMetaDataList</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="generatedidforasset" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> generateDIDFor<wbr>Asset</h3>
@@ -277,7 +305,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#generatedidforasset">generateDIDForAsset</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/AgentBase.ts#L47">Agent/AgentBase.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/AgentBase.ts#L49">Agent/AgentBase.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -309,7 +337,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L110">Agent/RemoteAgent.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L117">Agent/RemoteAgent.ts:117</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -341,7 +369,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L246">Agent/RemoteAgent.ts:246</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L282">Agent/RemoteAgent.ts:282</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -364,7 +392,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#getdid">getDID</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/AgentBase.ts#L54">Agent/AgentBase.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/AgentBase.ts#L56">Agent/AgentBase.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -387,7 +415,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_agent_agentbase_.agentbase.html">AgentBase</a>.<a href="_agent_agentbase_.agentbase.html#getendpoint">getEndpoint</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/AgentBase.ts#L30">Agent/AgentBase.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/AgentBase.ts#L32">Agent/AgentBase.ts:32</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -421,13 +449,13 @@
 					<a name="getjob" class="tsd-anchor"></a>
 					<h3>get<wbr>Job</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Job<span class="tsd-signature-symbol">(</span>jobId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Job<span class="tsd-signature-symbol">(</span>jobId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_asset_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L230">Agent/RemoteAgent.ts:230</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L266">Agent/RemoteAgent.ts:266</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -438,13 +466,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>jobId: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a></h5>
+									<h5>jobId: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_asset_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Job id string or the InvokeResult returned by the async invoke call.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>A new InovkeResult on the status and results of the running job.</p>
 						</li>
 					</ul>
@@ -453,13 +481,13 @@
 					<a name="getlisting" class="tsd-anchor"></a>
 					<h3>get<wbr>Listing</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Listing<span class="tsd-signature-symbol">(</span>listingId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Listing<span class="tsd-signature-symbol">(</span>listingId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L180">Agent/RemoteAgent.ts:180</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L206">Agent/RemoteAgent.ts:206</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -476,7 +504,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>a valid IListingData Object.</p>
 						</li>
 					</ul>
@@ -485,13 +513,13 @@
 					<a name="getlistinglist" class="tsd-anchor"></a>
 					<h3>get<wbr>Listing<wbr>List</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Listing<wbr>List<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_ilisting_.ilistingfilter.html" class="tsd-signature-type">IListingFilter</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Listing<wbr>List<span class="tsd-signature-symbol">(</span>filter<span class="tsd-signature-symbol">: </span><a href="../interfaces/_asset_ilisting_.ilistingfilter.html" class="tsd-signature-type">IListingFilter</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L192">Agent/RemoteAgent.ts:192</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L218">Agent/RemoteAgent.ts:218</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -502,14 +530,31 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>filter: <a href="../interfaces/_interfaces_ilisting_.ilistingfilter.html" class="tsd-signature-type">IListingFilter</a></h5>
+									<h5>filter: <a href="../interfaces/_asset_ilisting_.ilistingfilter.html" class="tsd-signature-type">IListingFilter</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The filter to use to get a list of listing data items.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>an Array of IListingData items found using the filter.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getmetadatalist" class="tsd-anchor"></a>
+					<h3>get<wbr>Meta<wbr>Data<wbr>List</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Meta<wbr>Data<wbr>List<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_imetadata_.imetadatalist.html" class="tsd-signature-type">IMetaDataList</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L91">Agent/RemoteAgent.ts:91</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_imetadata_.imetadatalist.html" class="tsd-signature-type">IMetaDataList</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -517,13 +562,13 @@
 					<a name="invoke" class="tsd-anchor"></a>
 					<h3>invoke</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">invoke<span class="tsd-signature-symbol">(</span>asset<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="_asset_operationasset_.operationasset.html" class="tsd-signature-type">OperationAsset</a>, inputs<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">unknown</span>, isAsync<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">invoke<span class="tsd-signature-symbol">(</span>assetOrName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="_asset_operationasset_.operationasset.html" class="tsd-signature-type">OperationAsset</a>, inputs<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">unknown</span>, isAsync<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L208">Agent/RemoteAgent.ts:208</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L233">Agent/RemoteAgent.ts:233</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -534,11 +579,10 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>asset: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="_asset_operationasset_.operationasset.html" class="tsd-signature-type">OperationAsset</a></h5>
+									<h5>assetOrName: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="_asset_operationasset_.operationasset.html" class="tsd-signature-type">OperationAsset</a></h5>
 									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>AssetId or AssetDID as a string, or OperationAsset.</p>
-										</div>
+										<p>This can be a string for an assetDID, assetID or name of the operation
+										or an OperationAsset that has been read using <a href="_agent_remoteagent_.remoteagent.html#getasset">getAsset</a>.</p>
 									</div>
 								</li>
 								<li>
@@ -554,7 +598,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_iinvoke_.iinvokeresult.html" class="tsd-signature-type">IInvokeResult</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>The <code>outputs</code> and <code>status</code>, if the invoke is sync, else for async just return the <code>jobId</code></p>
 						</li>
 					</ul>
@@ -569,7 +613,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L96">Agent/RemoteAgent.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L103">Agent/RemoteAgent.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -595,13 +639,13 @@
 					<a name="updatelisting" class="tsd-anchor"></a>
 					<h3>update<wbr>Listing</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">update<wbr>Listing<span class="tsd-signature-symbol">(</span>listingData<span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Listing<span class="tsd-signature-symbol">(</span>listingData<span class="tsd-signature-symbol">: </span><a href="../interfaces/_asset_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L168">Agent/RemoteAgent.ts:168</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L194">Agent/RemoteAgent.ts:194</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -612,13 +656,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>listingData: <a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a></h5>
+									<h5>listingData: <a href="../interfaces/_asset_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The full listing data object that was returned after a @{link getListing} or <a href="_agent_remoteagent_.remoteagent.html#createlisting">createListing</a>.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_interfaces_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_asset_ilisting_.ilistingdata.html" class="tsd-signature-type">IListingData</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>a new updated IListingData object.</p>
 						</li>
 					</ul>
@@ -633,7 +677,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L124">Agent/RemoteAgent.ts:124</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L150">Agent/RemoteAgent.ts:150</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -659,13 +703,13 @@
 					<a name="resolveurl" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> resolveURL</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">resolveURL<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, authentication<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">resolveURL<span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, authentication<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_agent_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L36">Agent/RemoteAgent.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Agent/RemoteAgent.ts#L35">Agent/RemoteAgent.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -683,7 +727,7 @@
 									</div>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> authentication: <a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> authentication: <a href="../interfaces/_agent_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Authentication interface to set if the Agent requires authentication access to it&#39;s api.</p>
 									</div>
@@ -691,54 +735,6 @@
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>String of the DDO JSON text or null if the agent is not found or the authentication is invalid.</p>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Static Create Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="createfromaddress" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> create<wbr>From<wbr>Address</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">create<wbr>From<wbr>Address<span class="tsd-signature-symbol">(</span>agentAddress<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, network<span class="tsd-signature-symbol">?: </span><a href="_network_ethereum_ethereumnetwork_.ethereumnetwork.html" class="tsd-signature-type">EthereumNetwork</a>, authentication<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_agent_remoteagent_.remoteagent.html" class="tsd-signature-type">RemoteAgent</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Agent/RemoteAgent.ts#L58">Agent/RemoteAgent.ts:58</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Create a new RemoteAgent object using the agent&#39;s address.
-									The address can be a URL, DID or Asset DID</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>agentAddress: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>URL, DID or Asset DID of the agent to resolve.</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> network: <a href="_network_ethereum_ethereumnetwork_.ethereumnetwork.html" class="tsd-signature-type">EthereumNetwork</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>EthereumNetwork object to resolve all DID&#39;s. If non provided only a URL resolve will work.</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> authentication: <a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>For URL resolving you need to provide an optional authentication data to access the remote agent.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_agent_remoteagent_.remoteagent.html" class="tsd-signature-type">RemoteAgent</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>RemoteAgent object if successful or null</p>
 						</li>
 					</ul>
 				</section>
@@ -771,11 +767,17 @@
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="_agent_remoteagent_.remoteagent.html#ddo" class="tsd-kind-icon">ddo</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
+								<a href="_agent_remoteagent_.remoteagent.html#ddotext" class="tsd-kind-icon">ddo<wbr>Text</a>
+							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_agent_remoteagent_.remoteagent.html#createlisting" class="tsd-kind-icon">create<wbr>Listing</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_agent_remoteagent_.remoteagent.html#downloadasset" class="tsd-kind-icon">download<wbr>Asset</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_agent_remoteagent_.remoteagent.html#findasset" class="tsd-kind-icon">find<wbr>Asset</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 								<a href="_agent_remoteagent_.remoteagent.html#generatedidforasset" class="tsd-kind-icon">generateDIDFor<wbr>Asset</a>
@@ -802,6 +804,9 @@
 								<a href="_agent_remoteagent_.remoteagent.html#getlistinglist" class="tsd-kind-icon">get<wbr>Listing<wbr>List</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_agent_remoteagent_.remoteagent.html#getmetadatalist" class="tsd-kind-icon">get<wbr>Meta<wbr>Data<wbr>List</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_agent_remoteagent_.remoteagent.html#invoke" class="tsd-kind-icon">invoke</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
@@ -812,9 +817,6 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_agent_remoteagent_.remoteagent.html#uploadasset" class="tsd-kind-icon">upload<wbr>Asset</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_agent_remoteagent_.remoteagent.html#createfromaddress" class="tsd-kind-icon">create<wbr>From<wbr>Address</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="_agent_remoteagent_.remoteagent.html#resolveurl" class="tsd-kind-icon">resolveURL</a>
@@ -839,7 +841,6 @@
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 			</ul>

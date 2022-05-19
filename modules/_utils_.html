@@ -77,12 +77,6 @@
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
-							<h3>Contract Helpers Functions</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#isbalanceinsufficient" class="tsd-kind-icon">is<wbr>Balance<wbr>Insufficient</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#toether" class="tsd-kind-icon">to<wbr>Ether</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#towei" class="tsd-kind-icon">to<wbr>Wei</a></li>
-							</ul>
 							<h3>DID Helpers Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#didcreate" class="tsd-kind-icon">did<wbr>Create</a></li>
@@ -93,12 +87,14 @@
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#extractassetid" class="tsd-kind-icon">extract<wbr>Asset<wbr>Id</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#idtodid" class="tsd-kind-icon">id<wbr>ToDID</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#isdid" class="tsd-kind-icon">isDID</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#removeleadinghexzero" class="tsd-kind-icon">remove<wbr>Leading<wbr>Hex<wbr>Zero</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#prefix0x" class="tsd-kind-icon">prefix0x</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#remove0xprefix" class="tsd-kind-icon">remove0x<wbr>Prefix</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#toidhex" class="tsd-kind-icon">to<wbr>IdHex</a></li>
 							</ul>
 							<h3>Other Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#prefix0x" class="tsd-kind-icon">prefix0x</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#isassetid" class="tsd-kind-icon">is<wbr>Asset<wbr>Id</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_utils_.html#isbalanceinsufficient" class="tsd-kind-icon">is<wbr>Balance<wbr>Insufficient</a></li>
 							</ul>
 						</section>
 					</div>
@@ -112,111 +108,9 @@
 					<div class="tsd-signature tsd-kind-icon">NETWORK_<wbr>DID_<wbr>METHOD<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"dep"</span><span class="tsd-signature-symbol"> = &quot;dep&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L11">Utils.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L11">Utils.ts:11</a></li>
 						</ul>
 					</aside>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Contract Helpers Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="isbalanceinsufficient" class="tsd-anchor"></a>
-					<h3>is<wbr>Balance<wbr>Insufficient</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Balance<wbr>Insufficient<span class="tsd-signature-symbol">(</span>balanceEther<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L48">Utils.ts:48</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Checks to see if the balance is sufficient for transfer of funds.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>balanceEther: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The balance of the account in Ether.</p>
-									</div>
-								</li>
-								<li>
-									<h5>amount: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
-							<p>True if the amonut &lt;= balanceEther.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="toether" class="tsd-anchor"></a>
-					<h3>to<wbr>Ether</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Ether<span class="tsd-signature-symbol">(</span>amountWei<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L27">Utils.ts:27</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Convert an amount in Wei to Ether</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>amountWei: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The amount to convert.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>the amount in Ether.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="towei" class="tsd-anchor"></a>
-					<h3>to<wbr>Wei</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Wei<span class="tsd-signature-symbol">(</span>amountEther<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L37">Utils.ts:37</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Converts an amount in Ether to Wei.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>amountEther: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The amount in ether.</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-							<p>the amount converted to Wei.</p>
-						</li>
-					</ul>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -231,7 +125,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L191">Utils.ts:191</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L171">Utils.ts:171</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -269,13 +163,13 @@
 					<a name="didparse" class="tsd-anchor"></a>
 					<h3>did<wbr>Parse</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">did<wbr>Parse<span class="tsd-signature-symbol">(</span>did<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_interfaces_ididfragment_.ididfragment.html" class="tsd-signature-type">IDIDFragment</a></li>
+						<li class="tsd-signature tsd-kind-icon">did<wbr>Parse<span class="tsd-signature-symbol">(</span>did<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_network_ididfragment_.ididfragment.html" class="tsd-signature-type">IDIDFragment</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L130">Utils.ts:130</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L120">Utils.ts:120</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -295,7 +189,7 @@
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_interfaces_ididfragment_.ididfragment.html" class="tsd-signature-type">IDIDFragment</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_network_ididfragment_.ididfragment.html" class="tsd-signature-type">IDIDFragment</a></h4>
 							<p>a IDIDFragment</p>
 						</li>
 					</ul>
@@ -310,7 +204,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L113">Utils.ts:113</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L103">Utils.ts:103</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -332,7 +226,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L168">Utils.ts:168</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L158">Utils.ts:158</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -364,7 +258,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L77">Utils.ts:77</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L67">Utils.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -402,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L226">Utils.ts:226</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L206">Utils.ts:206</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -434,7 +328,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L157">Utils.ts:157</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L147">Utils.ts:147</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -466,7 +360,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L100">Utils.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L90">Utils.ts:90</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -489,16 +383,48 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="removeleadinghexzero" class="tsd-anchor"></a>
-					<h3>remove<wbr>Leading<wbr>Hex<wbr>Zero</h3>
+					<a name="prefix0x" class="tsd-anchor"></a>
+					<h3>prefix0x</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">remove<wbr>Leading<wbr>Hex<wbr>Zero<span class="tsd-signature-symbol">(</span>text<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">prefix0x<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L179">Utils.ts:179</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L41">Utils.ts:41</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Pre append a 0x prefix to the hex string</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Value to pe-append 0x too</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>The hex string with a 0x pre appended</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="remove0xprefix" class="tsd-anchor"></a>
+					<h3>remove0x<wbr>Prefix</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">remove0x<wbr>Prefix<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L51">Utils.ts:51</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -509,7 +435,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>text: <span class="tsd-signature-type">string</span></h5>
+									<h5>value: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Hex string to remove the leading 0x.</p>
 									</div>
@@ -530,7 +456,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L211">Utils.ts:211</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L191">Utils.ts:191</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -556,25 +482,51 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Other Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="prefix0x" class="tsd-anchor"></a>
-					<h3>prefix0x</h3>
+					<a name="isassetid" class="tsd-anchor"></a>
+					<h3>is<wbr>Asset<wbr>Id</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">prefix0x<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Asset<wbr>Id<span class="tsd-signature-symbol">(</span>assetId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Utils.ts#L54">Utils.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L218">Utils.ts:218</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>value: <span class="tsd-signature-type">string</span></h5>
+									<h5>assetId: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="isbalanceinsufficient" class="tsd-anchor"></a>
+					<h3>is<wbr>Balance<wbr>Insufficient</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Balance<wbr>Insufficient<span class="tsd-signature-symbol">(</span>balance<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Utils.ts#L21">Utils.ts:21</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>balance: <span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>amount: <span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -618,6 +570,9 @@
 						<a href="_utils_.html#idtodid" class="tsd-kind-icon">id<wbr>ToDID</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_utils_.html#isassetid" class="tsd-kind-icon">is<wbr>Asset<wbr>Id</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_utils_.html#isbalanceinsufficient" class="tsd-kind-icon">is<wbr>Balance<wbr>Insufficient</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
@@ -627,16 +582,10 @@
 						<a href="_utils_.html#prefix0x" class="tsd-kind-icon">prefix0x</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_utils_.html#removeleadinghexzero" class="tsd-kind-icon">remove<wbr>Leading<wbr>Hex<wbr>Zero</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_utils_.html#toether" class="tsd-kind-icon">to<wbr>Ether</a>
+						<a href="_utils_.html#remove0xprefix" class="tsd-kind-icon">remove0x<wbr>Prefix</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="_utils_.html#toidhex" class="tsd-kind-icon">to<wbr>IdHex</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="_utils_.html#towei" class="tsd-kind-icon">to<wbr>Wei</a>
 					</li>
 				</ul>
 			</nav>
@@ -648,7 +597,6 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 			</ul>

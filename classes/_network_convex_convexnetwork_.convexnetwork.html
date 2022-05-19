@@ -107,12 +107,14 @@
 						<section class="tsd-index-section ">
 							<h3>Other Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_convex_convexnetwork_.convexnetwork.html#getcontract" class="tsd-kind-icon">get<wbr>Contract</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_convex_convexnetwork_.convexnetwork.html#gettokenbalance" class="tsd-kind-icon">get<wbr>Token<wbr>Balance</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_convex_convexnetwork_.convexnetwork.html#init" class="tsd-kind-icon">init</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_convex_convexnetwork_.convexnetwork.html#loadcontract" class="tsd-kind-icon">load<wbr>Contract</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_convex_convexnetwork_.convexnetwork.html#registerdid" class="tsd-kind-icon">registerDID</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_convex_convexnetwork_.convexnetwork.html#registerprovenance" class="tsd-kind-icon">register<wbr>Provenance</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_convex_convexnetwork_.convexnetwork.html#requesttesttokens" class="tsd-kind-icon">request<wbr>Test<wbr>Tokens</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_convex_convexnetwork_.convexnetwork.html#resolveagent" class="tsd-kind-icon">resolve<wbr>Agent</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_convex_convexnetwork_.convexnetwork.html#resolveagentdid" class="tsd-kind-icon">resolve<wbr>AgentDID</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_convex_convexnetwork_.convexnetwork.html#resolvedid" class="tsd-kind-icon">resolveDID</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_network_convex_convexnetwork_.convexnetwork.html#sendtoken" class="tsd-kind-icon">send<wbr>Token</a></li>
 							</ul>
@@ -136,7 +138,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L34">Network/Convex/ConvexNetwork.ts:34</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L36">Network/Convex/ConvexNetwork.ts:36</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="_network_convex_convexnetwork_.convexnetwork.html" class="tsd-signature-type">ConvexNetwork</a></h4>
@@ -152,7 +154,7 @@
 					<div class="tsd-signature tsd-kind-icon">contract<wbr>Manager<span class="tsd-signature-symbol">:</span> <a href="_network_convex_contract_convexcontractmanager_.convexcontractmanager.html" class="tsd-signature-type">ConvexContractManager</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L31">Network/Convex/ConvexNetwork.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L33">Network/Convex/ConvexNetwork.ts:33</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -162,17 +164,17 @@
 					<div class="tsd-signature tsd-kind-icon">convex<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ConvexAPI</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L34">Network/Convex/ConvexNetwork.ts:34</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L36">Network/Convex/ConvexNetwork.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="queryaddress" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagReadonly">Readonly</span> query<wbr>Address</h3>
-					<div class="tsd-signature tsd-kind-icon">query<wbr>Address<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">query<wbr>Address<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">BigInt</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L32">Network/Convex/ConvexNetwork.ts:32</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L34">Network/Convex/ConvexNetwork.ts:34</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -182,7 +184,7 @@
 					<div class="tsd-signature tsd-kind-icon">url<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L33">Network/Convex/ConvexNetwork.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L35">Network/Convex/ConvexNetwork.ts:35</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -192,7 +194,7 @@
 					<div class="tsd-signature tsd-kind-icon">instance<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L30">Network/Convex/ConvexNetwork.ts:30</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L32">Network/Convex/ConvexNetwork.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -200,48 +202,16 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Other Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getcontract" class="tsd-anchor"></a>
-					<h3>get<wbr>Contract</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Contract<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_network_convex_contract_contractbase_.contractbase.html" class="tsd-signature-type">ContractBase</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L56">Network/Convex/ConvexNetwork.ts:56</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load a contract based on it&#39;s name.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>name: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Name of the contract to load</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_network_convex_contract_contractbase_.contractbase.html" class="tsd-signature-type">ContractBase</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>AContract that has been loadad</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="gettokenbalance" class="tsd-anchor"></a>
 					<h3>get<wbr>Token<wbr>Balance</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Token<wbr>Balance<span class="tsd-signature-symbol">(</span>accountAddress<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConvexAccount</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Token<wbr>Balance<span class="tsd-signature-symbol">(</span>accountAddress<span class="tsd-signature-symbol">: </span><a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L72">Network/Convex/ConvexNetwork.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L74">Network/Convex/ConvexNetwork.ts:74</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -252,13 +222,13 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>accountAddress: <span class="tsd-signature-type">ConvexAccount</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+									<h5>accountAddress: <a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">BigInt</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Acount object on account address string.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>Token balance as a string.</p>
 						</li>
 					</ul>
@@ -273,7 +243,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L45">Network/Convex/ConvexNetwork.ts:45</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L47">Network/Convex/ConvexNetwork.ts:47</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -296,16 +266,51 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="registerdid" class="tsd-anchor"></a>
-					<h3>registerDID</h3>
+					<a name="loadcontract" class="tsd-anchor"></a>
+					<h3>load<wbr>Contract</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">registerDID<span class="tsd-signature-symbol">(</span>account<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConvexAccount</span>, did<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, ddoText<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">load<wbr>Contract<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, registerName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_network_convex_contract_contractbase_.contractbase.html" class="tsd-signature-type">ContractBase</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L249">Network/Convex/ConvexNetwork.ts:249</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L58">Network/Convex/ConvexNetwork.ts:58</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Load a contract based on it&#39;s name.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Name of the contract to load</p>
+									</div>
+								</li>
+								<li>
+									<h5>registerName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_network_convex_contract_contractbase_.contractbase.html" class="tsd-signature-type">ContractBase</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>AContract that has been loadad</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="registerdid" class="tsd-anchor"></a>
+					<h3>registerDID</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">registerDID<span class="tsd-signature-symbol">(</span>account<span class="tsd-signature-symbol">: </span><a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a>, did<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, ddoText<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L251">Network/Convex/ConvexNetwork.ts:251</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -316,7 +321,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>account: <span class="tsd-signature-type">ConvexAccount</span></h5>
+									<h5>account: <a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a></h5>
 								</li>
 								<li>
 									<h5>did: <span class="tsd-signature-type">string</span></h5>
@@ -331,16 +336,45 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="requesttesttokens" class="tsd-anchor"></a>
-					<h3>request<wbr>Test<wbr>Tokens</h3>
+					<a name="registerprovenance" class="tsd-anchor"></a>
+					<h3>register<wbr>Provenance</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">request<wbr>Test<wbr>Tokens<span class="tsd-signature-symbol">(</span>account<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConvexAccount</span>, amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">register<wbr>Provenance<span class="tsd-signature-symbol">(</span>account<span class="tsd-signature-symbol">: </span><a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a>, assetId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L82">Network/Convex/ConvexNetwork.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L270">Network/Convex/ConvexNetwork.ts:270</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>account: <a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a></h5>
+								</li>
+								<li>
+									<h5>assetId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>data: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="requesttesttokens" class="tsd-anchor"></a>
+					<h3>request<wbr>Test<wbr>Tokens</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">request<wbr>Test<wbr>Tokens<span class="tsd-signature-symbol">(</span>account<span class="tsd-signature-symbol">: </span><a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a>, amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L84">Network/Convex/ConvexNetwork.ts:84</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -351,19 +385,19 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>account: <span class="tsd-signature-type">ConvexAccount</span></h5>
+									<h5>account: <a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>ConvexAccount object to request tokens for.</p>
 									</div>
 								</li>
 								<li>
-									<h5>amount: <span class="tsd-signature-type">number</span></h5>
+									<h5>amount: <span class="tsd-signature-type">BigInt</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Amount to request.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>True if successfull.</p>
 						</li>
 					</ul>
@@ -372,13 +406,13 @@
 					<a name="resolveagent" class="tsd-anchor"></a>
 					<h3>resolve<wbr>Agent</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">resolve<wbr>Agent<span class="tsd-signature-symbol">(</span>agentAddress<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, username<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, authentication<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_ddo_ddo_.ddo.html" class="tsd-signature-type">DDO</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">resolve<wbr>Agent<span class="tsd-signature-symbol">(</span>agentAddress<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, username<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, password<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, authentication<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_agent_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L285">Network/Convex/ConvexNetwork.ts:285</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L293">Network/Convex/ConvexNetwork.ts:293</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -393,10 +427,33 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> password: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> authentication: <a href="../interfaces/_interfaces_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> authentication: <a href="../interfaces/_agent_iagentauthentication_.iagentauthentication.html" class="tsd-signature-type">IAgentAuthentication</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_ddo_ddo_.ddo.html" class="tsd-signature-type">DDO</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="resolveagentdid" class="tsd-anchor"></a>
+					<h3>resolve<wbr>AgentDID</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">resolve<wbr>AgentDID<span class="tsd-signature-symbol">(</span>did<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L319">Network/Convex/ConvexNetwork.ts:319</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>did: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -404,13 +461,13 @@
 					<a name="resolvedid" class="tsd-anchor"></a>
 					<h3>resolveDID</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">resolveDID<span class="tsd-signature-symbol">(</span>did<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, account<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConvexAccount</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">resolveDID<span class="tsd-signature-symbol">(</span>did<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, account<span class="tsd-signature-symbol">: </span><a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L262">Network/Convex/ConvexNetwork.ts:262</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L264">Network/Convex/ConvexNetwork.ts:264</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -419,7 +476,7 @@
 									<h5>did: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5>account: <span class="tsd-signature-type">ConvexAccount</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+									<h5>account: <a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -430,13 +487,13 @@
 					<a name="sendtoken" class="tsd-anchor"></a>
 					<h3>send<wbr>Token</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">send<wbr>Token<span class="tsd-signature-symbol">(</span>account<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConvexAccount</span>, toAccountAddress<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ConvexAccount</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">send<wbr>Token<span class="tsd-signature-symbol">(</span>account<span class="tsd-signature-symbol">: </span><a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a>, toAccountAddress<span class="tsd-signature-symbol">: </span><a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">BigInt</span>, amount<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L100">Network/Convex/ConvexNetwork.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L102">Network/Convex/ConvexNetwork.ts:102</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -447,25 +504,25 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>account: <span class="tsd-signature-type">ConvexAccount</span></h5>
+									<h5>account: <a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>ConvexAccount to send the token from. You must have access to the private password, or have this account unlocked.</p>
 									</div>
 								</li>
 								<li>
-									<h5>toAccountAddress: <span class="tsd-signature-type">ConvexAccount</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+									<h5>toAccountAddress: <a href="../modules/_index_.html#convexaccount" class="tsd-signature-type">ConvexAccount</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">BigInt</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>ConvexAccount or address string of the account that will receive the payment.</p>
 									</div>
 								</li>
 								<li>
-									<h5>amount: <span class="tsd-signature-type">number</span></h5>
+									<h5>amount: <span class="tsd-signature-type">BigInt</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Amount to of token to send.</p>
 									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">BigInt</span><span class="tsd-signature-symbol">&gt;</span></h4>
 							<p>True if the sending of the payment was made.</p>
 						</li>
 					</ul>
@@ -483,7 +540,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a240265/src/Network/Convex/ConvexNetwork.ts#L22">Network/Convex/ConvexNetwork.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/a070243/src/Network/Convex/ConvexNetwork.ts#L24">Network/Convex/ConvexNetwork.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -544,22 +601,28 @@
 								<a href="_network_convex_convexnetwork_.convexnetwork.html#instance" class="tsd-kind-icon">instance</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_network_convex_convexnetwork_.convexnetwork.html#getcontract" class="tsd-kind-icon">get<wbr>Contract</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_network_convex_convexnetwork_.convexnetwork.html#gettokenbalance" class="tsd-kind-icon">get<wbr>Token<wbr>Balance</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_network_convex_convexnetwork_.convexnetwork.html#init" class="tsd-kind-icon">init</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_network_convex_convexnetwork_.convexnetwork.html#loadcontract" class="tsd-kind-icon">load<wbr>Contract</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_network_convex_convexnetwork_.convexnetwork.html#registerdid" class="tsd-kind-icon">registerDID</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_network_convex_convexnetwork_.convexnetwork.html#registerprovenance" class="tsd-kind-icon">register<wbr>Provenance</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_network_convex_convexnetwork_.convexnetwork.html#requesttesttokens" class="tsd-kind-icon">request<wbr>Test<wbr>Tokens</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_network_convex_convexnetwork_.convexnetwork.html#resolveagent" class="tsd-kind-icon">resolve<wbr>Agent</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_network_convex_convexnetwork_.convexnetwork.html#resolveagentdid" class="tsd-kind-icon">resolve<wbr>AgentDID</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_network_convex_convexnetwork_.convexnetwork.html#resolvedid" class="tsd-kind-icon">resolveDID</a>
@@ -574,6 +637,12 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="../modules/_network_convex_convexnetwork_.html#did_registry_contract_name" class="tsd-kind-icon">DID_<wbr>REGISTRY_<wbr>CONTRACT_<wbr>NAME</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="../modules/_network_convex_convexnetwork_.html#provenance_contract_name" class="tsd-kind-icon">PROVENANCE_<wbr>CONTRACT_<wbr>NAME</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -590,7 +659,6 @@
 				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 			</ul>
