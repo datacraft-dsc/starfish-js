@@ -1,5 +1,11 @@
 # Change Log
 
+## Release 0.3.0
++   Removed ethereum libraries
++   Add support for the latest convex-api-js
++   Add the ability to call an operation using it's name instead of the assetId
++   General cleanup and bug fixes
+
 ## Release 0.2.0
 +   Rename to datacraft-dsc
 
