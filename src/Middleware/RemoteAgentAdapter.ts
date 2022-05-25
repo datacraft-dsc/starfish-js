@@ -193,8 +193,8 @@ export class RemoteAgentAdapter {
         })
         const response = await fetch(storageURL, {
             method: 'POST',
-            headers: form.getHeaders(headers),
             body: form,
+            headers: form.getHeaders(headers)
         })
         if (response.ok) {
             return true
@@ -209,7 +209,7 @@ export class RemoteAgentAdapter {
             headers: headers,
         })
         if (response.ok) {
-            return response.buffer()
+            return await response.buffer()
         }
         RemoteAgentAdapter.throwError('Unable to download asset data', response)
     }
