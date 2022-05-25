@@ -1,5 +1,9 @@
 # Change Log
 
+## Release 0.3.1
++   move node-fetch to cross-fetch
++   upgrade convex-api-js
+
 ## Release 0.3.0
 +   Removed ethereum libraries
 +   Add support for the latest convex-api-js
