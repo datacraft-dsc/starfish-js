@@ -194,7 +194,7 @@ export class RemoteAgentAdapter {
         const response = await fetch(storageURL, {
             method: 'POST',
             body: form,
-            headers: form.getHeaders(headers)
+            headers: form.getHeaders(headers),
         })
         if (response.ok) {
             return true
