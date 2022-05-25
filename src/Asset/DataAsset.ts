@@ -6,7 +6,6 @@
  *
  */
 
-import fs from 'fs'
 import mime from 'mime-types'
 
 import { IMetaData, IMetaDataData } from './IMetaData'
@@ -47,6 +46,7 @@ export class DataAsset extends AssetBase {
         metaData?: string | IMetaDataData,
         did?: string
     ): Promise<DataAsset> {
+        const fs = await import('fs')
         const storeMetaData = AssetBase.generateMetadata(name, 'dataset', metaData)
         const data = await fs.promises.readFile(filename)
         storeMetaData.contentType = 'application/octet-stream'
@@ -76,6 +76,7 @@ export class DataAsset extends AssetBase {
      * @returns True if successful, else False.
      */
     public async saveToFile(filename: string): Promise<void> {
+        const fs = await import('fs')
         fs.promises.writeFile(filename, this.data)
     }
 }
