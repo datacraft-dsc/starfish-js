@@ -7,7 +7,7 @@
  *
  */
 
-import fetch, { Headers, Response } from 'node-fetch'
+import fetch, { Headers } from 'cross-fetch'
 import { Base64 } from 'js-base64'
 import { urlJoin } from 'url-join-ts'
 import queryString from 'query-string'
@@ -193,7 +193,7 @@ export class RemoteAgentAdapter {
         })
         const response = await fetch(storageURL, {
             method: 'POST',
-            body: form,
+            body: form.getBuffer(),
             headers: form.getHeaders(headers),
         })
         if (response.ok) {
@@ -209,7 +209,8 @@ export class RemoteAgentAdapter {
             headers: headers,
         })
         if (response.ok) {
-            return await response.buffer()
+            const buffer = Buffer.from(await response.arrayBuffer())
+            return buffer
         }
         RemoteAgentAdapter.throwError('Unable to download asset data', response)
     }
