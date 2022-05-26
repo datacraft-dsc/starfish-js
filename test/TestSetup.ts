@@ -8,7 +8,7 @@
 import yaml from 'js-yaml'
 import fs from 'fs-extra'
 import { urlJoin } from 'url-join-ts'
-import fetch, { Headers } from 'node-fetch'
+import fetch, { Headers } from 'cross-fetch'
 import { Base64 } from 'js-base64'
 
 const CONFIG_FILENAME = 'test/resources/config_local.yml'
