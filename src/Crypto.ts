@@ -5,7 +5,7 @@
  *
  */
 
-import crypto from 'crypto'
+import { SHA3 } from 'sha3'
 
 /**
  * Caluclate the assetId based on the metadata text. At the moment no validation is done on the text.
@@ -13,7 +13,7 @@ import crypto from 'crypto'
  * @returns SHA-256 of the metadata text as hex string.
  */
 export function calculateAssetId(metadataText: string): string {
-    return crypto.createHash('SHA3-256').update(metadataText).digest('hex')
+    return new SHA3(256).update(metadataText).digest('hex')
 }
 
 /**
@@ -22,5 +22,5 @@ export function calculateAssetId(metadataText: string): string {
  * @returns the SHA-256 hash of the data as hex string.
  */
 export function calculateAssetDataHash(buffer: Buffer): string {
-    return crypto.createHash('SHA3-256').update(buffer).digest('hex')
+    return new SHA3(256).update(buffer).digest('hex')
 }

@@ -3,6 +3,8 @@
 ## Release 0.3.1
 +   move node-fetch to cross-fetch
 +   upgrade convex-api-js
++   move module fs to dynamic loading
++   replace crypto with sha3
 
 ## Release 0.3.0
 +   Removed ethereum libraries
