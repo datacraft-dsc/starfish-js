@@ -46,7 +46,8 @@
   },
   "homepage": "https://github.com/datacraft-dsc/starfish-js#README",
   "dependencies": {
-    "@convex-dev/convex-api-js": "^0.2.10",
+    "@convex-dev/convex-api-js": "file:../../Convex-Dev/convex-api-js/convex-dev-convex-api-js-0.2.10.tgz",
+    "buffer": "^6.0.3",
     "cross-fetch": "^3.1.5",
     "form-data": "^3.0.1",
     "js-base64": "^3.7.2",

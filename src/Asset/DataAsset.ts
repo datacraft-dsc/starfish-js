@@ -11,9 +11,10 @@ import mime from 'mime-types'
 import { IMetaData, IMetaDataData } from './IMetaData'
 import { AssetBase } from './AssetBase'
 import { calculateAssetDataHash } from '../Crypto'
+import { arrayBufferToString } from '../Utils'
 
 export class DataAsset extends AssetBase {
-    public data: Buffer
+    public data: ArrayBuffer
 
     /**
      * Create a DataAsset.
@@ -24,7 +25,7 @@ export class DataAsset extends AssetBase {
      * @returns a new DataAseet object.
      * @category Static Create
      */
-    public static create(name: string, data: Buffer, metaData?: string | IMetaDataData, did?: string): DataAsset {
+    public static create(name: string, data: ArrayBuffer, metaData?: string | IMetaDataData, did?: string): DataAsset {
         const storeMetaData = AssetBase.generateMetadata(name, 'dataset', metaData)
         storeMetaData.contentType = 'application/octet-stream'
         storeMetaData.contentHash = calculateAssetDataHash(data)
@@ -58,10 +59,14 @@ export class DataAsset extends AssetBase {
         return new DataAsset(storeMetaData, did, data)
     }
 
+    public static createEmpty(metaDataText: string, did?: string): DataAsset {
+        return new DataAsset(metaDataText, did)
+    }
+
     /**
      * Contstruct a DataAsset.
      */
-    constructor(metaData: string | IMetaData, did?: string, data?: Buffer) {
+    constructor(metaData: string | IMetaData, did?: string, data?: ArrayBuffer) {
         let metaDataText = metaData
         if (typeof metaData != 'string') {
             metaDataText = JSON.stringify(metaData)
@@ -77,6 +82,14 @@ export class DataAsset extends AssetBase {
      */
     public async saveToFile(filename: string): Promise<void> {
         const fs = await import('fs')
-        fs.promises.writeFile(filename, this.data)
+        fs.promises.writeFile(filename, Buffer.from(this.data))
+    }
+
+    public json(): string {
+        return JSON.parse(this.text())
+    }
+
+    public text(): string {
+        return arrayBufferToString(this.data)
     }
 }

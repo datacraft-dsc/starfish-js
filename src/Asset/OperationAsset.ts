@@ -21,4 +21,8 @@ export class OperationAsset extends AssetBase {
         const storeMetaData = AssetBase.generateMetadata(name, 'operation', metaData)
         return new OperationAsset(JSON.stringify(storeMetaData), did)
     }
+    public static createEmpty(metaDataText: string, did?: string): OperationAsset {
+        return new OperationAsset(metaDataText, did)
+    }
+
 }

@@ -21,7 +21,7 @@ describe('DataAsset Class', () => {
             assert(asset.metadataText)
             assert.equal(asset.metadata['name'], name)
             assert.equal(asset.metadata['type'], 'dataset')
-            assert(asset.data.equals(data))
+            assert(Buffer.from(asset.data).equals(data))
         })
     })
     describe('createFromFile', () => {
@@ -39,7 +39,7 @@ describe('DataAsset Class', () => {
             assert(asset.metadataText)
             assert.equal(asset.metadata['name'], name)
             assert.equal(asset.metadata['type'], 'dataset')
-            assert(asset.data.equals(data))
+            assert(Buffer.from(asset.data).equals(data))
             assert.equal(asset.metadata['contentType'], 'application/octet-stream')
         })
         after( () => {

@@ -41,6 +41,10 @@ export class BundleAsset extends AssetBase {
         return new BundleAsset(storeMetaData, did, storeMetaData.contents)
     }
 
+    public static createEmpty(metaDataText: string, did?: string): BundleAsset {
+        return new BundleAsset(metaDataText, did)
+    }
+
     /**
      * Construct a new BundleAsset. Please use {@link create} method instead to create a new BundleAsset object.
      * @param metadata Metadata of the asset as string or as an object.

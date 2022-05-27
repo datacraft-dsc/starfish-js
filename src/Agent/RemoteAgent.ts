@@ -11,12 +11,13 @@ import { urlJoin } from 'url-join-ts'
 
 import { RemoteAgentAdapter } from '../Middleware/RemoteAgentAdapter'
 import { AgentBase } from './AgentBase'
-import { AssetBase, DataAsset, OperationAsset } from '../Asset/Asset'
+import { AssetBase, DataAsset, OperationAsset, createAsset } from '../Asset/Asset'
 import { IAgentAuthentication } from '../Agent/IAgentAuthentication'
 import { IListingData, IListingFilter } from '../Asset/IListing'
 import { IMetaData, IMetaDataList } from '../Asset/IMetaData'
 import { IInvokeResult } from '../Asset/IInvoke'
 import { extractAssetId, isAssetId, isDID } from '../Utils'
+
 // import { DDO } from '../DDO/DDO'
 
 export class RemoteAgent extends AgentBase {
@@ -120,7 +121,7 @@ export class RemoteAgent extends AgentBase {
         const url = this.getEndpoint('meta')
         const safeAssetId = extractAssetId(assetId)
         const metadata = await adapter.readMetadata(safeAssetId, url, token)
-        return new AssetBase(metadata, this.generateDIDForAsset(safeAssetId))
+        return createAsset(metadata, this.generateDIDForAsset(safeAssetId))
     }
 
     public async findAsset(filter: IMetaData): Promise<IMetaDataList> {

@@ -52,7 +52,7 @@ describe('RemoteAgent Class', () => {
             let data
             let registerAsset
             before( async () => {
-                data = Buffer.from(randomBytes(1024))
+                data = randomBytes(1024)
                 const asset = DataAsset.create('testAsset', data)
                 registerAsset = await agent.registerAsset(asset)
             })
@@ -75,7 +75,7 @@ describe('RemoteAgent Class', () => {
                     assert(await agent.uploadAsset(registerAsset))
                     const newAsset = await agent.downloadAsset(registerAsset.did)
                     assert(newAsset)
-                    assert(newAsset.data.equals(data))
+                    assert(Buffer.from(newAsset.data).equals(data))
                 })
             })
         })

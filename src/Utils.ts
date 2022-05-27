@@ -18,6 +18,22 @@ const NETWORK_DID_METHOD = 'dep'
  *
  */
 
+export function testWeb() {
+    let value
+    if ( window === undefined) {
+        value = 'test non browser'
+    } else {
+        const data = new Uint8Array(32)
+        window.crypto.getRandomValues(data)
+        value = data.toString()
+    }
+    return value
+}
+
+export function arrayBufferToString(data: ArrayBuffer): string {
+    return String.fromCharCode.apply(null, new Uint8Array(data))
+}
+
 export function isBalanceInsufficient(balance: BigInt | number | string, amount: BigInt | number | string): boolean {
     const balanceValue = Number(balance)
     const amountValue = Number(amount)

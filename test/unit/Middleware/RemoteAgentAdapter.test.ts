@@ -189,7 +189,7 @@ describe('RemoteAgentAdapter', () => {
                 assert(await adapter.uploadAssetData(assetId, assetData, storageURL, accessToken))
                 const downloadData = await adapter.downloadAssetData(assetId, storageURL, accessToken)
                 assert(downloadData)
-                assert(downloadData.equals(assetData))
+                assert(Buffer.from(downloadData).equals(assetData))
             })
         })
     })
