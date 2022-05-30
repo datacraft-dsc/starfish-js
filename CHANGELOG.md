@@ -1,5 +1,9 @@
 # Change Log
 
+## Release 0.3,2
++   Upgrade convex-api-js
++   move to non cyrpto node libraries
+
 ## Release 0.3.1
 +   move node-fetch to cross-fetch
 +   upgrade convex-api-js
