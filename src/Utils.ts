@@ -6,7 +6,7 @@
 import { prefix0x as convexPrefix0x, remove0xPrefix as convexRemove0xPrefix } from '@convex-dev/convex-api-js'
 
 import { IDIDFragment } from './Network/IDIDFragment'
-import { randomBytes } from 'crypto'
+import cryptojs from 'crypto-js'
 
 const NETWORK_DID_METHOD = 'dep'
 
@@ -17,18 +17,6 @@ const NETWORK_DID_METHOD = 'dep'
  *
  *
  */
-
-export function testWeb() {
-    let value
-    if ( window === undefined) {
-        value = 'test non browser'
-    } else {
-        const data = new Uint8Array(32)
-        window.crypto.getRandomValues(data)
-        value = data.toString()
-    }
-    return value
-}
 
 export function arrayBufferToString(data: ArrayBuffer): string {
     return String.fromCharCode.apply(null, new Uint8Array(data))
@@ -117,7 +105,7 @@ export function isDID(did: string): boolean {
  * @category DID Helpers
  */
 export function didRandom(): string {
-    return idToDID(randomBytes(32).toString('hex'))
+    return idToDID(cryptojs.lib.WordArray.random(32).toString())
 }
 
 /**
@@ -186,7 +174,7 @@ export function didToId(did: string): string {
  */
 export function didCreate(id?: string, assetId?: string, fragment?: string): string {
     if (!id) {
-        id = randomBytes(32).toString('hex')
+        id = cryptojs.lib.WordArray.random(32).toString()
     }
     let did = idToDID(id)
     if (assetId) {

@@ -20,7 +20,7 @@ export { DDO } from './DDO/DDO'
 
 export * from './Asset/IMetaData'
 export * from './Utils'
-export { calculateAssetDataHash, calculateAssetId } from './Crypto'
+export * from './Crypto'
 
 /*
  *
