@@ -1,4 +1,3 @@
-
 /*
  *
  *     Crypto utils
@@ -7,6 +6,7 @@
  */
 import cryptojs from 'crypto-js'
 import { sha3_256 } from 'js-sha3'
+import { convertWordArrayToByteArray } from '@convex-dev/convex-api-js'
 
 /**
  * Caluclate the assetId based on the metadata text. At the moment no validation is done on the text.
@@ -15,7 +15,6 @@ import { sha3_256 } from 'js-sha3'
  */
 export function calculateAssetId(metadataText: string): string {
     return sha3_256(metadataText)
-
 }
 
 /**
@@ -25,21 +24,6 @@ export function calculateAssetId(metadataText: string): string {
  */
 export function calculateAssetDataHash(data: ArrayBuffer): string {
     return sha3_256(data)
-
-}
-
-export function convertWordArrayToByteArray(wordArray): Uint8Array {
-    var words = wordArray.words
-    var sigBytes = wordArray.sigBytes
-
-    // Convert
-    var result = new Uint8Array(sigBytes)
-    for (var i = 0; i < sigBytes; i++) {
-        var value = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff
-        result[i] = value
-    }
-
-    return result
 }
 
 export function randomBytes(length: number): Uint8Array {

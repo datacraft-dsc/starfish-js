@@ -42,7 +42,6 @@ export class AssetBase implements IAsset {
         return new AssetBase(metaDataText, did)
     }
 
-
     /**
      * Consruct an asset using it's metadata in string form, and optional asset DID.
      * @param metadataText The asset metadata in text form. The reason for this is that the assetId is created using
@@ -76,5 +75,4 @@ export class AssetBase implements IAsset {
     public equals(asset: AssetBase): boolean {
         return this.calculateAssetId() == asset.calculateAssetId()
     }
-
 }

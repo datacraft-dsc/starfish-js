@@ -24,5 +24,4 @@ export class OperationAsset extends AssetBase {
     public static createEmpty(metaDataText: string, did?: string): OperationAsset {
         return new OperationAsset(metaDataText, did)
     }
-
 }
