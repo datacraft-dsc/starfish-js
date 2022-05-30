@@ -113,7 +113,10 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_asset_dataasset_.dataasset.html#calculateassetid" class="tsd-kind-icon">calculate<wbr>Asset<wbr>Id</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_asset_dataasset_.dataasset.html#equals" class="tsd-kind-icon">equals</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="_asset_dataasset_.dataasset.html#getassetid" class="tsd-kind-icon">get<wbr>Asset<wbr>Id</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_asset_dataasset_.dataasset.html#json" class="tsd-kind-icon">json</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_asset_dataasset_.dataasset.html#savetofile" class="tsd-kind-icon">save<wbr>ToFile</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_asset_dataasset_.dataasset.html#text" class="tsd-kind-icon">text</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static"><a href="_asset_dataasset_.dataasset.html#createempty" class="tsd-kind-icon">create<wbr>Empty</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_asset_dataasset_.dataasset.html#generatemetadata" class="tsd-kind-icon">generate<wbr>Metadata</a></li>
 							</ul>
 							<h3>Static Create Methods</h3>
@@ -131,14 +134,14 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Data<wbr>Asset<span class="tsd-signature-symbol">(</span>metaData<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_asset_imetadata_.imetadata.html" class="tsd-signature-type">IMetaData</a>, did<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, data<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Buffer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asset_dataasset_.dataasset.html" class="tsd-signature-type">DataAsset</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Data<wbr>Asset<span class="tsd-signature-symbol">(</span>metaData<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_asset_imetadata_.imetadata.html" class="tsd-signature-type">IMetaData</a>, did<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span>, data<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ArrayBuffer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asset_dataasset_.dataasset.html" class="tsd-signature-type">DataAsset</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/309625e/src/Asset/DataAsset.ts#L59">Asset/DataAsset.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/DataAsset.ts#L64">Asset/DataAsset.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -155,7 +158,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> did: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> data: <span class="tsd-signature-type">Buffer</span></h5>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> data: <span class="tsd-signature-type">ArrayBuffer</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_asset_dataasset_.dataasset.html" class="tsd-signature-type">DataAsset</a></h4>
@@ -168,10 +171,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="data" class="tsd-anchor"></a>
 					<h3>data</h3>
-					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Buffer</span></div>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ArrayBuffer</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/309625e/src/Asset/DataAsset.ts#L16">Asset/DataAsset.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/DataAsset.ts#L17">Asset/DataAsset.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -183,7 +186,7 @@
 						<p>Implementation of <a href="../interfaces/_asset_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_asset_iasset_.iasset.html#did">did</a></p>
 						<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#did">did</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/309625e/src/Asset/AssetBase.ts#L18">Asset/AssetBase.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/AssetBase.ts#L18">Asset/AssetBase.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -195,7 +198,7 @@
 						<p>Implementation of <a href="../interfaces/_asset_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_asset_iasset_.iasset.html#metadata">metadata</a></p>
 						<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#metadata">metadata</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/309625e/src/Asset/AssetBase.ts#L17">Asset/AssetBase.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/AssetBase.ts#L17">Asset/AssetBase.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -207,7 +210,7 @@
 						<p>Implementation of <a href="../interfaces/_asset_iasset_.iasset.html">IAsset</a>.<a href="../interfaces/_asset_iasset_.iasset.html#metadatatext">metadataText</a></p>
 						<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#metadatatext">metadataText</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/309625e/src/Asset/AssetBase.ts#L16">Asset/AssetBase.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/AssetBase.ts#L16">Asset/AssetBase.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -225,7 +228,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#calculateassetid">calculateAssetId</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/309625e/src/Asset/AssetBase.ts#L63">Asset/AssetBase.ts:63</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/AssetBase.ts#L67">Asset/AssetBase.ts:67</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -248,7 +251,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#equals">equals</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/309625e/src/Asset/AssetBase.ts#L71">Asset/AssetBase.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/AssetBase.ts#L75">Asset/AssetBase.ts:75</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -278,7 +281,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#getassetid">getAssetId</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/309625e/src/Asset/AssetBase.ts#L56">Asset/AssetBase.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/AssetBase.ts#L60">Asset/AssetBase.ts:60</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -286,6 +289,23 @@
 									<p>Get the assetId from the internal assetDID.</p>
 								</div>
 							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="json" class="tsd-anchor"></a>
+					<h3>json</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">json<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/DataAsset.ts#L88">Asset/DataAsset.ts:88</a></li>
+								</ul>
+							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
@@ -300,7 +320,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/309625e/src/Asset/DataAsset.ts#L78">Asset/DataAsset.ts:78</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/DataAsset.ts#L83">Asset/DataAsset.ts:83</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -322,6 +342,50 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="text" class="tsd-anchor"></a>
+					<h3>text</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">text<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/DataAsset.ts#L92">Asset/DataAsset.ts:92</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
+					<a name="createempty" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> create<wbr>Empty</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>Empty<span class="tsd-signature-symbol">(</span>metaDataText<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, did<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asset_dataasset_.dataasset.html" class="tsd-signature-type">DataAsset</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<p>Overrides <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#createempty">createEmpty</a></p>
+								<ul>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/DataAsset.ts#L62">Asset/DataAsset.ts:62</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>metaDataText: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> did: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_asset_dataasset_.dataasset.html" class="tsd-signature-type">DataAsset</a></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited tsd-is-static">
 					<a name="generatemetadata" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> generate<wbr>Metadata</h3>
@@ -333,7 +397,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="_asset_assetbase_.assetbase.html">AssetBase</a>.<a href="_asset_assetbase_.assetbase.html#generatemetadata">generateMetadata</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/309625e/src/Asset/AssetBase.ts#L28">Asset/AssetBase.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/AssetBase.ts#L28">Asset/AssetBase.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -372,13 +436,13 @@
 					<a name="create" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> create</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Buffer</span>, metaData<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_asset_imetadata_.imetadatadata.html" class="tsd-signature-type">IMetaDataData</a>, did<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asset_dataasset_.dataasset.html" class="tsd-signature-type">DataAsset</a></li>
+						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ArrayBuffer</span>, metaData<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_asset_imetadata_.imetadatadata.html" class="tsd-signature-type">IMetaDataData</a>, did<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_asset_dataasset_.dataasset.html" class="tsd-signature-type">DataAsset</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/309625e/src/Asset/DataAsset.ts#L27">Asset/DataAsset.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/DataAsset.ts#L28">Asset/DataAsset.ts:28</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -395,7 +459,7 @@
 									</div>
 								</li>
 								<li>
-									<h5>data: <span class="tsd-signature-type">Buffer</span></h5>
+									<h5>data: <span class="tsd-signature-type">ArrayBuffer</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Data buffer to use for the data.</p>
 									</div>
@@ -425,7 +489,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/309625e/src/Asset/DataAsset.ts#L43">Asset/DataAsset.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/datacraft-dsc/starfish-js/blob/1d49a6b/src/Asset/DataAsset.ts#L44">Asset/DataAsset.ts:44</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -509,10 +573,19 @@
 								<a href="_asset_dataasset_.dataasset.html#getassetid" class="tsd-kind-icon">get<wbr>Asset<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_asset_dataasset_.dataasset.html#json" class="tsd-kind-icon">json</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_asset_dataasset_.dataasset.html#savetofile" class="tsd-kind-icon">save<wbr>ToFile</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_asset_dataasset_.dataasset.html#text" class="tsd-kind-icon">text</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="_asset_dataasset_.dataasset.html#create" class="tsd-kind-icon">create</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-static">
+								<a href="_asset_dataasset_.dataasset.html#createempty" class="tsd-kind-icon">create<wbr>Empty</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="_asset_dataasset_.dataasset.html#createfromfile" class="tsd-kind-icon">create<wbr>From<wbr>File</a>
