@@ -7,6 +7,7 @@
  */
 
 import mime from 'mime-types'
+import { parse as csvParse } from 'csv-parse/sync'
 
 import { IMetaData, IMetaDataData } from './IMetaData'
 import { AssetBase } from './AssetBase'
@@ -27,8 +28,12 @@ export class DataAsset extends AssetBase {
      */
     public static create(name: string, data: ArrayBuffer, metaData?: string | IMetaDataData, did?: string): DataAsset {
         const storeMetaData = AssetBase.generateMetadata(name, 'dataset', metaData)
-        storeMetaData.contentType = 'application/octet-stream'
-        storeMetaData.contentHash = calculateAssetDataHash(data)
+        if (storeMetaData.contentType === undefined) {
+            storeMetaData.contentType = 'application/octet-stream'
+        }
+        if (storeMetaData.contentHash === undefined) {
+            storeMetaData.contentHash = calculateAssetDataHash(data)
+        }
         return new DataAsset(storeMetaData, did, data)
     }
 
@@ -91,5 +96,9 @@ export class DataAsset extends AssetBase {
 
     public text(): string {
         return arrayBufferToString(this.data)
+    }
+
+    public csv(options: any): any {
+        return csvParse(this.text(), options)
     }
 }

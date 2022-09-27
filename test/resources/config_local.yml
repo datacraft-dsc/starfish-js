@@ -30,3 +30,8 @@ agents:
     username: Aladdin
     password: OpenSesame
 
+  colife:
+    url: https://connectedcare-dev-agent.connectedlife.io
+    username: $COLIFE_USERNAME
+    password: $COLIFE_PASSWORD
+
