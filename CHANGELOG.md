@@ -1,5 +1,9 @@
 # Change Log
 
+## Release 0.3.3
++   minor bug fixes
++   test connection to remote agent
+
 ## Release 0.3,2
 +   Upgrade convex-api-js
 +   move to non cyrpto node libraries
