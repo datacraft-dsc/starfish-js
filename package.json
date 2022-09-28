@@ -5,7 +5,6 @@
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "browser": "./dist/index.js",
-  "type": "module",
   "scripts": {
     "test": "mocha",
     "clean": "rm -rf ./dist/ ./doc/ ./coverage ./.nyc_output",
