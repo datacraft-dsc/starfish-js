@@ -1,5 +1,9 @@
 # Change Log
 
+## Release 0.3.4
++   Refactoring DID functions to a seperate DID.ts module
++   Add in new Provenance contract methods
+
 ## Release 0.3.3
 +   minor bug fixes
 +   test connection to remote agent
