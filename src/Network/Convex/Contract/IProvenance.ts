@@ -11,7 +11,7 @@ export interface IProvenanceData {
     data: string
 }
 
-export interface IProvenanceOwnerList extends Array<IProvenanceOwner> {}
+export type IProvenanceOwnerList = Array<IProvenanceOwner>
 
 export interface IProvenanceOwner {
     assetId: string
