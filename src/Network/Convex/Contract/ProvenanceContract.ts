@@ -8,7 +8,7 @@ import { IProvenanceData, IProvenanceDataList, IProvenanceOwnerList } from './IP
 
 export class ProvenanceContract extends ContractBase {
     public async register(assetDID: string, data: string, account: ConvexAccount): Promise<IProvenanceData> {
-        if ( !isAssetDID(assetDID)) {
+        if (!isAssetDID(assetDID)) {
             throw TypeError('invalid asset did')
         }
         const didId = prefix0x(didToId(assetDID))
@@ -20,14 +20,14 @@ export class ProvenanceContract extends ContractBase {
             return {
                 timestamp: result['value']['timestamp'],
                 owner: toAddress(result['value']['owner']),
-                data: result['value']['data']
+                data: result['value']['data'],
             }
         }
         return null
     }
 
     public async getData(assetDID: string): Promise<IProvenanceData> {
-        if ( !isAssetDID(assetDID)) {
+        if (!isAssetDID(assetDID)) {
             throw TypeError('invalid asset did')
         }
         const didId = prefix0x(didToId(assetDID))
@@ -38,7 +38,7 @@ export class ProvenanceContract extends ContractBase {
             return {
                 timestamp: result['value']['timestamp'],
                 owner: toAddress(result['value']['owner']),
-                data: result['value']['data']
+                data: result['value']['data'],
             }
         }
         return null
@@ -46,7 +46,7 @@ export class ProvenanceContract extends ContractBase {
 
     public async getDIDList(didId: string): Promise<IProvenanceDataList> {
         let didIdValue: string
-        if ( isDID(didId)) {
+        if (isDID(didId)) {
             didIdValue = didToId(didId)
         }
         if (isAssetId(didId)) {
@@ -64,15 +64,14 @@ export class ProvenanceContract extends ContractBase {
         const address = toAddress(addressAccount)
         const commandLine = `(owner-list ${address})`
         const result = await this.query(commandLine, this.address)
-        if ( result['value'] ) {
-            return result['value'].map(item => {
+        if (result['value']) {
+            return result['value'].map((item) => {
                 return {
                     didId: item['did-id'],
-                    assetId: item['asset-id']
+                    assetId: item['asset-id'],
                 }
             })
         }
         return null
     }
-
 }

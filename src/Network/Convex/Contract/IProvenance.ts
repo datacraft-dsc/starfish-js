@@ -3,7 +3,7 @@
 */
 
 export interface IProvenanceDataList {
-    [didId:string]: IProvenanceData
+    [didId: string]: IProvenanceData
 }
 export interface IProvenanceData {
     timestamp: string

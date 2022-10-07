@@ -19,7 +19,6 @@ import { IInvokeResult } from '../Asset/IInvoke'
 import { didToAssetId, isDID } from '../DID'
 import { isAssetId } from '../Utils'
 
-
 // import { DDO } from '../DDO/DDO'
 
 export class RemoteAgent extends AgentBase {

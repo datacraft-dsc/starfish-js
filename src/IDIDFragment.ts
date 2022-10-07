@@ -6,7 +6,6 @@
  *
  */
 
-
 export interface IDIDFragment {
     method: string
     id: string

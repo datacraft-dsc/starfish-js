@@ -11,7 +11,6 @@ import cryptojs from 'crypto-js'
 
 const NETWORK_DID_METHOD = 'dep'
 
-
 /*
  *
  *
@@ -68,7 +67,7 @@ export function isAssetDID(did: string): boolean {
     let didFragment
     try {
         didFragment = didParse(did)
-    } catch(err) {
+    } catch (err) {
         return false
     }
     return isAssetId(toIdHex(didFragment.path))
