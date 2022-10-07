@@ -11,9 +11,7 @@ export interface IProvenanceData {
     data: string
 }
 
-export interface IProvenanceOwnerList {
-    []: IProvenanceOwner
-}
+export interface IProvenanceOwnerList extends Array<IProvenanceOwner> {}
 
 export interface IProvenanceOwner {
     assetId: string
