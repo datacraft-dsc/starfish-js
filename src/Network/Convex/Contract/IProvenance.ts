@@ -15,7 +15,7 @@ export interface IProvenanceOwnerList {
     []: IProvenanceOwner
 }
 
-export interface IProvenaceOwner {
+export interface IProvenanceOwner {
     assetId: string
     didId: string
 }
