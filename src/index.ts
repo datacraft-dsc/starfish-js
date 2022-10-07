@@ -19,8 +19,9 @@ export { OperationAsset } from './Asset/OperationAsset'
 export { DDO } from './DDO/DDO'
 
 export * from './Asset/IMetaData'
-export * from './Utils'
 export * from './Crypto'
+export * from './DID'
+export * from './Utils'
 
 /*
  *

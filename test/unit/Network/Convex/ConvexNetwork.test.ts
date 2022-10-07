@@ -1,13 +1,16 @@
 import { assert } from 'chai'
 
 import { KeyPair } from '@convex-dev/convex-api-js'
+import { randomBytes } from 'crypto'
+
+
 /*
  *
  *
  *
  */
 
-import { ConvexNetwork, DDO, didCreate, didToId } from 'starfish'
+import { ConvexNetwork, DDO, didCreate, didToId, didRandom, prefix0x } from 'starfish'
 
 import { loadTestSetup } from 'test/TestSetup'
 
@@ -133,5 +136,38 @@ describe('ConvexNetwork Class', async () => {
                 assert(ddo)
             })
         })
+    })
+    describe('Provenance Contract testing', async () => {
+        let network
+        before( async () => {
+            network = await ConvexNetwork.getInstance(setup.convex.network.url);
+        })
+        describe('register and get a provenance record', async () => {
+            const didId = didRandom()
+            const data = randomBytes(1024).toString('hex')
+            const assetId = randomBytes(32).toString('hex')
+            const assetDID = `${didId}/${assetId}`
+            it('should register a provenance record', async () => {
+                const result = await network.registerProvenance(testAccount, assetDID, data)
+                assert(result)
+            })
+            it('should return a valid provenance record', async () => {
+                const result = await network.getProvenance(assetDID)
+                assert(result)
+                assert.equal(result.data, data)
+            })
+            it('should return the provenance record in the DID list', async () => {
+                const result = await network.getProvenanceDIDList(didId)
+                assert(result)
+                assert(result[prefix0x(assetId)])
+            })
+            it('should return the provenance list of did, assetId for this owner', async () => {
+                const result = await network.getProvenanceOwnerList(testAccount)
+                assert(result)
+            })
+
+
+        })
+
     })
 })

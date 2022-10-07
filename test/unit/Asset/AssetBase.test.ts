@@ -44,8 +44,8 @@ describe('AssetBase Class', () => {
                 description: 'This is the metaData disciption',
             }
             metaDataText = JSON.stringify(metaData)
-            assetId =calculateAssetId(metaDataText)
-            assetDID = `${didRandom()}${assetId}`
+            assetId = calculateAssetId(metaDataText)
+            assetDID = `${didRandom()}/${assetId}`
             asset = new AssetBase(metaDataText, assetDID)
 
         })

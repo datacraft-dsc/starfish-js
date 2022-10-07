@@ -16,7 +16,9 @@ import { IAgentAuthentication } from '../Agent/IAgentAuthentication'
 import { IListingData, IListingFilter } from '../Asset/IListing'
 import { IMetaData, IMetaDataList } from '../Asset/IMetaData'
 import { IInvokeResult } from '../Asset/IInvoke'
-import { extractAssetId, isAssetId, isDID } from '../Utils'
+import { didToAssetId, isDID } from '../DID'
+import { isAssetId } from '../Utils'
+
 
 // import { DDO } from '../DDO/DDO'
 
@@ -119,7 +121,7 @@ export class RemoteAgent extends AgentBase {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
         const url = this.getEndpoint('meta')
-        const safeAssetId = extractAssetId(assetId)
+        const safeAssetId = didToAssetId(assetId)
         const metadata = await adapter.readMetadata(safeAssetId, url, token)
         return createAsset(metadata, this.generateDIDForAsset(safeAssetId))
     }
@@ -165,7 +167,7 @@ export class RemoteAgent extends AgentBase {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
         const url = this.getEndpoint('storage')
-        const assetId = extractAssetId(assetDIDorId)
+        const assetId = didToAssetId(assetDIDorId)
         const asset: DataAsset = <DataAsset>await this.getAsset(assetId)
         asset.data = await adapter.downloadAssetData(assetId, url, token)
         return asset
@@ -182,7 +184,7 @@ export class RemoteAgent extends AgentBase {
         const adapter = RemoteAgentAdapter.getInstance()
         const token = await this.getAuthorizationToken()
         const url = this.getEndpoint('market')
-        const assetId = extractAssetId(assetDIDorId)
+        const assetId = didToAssetId(assetDIDorId)
         const listingText = JSON.stringify(listingInfo)
         return adapter.addListing(listingText, assetId, url, token)
     }
@@ -238,7 +240,7 @@ export class RemoteAgent extends AgentBase {
         let assetId
         if (typeof assetOrName == 'string') {
             if (isAssetId(assetOrName) || isDID(assetOrName)) {
-                assetId = extractAssetId(assetOrName)
+                assetId = didToAssetId(assetOrName)
             } else {
                 const filter = {
                     name: assetOrName,

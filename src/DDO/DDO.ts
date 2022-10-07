@@ -5,7 +5,7 @@
 
 */
 
-import { didRandom } from '../Utils'
+import { didRandom } from '../DID'
 
 import { IDDO, IDDOService } from './IDDO'
 

@@ -14,7 +14,7 @@ import { randomBytes } from 'crypto'
 import { urlJoin } from 'url-join-ts'
 
 import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
-import { calculateAssetDataHash, extractAssetId, remove0xPrefix, RemoteAgentAdapter } from 'starfish'
+import { calculateAssetDataHash, didToAssetId, remove0xPrefix, RemoteAgentAdapter } from 'starfish'
 
 let setup = loadTestSetup()
 const agentConfig = setup.agents['local']
@@ -200,7 +200,7 @@ describe('RemoteAgentAdapter', () => {
             adapter = RemoteAgentAdapter.getInstance()
             const invokeList = await enableSurferInvokableOperations(agentConfig['url'], agentConfig['username'], agentConfig['password'])
             assert(invokeList['invokables'][testInovkeName])
-            assetId = remove0xPrefix(extractAssetId(invokeList['invokables'][testInovkeName]))
+            assetId = remove0xPrefix(didToAssetId(invokeList['invokables'][testInovkeName]))
 
             const tokenURL = urlJoin(agentConfig['url'], '/api/v1/auth/token')
             accessToken = await adapter.getAuthorizationToken(agentConfig['username'], agentConfig['password'], tokenURL)

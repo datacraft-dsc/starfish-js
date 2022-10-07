@@ -10,7 +10,7 @@ import { randomBytes } from 'crypto'
 
 
 import { loadTestSetup, enableSurferInvokableOperations } from 'test/TestSetup'
-import { AgentManager, DataAsset, extractAssetId, OperationAsset, RemoteAgent, remove0xPrefix } from 'starfish'
+import { AgentManager, DataAsset, didToAssetId, OperationAsset, RemoteAgent, remove0xPrefix } from 'starfish'
 
 let setup = loadTestSetup()
 const agentConfig = setup.agents['local']
@@ -131,7 +131,7 @@ describe('RemoteAgent Class', () => {
             before( async () => {
                 const invokeList = await enableSurferInvokableOperations(agentConfig['url'], agentConfig['username'], agentConfig['password'])
                 assert(invokeList['invokables'][testInovkeName])
-                assetId = remove0xPrefix(extractAssetId(invokeList['invokables'][testInovkeName]))
+                assetId = remove0xPrefix(didToAssetId(invokeList['invokables'][testInovkeName]))
                 invokeAsset = await agent.getAsset(assetId)
                 testNumber = Math.random() * 100
                 inputs = {

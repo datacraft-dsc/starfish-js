@@ -15,7 +15,7 @@ import { IAgentAuthentication } from '../Agent/IAgentAuthentication'
 import { IAgentData } from '../Agent/IAgentData'
 import { RemoteAgent } from '../Agent/RemoteAgent'
 import { IAgentItems, IAgentItem } from './IAgentItems'
-import { isDID } from '../Utils'
+import { isDID } from '../DID'
 
 export class AgentManager {
     /**

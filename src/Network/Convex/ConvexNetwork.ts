@@ -1,9 +1,11 @@
 import { API as ConvexAPI, Account as ConvexAccount } from '@convex-dev/convex-api-js'
-import { isBalanceInsufficient, isDID, didToId } from '../../Utils'
+import { isDID, didToId } from '../../DID'
+import { isBalanceInsufficient } from '../../Utils'
 import { ContractBase, ConvexContractManager, DIDRegistryContract, ProvenanceContract } from './Contract/Contract'
 // import { DDO } from '../../DDO/DDO'
 import { RemoteAgent } from '../../Agent/RemoteAgent'
 import { IAgentAuthentication } from '../../Agent/IAgentAuthentication'
+import { IProvenanceData, IProvenanceDataList, IProvenanceOwnerList } from './Contract/IProvenance'
 
 const DID_REGISTRY_CONTRACT_NAME = 'starfish.did'
 const PROVENANCE_CONTRACT_NAME = 'starfish.provenance'
@@ -215,24 +217,30 @@ export class ConvexNetwork {
      * @param assetId Asset id to register. This is a 32 byte hex string ( '0x' + 64 hex chars )
      * @returns True if the registration was successfull.
      */
-    /*
-    public async registerProvenance(account: ConvexAccount, assetId: string): Promise<boolean> {
-        const contract = <ProvenanceContract>await this.getContract('Provenance')
-        const receipt = await contract.register(account, assetId)
-        return receipt.status
+    public async registerProvenance(account: ConvexAccount, assetDID: string, data: string): Promise<IProvenanceData> {
+        const contract = <ProvenanceContract>await this.loadContract('Provenance', PROVENANCE_CONTRACT_NAME)
+        return await contract.register(assetDID, data, account)
     }
-*/
+
     /**
      * Return a list of provenance event logs for a given assetId.
      * @param assetId Asset id to search for a provenance record.
      * @returns List of event items found for this assetId.
      */
-    /*
-    public async getProvenanceEventLogs(assetId: string): Promise<EventData[]> {
-        const contract = <ProvenanceContract>await this.getContract('Provenance')
-        return contract.getEventLogs(assetId)
+    public async getProvenance(assetDID: string): Promise<IProvenanceData> {
+        const contract = <ProvenanceContract>await this.loadContract('Provenance', PROVENANCE_CONTRACT_NAME)
+        return await contract.getData(assetDID)
     }
-*/
+
+    public async getProvenanceDIDList(didId: string): Promise<IProvenanceDataList> {
+        const contract = <ProvenanceContract>await this.loadContract('Provenance', PROVENANCE_CONTRACT_NAME)
+        return await contract.getDIDList(didId)
+    }
+
+    public async getProvenanceOwnerList(account: ConvexAccount | BigInt | number | string): Promise<IProvenanceOwnerList> {
+        const contract = <ProvenanceContract>await this.loadContract('Provenance', PROVENANCE_CONTRACT_NAME)
+        return await contract.getOwnerList(account)
+    }
     /*
      *
      *
@@ -265,12 +273,6 @@ export class ConvexNetwork {
         const contract = <DIDRegistryContract>await this.loadContract('DIDRegistry', DID_REGISTRY_CONTRACT_NAME)
         const didId = didToId(did)
         return contract.resolve(didId, account)
-    }
-
-    public async registerProvenance(account: ConvexAccount, assetId: string, data: string): Promise<boolean> {
-        const contract = <ProvenanceContract>await this.loadContract('Provenance', PROVENANCE_CONTRACT_NAME)
-        const result = await contract.register(assetId, data, account)
-        return result != null
     }
 
     /*

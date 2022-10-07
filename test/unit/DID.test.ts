@@ -13,15 +13,16 @@ import {
     didRandom,
     didToId,
     didValidate,
-    extractAssetId,
+    didToAssetId,
     idToDID,
     isAssetId,
+    isAssetDID,
     prefix0x,
     remove0xPrefix,
 } from 'starfish'
 
 
-describe('Utils', () => {
+describe('DID Test', () => {
 
     describe('DID Helpers', () => {
         it('should validate a good did', async () => {
@@ -57,7 +58,6 @@ describe('Utils', () => {
             assert(result)
             assert.equal(result['method'], 'dep')
             assert.equal(result['id'], remove0xPrefix(testId))
-            assert.equal(result['idHex'], testId)
             assert.isUndefined(result['path'])
             assert.isUndefined(result['fragment'])
         })
@@ -69,8 +69,7 @@ describe('Utils', () => {
             assert(result)
             assert.equal(result['method'], 'dep')
             assert.equal(result['id'], remove0xPrefix(testId))
-            assert.equal(result['idHex'], testId)
-            assert.equal(result['path'], `/${remove0xPrefix(testAssetId)}`)
+            assert.equal(result['path'], `${remove0xPrefix(testAssetId)}`)
             assert.isUndefined(result['fragment'])
         })
         it('should parse did to get path and fragment', async () => {
@@ -81,9 +80,20 @@ describe('Utils', () => {
             assert(result)
             assert.equal(result['method'], 'dep')
             assert.equal(result['id'], remove0xPrefix(testId))
-            assert.equal(result['idHex'], testId)
-            assert.equal(result['path'], `/${remove0xPrefix(testAssetId)}`)
+            assert.equal(result['path'], `${remove0xPrefix(testAssetId)}`)
             assert.equal(result['fragment'], '#fragment')
+        })
+        it('should validate asset DID', async () => {
+            const testAssetId = randomBytes(32).toString('hex')
+            const testDID = `${didRandom()}/${testAssetId}`
+            assert(isAssetDID(testDID))
+
+            const testBadDID = `${didRandom()}#${testAssetId}`
+            assert( !isAssetDID(testBadDID))
+
+            assert( !isAssetDID(didRandom()))
+
+
         })
         it('should convert a did to id and id to did', async () => {
             const testId = prefix0x(randomBytes(32).toString('hex'))
@@ -95,8 +105,8 @@ describe('Utils', () => {
         it('should extract an asset id string to from a DID', async () => {
             const testAssetId = remove0xPrefix(randomBytes(32).toString('hex'))
             const testDID = didCreate(null, testAssetId)
-            assert.equal(testAssetId, extractAssetId(testDID))
-            assert.equal(testAssetId, extractAssetId(testAssetId))
+            assert.equal(testAssetId, didToAssetId(testDID))
+            assert.equal(testAssetId, didToAssetId(testAssetId))
         })
         it ('should validate an asset id string with no leading 0x', async () => {
             const testAssetId = randomBytes(32).toString('hex')

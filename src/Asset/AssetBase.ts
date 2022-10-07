@@ -9,7 +9,7 @@
 import { IMetaData } from './IMetaData'
 import { IAsset } from './IAsset'
 
-import { extractAssetId } from '../Utils'
+import { didToAssetId } from '../DID'
 import { calculateAssetId } from '../Crypto'
 
 export class AssetBase implements IAsset {
@@ -58,7 +58,7 @@ export class AssetBase implements IAsset {
      * Get the assetId from the internal assetDID.
      */
     public getAssetId(): string {
-        return extractAssetId(this.did)
+        return didToAssetId(this.did)
     }
 
     /**
