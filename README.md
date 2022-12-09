@@ -87,14 +87,21 @@ The output will look something like this:
 
 ## Development
 
+1. Create a GitHub personal access token (classic) with at least packages:read scope.
 
-1. Install requirements
+2. Create or edit the `~/.npmrc` file to include the following line:
+
+```
+//npm.pkg.github.com/:_authToken=TOKEN
+```
+
+3. Install requirements
 
     ```
     npm install
     ```
 
-1. Run the unit tests
+4. Run the unit tests
 
     ```
     npm run test

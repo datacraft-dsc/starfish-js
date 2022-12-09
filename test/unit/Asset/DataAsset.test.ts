@@ -10,6 +10,9 @@ import fs from 'fs-extra'
 import { randomBytes } from 'crypto'
 import { DataAsset } from 'starfish'
 
+import temporaryDirectory from 'temp-dir'
+import path from 'node:path'
+
 describe('DataAsset Class', () => {
     describe('create', () => {
         it('should create a new DataAsset object', async () => {
@@ -25,7 +28,7 @@ describe('DataAsset Class', () => {
         })
     })
     describe('createFromFile', () => {
-        const filename = '/tmp/testAssetDataFile.dat'
+        const filename = path.join(temporaryDirectory, 'testAssetDataFile.dat')
         let data
         before( () => {
             data = Buffer.from(randomBytes(1024))
@@ -47,7 +50,7 @@ describe('DataAsset Class', () => {
         })
     })
     describe('saveToFile', () => {
-        const filename = '/tmp/testAssetDataFile.dat'
+        const filename = path.join(temporaryDirectory, 'testAssetDataFile.dat')
         it('should save the data to a file', async () => {
             const data = Buffer.from(randomBytes(1024))
             const name = 'newDataAsset'

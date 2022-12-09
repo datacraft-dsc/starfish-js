@@ -53,6 +53,7 @@
     "js-base64": "^3.7.2",
     "js-sha3": "^0.8.0",
     "query-string": "^7.1.1",
+    "temp-dir": "2.0.0",
     "url-join-ts": "^1.0.5"
   },
   "devDependencies": {
