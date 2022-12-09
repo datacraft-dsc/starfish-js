@@ -73,7 +73,7 @@
     "gulp-uglify-es": "^2.0.0",
     "gulp-util": "^3.0.8",
     "js-yaml": "^3.14.1",
-    "mocha": "^6.2.3",
+    "mocha": "^10.1.0",
     "prettier": "^2.6.2",
     "ts-node": "^8.10.2",
     "tsconfig-paths": "^3.14.1",
